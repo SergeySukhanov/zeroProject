@@ -2,7 +2,7 @@ var Zero = (function(m){
 
 	_checkAuth = function() {
 		var answer = false;
-		if(localStorage.accessToken) {
+		if(localStorage && localStorage.accessToken) {
 			answer = true;
 		}
 		return answer;
@@ -22,16 +22,32 @@ var Zero = (function(m){
 	
 
 	m.init = function() {
-		var auth = _checkAuth();	
+		var auth = _checkAuth(), 
+			url = window.location.href,
+			rootLink = initConfiguration.getRootLocation();
 		
 		if(!auth) {
-			window.location.href = "/";
+			
+			if(url != rootLink) {
+				window.location.href = rootLink;
+			}
+						
 		} else {
-			_start();
-		}
+			switch(url){
+				case rootLink:{
+				   window.location.href = rootLink + 'main.html';
+                   break;
+				};
+				default : {
+					_start();	
+				}
+			}			
+		}	
+			
 	}
 	return m;
 }(Zero || {}))
+
 
 
 

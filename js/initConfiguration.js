@@ -1,9 +1,13 @@
 var initConfiguration = {
 	 rootContext:location.protocol + "//" + location.host,
-	 rootFolder:'/zeroNew/zeroProject/',
+	 rootFolder:'/zeroProject/',
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
+	 
+	 getRootLocation:function(){
+	 	return initConfiguration.rootContext+initConfiguration.rootFolder;
+	 },
 	 
 	 //auth
 	urlRegister:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/zero-auth-webapp/api/V1/register/m',
