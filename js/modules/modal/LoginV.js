@@ -80,6 +80,7 @@ function LoginController(data){
 	   	  	    	_showError(fields[i]);	
 	   	  	    }else{
 	   	  	    	_hideError(fields[i]);
+	   	  	    	dataValidate[$(fields[i]).attr('id')] = $(fields[i]).val();
 	   	  	    }
 	   	  }	 
 	   	    if(fields.filter('.invalid').length == 0){
