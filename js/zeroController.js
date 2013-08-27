@@ -8,6 +8,18 @@ var Zero = (function(m){
 		return answer;
 	}
 
+	
+	_start = function() {
+		$(function () {		
+			_greetings();
+		});
+	}
+	
+	_greetings = function() {
+		var $code = $('<div />').addClass('greeting').text('Hello');
+		$code.insertBefore($('#weatherHolder'));
+	}
+	
 
 	m.init = function() {
 		var auth = _checkAuth();	
@@ -15,11 +27,12 @@ var Zero = (function(m){
 		if(!auth) {
 			window.location.href = "/";
 		} else {
-		
+			_start();
 		}
 	}
 	return m;
 }(Zero || {}))
+
 
 
 
