@@ -1,0 +1,56 @@
+@import "login-register.css" screen;
+
+.content-page.index-page {
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1000;
+    color:#bbb;
+}
+.content-page.index-page > *{
+	padding:0px 30px;
+	text-align:center;
+	
+}
+.header-index > *{
+	margin-bottom:15px;
+}
+
+.title-wrapper h1{
+	font-size: 169px;
+    line-height: 150px;
+    padding-top: 70px;
+    font-weight: 200;
+}
+
+.brand-wrapper img {
+    width: 38%;
+}
+
+.link-wrapper a {
+    margin-right: 20px;  
+    font-size: 24px;
+    text-decoration: none;
+    font-family: Tahoma;
+    color:#3cc6f0;
+}
+
+
+.link-wrapper a:hover {
+    text-decoration: underline;
+}
+
+.subtitle-wrapper h2,
+.footer-wrapper p {
+    color: #888888;
+}
+
+.subtitle-wrapper h2{
+	font-size: 30px;
+   font-weight: 200;
+}
+
+.footer-wrapper p{
+	font-size:22px;
+	font-weight:200;
+}

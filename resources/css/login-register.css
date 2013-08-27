@@ -1,0 +1,96 @@
+.login, .register{
+	position: absolute;
+	display:none;
+	z-index: 3000;
+}
+
+.register {
+	/*display:block;*/
+    margin-left: 35%;
+    margin-top: 31%;
+    top: 0;
+}
+.login {
+	/*display:block;*/
+    margin-left: 37%;
+    margin-top: 34%;
+    top: 0;
+}
+
+.register-inner, .login-inner{
+     background: #898989;
+     background: -moz-radial-gradient(center, ellipse cover,  #898989 0%, #5b5b5b 100%);
+     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#898989), color-stop(100%,#5b5b5b));
+     background: -webkit-radial-gradient(center, ellipse cover,  #898989 0%,#5b5b5b 100%);
+     background: -o-radial-gradient(center, ellipse cover,  #898989 0%,#5b5b5b 100%);
+     background: -ms-radial-gradient(center, ellipse cover,  #898989 0%,#5b5b5b 100%);
+     background: radial-gradient(ellipse at center,  #898989 0%,#5b5b5b 100%);
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#898989', endColorstr='#5b5b5b',GradientType=1 );
+
+    z-index: 1000;
+    padding: 20px;
+    padding-bottom:1px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px 0px #444444;
+}
+.row.field{
+	text-align:right;
+	margin-bottom: 20px;
+}
+
+.row.field label{
+	display:inline-block;
+	margin-right: 10px;
+    vertical-align: top;
+    margin-top: 5px;
+    font-family: Tahoma;
+    font-size: 15px;
+    color:#333333;
+}
+
+.row.field input[type="text"], 
+.row.field input[type="password"] {
+    float: right;
+    height: 30px;
+    width: 186px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 3px 1px #999999 inset;
+    border: 1px solid #999999;
+    padding-left:7px;
+}
+
+.row.field input[type="text"]:focus,
+ .row.field input[type="password"]:focus {
+   outline:1px solid #3cc6f0;
+}
+
+.row.button {
+   text-align: center;
+   margin-bottom:13px;
+}
+.row.button input[type="button"] {
+   background-color:#32a9cd;
+   border:1px solid #2885a1;
+   padding: 4px 13px;
+   border-radius: 4px;
+   color:#fcfcfc;
+   cursor:pointer;
+}
+
+.hidden-layout{
+	position:absolute;
+	min-height:100%;
+	background-color:#333333;
+	opacity:0.8;
+	width: 100%;
+    top: 0;
+    z-index:2000;
+    display:none;
+}
+
+.error {
+position: absolute;
+padding: 2px 12px;
+background-color: red;
+display: none;
+}

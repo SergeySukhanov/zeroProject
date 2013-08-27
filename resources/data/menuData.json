@@ -1,0 +1,72 @@
+[
+{
+"registerForm":[
+   {
+     "id":"register-login",
+     "label":"Login:",
+     "value":null,
+     "type":"text",
+     "placeholder":"Enter your Login",
+     "errorMessage":"please enter your login"
+   },
+   {
+     "id":"register-email",
+     "label":"Email:",
+     "value":null,
+     "type":"text",
+     "placeholder":"Enter your email",
+     "errorMessage":"please enter your email"
+   },
+   {
+     "id":"register-password",
+     "label":"Password:",
+     "value":null,
+     "type":"password",
+     "placeholder":"Enter your password",
+     "errorMessage":"please enter your password"
+   },
+    {
+     "id":"register-password-repeat",
+     "label":"Repeat password:",
+     "value":null,
+     "type":"password",
+     "placeholder":"Repeat your password",
+     "errorMessage":"please repeat your password"
+   },
+   {
+     "id":"register-button",
+     "label":null,
+     "value":"Register",
+     "type":"button",
+     "placeholder":null,
+     "errorMessage":null
+   }
+],
+"loginForm":[
+  {
+     "id":"auth-email",
+     "label":"Email:",
+     "value":null,
+     "type":"text",
+     "placeholder":"Enter your email",
+     "errorMessage":"please enter your email"
+   },
+   {
+     "id":"auth-password",
+     "label":"Password:",
+     "value":null,
+     "type":"password",
+     "placeholder":"Enter your password",
+     "errorMessage":"please enter your password"
+   },
+   {
+     "id":"auth-button",
+     "label":null,
+     "value":"Log in",
+     "type":"button",
+     "placeholder":null,
+     "errorMessage":null
+   }
+]
+}
+]
