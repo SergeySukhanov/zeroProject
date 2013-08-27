@@ -1,0 +1,113 @@
+@import url("oswald/oswald.css");
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header, nav, section, article, aside, footer {
+	display: block;
+}
+
+
+.oswald {
+	font-family : "Oswald", Tahoma;
+	}
+.oswaldLight {
+	font-family : "Oswald Light", Tahoma;
+	}	
+	
+
+/*
+	Common Colors
+*/
+.c-dgrey {
+	color : #383e44;
+	}
+	
+	
+#wrapper {
+	width: 100%;
+	clear: both;	
+	}	
+	
+	#wrapper .content {
+		width: 74%;
+		display: inline-block;
+		vertical-align: top;
+		}	
+	#wrapper aside {
+		width: 25%;
+		display: inline-block;
+		vertical-align: top;
+		}
+
+		
+.header-block {	
+	height: 130px;
+	text-align: right;
+	}		
+
+/*
+	Weather
+*/	
+.weather {
+	display: inline-block;
+	text-align: left;
+	margin: 36px 80px 0 0;
+	}
+	.weather .grad {
+		font: normal 48px/54px "Oswald Light";
+		}
+		.weather .grad sup {
+			font-size: 30px;
+			}
+	.weather .text {
+		font: normal 18px/20px "Oswald Light";
+		}
+/*
+	Time
+*/	
+
+.clock-block {
+	margin: 40px 0 20px 0;
+	text-align: center;
+	}
+
+.town {
+	display: inline-block;
+	padding: 0 5%;
+	}
+
+.time {
+	font: normal 36px/44px "Oswald Light";
+	margin-bottom: 10px;
+	}
+.place {
+	font: normal 18px/20px "Oswald Light";
+	}	
+
+	
+/*
+	Calendar
+*/	
+	
+.calendar {
+	font-family : "Oswald Light", Tahoma;
+	color: #6a7379;
+	border-top: 1px dashed #c5c5c5;
+	margin: 0 5%;
+	padding: 20px 0 0 0;
+	}
+	.calendar h2 {
+		font-size: 48px;		
+		color: #383e44;
+		line-height: 54px;
+		}
+	.calendar .event h2 {
+		font: normal 36px/42px "Oswald Light", Times;
+		}	
+	.calendar .event h3 {
+		font-weight: normal;
+		font-size: 18px;
+		color : #8b949d;
+		}	pxpx 
