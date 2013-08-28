@@ -1,10 +1,5 @@
-/**
- * @author SNSukhanov
- */
-
-
-function PageIndexController(){
-	var view = this,
+Zero.PageIndexController = (function(module){
+	var view = {},
 	
 	    config = {
 	    	textTitle:'human simple authentic',
@@ -117,5 +112,5 @@ function PageIndexController(){
 		_render();
 	};
 	
-	view.initialize();
-}
+	return view;
+}(Zero));

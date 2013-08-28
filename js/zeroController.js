@@ -1,26 +1,26 @@
 var Zero = (function(m){
-
+    
+    var router = {
+    	'root':'index.html',
+    	'indexPage':'index.html',
+    	'mainPage':'main.html'
+    	
+    };
+    
 	_checkAuth = function() {
 		var answer = false;
 		if(localStorage && localStorage.accessToken) {
 			answer = true;
 		}
 		return answer;
-	}
+	};
 
 	
-	_start = function() {
-		$(function () {		
-			_greetings();
-		});
-	}
-	
-	_greetings = function() {
-		var $code = $('<div />').addClass('greeting').text('Hello');
-		$code.insertBefore($('#weatherHolder'));
-	}
-	
-
+	_loadPage = function(currentUrl) {
+		var load = Zero.LoadPageController;
+		    load.switchLoadPage(currentUrl, router);
+	};
+		
 	m.init = function() {
 		var auth = _checkAuth(), 
 			url = window.location.href,
@@ -35,44 +35,18 @@ var Zero = (function(m){
 		} else {
 			switch(url){
 				case rootLink:{
-				   window.location.href = rootLink + 'main.html';
+				   window.location.href = rootLink + router.mainPage;
                    break;
 				};
 				default : {
-					_start();	
+					
 				}
 			}			
-		}	
-			
+		}
+		_loadPage(url);	
+				
 	}
 	return m;
 }(Zero || {}))
-
-
-
-
-
-Zero.Tools = (function(module){
-	var m = {};
-	
-	m.getFormatedDate = function(timestamp) {
-		var date = new Date(timestamp*1000);
-		var day = date.getDate();
-		var month = date.getMonth();
-		var year = date.getFullYear();		
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
-		var seconds = date.getSeconds();		
-		if(month < 10) {
-			month = '0' + month;
-		}		
-		var formattedTime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;	
-		return formattedTime;	
-	}	
-	return m;
-}(Zero));
-
-
-
 
 Zero.init();
