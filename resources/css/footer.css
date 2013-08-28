@@ -1,0 +1,18 @@
+.footer {
+width: 100%;
+height: 50px;
+margin-top: -50px;
+background-color:#111111;
+}
+
+.copyright-wrapper {
+margin-left: 20px;
+position: relative;
+}
+
+.copyright-wrapper p {
+color: #ffffff;
+font-family: Oswald;
+padding-top: 6px;
+font-weight: 200;
+}

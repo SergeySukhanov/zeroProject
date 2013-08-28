@@ -4,7 +4,7 @@ var Zero = (function(m){
     	'root':'index.html',
     	'indexPage':'',
     	'mainPage':'main.html',
-		'accountPage' : 'account.html'
+		'accountPage' :'account.html'
     	
     };
     

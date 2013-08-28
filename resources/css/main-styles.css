@@ -1,5 +1,8 @@
 @import url("oswald/oswald.css");
 @import url("zero/zero.css");
+@import "header.css" screen;
+@import "footer.css" screen;
+@import "zero.css" screen;
 @import "index.css" screen;
 *{margin:0; padding:0; border:0;}
 

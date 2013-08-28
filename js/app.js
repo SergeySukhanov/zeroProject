@@ -1,1 +1,3 @@
-Zero.init();
+$(document).ready(function(){
+	Zero.init();
+});

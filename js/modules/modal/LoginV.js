@@ -125,7 +125,7 @@ function LoginController(data){
 				    localStorage.setItem('accessTokenTTL', data.accessTokenTTL);
 				    $(layout).fadeOut(200);
 				   $(wrap).fadeOut(200);
-				   location.href  = initConfiguration.rootContext+initConfiguration.rootFolder+'account.html';
+				   location.href  = initConfiguration.rootContext+initConfiguration.rootFolder+'main.html';
 				}	
 							
 			},

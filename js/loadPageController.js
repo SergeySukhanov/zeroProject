@@ -9,14 +9,14 @@ Zero.LoadPageController = (function(module){
 			}
 			case initConfiguration.getRootLocation()+list.mainPage : {
 				page = Zero.PageMainController;
-				page.initialize();
+				page.initialize('PageChartsController');
 				break;
 			}
 			case initConfiguration.getRootLocation()+list.accountPage : {
-				page = Zero.PageAccountController;
-				page.initialize();
+				page = Zero.PageMainController;
+				page.initialize('PageAccountController');
 				break;
-			}			
+			}		
 			
 		}
 	}
