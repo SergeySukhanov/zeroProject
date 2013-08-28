@@ -1,4 +1,4 @@
-Zero.PageMainController = (function(module){
+Zero.PageAccountController = (function(module){
 	var view = {},
 	
 	    config = {
@@ -6,8 +6,7 @@ Zero.PageMainController = (function(module){
 	    },
 	
 	    _render = function(){
-			//Zero.GoogleAccount.init();
-			Zero.Calendar.init($('#calendarHolder'));		
+			Zero.GoogleAccount.init();
 	    },
 	    
 	    _postRender = function(data){
@@ -21,8 +20,7 @@ Zero.PageMainController = (function(module){
 	    _paintView = function(){
 
 	    },
-		
-		
+
 	    
 	view.initialize = function(){
 		_render();

@@ -3,7 +3,8 @@ var Zero = (function(m){
     var router = {
     	'root':'index.html',
     	'indexPage':'',
-    	'mainPage':'main.html'
+    	'mainPage':'main.html',
+		'accountPage' : 'account.html'
     	
     };
     
@@ -20,7 +21,22 @@ var Zero = (function(m){
 		var load = Zero.LoadPageController;		
 		    load.switchLoadPage(currentUrl, router);
 	};
+	
+	m.getTokens = function() {
+		var auth = _checkAuth();		
+		var answer = {};
 		
+		if(!auth) return;
+		
+		answer = {
+			accessToken : localStorage.accessToken,
+			accessTokenTTL : localStorage.accessTokenTTL,
+			refreshToken : localStorage.refreshToken
+			}
+		
+		return answer;
+	}
+	
 	m.init = function() {
 		var auth = _checkAuth(), 
 			url = window.location.href,
