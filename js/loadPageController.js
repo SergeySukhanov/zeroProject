@@ -1,15 +1,15 @@
 Zero.LoadPageController = (function(module){
-	var view = {};
-	
-	view.switchLoadPage = function(currentUrl, list){
-		console.warn(currentUrl + ' || ' + initConfiguration.getRootLocation()+list.indexPage)
-	
+	var view = {}, page;
+	view.switchLoadPage = function(currentUrl, list){	
 		switch(currentUrl){
 			case (initConfiguration.getRootLocation()+list.indexPage || initConfiguration.getRootLocation()+list.root): {
-				 var index = Zero.PageIndexController;
-                     index.initialize();
+				page = Zero.PageIndexController;
+                page.initialize();
+				break;
 			}
 			case initConfiguration.getRootLocation()+list.mainPage : {
+				page = Zero.PageMainController;
+				page.initialize();
 				break;
 			}
 			

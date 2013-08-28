@@ -17,9 +17,7 @@ var Zero = (function(m){
 
 	
 	_loadPage = function(currentUrl) {
-		var load = Zero.LoadPageController;
-		
-		console.warn(currentUrl);	
+		var load = Zero.LoadPageController;		
 		    load.switchLoadPage(currentUrl, router);
 	};
 		
