@@ -2,7 +2,7 @@ var Zero = (function(m){
     
     var router = {
     	'root':'index.html',
-    	'indexPage':'index.html',
+    	'indexPage':'',
     	'mainPage':'main.html'
     	
     };
@@ -18,6 +18,8 @@ var Zero = (function(m){
 	
 	_loadPage = function(currentUrl) {
 		var load = Zero.LoadPageController;
+		
+		console.warn(currentUrl);	
 		    load.switchLoadPage(currentUrl, router);
 	};
 		
@@ -27,7 +29,6 @@ var Zero = (function(m){
 			rootLink = initConfiguration.getRootLocation();
 		
 		if(!auth) {
-			
 			if(url != rootLink) {
 				window.location.href = rootLink;
 			}
@@ -48,5 +49,3 @@ var Zero = (function(m){
 	}
 	return m;
 }(Zero || {}))
-
-Zero.init();
