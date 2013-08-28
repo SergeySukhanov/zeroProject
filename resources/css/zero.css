@@ -106,13 +106,24 @@ header, nav, section, article, aside, footer {
 		color: #383e44;
 		line-height: 54px;
 		}
+		
+	.calendar .event {
+		border: 1px solid #f1f1f1;
+		border-left: 7px solid #0072bc;
+		margin: 0 0 20px 0;
+		padding: 10px;
+		border-radius: 10px;
+		}	
 	.calendar .event h2 {
 		font: normal 36px/42px "Oswald Light", Times;
 		}	
 	.calendar .event h3 {
-		font-weight: normal;
+		font-weight: bold;
 		font-size: 18px;
 		color : #8b949d;
+		text-transform: uppercase;
 		}
-
+	.calendar .persons {
+		font: normal 16px/20px "Zero";
+		}
 		

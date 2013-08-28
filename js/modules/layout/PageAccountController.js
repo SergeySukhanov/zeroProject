@@ -6,7 +6,9 @@ Zero.PageAccountController = (function(module){
 	    },
 	
 	    _render = function(){
-			Zero.GoogleAccount.init();
+			$(function() {
+				Zero.GoogleAccount.init($('#accountBlock'));
+			})			
 	    },
 	    
 	    _postRender = function(data){

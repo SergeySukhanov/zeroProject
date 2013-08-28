@@ -11,7 +11,9 @@ Zero.Calendar = (function(module){
 		var tokkens = module.getTokens();
 		var calIds = _getCalIds(calList);
 		var now = Math.round(new Date().getTime() / 1000)
+		var end = Math.round(parseInt(new Date().getTime() / 1000) + 1000000)
 		var calendarView = $('<div />').addClass('calendar');
+		
 		
 		var header = $('<h2 />').text('Upcoming Vu');
 		header.appendTo(calendarView);
@@ -27,6 +29,7 @@ Zero.Calendar = (function(module){
 				contentType: "application/json",
 				data: {
 					"start" : now,
+					"end" : end,
 					"direction": 1, 
 					"amount": 10, 
 					"calendarIds": calIds 
@@ -53,12 +56,16 @@ Zero.Calendar = (function(module){
 	
 		
 	_getCalIds = function(calList) {
-		var ids = [], calendars, l;
-		calendars = calList.calendars;
-		l = calendars.length;		
-		for(var i = 0; i < l; i++) {
-			ids.push(calendars[i].id);
-		}		
+		var ids = [];		
+		for(var i = 0; i < calList.length; i++) {
+			var calendars, l;
+			calendars = calList[i].calendars;
+			l = calendars.length;		
+			for(var j = 0; j < l; j++) {
+				ids.push(calendars[j].id);
+			}		
+			
+		}
 		return ids.toString();		
 	};
 	
@@ -106,7 +113,7 @@ Zero.Calendar = (function(module){
 				contentType: "application/json",
 				success: function (resp) {			
 					if(resp && resp.accounts && resp.accounts.length > 0) {
-						_getCalendarsEvents(resp.accounts[0]);
+						_getCalendarsEvents(resp.accounts);
 					}
 				},
 				error : function(error) {
@@ -120,8 +127,8 @@ Zero.Calendar = (function(module){
 		
 	}
 	
-	m.init = function(holder) {		
-		_setHolder(holder);
+	m.init = function(holder) {				
+		_setHolder(holder);		
 	}
 	
 	return m;
