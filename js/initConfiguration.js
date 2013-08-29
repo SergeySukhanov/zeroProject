@@ -9,12 +9,16 @@ var initConfiguration = {
 	 	return initConfiguration.rootContext+initConfiguration.rootFolder;
 	 },
 	 
+	 getChartsData:function(){
+	 	return initConfiguration.urlCharts;
+	 },
+	 
 	 //auth
 	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/m',
 	urlLogin:'http://zerosrv02.domain.corp/api_usr/V1/login',
 	
 	//set data charts
-	urlGraph:'http://zerosrv02.domain.corp/api_srv/V1/getNikeData',
+	urlCharts:'http://zerosrv02.domain.corp/api_srv/V1/getChartsData',
 	urlGetChartsData:'http://zerosrv02.domain.corp/api_srv/V1/getNikeChartsData',
 	urlCalendarsList:'http://zerosrv02.domain.corp/api_srv/V1/calendars',
 	urlEventsCalendar:'http://zerosrv02.domain.corp/api_srv/V1/calendarEvents',

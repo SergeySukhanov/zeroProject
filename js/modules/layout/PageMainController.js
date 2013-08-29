@@ -18,7 +18,8 @@ Zero.PageMainController = (function(module){
 	    };
 	    
 	    _paintMain = function(){
-	    	
+	    	var charts = Zero.ChartsController;
+	    	    charts.initialize();
 	    },
 	    
 	    _setParams = function(param){
