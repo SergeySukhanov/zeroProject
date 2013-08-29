@@ -1,27 +1,56 @@
 function onJsGraphDataLoad(series) {
 		var graphsData = null;
 			graphsData = series.charts;
+	   var _calculate = function(data, index){
+				var resultData = [];
+				var accurate = 60;
+				var min = index;
+				var max = min+accurate;
+				var sumX = 0;
+				var sumY = 0;
+				  if(data.x[index+accurate] == undefined){				
+				    for(min; min<max; min++){
+					     sumX = sumX+data.x[min];
+					     sumY = sumY+data.y[min];
+				     }
+				   resultData.push([sumX/accurate, sumY/accurate]);
+				
+				   return [sumX/accurate, sumY/accurate];	
+				}else{
+					resultData.push([data.x[min], data.y[min]]);
+				
+				   return [data.x[min], data.y[min]];
+				}
+			};
 			var data = [];
 			var dataStp = [];
 			var dataCal = [];
 			var dataF = [];
+			var accurate = 50;
 			
 			for(var i=0; i<graphsData.length; i++){
 				var dataLength = graphsData[i].x.length;
-				for(var j=0; j<dataLength; j++){
-                  	if(graphsData[i].plot == "nikeSteps"){
-                  		dataStp.push([graphsData[i].x[j], graphsData[i].y[j]]);
-                  		
+				if(graphsData[i].plot == "nikeSteps"){
+                  		var stp = 0;
+                  		for(stp; stp<dataLength; stp = stp+accurate){
+                  			var sumDataStp = _calculate(graphsData[i], stp);
+                  			  dataStp.push(sumDataStp);                 			  
+                  		}
                   	}else if(graphsData[i].plot == "nikeCalories"){
-                  		dataCal.push([graphsData[i].x[j], graphsData[i].y[j]]);
-                  	
-                  		
+                  		var cal = 0;
+                  		for(cal; cal<dataLength; cal = cal+accurate){
+                  			var sumDataCal = _calculate(graphsData[i], cal);
+                  			  dataCal.push(sumDataCal);                			  
+                  		}                 		
                   	}else{
-                  		dataF.push([graphsData[i].x[j], graphsData[i].y[j]]);
+                  		var F = 0;
+                  		for(F; F<dataLength; F = F+accurate){
+                  			var sumDataF = _calculate(graphsData[i], F);
+                  			  dataF.push(sumDataF);                 			  
+                  		}
                   	}
-                  	j=j+15;
-                } 
 			}
+			
           
 			data = [
 			    {
