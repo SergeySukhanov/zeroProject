@@ -11,6 +11,9 @@ Zero.GoogleAccount = (function(module){
 				},							
 				url: initConfiguration.urlGoogleAuthorizationURL,
 				type: 'GET',
+				data : {
+					mode : 'web'
+				},
 				dataType: 'json',
 				contentType: "application/json",
 				success: function (resp) {			
@@ -41,6 +44,10 @@ Zero.GoogleAccount = (function(module){
 		
 	}
 	
+	m.closeConnectWindow = function(w) {
+		w.close();
+		console.warn('page closed');
+	}
 	
 	m.init = function(holder) {		
 		_setAccountHolder(holder);
