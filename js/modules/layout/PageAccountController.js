@@ -8,6 +8,7 @@ Zero.PageAccountController = (function(module){
 	    _render = function(){
 			$(function() {
 				Zero.GoogleAccount.init($('#accountBlock'));
+				Zero.Calendar.init($('#calendarHolder'));
 			})			
 	    },
 	    

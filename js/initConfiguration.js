@@ -1,6 +1,6 @@
 var initConfiguration = {
 	 rootContext:location.protocol + "//" + location.host,
-	 rootFolder:'/zeroProject/',
+	 rootFolder:'/',
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
@@ -20,7 +20,8 @@ var initConfiguration = {
 	urlEventsCalendar:'http://zerosrv02.domain.corp/api_srv/V1/calendarEvents',
 	
 	//Account	
-	urlGoogleAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getGoogleAuthorizationURL'
+	urlGoogleAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/fitbit/getFitbitAuthorizationURL'
 
 	 
 }
