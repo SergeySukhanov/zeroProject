@@ -1,11 +1,22 @@
 var Zero = (function(m){
     
     var router = {
-    	'root':'index.html',
-    	'indexPage':'',
-    	'mainPage':'main.html',
-		'accountPage' :'account.html'
-    	
+    	root:{
+    		url:'',
+    		moduleName:'PageIndexController'
+    	},
+    	indexPage:{
+    		url:'index.html',
+    		moduleName:'PageIndexController'
+    	},
+    	mainPage:{
+    		url:'main.html',
+    		moduleName:'PageMainController'
+    	},
+		accountPage:{
+    		url:'account.html',
+    		moduleName:'PageAccountController'
+    	}
     };
     
 	_checkAuth = function() {
@@ -50,7 +61,7 @@ var Zero = (function(m){
 		} else {
 			switch(url){
 				case rootLink:{
-				   window.location.href = rootLink + router.mainPage;
+				   window.location.href = rootLink + router.mainPage.url;
                    break;
 				};
 				default : {

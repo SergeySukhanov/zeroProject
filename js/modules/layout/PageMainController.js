@@ -1,7 +1,5 @@
 Zero.PageMainController = (function(module){
 	var view = {},
-	
-	    _param,
 	    
 	    config = {
 	    },
@@ -11,7 +9,7 @@ Zero.PageMainController = (function(module){
 	    },
 	    
 	    _postRender = function(){
-	       _paintView();
+	       _paintMain();
 	       _handlers();
 	    },
 	    
@@ -19,24 +17,16 @@ Zero.PageMainController = (function(module){
 	    	
 	    };
 	    
-	    _paintView = function(){
-	    	//header
-           var header = Zero.HeaderController;
-               header.initialize();
-           //mainContent
-           var content = Zero[_param];
-              content.initialize();
-           //footer
-           var footer = Zero.FooterController;
-               footer.initialize();
+	    _paintMain = function(){
+	    	
 	    },
 	    
 	    _setParams = function(param){
-	    	_param = param
+	    	
 	    }
 	    
 	view.initialize = function(param){
-		_setParams(param);
+		
 		_render();
 	};
 	
