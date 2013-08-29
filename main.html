@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="js/zeroController.js"></script>	
 	<script type="text/javascript" src="js/modules/zeroTools.js"></script>	
 
-	<script src="js/modules/zeroGoogleAccount.js"></script>	
+	<script src="js/modules/zeroAccounts.js"></script>	
 	<script src="js/modules/zeroCalendar.js"></script>	
 	
 	<script src="js/loadPageController.js"></script>
@@ -33,15 +33,33 @@
 	</header>
 	<div class="content">
 		<div class="header-block">
-			<div id="weatherHolder" class="weather c-dgrey"></div>
+			<div id="userDisplay">
+				<div class="account-photo">
+					
+				</div>
+				<div class="welcome-user">
+					<h1>Good <span id="day-period">Afternoon</span>,<span id="nameAccount">Spike</span></h1>
+					<small id="currentDate">August 6th, 2013</small>
+				</div>
+			</div>
+			<div id="weatherHolder" class="weather c-dgrey">
+				
+			</div>
 		</div>
 		<div id="diagramHolder">
 		
 		</div>
 	</div>
 	<aside class="rightColumn">
-		<div id="clockHolder" class="clock-block">
-		
+		<div class="clock-block">
+			<div class="town c-dgrey">
+				<div class="time">3:06pm</div>
+				<div class="place">Los Angeles CA</div>
+			</div>
+			<div class="town c-dgrey">
+				<div class="time">7:06pm</div>
+				<div class="place">Tokyo Japan</div>
+			</div>			
 		</div>
 		<div id="calendarHolder">
 		

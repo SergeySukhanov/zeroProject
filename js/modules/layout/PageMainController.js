@@ -18,8 +18,10 @@ Zero.PageMainController = (function(module){
 	    };
 	    
 	    _paintMain = function(){
-	    	var charts = Zero.ChartsController;
-	    	    charts.initialize();
+	    	$(function() {
+	    		Zero.ChartsController.initialize();
+				Zero.Calendar.init($('#calendarHolder'));
+			})
 	    },
 	    
 	    _setParams = function(param){

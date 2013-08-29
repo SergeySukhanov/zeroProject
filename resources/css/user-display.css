@@ -1,0 +1,42 @@
+#userDisplay {
+text-align: left;
+display: inline-block;
+margin-left: 5%;
+margin-top: 1%;
+font-family: "Oswald Light";
+font-weight: 200;
+font-size: 20px;
+color: #444444;
+margin-bottom: -3%;
+}
+
+#userDisplay > * {
+display: inline-block;
+vertical-align: top;
+}
+
+.account-photo{
+width: 100px;
+height: 100px;
+background-color: #666666;
+border-radius: 300px;
+}
+
+.welcome-user {
+margin-left: 10px;
+}
+
+.welcome-user > h1 {
+margin-bottom: -20px;
+}
+
+#currentDate {
+font-size: 16px;
+display: inline-block;
+}
+
+#diagramHolder {
+position: relative;
+z-index: 300;
+border-top: 1px solid #cccccc;
+}

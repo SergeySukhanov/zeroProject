@@ -3,30 +3,30 @@ function onJsGraphDataLoad(series) {
 			graphsData = series.charts;
 	   var _calculate = function(data, index){
 				var resultData = [];
-				var accurate = 60;
+				var accurate = 20;
 				var min = index;
 				var max = min+accurate;
 				var sumX = 0;
 				var sumY = 0;
-				  if(data.x[index+accurate] == undefined){				
+				  if(data.x[index+accurate] != undefined){				
 				    for(min; min<max; min++){
-					     sumX = sumX+data.x[min];
 					     sumY = sumY+data.y[min];
 				     }
-				   resultData.push([sumX/accurate, sumY/accurate]);
+				     sumX = data.x[index];
+				   resultData.push([sumX, sumY/accurate]);
 				
-				   return [sumX/accurate, sumY/accurate];	
+				   return [sumX, sumY/accurate];	
 				}else{
-					resultData.push([data.x[min], data.y[min]]);
+					resultData.push([data.x[min], data.y[index]]);
 				
-				   return [data.x[min], data.y[min]];
+				   return [data.x[min], data.y[index]];
 				}
 			};
 			var data = [];
 			var dataStp = [];
 			var dataCal = [];
 			var dataF = [];
-			var accurate = 50;
+			var accurate = 20;
 			
 			for(var i=0; i<graphsData.length; i++){
 				var dataLength = graphsData[i].x.length;
