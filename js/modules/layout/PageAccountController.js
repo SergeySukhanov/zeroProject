@@ -20,7 +20,7 @@ Zero.PageAccountController = (function(module){
 	    	
 	    };
 	    
-	    _paintView = function(){
+	    _paintAccount = function(){
 
 	    },
 
