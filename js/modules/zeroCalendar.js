@@ -43,6 +43,8 @@ Zero.Calendar = (function(module){
 						}					
 						_holder.html('');
 						calendarView.appendTo(_holder);											
+					} else {
+						_holder.html('No events in calendars');
 					}
 				},
 				error : function(error) {
