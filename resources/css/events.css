@@ -10,12 +10,37 @@
 		
 .calendar-event {
 	margin: 40px 0 0 0;
+	border-bottom: 1px dashed #adb3ba;
 	
 	}		
 	.calendar-event  h2{
-		font: normal 22px/30px "Oswald Light";
-		margin: 0 0 15px 0;
+		font: normal 22px/22px "Oswald Light";
+		margin: 0 0 5px 0;
 		}
+		
+		.calendar-event .calendar-description {
+			margin-bottom: 10px;
+			font-style: italic;
+			}
+		
 	.calendar-event  h3 {
 		font: normal 18px/24px "Oswald Light";
 		}
+	
+	/*
+	.calendar-event	.icon-link {
+		width: 24px; height: 24px;
+		display: inline-block;
+		border: 1px solid #adb3ba;
+		text-indent: -10000px;
+		margin: 0 10px 0 0;
+		border-radius: 5px;
+		}
+	*/	
+	.calendar-event	.icon-link {
+		padding: 0 10px 0 0;
+		}
+		
+		.calendar-event .event {
+			margin: 0 0 10px 20px;
+			}

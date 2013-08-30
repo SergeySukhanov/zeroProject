@@ -7,7 +7,7 @@ Zero.PageEventsController = (function(module){
 	
 	    _render = function(){
 			$(function() {
-			
+				Zero.Events.init($('#eventsBlock'))
 			})			
 	    },
 	    
@@ -23,7 +23,9 @@ Zero.PageEventsController = (function(module){
 
 	    },
 
-	    
+
+		
+		
 	view.initialize = function(){
 		_render();
 	};
