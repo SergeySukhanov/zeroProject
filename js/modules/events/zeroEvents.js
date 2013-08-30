@@ -108,12 +108,86 @@ Zero.Events = (function(module){
 			editLink.appendTo(html);		
 			removeLink.appendTo(html);	
 			
+			removeLink.bind('click', _removeEvent);
+			
 			html.appendTo(holder);
 		}
 	
+	}
+
+	/*
+		Remove Event
+	*/
 	
+	var _removableId = null;
+	var _removableEvent = null;
+	
+	
+	_setRemovableId = function(id) {
+		_removableId = id;
 	}
 	
+	_getRemovableId = function() {
+		return _removableId;
+	}
+
+	_clearRemovableId = function() {
+		_removableId = null;
+	}
+	
+	_setRemovableEvent = function(eventHtml) {
+		_removableEvent = eventHtml;
+	}
+	
+	_getRemovableEvent = function() {
+		return _removableEvent;
+	}
+	
+	_removeEvent = function(e) {
+		var eventId = $(this).data('event-id'),
+			popup = module.Tools.getConfirmPopup('Remove Event', 'Are You sure to remove this event?', _removeEventAction, _clearRemovableId),
+			popuHolder = $('#popupHolder')
+			
+		_setRemovableId(eventId);		
+		_setRemovableEvent($(this).closest('.event'))
+		
+		popup.appendTo(popuHolder);	
+		popuHolder.show();
+		
+		e.preventDefault();
+	}
+	
+	
+	_removeEventAction = function(e) {
+		var bt = $(e.target), 
+			removeId = _getRemovableId();
+			popup = bt.closest('.popup');
+
+
+		try{			
+			$.ajax({
+				beforeSend: function (request) {
+					request.setRequestHeader("Access-Token", tokkens.accessToken);
+				},				
+				url: initConfiguration.urlEventsCalendar + '/' + removeId,
+				type: 'DELETE',
+				dataType: 'json',
+				contentType: "application/json",
+				success: function (resp) {									
+					if(resp.errorCode && resp.errorCode == 1) {
+						var event = _getRemovableEvent();
+						event.remove();
+						module.Tools.destroyPopup(popup);
+					}
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			})		
+		}catch(e){
+			console.log(e);
+		}	
+	}
 	
 	_setHolder = function(holder) {
 		_holder = holder;
