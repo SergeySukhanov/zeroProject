@@ -17,7 +17,7 @@ var Zero = (function(m){
     		url:'account.html',
     		moduleName:'PageAccountController'
     	},
-		accountPage:{
+		eventPage:{
     		url:'events.html',
     		moduleName:'PageEventsController'
     	}		
