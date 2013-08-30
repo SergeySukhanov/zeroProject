@@ -34,9 +34,11 @@ Zero.Events = (function(module){
 			var calendars = callArr[i].calendars;
 			for(var j=0; j < calendars.length; j++) {
 			
-				var calendar = _getCalendarHtml(calendars[j]);				
-				calendar.appendTo(_holder);
-				_getEvents(calendars[j].id,calendar);
+				if(calendars[j].accessRole == 'owner') {
+					var calendar = _getCalendarHtml(calendars[j]);				
+					calendar.appendTo(_holder);
+					_getEvents(calendars[j].id,calendar);				
+				}
 			}
 			
 		}		
@@ -44,16 +46,19 @@ Zero.Events = (function(module){
 		
 	_getCalendarHtml = function(callObj) {
 		var calName = callObj.summary, 
-			callDeas = callObj.description
+			callDeas = callObj.description,
 			html = $('<div />').addClass('calendar-event').data('cal-id', callObj.id),
-			header = $('<h2 />').text(callObj.summary);
-			description = $('<div />').addClass('calendar-description').text(callObj.description);
+			header = $('<h2 />').text(callObj.summary),
+			description = $('<div />').addClass('calendar-description').text(callObj.description),
+			addButton = _addEventButton(callObj.id);
 			
 			header.appendTo(html);
 			
 			if(callObj.description && callObj.description != '') {
 				description.appendTo(html);
 			}
+			
+			addButton.appendTo(header);
 			
 		return html;			
 	}
@@ -146,7 +151,7 @@ Zero.Events = (function(module){
 	_removeEvent = function(e) {
 		var eventId = $(this).data('event-id'),
 			popup = module.Tools.getConfirmPopup('Remove Event', 'Are You sure to remove this event?', _removeEventAction, _clearRemovableId),
-			popuHolder = $('#popupHolder')
+			popuHolder = $('#popupHolder');
 			
 		_setRemovableId(eventId);		
 		_setRemovableEvent($(this).closest('.event'))
@@ -194,6 +199,85 @@ Zero.Events = (function(module){
 		_getCalendars();
 	}
 	
+	/*Add event*/
+	function eventModel() {
+		var model = {};
+		
+		model.startTime = '';
+		model.startTimeZone = '';
+		model.endTime = '';
+		model.endTimeZone = '';
+		model.subject = '';
+		model.location = '';
+		model.description = '';
+		return model 
+	}
+	
+	_addEventButton = function(calId) {
+		var bt = $('<button />').addClass('add-event').text('Add Event').data('cal-id', calId);
+		bt.bind('click', _showEventAddPopup);
+		return bt;
+	}
+	
+	_showEventAddPopup = function(e) {
+		var calId = $(e.target).data('cal-id'),
+			popupContent = $('<div />').addClass('addEvent'),
+		    startTime = _eventFormRow('startTime', 'Start Time', 'jq-datepicker'),
+		    endTime = _eventFormRow('endTime', 'End Time', 'jq-datepicker'),				
+		    subject = _eventFormRow('subject', 'subject'),				
+		    location = _eventFormRow('location', 'Loaction'),		
+			description = _eventFormRow('description', 'Description', 'textarea'),
+			popup,
+			popuHolder = $('#popupHolder');
+				
+			startTime.appendTo(popupContent);
+			endTime.appendTo(popupContent);
+			subject.appendTo(popupContent);
+			location.appendTo(popupContent);
+			description.appendTo(popupContent);
+			
+			console.warn(popupContent);
+			
+			popup = module.Tools.getPopup('Add Event', popupContent);
+			popup.appendTo(popuHolder);	
+			popuHolder.show();			
+		
+	}
+	
+	
+	_eventFormRow = function(name, labelText, type, className) {
+		var row = $('<div />').addClass('row'),
+			label = $('<label />').text(labelText),
+		    formElement;
+	
+			switch(type) {
+				case 'textarea' : 
+					formElement = $('<textarea/>').attr({
+						'name' : name,
+					})						
+				
+				break;
+				case 'jq-datepicker' : 
+					formElement = $('<input/>').attr({
+						'name' : name,
+						'type' : 'text',
+						'value' : '',
+						'class' : 'jq-datepicker'
+					})						
+				break;
+				default : 
+					formElement = $('<input/>').attr({
+						'name' : name,
+						'type' : 'text',
+						'value' : ''
+					})							
+			};
+			
+			label.appendTo(row);
+			formElement.appendTo(row);
+		
+		return row;			
+	}
 	
 	m.init = function(holder) {	
 		_setHolder(holder);		

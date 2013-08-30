@@ -1,3 +1,4 @@
+@import(ui/jquery-ui-1.10.3.custom.css);
 #popupHolder {
 	position: absolute;
 	width: 100%;
@@ -29,6 +30,8 @@
 		text-align: center;
 		}	
 	
+	
+	
 #eventsBlock {
 	margin: 20px;
 	font: normal 14px/22px "Zero";
@@ -47,7 +50,11 @@
 	.calendar-event  h2{
 		font: normal 22px/22px "Oswald Light";
 		margin: 0 0 5px 0;
+		overflow: hidden;
 		}
+		.calendar-event h2 button {
+			float: right;
+			}
 		
 		.calendar-event .calendar-description {
 			margin-bottom: 10px;
@@ -75,3 +82,10 @@
 		.calendar-event .event {
 			margin: 0 0 10px 20px;
 			}
+			
+.addEvent input {
+	border : 1px solid lightgrey;
+	border-radius: 3px;
+	font: normal 14px/22px "Zero";
+	padding: 2px 4px;
+	}			

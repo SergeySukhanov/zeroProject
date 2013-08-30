@@ -87,5 +87,21 @@ Zero.Tools = (function(module){
 		$('#popupHolder').hide();
 	}
 	
+	
+	m.getPopup = function(title, htmlBody) {
+		var pageScroll =  parseInt(jQuery(document).scrollTop());					
+		var html = $('<div />').addClass('popup confirmPopup'),
+			title = $('<h1 />').text(title),
+			body = $('<div />').addClass('popup-content');
+			
+			
+		title.appendTo(html);
+		htmlBody.appendTo(body);
+		body.appendTo(html);
+			
+		html.css('marginTop', pageScroll + 200);				
+		return html;					
+	}
+	
 	return m;
 }(Zero));
