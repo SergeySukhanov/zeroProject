@@ -1,0 +1,21 @@
+#eventsBlock {
+	margin: 20px;
+	font: normal 14px/22px "Zero";
+	}
+	#eventsBlock h1 {
+		font: normal 36px/44px "Oswald Light";
+		margin: 0 0 20px 0;
+		}
+		
+		
+.calendar-event {
+	margin: 40px 0 0 0;
+	
+	}		
+	.calendar-event  h2{
+		font: normal 22px/30px "Oswald Light";
+		margin: 0 0 15px 0;
+		}
+	.calendar-event  h3 {
+		font: normal 18px/24px "Oswald Light";
+		}

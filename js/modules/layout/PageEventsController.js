@@ -1,4 +1,4 @@
-Zero.PageAccountController = (function(module){
+Zero.PageEventsController = (function(module){
 	var view = {},
 	
 	    config = {
