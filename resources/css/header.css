@@ -56,7 +56,7 @@ font-family: Oswald;
    text-decoration:underline;
 }
 
-.current-item {
+.current-item, .time-head {
 font-family: Oswald;
 font-size: 20px;
 color: #ffffff;
@@ -68,3 +68,11 @@ display: inline-block;
 	color:#3CC6F0;
 }
 
+.time-head {
+   font-family: "Oswald Light";
+   font-size: 29px;
+   color: #ffffff;
+   font-weight: 200;
+   margin-top: -5px;
+   display: inline-block;
+}
