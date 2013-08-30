@@ -42,7 +42,7 @@ Zero.HeaderController = (function(module){
 	    
 	    _handlers = function(){
 	    	_menuActive();
-	    	
+	    	_intervalTime();
 	    	$('.current-item').on('click', function(event){
 	    		var dropdown = $(event.currentTarget).next();
 	    		if(dropdown.css('display') == 'none'){
@@ -57,6 +57,14 @@ Zero.HeaderController = (function(module){
 	    		localStorage.clear();
 	    		window.location.href = initConfiguration.getRootLocation();
 	    	});
+	    	
+	    	setInterval(_intervalTime, 1000);
+	    },
+	    
+	    _intervalTime = function(){
+	    	var timeWrapper = $('.time-head');
+	    	    timeWrapper.empty();
+	    	timeWrapper.append(Zero.Tools.getFullTime());
 	    },
 	    
 	    _paintHeader = function(){
@@ -78,10 +86,8 @@ Zero.HeaderController = (function(module){
            wrapperBrand.append(brandLink);
            
            var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
-           var time = $('<div/>').addClass('time');
-           var date = $('<div/>').addClass('date');
+           var time = $('<div/>').addClass('time-head');               
               wrapperTimeDate.append(time);
-              wrapperTimeDate.append(date);
               
            var menu = $('<div/>').addClass('wrapper-menu');
            var currentItem = $('<span/>').addClass('current-item');

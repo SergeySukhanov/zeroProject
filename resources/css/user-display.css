@@ -1,4 +1,4 @@
-#userDisplay {
+#userHolder {
 text-align: left;
 display: inline-block;
 margin-left: 5%;
@@ -10,7 +10,7 @@ color: #444444;
 margin-bottom: -3%;
 }
 
-#userDisplay > * {
+#userHolder> * {
 display: inline-block;
 vertical-align: top;
 }
@@ -28,6 +28,10 @@ margin-left: 10px;
 
 .welcome-user > h1 {
 margin-bottom: -20px;
+}
+.welcome-user span {
+margin-left: 10px;
+display: inline-block;
 }
 
 #currentDate {

@@ -15,6 +15,34 @@ Zero.Tools = (function(module){
 		var formattedTime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;	
 		return formattedTime;	
 	}	
+	
+	m.getFullDate = function(){
+		var date = new Date();
+		var day = date.getDate()+'th';
+		var month = initConfiguration.monthList[date.getMonth()];
+		var year = date.getFullYear();
+
+		var formatDate = month + ' ' + day + ', ' + year;
+		return formatDate;
+	}
+	 
+	m.getFullTime = function(){
+		var date = new Date();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		var seconds = date.getSeconds();
+		if(hours < 10) {
+		hours = '0' + hours;
+		}
+		if(minutes < 10) {
+		minutes = '0' + minutes;
+		}
+		if(seconds < 10) {
+		seconds = '0' + seconds;
+		}
+		var formatTime = hours + ':' + minutes + ':' + seconds; 
+		return formatTime;
+	}	
 
 	m.getConfirmPopup = function(title, text, actionOk, actionNo) {
 		var pageScroll =  parseInt(jQuery(document).scrollTop());					

@@ -19,6 +19,7 @@ Zero.PageMainController = (function(module){
 	    
 	    _paintMain = function(){
 	    	$(function() {
+	    		Zero.TitleController.initialize();
 	    		Zero.ChartsController.initialize();
 				Zero.Calendar.init($('#calendarHolder'));
 			})
