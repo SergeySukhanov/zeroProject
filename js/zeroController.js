@@ -16,7 +16,11 @@ var Zero = (function(m){
 		accountPage:{
     		url:'account.html',
     		moduleName:'PageAccountController'
-    	}
+    	},
+		accountPage:{
+    		url:'events.html',
+    		moduleName:'PageEventsController'
+    	}		
     };
     
 	_checkAuth = function() {

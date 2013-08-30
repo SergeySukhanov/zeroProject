@@ -15,6 +15,12 @@ Zero.HeaderController = (function(module){
 	    			namePage:'Main',
 	    			url:'main.html'
 	    		},
+				
+				event : {
+					id : 'events',
+					namePage : 'Events',
+					url : 'events.html'
+				},
 	    		logout:{
 	    			id:'logout-item',
 	    			namePage:'Log out',
