@@ -25,7 +25,7 @@ var initConfiguration = {
 	
 	//Account	
 	urlGoogleAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/fitbit/getFitbitAuthorizationURL'
+	urlFitBitAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getFitbitAuthorizationURL'
 
 	 
 }
