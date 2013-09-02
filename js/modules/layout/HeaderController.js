@@ -98,6 +98,7 @@ Zero.HeaderController = (function(module){
            header.append(wrapperBrand);
            header.append(wrapperTimeDate);
            header.append(menu);
+           Zero.SettingsController.initialize();
 	    },
 	    
 	    _createMenu = function(root){

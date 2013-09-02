@@ -64,7 +64,7 @@ function onJsGraphDataLoad(series) {
 					 enabled : false
 				   },
 				 marker:{
-					 symbol:'url(/zeroProject/resourses/images/drop.png)'
+					 symbol:'url(/zeroProject/resources/images/drop.png)'
 				}
 				
 			   },
@@ -77,7 +77,7 @@ function onJsGraphDataLoad(series) {
 				lineWidth : 2,
 				color:'#47b748',
 				marker:{
-					symbol:'url(/zeroProject/resourses/images/step.png)'
+					symbol:'url(/zeroProject/resources/images/step.png)'
 				 }
 			    }, 
 			    {
@@ -89,7 +89,7 @@ function onJsGraphDataLoad(series) {
 				color : "#7292cb",
 				lineWidth : 2,
 				marker:{
-					symbol:'url(/zeroProject/resourses/images/circle.png)'
+					symbol:'url(/zeroProject/resources/images/circle.png)'
 				},
 				tooltip : {
 					pointFormat : '<span style="color:{series.color}">{series.name}</span>: <b>{point.y} %</b><br/>'

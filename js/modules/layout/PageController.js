@@ -5,9 +5,31 @@ Zero.PageController = (function(module){
 	    
 	    config = {
 	    },
-	
+	    
+	    tokkens = module.getTokens(),
+	    
 	    _render = function(){
-	    	_postRender();
+	    	try{
+	    		$.ajax({
+	    		beforeSend: function (request) {
+					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+				    },	
+					url:initConfiguration.urlSettings,
+					type:'GET',
+					dataType:'json',
+					contentType:'aplication/json',
+					success:function(data){
+						initConfiguration.settingsData = data.result;
+						console.log(data.result);
+						_postRender();
+					},
+					error:function(error){
+						console.log(error);
+					}
+	    	    });
+	    	}catch(e){
+	    		console.log(e);
+	    	}
 	    },
 	    
 	    _postRender = function(){

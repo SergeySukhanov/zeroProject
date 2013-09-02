@@ -6,6 +6,7 @@ Zero.TitleController = (function(module){
 	    },
 	
 	    _render = function(){
+	    	
 		   _postRender();
 	    },
 	    
@@ -42,12 +43,12 @@ Zero.TitleController = (function(module){
 	    	var spanName = $('<span/>').attr('id', 'nameAccount');
 	    	var smallDate = $('<small/>').attr('id', 'currentDate');
 	    	
-	    	var currentUserName = 'Sergey';
+	    	var currentUserName = initConfiguration.settingsData.username;
 	    	var currentHour = new Date().getHours();
 	    	
-	    	if(currentHour < 12){
+	    	if(currentHour <= 12){
 	    		spanDayPeriod.text('Morning,');
-	    	}else if(currentHour > 12 && currentHour < 18){
+	    	}else if(currentHour > 12 && currentHour <= 18){
 	    		spanDayPeriod.text('Afternoon,');
 	    	}else if(currentHour > 18){
 	    		spanDayPeriod.text('Evening,');
@@ -68,20 +69,8 @@ Zero.TitleController = (function(module){
 	    
 	    _createWeather = function(wrap){
 	    	
-	    },
-
-	    // <div id="userDisplay">
-				// <div class="account-photo">
-// 					
-				// </div>
-				// <div class="welcome-user">
-					// <h1>Good <span id="day-period">Afternoon</span>,<span id="nameAccount">Spike</span></h1>
-					// <small id="currentDate">August 6th, 2013</small>
-				// </div>
-			// </div>
-			// <div id="weatherHolder" class="weather c-dgrey">
-// 				
-			// </div>
+	    };
+	    
 	view.initialize = function(){
 		_render();
 	};
