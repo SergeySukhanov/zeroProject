@@ -1,0 +1,109 @@
+
+{
+  "dataDiagram":
+    {
+      "min":"0",
+      "max":"100",
+      "dataOfDay":[
+         {
+           "date":"14 october",
+           "power":"50%"
+         },
+         {
+           "date":"14 october",
+           "power":"50%"
+         },
+         {
+           "date":"14 october",
+           "power":"50%"
+         },
+         {
+           "date":"14 october",
+           "power":"50%"
+         },
+         {
+           "date":"14 october",
+           "power":"50%"
+         },
+         {
+           "date":"14 october",
+           "power":"50%"
+         }
+      ]
+    },
+    
+    "tuning":[
+        {
+          "id":"slider1-1",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"Live"
+        },
+        {
+          "id":"slider1-2",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"Live"
+        },
+        {
+          "id":"slider1-3",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"Live"
+        },
+        {
+          "id":"slider1-4",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"Live"
+        },
+        {
+          "id":"slider1-5",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"Live"
+        },
+        
+        {
+          "id":"slider2-1",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"do"
+        },
+        {
+          "id":"slider2-2",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"do"
+        },
+        {
+          "id":"slider2-3",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"do"
+        },
+        {
+          "id":"slider2-4",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"do"
+        },
+        {
+          "id":"slider2-5",
+          "min":"1400",
+          "max":"2000",
+          "step":"50",
+          "name":"do"
+        }
+    ]
+}
+

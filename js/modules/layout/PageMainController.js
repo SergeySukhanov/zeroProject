@@ -21,6 +21,7 @@ Zero.PageMainController = (function(module){
 	    	$(function() {
 	    		Zero.TitleController.initialize();
 	    		Zero.ChartsController.initialize();
+	    		Zero.ChartsSettings.initialize();
 				Zero.Calendar.init($('#calendarHolder'));
 			})
 	    },

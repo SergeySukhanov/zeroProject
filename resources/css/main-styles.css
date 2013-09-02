@@ -5,6 +5,8 @@
 @import "zero.css" screen;
 @import "index.css" screen;
 @import "user-display.css" screen;
+@import "jslider.css" screen;
+@import "jslider.round.plastic.css" screen;
 *{margin:0; padding:0; border:0;}
 
 html, body{
