@@ -1,6 +1,6 @@
 var initConfiguration = {
 	 rootContext:location.protocol + "//" + location.host,
-	 rootFolder:'/zeroProject/',
+	 rootFolder:'/',
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
@@ -14,7 +14,7 @@ var initConfiguration = {
 	 },
 	 
 	 //auth
-	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/m',
+	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/w',
 	urlLogin:'http://zerosrv02.domain.corp/api_usr/V1/login',
 	
 	//set data charts

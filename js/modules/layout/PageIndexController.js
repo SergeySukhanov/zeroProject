@@ -25,7 +25,7 @@ Zero.PageIndexController = (function(module){
 	    },
 	    
 	    _postRender = function(data){
-	       _paintView();
+	       _paintIndex();
 	       _parseData(data);
 	       _handlers();
 	    },
@@ -46,7 +46,7 @@ Zero.PageIndexController = (function(module){
 	    	
 	    };
 	    
-	    _paintView = function(){
+	    _paintIndex = function(){
 	    	$('body').css('backgroundColor', '#111111');
 	    	var wrapperHeader = $('.header-index');
 	    	var wrapperFooter = $('.footer-index');

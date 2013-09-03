@@ -93,7 +93,14 @@ Zero.ChartsSettings = (function(module){
            	    step: parseInt(data.step), 
            	    smooth: false, 
            	    round: 1, 
-           	    skin: "round_plastic" 
+           	    skin: "round_plastic",
+                onstatechange: function( value ){
+                   var values = value.split(';');
+                   var minValue = parseInt(values[0]);
+                   var maxValue = parseInt(values[1]);
+                   console.log(minValue +' '+maxValue);
+                }
+           	    
            	});
 	    },
 	    

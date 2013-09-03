@@ -19,7 +19,7 @@ Zero.PageEventsController = (function(module){
 	    	
 	    };
 	    
-	    _paintAccount = function(){
+	    _paintEvents = function(){
 
 	    },
 
