@@ -15,6 +15,7 @@ Zero.Events = (function(module){
 				contentType: "application/json",
 				success: function (resp) {			
 					if(resp && resp.accounts && resp.accounts.length > 0) {
+						_holder.html('');
 						_drawCalendars(resp.accounts);
 					}
 				},
@@ -114,6 +115,9 @@ Zero.Events = (function(module){
 			removeLink.appendTo(html);	
 			
 			removeLink.bind('click', _removeEvent);
+			editLink.bind('click', function(e){
+				_editEvent(e);
+			});
 			
 			html.appendTo(holder);
 		}
@@ -227,6 +231,7 @@ Zero.Events = (function(module){
 		    subject = _eventFormRow('subject', 'subject'),				
 		    location = _eventFormRow('location', 'Loaction'),		
 			description = _eventFormRow('description', 'Description', 'textarea'),
+			btOk = $('<button />').text('Add Event'),
 			popup,
 			popuHolder = $('#popupHolder');
 				
@@ -235,13 +240,17 @@ Zero.Events = (function(module){
 			subject.appendTo(popupContent);
 			location.appendTo(popupContent);
 			description.appendTo(popupContent);
-			
-			console.warn(popupContent);
-			
+						
 			popup = module.Tools.getPopup('Add Event', popupContent);
+			
+			btOk.bind('click', function(e){
+				_addGoogleEvent(popup, calId);
+			})
+			
+			btOk.appendTo(popupContent);
+			
 			popup.appendTo(popuHolder);	
-			popuHolder.show();			
-		
+			popuHolder.show();					
 	}
 	
 	
@@ -274,10 +283,84 @@ Zero.Events = (function(module){
 			};
 			
 			label.appendTo(row);
+			if(type == 'jq-datepicker') {
+				formElement.datetimepicker();
+			}
+			
 			formElement.appendTo(row);
 		
 		return row;			
 	}
+	
+	_addGoogleEvent = function(popup, calId) {
+		var obj = {
+			'startTime' : ($.datepicker.formatDate( '@', $('input[name = "startTime"]', popup).datepicker( "getDate" )))/1000,
+			'endTime' :  ($.datepicker.formatDate( '@', $('input[name = "endTime"]', popup).datepicker( "getDate" )))/1000,
+			'subject' : $('input[name = "subject"]', popup).val(),
+			'calendarId' : calId,
+			'location' : $('input[name = "location"]', popup).val(),
+			'description' : $('textarea[name = "description"]', popup).val(),			
+			'startTimeZone' : 'Europe/Moscow',
+			'endTimeZone' : 'Europe/Moscow'
+		}
+		
+		try{			
+			$.ajax({
+				beforeSend: function (request) {
+					request.setRequestHeader("Access-Token", tokkens.accessToken);
+				},				
+				url: initConfiguration.urlEventsCalendar ,
+				type: 'POST',
+				dataType: 'json',
+				data : JSON.stringify(obj),
+				contentType: "application/json",
+				success: function (resp) {									
+					if(resp.errorCode && resp.errorCode == 1) {
+						module.Tools.destroyPopup(popup);
+						_getCalendars();
+					}
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			})		
+		}catch(e){
+			console.log(e);
+		}	
+		
+		
+	}
+	
+	/*
+		Edit Event
+	*/
+	
+	_editEvent = function(e) {
+		var eventId = $(e.target).data('event-id');
+		e.stopPropagation(eventId);
+		
+		try{			
+			$.ajax({
+				beforeSend: function (request) {
+					request.setRequestHeader("Access-Token", tokkens.accessToken);
+				},				
+				url: initConfiguration.urlEventsCalendar + '/' + eventId,
+				type: 'GET',
+				dataType: 'json',
+				contentType: "application/json",
+				success: function (resp) {									
+					console.warn(resp);
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			})		
+		}catch(e){
+			console.log(e);
+		}		
+		
+	}
+	
 	
 	m.init = function(holder) {	
 		_setHolder(holder);		

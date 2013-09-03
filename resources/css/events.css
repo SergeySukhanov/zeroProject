@@ -54,6 +54,7 @@
 		}
 		.calendar-event h2 button {
 			float: right;
+			margin: 0;
 			}
 		
 		.calendar-event .calendar-description {
