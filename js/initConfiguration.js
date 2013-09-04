@@ -19,7 +19,6 @@ var initConfiguration = {
 	
 	//set data charts
 	urlCharts:'http://zerosrv02.domain.corp/api_srv/V1/getChartsData',
-	urlGetChartsData:'http://zerosrv02.domain.corp/api_srv/V1/getNikeChartsData',
 	urlCalendarsList:'http://zerosrv02.domain.corp/api_srv/V1/calendars',
 	urlEventsCalendar:'http://zerosrv02.domain.corp/api_srv/V1/calendarEvents',
 	
@@ -81,7 +80,28 @@ var initConfiguration = {
          {
            "date":"12 october",
            "power":"-88"
+         },
+         {
+           "date":"6 october",
+           "power":"-80"
+         },
+         {
+           "date":"7 october",
+           "power":"50"
+         },
+         {
+           "date":"8 october",
+           "power":"-12"
+         },
+         {
+           "date":"9 october",
+           "power":"-20"
+         },
+         {
+           "date":"10 october",
+           "power":"95"
          }
+         
       ]
    },
 	

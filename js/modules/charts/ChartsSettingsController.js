@@ -71,7 +71,8 @@ Zero.ChartsSettings = (function(module){
             }
             
             _createCols(diagramBody);
-                    
+            
+           console.log('good');         
 	    },
 	    
 	    _createSlider = function(wrap, data){
@@ -95,12 +96,7 @@ Zero.ChartsSettings = (function(module){
            	    round: 1, 
            	    skin: "round_plastic",
                 onstatechange: function( value ){
-                   var values = value.split(';');
-                   var minValue = parseInt(values[0]);
-                   var maxValue = parseInt(values[1]);
-                   var between = (maxValue-minValue)/2+minValue;
-                   console.log(parseInt(between));
-                   _createCols($('.diagram-body'));
+                   _formatDataSettings();
                 }
            	    
            	});
@@ -138,7 +134,30 @@ Zero.ChartsSettings = (function(module){
 	    },
 	    
 	    _formatDataSettings = function(){
+	    	var saveData = initConfiguration.settingsData.filters;
+	    	console.log(saveData);
+	    	var currentFilters = $('.layout-slider').children('input');
 	    	
+	    	for(var i=0; i<currentFilters.length; i++){
+	    		var values = $(currentFilters[i]).val().split(';');
+	    		var minValue = parseInt(values[0]);
+                var maxValue = parseInt(values[1]);
+                var target = (maxValue-minValue)/2+minValue;
+                
+                for(var j=0; j<saveData.length; j++){
+                	if(saveData[j].filter == $(currentFilters[i]).attr('id')){
+                		var comfort = saveData[i].comfort;
+                		if(comfort.min != minValue){
+                			comfort.min = minValue;
+                		}
+                		if(comfort.max != maxValue){
+                			comfort.max = maxValue;
+                		}
+                	}
+                }
+                   
+	    	}
+	    	console.log(saveData);
 	    };
 	    
 	view.initialize = function(){

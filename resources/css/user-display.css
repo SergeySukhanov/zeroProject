@@ -130,3 +130,24 @@ font-family: "Oswald Light";
 .diagram-item-wrap:last-child {
 margin-right: 20px;
 }
+
+
+.switcher {
+text-align: right;
+}
+
+.col {
+display: inline-block;
+margin-right: 10px;
+}
+
+.col label {
+font-family: 'Oswald Light';
+text-decoration: underline;
+cursor: pointer;
+}
+
+.col input {
+display: none;
+}
+
