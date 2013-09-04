@@ -9,6 +9,8 @@ Zero.ChartsSettings = (function(module){
 		   doTitle:"Do"
 		   
 	    },
+	    
+	    tokkens = module.getTokens(),
 	
 	    _render = function(){
 	    	_postRender();
@@ -95,7 +97,7 @@ Zero.ChartsSettings = (function(module){
            	    smooth: false, 
            	    round: 1, 
            	    skin: "round_plastic",
-                onstatechange: function( value ){
+                callback: function( value ){
                    _formatDataSettings();
                    _createCols($('.diagram-body'));
                 }
@@ -134,10 +136,25 @@ Zero.ChartsSettings = (function(module){
 	       	}, 2000);
 	    },
 	    
-	    _setAjaxSettings = function(){
-	    	try{
+	    _setAjaxSettings = function(dataFilters){
+	    	
+	    	try{	    		
 	    		$.ajax({
-	    			url:initConfiguration.urlSettings
+	    			beforeSend: function (request) {
+					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+				    },
+	    			url:initConfiguration.urlSettings,
+	    			type:'PUT',
+	    			dataType:'json',
+	    			contentType:'application/json',
+	    			data:({filters:dataFilters}),
+	    			success:function(data){
+	    				console.log(data);
+	    			},
+	    			error:function(error){
+	    				console.log(error);
+	    			}
+	    			
 	    		});
 	    	}catch(e){
 	    		console.log(e);
@@ -145,7 +162,8 @@ Zero.ChartsSettings = (function(module){
 	    },
 	    
 	    _formatDataSettings = function(){
-	    	var saveData = initConfiguration.settingsData.filters;
+	    	var newData = initConfiguration.settingsData;
+	    	var saveData = newData.filters;
 	    	console.log(saveData);
 	    	var currentFilters = $('.layout-slider').children('input');
 	    	
@@ -168,8 +186,8 @@ Zero.ChartsSettings = (function(module){
                 }
                    
 	    	}
-	    	console.log(saveData);
-	    	
+	    	console.log(newData);
+	    	_setAjaxSettings(newData);
 	    };
 	    
 	view.initialize = function(){
