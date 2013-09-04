@@ -1,5 +1,5 @@
 #willPower{
-	margin-top:20px;
+	/*margin-top:20px;*/
 	margin-left:40px;
 }
 
@@ -57,7 +57,7 @@ width: 90%;
 margin-bottom: 20px;
 }
 
-.sliders-settings h3 {
+#willPower h3 {
 font-family: "Oswald light";
 color: #444444;
 }

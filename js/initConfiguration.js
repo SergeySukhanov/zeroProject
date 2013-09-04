@@ -30,6 +30,61 @@ var initConfiguration = {
 	//settings
 	urlSettings:'http://zerosrv02.domain.corp/api_srv/V1/settings',
 	
+	diagramData:{
+      "min":"0",
+      "max":"100",
+      "dataOfDay":[
+         {
+           "date":"1 october",
+           "power":"50"
+         },
+         {
+           "date":"2 october",
+           "power":"91"
+         },
+         {
+           "date":"3 october",
+           "power":"-55"
+         },
+         {
+           "date":"4 october",
+           "power":"100"
+         },
+         {
+           "date":"5 october",
+           "power":"67"
+         },
+         {
+           "date":"6 october",
+           "power":"-80"
+         },
+         {
+           "date":"7 october",
+           "power":"50"
+         },
+         {
+           "date":"8 october",
+           "power":"-12"
+         },
+         {
+           "date":"9 october",
+           "power":"-20"
+         },
+         {
+           "date":"10 october",
+           "power":"95"
+         },
+         {
+           "date":"11 october",
+           "power":"33"
+         },
+         {
+           "date":"12 october",
+           "power":"-88"
+         }
+      ]
+   },
+	
 	monthList:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 	 
