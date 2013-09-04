@@ -44,3 +44,89 @@ position: relative;
 z-index: 300;
 border-top: 1px solid #cccccc;
 }
+
+.willpower-diagram {
+display: inline-block;
+}
+
+.positive{
+	background: #67af4f;
+background: -moz-linear-gradient(top,  #67af4f 0%, #358c2f 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#67af4f), color-stop(100%,#358c2f));
+background: -webkit-linear-gradient(top,  #67af4f 0%,#358c2f 100%);
+background: -o-linear-gradient(top,  #67af4f 0%,#358c2f 100%);
+background: -ms-linear-gradient(top,  #67af4f 0%,#358c2f 100%);
+background: linear-gradient(to bottom,  #67af4f 0%,#358c2f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67af4f', endColorstr='#358c2f',GradientType=0 );
+
+}
+
+.negative{
+	background: #ce5f5f;
+background: -moz-linear-gradient(top,  #ce5f5f 1%, #a33737 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ce5f5f), color-stop(100%,#a33737));
+background: -webkit-linear-gradient(top,  #ce5f5f 1%,#a33737 100%);
+background: -o-linear-gradient(top,  #ce5f5f 1%,#a33737 100%);
+background: -ms-linear-gradient(top,  #ce5f5f 1%,#a33737 100%);
+background: linear-gradient(to bottom,  #ce5f5f 1%,#a33737 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce5f5f', endColorstr='#a33737',GradientType=0 );
+
+}
+.diagram-body {
+height: 100px;
+position: relative;
+margin-bottom: 30px;
+border-bottom: 1px solid #666666;
+background: #ffffff;
+background: -moz-linear-gradient(top,  #ffffff 2%, #d3d3d3 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#ffffff), color-stop(100%,#d3d3d3));
+background: -webkit-linear-gradient(top,  #ffffff 2%,#d3d3d3 100%);
+background: -o-linear-gradient(top,  #ffffff 2%,#d3d3d3 100%);
+background: -ms-linear-gradient(top,  #ffffff 2%,#d3d3d3 100%);
+background: linear-gradient(to bottom,  #ffffff 2%,#d3d3d3 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d3d3d3',GradientType=0 );
+
+}
+
+.diagram-item{
+    height: 0px;
+    box-shadow: 1px 0px 3px #666666;
+}
+
+.diagram-item-wrap {
+width: 30px;
+display: inline-block;
+margin-left: 20px;
+height: 100%;
+}
+.diagram-sub-title {
+font-size: 57%;
+display: inline-block;
+color: #666666;
+top: 105%;
+height: 10px;
+width: 50px !important;
+}
+
+.diagram-item-wrap > * {
+position: absolute;
+width: 30px;
+bottom: 0;
+}
+
+.diagram-item span {
+font-family: 'Oswald Light';
+position: relative;
+top: -21px;
+margin-left: 10%;
+}
+
+.willpower-diagram h3 {
+margin-bottom: 24px;
+font-size: 27px;
+font-family: "Oswald Light";
+}
+
+.diagram-item-wrap:last-child {
+margin-right: 20px;
+}

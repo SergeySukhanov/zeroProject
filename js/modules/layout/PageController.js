@@ -32,6 +32,26 @@ Zero.PageController = (function(module){
 	    	}
 	    },
 	    
+	    _delete = function(){
+	    	try{
+	    		$.ajax({
+					url:initConfiguration.urlSettings,
+					type:'DELETE',
+					dataType:'json',
+					contentType:'aplication/json',
+					success:function(response){
+						console.log(response);
+						
+					},
+					error:function(error){
+						console.log(error);
+					}
+	    	    });
+	    	}catch(e){
+	    		console.log(e);
+	    	}
+	    },
+	    
 	    _postRender = function(){
 	       _paintView();
 	       _handlers();

@@ -2,30 +2,16 @@ Zero.ChartsSettings = (function(module){
 	var view = {},
 	
 	    config = {
+	       diagramTitle:'Willpower',
 		   actTitle:"Act",
 		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to setyour schedule targets.",
 		   liveTitle:"Live",
 		   doTitle:"Do"
 		   
 	    },
-	    
-	    dataDiagram = {},
-	    dataTuning = {},
 	
 	    _render = function(){
-	    	try{
-	    		$.ajax({
-	       	       url:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.localDataFolder+'willPowerData.json',
-	       	       dataType:'json',
-	       	       success:function(data){
-	       	          dataDiagram = data.dataDiagram
-                      dataTuning = data.tuning
-	       	     	_postRender();
-	       	       }
-	           });
-	    	}catch(e){
-	    		console.log(e);
-	    	}
+	    	_postRender();
 	    },
 	    
 	    _postRender = function(){
@@ -45,14 +31,23 @@ Zero.ChartsSettings = (function(module){
             var actSettings = $('<div/>').addClass('act-settings');
             var liveSettings = $('<div/>').addClass('live-settings');
             var doSettings = $('<div/>').addClass('do-settings');
+            
             var actH3 = $('<h3/>').text(config.actTitle);
             var actP = $('<p/>').text(config.actP);
                 actSettings.append(actH3);
                 actSettings.append(actP);
+                
             var liveH3 = $('<h3/>').text(config.liveTitle);
                 liveSettings.append(liveH3);
+                
             var doH3 = $('<h3/>').text(config.doTitle);
                 doSettings.append(doH3);
+            
+            var diagramH3 = $('<h3/>').text(config.diagramTitle);
+            var diagramBody = $('<div/>').addClass('diagram-body');
+            
+            wrapDiagram.append(diagramH3);
+            wrapDiagram.append(diagramBody);
             
             wrapSettings.append(actSettings);
             wrapSettings.append(liveSettings);
@@ -62,35 +57,40 @@ Zero.ChartsSettings = (function(module){
             wrapper.append(wrapSettings);
             
             var wrapSliders;
+            var dataSliders = initConfiguration.settingsData.filters;
             
-            for(var i=0; i<dataTuning.length; i++){
-            	if(i<5){
+            
+            
+            for(var i=0; i<dataSliders.length; i++){
+            	if(dataSliders[i].section == "live"){
             		wrapSliders = liveSettings;
             	}else{
             		wrapSliders = doSettings;
             	}            	
-            	_createSlider(wrapSliders, dataTuning[i]); 
+            	_createSlider(wrapSliders, dataSliders[i]); 
             }
+            
+            _createCols(diagramBody);
                     
 	    },
 	    
 	    _createSlider = function(wrap, data){
-	    	console.log(wrap);
-	    	console.log(data);
+	    	var equalizer = data.equalizer;
+	    	var comfort = data.comfort;
 	    	var wrapSlider = $('<div/>').addClass('layout-slider');
 	    	var inputSlider = $('<input/>').attr({
-	    		                             'id':data.id,
+	    		                             'id':data.filter,
 	    		                             'type':'slider',
-	    		                             'name':data.name,
-	    		                             "value":data.min+';'+data.max
+	    		                             'name':data.filter,
+	    		                             "value":comfort.min+';'+comfort.max
 	    	                               });	    	                               
 	    	wrapSlider.append(inputSlider);
 	    	wrap.append(wrapSlider);
 	    	
-           $('#'+data.id).slider({ 
-           	    from: parseInt(data.min), 
-           	    to: parseInt(data.max), 
-           	    step: parseInt(data.step), 
+           $('#'+data.filter).slider({ 
+           	    from: parseInt(equalizer.min), 
+           	    to: parseInt(equalizer.max), 
+           	    step: 1000, 
            	    smooth: false, 
            	    round: 1, 
            	    skin: "round_plastic",
@@ -98,15 +98,48 @@ Zero.ChartsSettings = (function(module){
                    var values = value.split(';');
                    var minValue = parseInt(values[0]);
                    var maxValue = parseInt(values[1]);
-                   console.log(minValue +' '+maxValue);
+                   var between = (maxValue-minValue)/2+minValue;
+                   console.log(parseInt(between));
+                   _createCols($('.diagram-body'));
                 }
            	    
            	});
 	    },
 	    
-	    _createDiagramCol = function(id, data){
-	       	
+	    _createCols = function(wrap){
+	    	wrap.empty();
+	    	var diagramData = initConfiguration.diagramData.dataOfDay;
+	    	for(var j=0; j<diagramData.length; j++){
+            	var diagramItemWrap = $('<div/>').addClass('diagram-item-wrap');
+            	var diagramItem = $('<div/>').addClass('diagram-item');
+            	var diagramSubTitle = $('<span/>').addClass('diagram-sub-title').text(diagramData[j].date);
+            	    
+            	    diagramItemWrap.append(diagramItem);
+            	    diagramItemWrap.append(diagramSubTitle);
+            	    wrap.append(diagramItemWrap);
+            	    
+            	if(diagramData[j].power.indexOf('-')+1 == 0){
+            		diagramItem.addClass('positive');
+            	}else{
+            		diagramItem.addClass('negative');
+            	}
+            	_createDiagramCol(diagramItem, diagramData[j]);
+            }
 	    },
+	    
+	    _createDiagramCol = function(item, data){
+	    	var wrapper = $('.diagram-body');
+	    	var percentSpan = $('<span/>').text(data.power+'%');
+	    	item.append(percentSpan);
+	    	
+	       	item.animate({
+	       		'height': wrapper.height()/100*Math.abs(parseInt(data.power))
+	       	}, 2000);
+	    },
+	    
+	    _formatDataSettings = function(){
+	    	
+	    };
 	    
 	view.initialize = function(){
 		_render();
