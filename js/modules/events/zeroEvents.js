@@ -215,7 +215,7 @@ Zero.Events = (function(module){
 	}
 	
 	_addEventButton = function(calId) {
-		var bt = $('<button />').addClass('add-event').text('Add Event').data('cal-id', calId);
+		var bt = $('<button />').addClass('add-event').text('New Event').data('cal-id', calId);
 		bt.bind('click', _showEventAddPopup);
 		return bt;
 	}
@@ -223,9 +223,10 @@ Zero.Events = (function(module){
 	_showEventAddPopup = function(e) {
 		var calId = $(e.target).data('cal-id'),
 			popupContent = $('<div />').addClass('addEvent'),
-		    startTime = _eventFormRow('startTime', 'Start Time', 'jq-datepicker'),
-		    endTime = _eventFormRow('endTime', 'End Time', 'jq-datepicker'),				
-		    subject = _eventFormRow('subject', 'subject'),				
+			times = _getAddTimes(),
+		    startTime = _eventFormRow('startTime', 'Start Time', 'jq-datepicker', '', times[0]),
+		    endTime = _eventFormRow('endTime', 'End Time', 'jq-datepicker', '', times[1]),				
+		    subject = _eventFormRow('subject', 'subject', '', '', 'New Event'),				
 		    location = _eventFormRow('location', 'Location'),		
 			description = _eventFormRow('description', 'Description', 'textarea'),
 			btOk = $('<button />').text('Add Event'),
@@ -239,7 +240,7 @@ Zero.Events = (function(module){
 			location.appendTo(popupContent);
 			description.appendTo(popupContent);
 						
-			popup = module.Tools.getPopup('Add Event', popupContent);
+			popup = module.Tools.getPopup('New Event', popupContent);
 			
 			btOk.bind('click', function(e){
 				_addGoogleEvent(popup, calId);
@@ -256,6 +257,30 @@ Zero.Events = (function(module){
 			popuHolder.show();					
 	}
 	
+	_getAddTimes = function() {
+		var date = new Date(),
+			day = date.getDate(),
+			month = date.getMonth() + 1,
+			year = date.getFullYear(),		
+			hours = date.getHours(),
+			minutes = date.getMinutes(),
+			answer = [];
+			
+			if(day < 10) {day = '0' + day;}
+			if(month < 10) {month = '0' + month;}
+			if(hours < 10) {hours = '0' + hours;}
+			if(minutes < 10) {minutes = '0' + minutes;}
+			
+			
+			if(0 < minutes && minutes < 15  ) { minutes = 15; console.warn('here') };
+			if(15 < minutes && minutes < 30  ) { minutes = 30 };
+			if(30 < minutes && minutes < 45  ) { minutes = 45 };
+			if(45 < minutes && minutes < 59  ) { minutes = '00'; hours = hours + 1};
+			
+			answer[0] = month + '/' + day + '/' + year + ' ' + hours + ':' + minutes;
+			answer[1] = month + '/' + day + '/' + year + ' ' + (parseInt(hours) + 1) + ':' + minutes;
+			return answer;
+	}	
 	
 	_eventFormRow = function(name, labelText, type, className, val) {
 		var row = $('<div />').addClass('row'),

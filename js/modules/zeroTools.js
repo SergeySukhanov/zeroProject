@@ -123,22 +123,13 @@ Zero.Tools = (function(module){
 		}
 		if(day < 10) {
 			day = '0' + day;
-		}		
-		
+		}				
 		//09/04/2013 00:00
 		answer = month + '/' + day + '/' + year + ' ' + hours + ':' + minutes;
 		return answer;
+	}
 	
-	},
 	
-	m.timestamp2date = function(timestamp) { 
-        var theDate = new Date(timestamp * 1000); 
-        return theDate.toGMTString(); 
-   },
-	
-	m.date2timestamp = function(year, month, day, hour, min, sec) { 
-        return (Date.UTC(year, month-1, day, hour, min, sec) / 1000); 
-   }
 	
 	return m;
 }(Zero));
