@@ -140,6 +140,7 @@ header, nav, section, article, aside, footer {
 */		
 #accountBlock {
 	margin: 0 0 0 20px;
+	padding: 30px 0 0 0;
 	}
 	#accountBlock button {
 		border: 1px solid #f1f1f1;
@@ -153,10 +154,26 @@ header, nav, section, article, aside, footer {
 		-moz-box-shadow:    0px 1px 5px rgba(50, 50, 50, 0.75);
 		box-shadow:         0px 1px 5px rgba(50, 50, 50, 0.75);		
 		cursor: pointer;
+		margin-left: 0;
 		}
 	
 	#accountBlock button.fitbit {
 		border-bottom: 2px solid #ea7147;
-		margin-left: 15px;
 		}
 		
+.account-item {
+	font: normal 14px/18px "Zero";
+	margin: 0 0 40px 0;
+	}		
+	.account-item h2 {
+		font: normal 22px/22px "Oswald Light";
+		}
+		
+#nikeTokken {
+	border : 1px solid #ccc;
+	border-radius: 3px;
+	font: normal 14px/22px "Zero";
+	padding: 6px 4px;
+	width: 250px;
+	margin-right: 10px;
+	}		
