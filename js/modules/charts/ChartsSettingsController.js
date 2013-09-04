@@ -57,7 +57,7 @@ Zero.ChartsSettings = (function(module){
             wrapper.append(wrapSettings);
             
             var wrapSliders;
-            var dataSliders = initConfiguration.settingsData.filters;
+            var dataSliders = initConfiguration.settingsData.filters || {};
             
             
             
