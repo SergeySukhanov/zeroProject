@@ -25,6 +25,7 @@ var initConfiguration = {
 	//Account	
 	urlGoogleAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getGoogleAuthorizationURL',
 	urlFitBitAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getNikeConnect',
 	
 	//settings
 	urlSettings:'http://zerosrv02.domain.corp/api_srv/V1/settings',

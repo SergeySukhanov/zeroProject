@@ -134,6 +134,16 @@ Zero.ChartsSettings = (function(module){
 	       	}, 2000);
 	    },
 	    
+	    _setAjaxSettings = function(){
+	    	try{
+	    		$.ajax({
+	    			url:initConfiguration.urlSettings
+	    		});
+	    	}catch(e){
+	    		console.log(e);
+	    	}
+	    },
+	    
 	    _formatDataSettings = function(){
 	    	var saveData = initConfiguration.settingsData.filters;
 	    	console.log(saveData);
@@ -159,6 +169,7 @@ Zero.ChartsSettings = (function(module){
                    
 	    	}
 	    	console.log(saveData);
+	    	
 	    };
 	    
 	view.initialize = function(){
