@@ -52,14 +52,11 @@ Zero.Events = (function(module){
 			header = $('<h2 />').text(callObj.summary),
 			description = $('<div />').addClass('calendar-description').text(callObj.description),
 			addButton = _addEventButton(callObj.id);
-			
-			header.appendTo(html);
-			
 			if(callObj.description && callObj.description != '') {
-				description.appendTo(html);
-			}
-			
+				description.appendTo(header);
+			}			
 			addButton.appendTo(header);
+			header.appendTo(html);			
 			
 		return html;			
 	}
@@ -229,9 +226,10 @@ Zero.Events = (function(module){
 		    startTime = _eventFormRow('startTime', 'Start Time', 'jq-datepicker'),
 		    endTime = _eventFormRow('endTime', 'End Time', 'jq-datepicker'),				
 		    subject = _eventFormRow('subject', 'subject'),				
-		    location = _eventFormRow('location', 'Loaction'),		
+		    location = _eventFormRow('location', 'Location'),		
 			description = _eventFormRow('description', 'Description', 'textarea'),
 			btOk = $('<button />').text('Add Event'),
+			btCancel = $('<button />').text('Cancel'),
 			popup,
 			popuHolder = $('#popupHolder');
 				
@@ -247,14 +245,19 @@ Zero.Events = (function(module){
 				_addGoogleEvent(popup, calId);
 			})
 			
+			btCancel.bind('click', function(e){
+				module.Tools.destroyPopup(popup);
+			})
+			
 			btOk.appendTo(popupContent);
+			btCancel.appendTo(popupContent);
 			
 			popup.appendTo(popuHolder);	
 			popuHolder.show();					
 	}
 	
 	
-	_eventFormRow = function(name, labelText, type, className) {
+	_eventFormRow = function(name, labelText, type, className, val) {
 		var row = $('<div />').addClass('row'),
 			label = $('<label />').text(labelText),
 		    formElement;
@@ -263,8 +266,7 @@ Zero.Events = (function(module){
 				case 'textarea' : 
 					formElement = $('<textarea/>').attr({
 						'name' : name,
-					})						
-				
+					});				
 				break;
 				case 'jq-datepicker' : 
 					formElement = $('<input/>').attr({
@@ -286,6 +288,10 @@ Zero.Events = (function(module){
 			if(type == 'jq-datepicker') {
 				formElement.datetimepicker();
 			}
+			if(val) {				
+				formElement.val(val);
+				console.warn(formElement);
+			}		
 			
 			formElement.appendTo(row);
 		
@@ -337,7 +343,7 @@ Zero.Events = (function(module){
 	
 	_editEvent = function(e) {
 		var eventId = $(e.target).data('event-id');
-		e.stopPropagation(eventId);
+		e.preventDefault();
 		
 		try{			
 			$.ajax({
@@ -349,7 +355,9 @@ Zero.Events = (function(module){
 				dataType: 'json',
 				contentType: "application/json",
 				success: function (resp) {									
-					console.warn(resp);
+					if(resp && resp.event && resp.errorCode == '1') {
+						_showEditEventDialog(resp.event);
+					}
 				},
 				error : function(error) {
 					console.log(error);
@@ -357,9 +365,81 @@ Zero.Events = (function(module){
 			})		
 		}catch(e){
 			console.log(e);
-		}		
-		
+		}				
 	}
+	
+	_showEditEventDialog = function(eventObj) {
+	
+		var popupContent = $('<div />').addClass('editEvent'),
+			startTimeValue = module.Tools.fortmatStampToTimePicker(eventObj.startTime),
+			endTimeValue = module.Tools.fortmatStampToTimePicker(eventObj.endTime),		
+		    startTime = _eventFormRow('startTime', 'Start Time', 'jq-datepicker', '', startTimeValue),
+		    endTime = _eventFormRow('endTime', 'End Time', 'jq-datepicker', '', endTimeValue),				
+		    subject = _eventFormRow('subject', 'subject', '', '',eventObj.subject),				
+		    location = _eventFormRow('location', 'Location', '', '', eventObj.location),		
+			description = _eventFormRow('description', 'Description', 'textarea', '', eventObj.description),
+			btOk = $('<button />').text('Save Event'),
+			popup,
+			popuHolder = $('#popupHolder');
+				
+			startTime.appendTo(popupContent);
+			endTime.appendTo(popupContent);
+			subject.appendTo(popupContent);
+			location.appendTo(popupContent);
+			description.appendTo(popupContent);
+						
+			popup = module.Tools.getPopup('Edit Event - '  + eventObj.subject, popupContent);
+			
+			btOk.bind('click', function(e){
+				_editGoogleEvent(popup, eventObj, e);
+			})
+			
+			btOk.appendTo(popupContent);
+			
+			popup.appendTo(popuHolder);	
+			popuHolder.show();						
+	};
+	
+	
+	_editGoogleEvent = function(popup, eventObj, e) {
+	
+		var obj = {
+			'startTime' : ($.datepicker.formatDate( '@', $('input[name = "startTime"]', popup).datepicker( "getDate" )))/1000,
+			'endTime' :  ($.datepicker.formatDate( '@', $('input[name = "endTime"]', popup).datepicker( "getDate" )))/1000,
+			'subject' : $('input[name = "subject"]', popup).val(),
+			'calendarId' : eventObj.calendarId,
+			'location' : $('input[name = "location"]', popup).val(),
+			'description' : $('textarea[name = "description"]', popup).val(),			
+			'startTimeZone' : 'Europe/Moscow',
+			'endTimeZone' : 'Europe/Moscow'
+		}	
+	
+		e.preventDefault();
+		
+		try{			
+			$.ajax({
+				beforeSend: function (request) {
+					request.setRequestHeader("Access-Token", tokkens.accessToken);
+				},				
+				url: initConfiguration.urlEventsCalendar + '/' + eventObj.id,
+				type: 'PUT',
+				dataType: 'json',
+				data : JSON.stringify(obj),
+				contentType: "application/json",
+				success: function (resp) {									
+					if(resp && resp.errorCode == '1') {
+						module.Tools.destroyPopup(popup);
+						_getCalendars();						
+					}
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			})		
+		}catch(e){
+			console.log(e);
+		}				
+	}	
 	
 	
 	m.init = function(holder) {	

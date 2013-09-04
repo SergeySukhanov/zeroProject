@@ -4,11 +4,12 @@ Zero.Tools = (function(module){
 	m.getFormatedDate = function(timestamp) {
 		var date = new Date(timestamp*1000);
 		var day = date.getDate();
-		var month = date.getMonth();
+		var month = date.getMonth() + 1;
 		var year = date.getFullYear();		
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
-		var seconds = date.getSeconds();		
+		var seconds = date.getSeconds();	
+
 		if(month < 10) {
 			month = '0' + month;
 		}		
@@ -101,6 +102,26 @@ Zero.Tools = (function(module){
 			
 		html.css('marginTop', pageScroll + 200);				
 		return html;					
+	}
+	
+	m.fortmatStampToTimePicker = function(timestamp) {
+		var date = new Date(timestamp*1000);
+		var day = date.getDate();
+		var month = date.getMonth() + 1;
+		var year = date.getFullYear();		
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		var answer;
+		if(month < 10) {
+			month = '0' + month;
+		}	
+		
+		//09/04/2013 00:00
+		answer = month + '/' + day + '/' + year + ' ' + hours + ':' + minutes;
+		return answer;
+		
+		
+		
 	}
 	
 	return m;

@@ -80,7 +80,7 @@ Zero.Calendar = (function(module){
 		html = $('<div class="eventWrapper"><div class="event"><h2>' + event.subject +'</h2>'
 		+ '<p class="dates">' + startTime + ' - ' + endTime + '</p>'
 		+ persons +
-		+ '</div></div>')		
+		+ '</div></div>');
 		return html;			
 	}	
 	
