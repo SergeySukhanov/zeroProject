@@ -4,12 +4,13 @@ Zero.ChartsController = (function(module){
 	    config = {
 		
 	    },
+	    
 	
-	    _getCharts = function(){
-	    	var start = 1375200000000;
-	    	var finish = 1377014340000;
+	    _getCharts = function(dataType){
+	    	// Zero.Tools.date2timestamp(2013, 7,23, 0, 0, 0)               // Math.round(new Date().getTime()/1000)
+	    	var start = 1377867041;
+	    	var finish =Math.round(new Date().getTime()/1000);
 	    	var duration = finish - start;
-	    	var listCharts = "nikeSteps, nikeCalories, nikeFuel";
 	    	
 	    	var tokkens = module.getTokens();	
 			try{
@@ -24,12 +25,14 @@ Zero.ChartsController = (function(module){
 					data:({
                           "start":start, 
                           "direction":1, 
-                          "duration":duration, 
-                          "plots": listCharts
+                          "duration":duration,
+                          "interval":5,  
+                          "plots":dataType
                     }),
 					success:function(data){
 						console.log(data);
 						onJsGraphDataLoad(data);
+						_postRender();
 					},
 					error:function(error){
 						console.log(error);
@@ -41,22 +44,47 @@ Zero.ChartsController = (function(module){
 			}		
 	    },
 	    
+	    _getBasicDate = function(){
+	    	var dateChart = new Date();
+	    	
+	    },
+	    
 	    _postRender = function(data){
-	       _paintAccount();
-	       _handlers();
+	       _paintCharts();
+	      
 	    },
 	    
 	    _handlers = function(){
-	    	
+	    	$('.switch').on('click', function(event){
+	    		var type = $(event.currentTarget).attr('id');
+	    		_initNewCharts(type);
+	    	});
 	    };
 	    
 	    _paintCharts= function(){
-            
+
 	    },
+	    
+	    _initNewCharts = function(type){
+           var dataType;
+           
+	    	switch(type){
+	    		case 'local': dataType = "heartRate, steps, deepSleep, lightSleep, floors, hydration, currWeight"
+	    		break;
+	    		case 'nike': dataType = "nikeSteps, nikeCalories, nikeFuel"
+	    		break;
+	    		case 'fitbit': dataType = "fitbitCalories, fitbitSteps, fitbitDistance, fitbitFloors"
+	    		break;
+	    	}
+	    	_getCharts(dataType);
+	    	
+	    }
 
 	    
 	view.initialize = function(){
-		_getCharts();
+		var dataType = "nikeSteps, nikeCalories, nikeFuel";
+		_getCharts(dataType);
+		_handlers();
 	};	
 	return view;
 }(Zero));
