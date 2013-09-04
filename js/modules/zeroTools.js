@@ -112,9 +112,18 @@ Zero.Tools = (function(module){
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
 		var answer;
+		if(hours < 10) {
+			hours = '0' + hours;
+		}	
+		if(minutes < 10) {
+			minutes = '0' + minutes;
+		}			
 		if(month < 10) {
 			month = '0' + month;
-		}	
+		}
+		if(day < 10) {
+			day = '0' + day;
+		}		
 		
 		//09/04/2013 00:00
 		answer = month + '/' + day + '/' + year + ' ' + hours + ':' + minutes;

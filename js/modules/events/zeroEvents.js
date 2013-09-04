@@ -379,6 +379,7 @@ Zero.Events = (function(module){
 		    location = _eventFormRow('location', 'Location', '', '', eventObj.location),		
 			description = _eventFormRow('description', 'Description', 'textarea', '', eventObj.description),
 			btOk = $('<button />').text('Save Event'),
+			btCancel = $('<button />').text('Cancel'),
 			popup,
 			popuHolder = $('#popupHolder');
 				
@@ -393,8 +394,13 @@ Zero.Events = (function(module){
 			btOk.bind('click', function(e){
 				_editGoogleEvent(popup, eventObj, e);
 			})
+			btCancel.bind('click', function(e){
+				module.Tools.destroyPopup(popup);
+				e.preventDefault();
+			})			
 			
 			btOk.appendTo(popupContent);
+			btCancel.appendTo(popupContent);
 			
 			popup.appendTo(popuHolder);	
 			popuHolder.show();						
