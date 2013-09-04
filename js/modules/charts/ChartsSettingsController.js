@@ -97,6 +97,7 @@ Zero.ChartsSettings = (function(module){
            	    skin: "round_plastic",
                 onstatechange: function( value ){
                    _formatDataSettings();
+                   _createCols($('.diagram-body'));
                 }
            	    
            	});
