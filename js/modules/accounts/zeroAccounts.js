@@ -1,5 +1,5 @@
 Zero.GoogleAccount = (function(module){
-	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_account, nike_account, fitbit_account;
+	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_account = [], nike_account, fitbit_account;
 	
 	_getGoogleAuthUrl = function() {
 		
@@ -65,14 +65,19 @@ Zero.GoogleAccount = (function(module){
 	_getNikeConnectHtml = function() {
 		var html = $('<div />').addClass('account-item'),
 			header = $('<h2/>').text('Nike Connect'),
-			step1 = $('<p/>').html("Login with you email and password:<a></a>"),
+			step1 = $('<p/>').addClass('nike-info').html('Login with you email and password:<a href="https://developer.nike.com/"> https://developer.nike.com/</a><br />Get your nike access token on <a href=" https://developer.nike.com/console"> https://developer.nike.com/console</a>'),
 			text = $('<p />').text('Please point your Nike Access token in field below'),
 			nikeTokken = $('<input />').attr({
 				'id' : 'nikeTokken',
 			}),
 			bt = $('<button />').text('Connect');
 			
+			if(nike_account) {
+				text = $('<p>You have allready Nike Access!!!<br />If You want reconnect please point you new Nike Access token in field below</p>');
+			}
+			
 			header.appendTo(html);
+			step1.appendTo(html);
 			text.appendTo(html);
 			nikeTokken.appendTo(html);
 			bt.appendTo(html);
@@ -114,10 +119,16 @@ Zero.GoogleAccount = (function(module){
 		var accounts = initConfiguration.settingsData.accounts;
 		
 		for(var i = 0; i < accounts.length; i++) {
-		
-		}
-		
-		
+			if(accounts[i].type  == 'GOOGLE') {
+				g_account.push(accounts[i].externalId);
+			}
+			if(accounts[i].type  == 'NIKE') {
+				nike_account = true;
+			}			
+			if(accounts[i].type  == 'FITBIT') {
+				fitbit_account= true;
+			}						
+		}			
 	};
 	
 	
@@ -144,6 +155,25 @@ Zero.GoogleAccount = (function(module){
 		if(params.title && params.title != '') {
 			header.appendTo(html);
 		}
+		
+		
+		if(params.type == 'Google') {
+			if(g_account && g_account.lenght != 0) {
+				var list = $('<div />').addClass('account-list');
+				for(var i = 0; i < g_account.length; i++) {
+					var item = $('<div />').addClass('item').text(g_account[i]);
+					item.appendTo(list);
+				}
+				
+				list.appendTo(html);
+			}
+		}
+		
+		if(params.type == 'FitBit' && fitbit_account) {
+			$bt.text('Change FitBit Account');
+		}
+		
+		
 		$bt.appendTo(html);
 		html.appendTo(accountHolder);
 		
