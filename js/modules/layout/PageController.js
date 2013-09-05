@@ -22,26 +22,7 @@ Zero.PageController = (function(module){
 						initConfiguration.settingsData = data.result;
 						console.log(data.result);
 						_postRender();
-					},
-					error:function(error){
-						console.log(error);
-					}
-	    	    });
-	    	}catch(e){
-	    		console.log(e);
-	    	}
-	    },
-	    
-	    _delete = function(){
-	    	try{
-	    		$.ajax({
-					url:initConfiguration.urlSettings,
-					type:'DELETE',
-					dataType:'json',
-					contentType:'aplication/json',
-					success:function(response){
-						console.log(response);
-						
+						Zero.ChartsSettings.getAjaxWillpower();
 					},
 					error:function(error){
 						console.log(error);

@@ -29,28 +29,16 @@ function onJsGraphDataLoad(series) {
 			var accurate = 1;
 			
 			for(var i=0; i<graphsData.length; i++){
-				var dataLength = graphsData[i].x.length;
-				// if(graphsData[i].plot == "nikeSteps"){
-                  		// var stp = 0;
-                  		// for(stp; stp<dataLength; stp = stp+accurate){
-                  			// var sumDataStp = _calculate(graphsData[i], stp);
-                  			  // dataStp.push(sumDataStp);                 			  
-                  		// }
-                  	// }else if(graphsData[i].plot == "nikeCalories"){
-                  		// var cal = 0;
-                  		// for(cal; cal<dataLength; cal = cal+accurate){
-                  			// var sumDataCal = _calculate(graphsData[i], cal);
-                  			  // dataCal.push(sumDataCal);                			  
-                  		// }                 		
-                  	// }else{
-                  		// var F = 0;
-                  		// for(F; F<dataLength; F = F+accurate){
-                  			// var sumDataF = _calculate(graphsData[i], F);
-                  			  // dataF.push(sumDataF);                 			  
-                  		// }
-                  	// }                 for(var j=0; j<dataLength; j++){
-                 	var dataItem = [];
-                 	dataItem.push(graphsData[i].x[j], graphsData[i].y[j]);
+				var dataLength = graphsData[i].x.length;
+				var dataItem = [];
+				if(i==0){
+					color = '#3CC6F0'
+				}else if(i==1){
+					color = '#358c2f'
+				}else{
+					color = '#d4523d'
+				}                 for(var j=0; j<dataLength; j++){
+                 	dataItem.push([graphsData[i].x[j]*1000, graphsData[i].y[j]]);
                  }
                  ObjData = {
                  	name:graphsData[i].plot, 
@@ -58,56 +46,10 @@ function onJsGraphDataLoad(series) {
                  	type:'spline',
                  	dashStyle:'ShortDot', 
                  	lineWidth:2,
-                 	color:'#d4523d'
+                 	color:color
                  }
                  data.push(ObjData);
 			}
-			
-          
-			// data = [
-			    // {
-				 // name : "calories",
-				 // data : dataCal,
-				 // type : 'spline',
-				 // dashStyle : 'ShortDot',
-				 // lineWidth : 2,
-				 // color : "#d4523d",
-				 // dataGrouping : {
-					 // enabled : false
-				   // },
-				 // marker:{
-					 // symbol:'url(/zeroProject/resources/images/drop.png)'
-				// }
-// 				
-			   // },
-// 		       
-			    // {
-				// name : "steps",
-				// data : dataStp,
-				// type : 'spline',
-				// dashStyle : 'ShortDot',
-				// lineWidth : 2,
-				// color:'#47b748',
-				// marker:{
-					// symbol:'url(/zeroProject/resources/images/step.png)'
-				 // }
-			    // }, 
-			    // {
-				// name : "fuels",
-				// id : "fuels",
-				// dashStyle : 'ShortDot',
-				// type : 'spline',
-				// data : dataF,
-				// color : "#7292cb",
-				// lineWidth : 2,
-				// marker:{
-					// symbol:'url(/zeroProject/resources/images/circle.png)'
-				// },
-				// tooltip : {
-					// pointFormat : '<span style="color:{series.color}">{series.name}</span>: <b>{point.y} %</b><br/>'
-				    // }
-			    // }
-			 // ];
 
 			var generalTooltip = {
 						xDateFormat: '%b %e, %l %p'

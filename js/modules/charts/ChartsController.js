@@ -26,7 +26,7 @@ Zero.ChartsController = (function(module){
                           "start":start, 
                           "direction":1, 
                           "duration":duration,
-                          "interval":5,  
+                          "interval":15,  
                           "plots":dataType
                     }),
 					success:function(data){
@@ -69,7 +69,7 @@ Zero.ChartsController = (function(module){
            var dataType;
            
 	    	switch(type){
-	    		case 'local': dataType = "heartRate, steps, deepSleep, lightSleep, floors, hydration, currWeight"
+	    		case 'zero': dataType = "heartRate, steps, deepSleep, lightSleep, floors, hydration, currWeight"
 	    		break;
 	    		case 'nike': dataType = "nikeSteps, nikeCalories, nikeFuel"
 	    		break;

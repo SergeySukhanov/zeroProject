@@ -4,7 +4,7 @@ Zero.ChartsSettings = (function(module){
 	    config = {
 	       diagramTitle:'Willpower',
 		   actTitle:"Act",
-		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to setyour schedule targets.",
+		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to set your schedule targets.",
 		   liveTitle:"Live",
 		   doTitle:"Do"
 		   
@@ -22,14 +22,18 @@ Zero.ChartsSettings = (function(module){
 	    },
 	    
 	    _handlers = function(){
-	    	
+	    	$('#reset-set').bind('click', function(event){
+	    		event.preventDefault();
+	    		_delete();
+	    	});
 	    };
 	    
 	    _paintChartsSettings = function(){
             var wrapper = $('#willPower');
             var wrapDiagram = $('.willpower-diagram');
             var wrapSettings = $('.sliders-settings');
-            
+                wrapDiagram.empty();
+                wrapSettings.empty();
             var actSettings = $('<div/>').addClass('act-settings');
             var liveSettings = $('<div/>').addClass('live-settings');
             var doSettings = $('<div/>').addClass('do-settings');
@@ -99,15 +103,18 @@ Zero.ChartsSettings = (function(module){
            	    skin: "round_plastic",
                 callback: function( value ){
                    _formatDataSettings();
-                   _createCols($('.diagram-body'));
                 }
            	    
            	});
 	    },
 	    
-	    _createCols = function(wrap){
+	    _createCols = function(wrap, config){
 	    	wrap.empty();
-	    	var diagramData = initConfiguration.diagramData.dataOfDay;
+	    	if(!config){
+	    	   var diagramData = initConfiguration.diagramData.dataOfDay;	
+	    	}else{
+	    		var diagramData = config;
+	    	}
 	    	for(var j=0; j<diagramData.length; j++){
             	var diagramItemWrap = $('<div/>').addClass('diagram-item-wrap');
             	var diagramItem = $('<div/>').addClass('diagram-item');
@@ -117,7 +124,7 @@ Zero.ChartsSettings = (function(module){
             	    diagramItemWrap.append(diagramSubTitle);
             	    wrap.append(diagramItemWrap);
             	    
-            	if(diagramData[j].power.indexOf('-')+1 == 0){
+            	if(diagramData[j].percent > 0){
             		diagramItem.addClass('positive');
             	}else{
             		diagramItem.addClass('negative');
@@ -128,11 +135,11 @@ Zero.ChartsSettings = (function(module){
 	    
 	    _createDiagramCol = function(item, data){
 	    	var wrapper = $('.diagram-body');
-	    	var percentSpan = $('<span/>').text(data.power+'%');
+	    	var percentSpan = $('<span/>').text(data.percent+'%');
 	    	item.append(percentSpan);
 	    	
 	       	item.animate({
-	       		'height': wrapper.height()/100*Math.abs(parseInt(data.power))
+	       		'height': wrapper.height()/100*Math.abs(parseInt(data.percent))
 	       	}, 2000);
 	    },
 	    
@@ -147,15 +154,38 @@ Zero.ChartsSettings = (function(module){
 	    			type:'PUT',
 	    			dataType:'json',
 	    			contentType:'application/json',
-	    			data:({filters:dataFilters}),
+	    			data:JSON.stringify(dataFilters),
 	    			success:function(data){
-	    				console.log(data);
+	    				view.getAjaxWillpower();
 	    			},
 	    			error:function(error){
 	    				console.log(error);
 	    			}
 	    			
 	    		});
+	    	}catch(e){
+	    		console.log(e);
+	    	}
+	    },
+	    
+	    _delete = function(){
+	    	try{
+	    		$.ajax({
+	    			beforeSend: function (request) {
+					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+				    },
+					url:initConfiguration.urlSettings,
+					type:'DELETE',
+					dataType:'json',
+					contentType:'aplication/json',
+					success:function(response){
+						console.log(response);
+						_paintChartsSettings();
+					},
+					error:function(error){
+						console.log(error);
+					}
+	    	    });
 	    	}catch(e){
 	    		console.log(e);
 	    	}
@@ -189,6 +219,29 @@ Zero.ChartsSettings = (function(module){
 	    	console.log(newData);
 	    	_setAjaxSettings(newData);
 	    };
+	view.getAjaxWillpower = function(){
+	    	try{	    		
+	    		$.ajax({
+	    			beforeSend: function (request) {
+					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+				    },
+	    			url:initConfiguration.urlWillpower,
+	    			type:'GET',
+	    			dataType:'json',
+	    			contentType:'application/json',
+	    			success:function(data){
+	    				console.log(data.result);
+	    				_createCols($('.diagram-body'), data.result)
+	    			},
+	    			error:function(error){
+	    				console.log(error);
+	    			}
+	    			
+	    		});
+	    	}catch(e){
+	    		console.log(e);
+	    	}
+	    }
 	    
 	view.initialize = function(){
 		_render();

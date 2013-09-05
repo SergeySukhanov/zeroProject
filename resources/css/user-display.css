@@ -73,7 +73,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce5f5f', end
 
 }
 .diagram-body {
-height: 100px;
+height: 200px;
 position: relative;
 margin-bottom: 30px;
 border-bottom: 1px solid #666666;
@@ -145,9 +145,20 @@ margin-right: 10px;
 font-family: 'Oswald Light';
 text-decoration: underline;
 cursor: pointer;
+color: #0072BC;
 }
 
 .col input {
 display: none;
+}
+
+.reset-settings {
+margin-left: 4%;
+margin-top: 3%;
+}
+
+.reset-settings a {
+font-family: "Oswald Light";
+color: #0072BC;
 }
 
