@@ -1,6 +1,6 @@
 var initConfiguration = {
 	 rootContext:location.protocol + "//" + location.host,
-	 rootFolder:'/,
+	 rootFolder:'/',
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
