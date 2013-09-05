@@ -9,7 +9,14 @@
   .jslider .jslider-bg i,
   .jslider .jslider-pointer { background: url(../images/jslider.png) no-repeat 0 0; }
 
-  .jslider { display: block; width: 100%; height: 1em; position: relative; top: 0.6em; font-family: Arial, sans-serif; }
+  .jslider {
+display: inline-block;
+width: 68%;
+height: 1em;
+position: relative;
+top: 0.6em;
+font-family: Arial, sans-serif;
+}
   .jslider table { width: 100%; border-collapse: collapse; border: 0; }
   .jslider td, .jslider th { padding: 0; vertical-align: top; text-align: left; border: 0; }
 
@@ -49,11 +56,12 @@
   
 .live-settings, .do-settings {
 display: inline-block;
-width: 45%;
+width: 47%;
+vertical-align: top;
 }
 
 .layout-slider {
-width: 90%;
+width: 100%;
 margin-bottom: 20px;
 }
 
@@ -70,10 +78,23 @@ margin-bottom: 20px;
 }
 
 .live-settings {
-margin-right: 5%;
-border-right: 1px solid #777777;
+margin-right: 2%;
+padding-right: 0%;
 }
 
+.do-settings {
+margin-left: -4%;
+border-left: 1px solid #777777;
+padding-left: 6%;
+}
 
+.layout-slider label {
+display: inline-block;
+position: relative;
+margin-left: 20px;
+font-family: "Zero";
+font-size: 11px;
+color: #666666;
+}
 
 
