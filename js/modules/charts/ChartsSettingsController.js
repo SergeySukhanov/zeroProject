@@ -96,7 +96,25 @@ Zero.ChartsSettings = (function(module){
 	    	wrapSlider.append(inputSlider);
 	    	wrapSlider.append(labelSlider);
 	    	wrap.append(wrapSlider);
-	    	var currentStep = (parseInt(equalizer.max - equalizer.min))/100*10;
+	    	var currentStep;
+	    	switch(data.filter){
+	    		case "calories":currentStep = 100;
+	    		break;
+	    		case "steps":currentStep = 1000;
+	    		break;
+	    		case "distance":currentStep = 100;
+	    		break;
+	    		case "floors":currentStep = 10;
+	    		break;
+	    		case "itemsOnWorkDay":currentStep = 1;
+	    		break;
+	    		case "itemsOnPlayDay":currentStep = 1;
+	    		break;
+	    		case "itemsGap":currentStep = 10;
+	    		break;
+	    		case "itemsSteps":currentStep = 100;
+	    		break;
+	    	}
 	    	
            $('#'+data.filter).slider({ 
            	    from: parseInt(equalizer.min), 
