@@ -2,7 +2,7 @@ Zero.ChartsSettings = (function(module){
 	var view = {},
 	
 	    config = {
-	       diagramTitle:'Willpower',
+	       diagramTitle:'Zero <sup>o</sup> points',
 		   actTitle:"Act",
 		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to set your schedule targets.",
 		   liveTitle:"Live",
@@ -49,7 +49,7 @@ Zero.ChartsSettings = (function(module){
             var doH3 = $('<h3/>').text(config.doTitle);
                 doSettings.append(doH3);
             
-            var diagramH3 = $('<h3/>').text(config.diagramTitle);
+            var diagramH3 = $('<h3/>').html(config.diagramTitle);
             var diagramBody = $('<div/>').addClass('diagram-body');
             
             wrapDiagram.append(diagramH3);
