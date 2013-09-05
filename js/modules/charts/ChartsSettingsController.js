@@ -96,11 +96,12 @@ Zero.ChartsSettings = (function(module){
 	    	wrapSlider.append(inputSlider);
 	    	wrapSlider.append(labelSlider);
 	    	wrap.append(wrapSlider);
+	    	var currentStep = (parseInt(equalizer.max - equalizer.min))/100*10;
 	    	
            $('#'+data.filter).slider({ 
            	    from: parseInt(equalizer.min), 
            	    to: parseInt(equalizer.max), 
-           	    step: 1000, 
+           	    step: currentStep, 
            	    smooth: false, 
            	    round: 1, 
            	    skin: "round_plastic",
@@ -142,7 +143,16 @@ Zero.ChartsSettings = (function(module){
 	    
 	    _createDiagramCol = function(item, data){
 	    	var wrapper = $('.diagram-body');
-	    	var percentSpan = $('<span/>').text(data.percent+'%');
+	    	if(data.percent > 100){
+	    		data.percent = 100;
+	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	}else if(data.percent < -100){
+	    		data.percent = -100;
+	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	}else{
+	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	}
+	    	// var percentSpan = $('<span/>').text(data.percent+'%');
 	    	item.append(percentSpan);
 	    	
 	       	item.animate({

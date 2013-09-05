@@ -127,9 +127,11 @@ function RegisterController(data){
                "password": dataForm['register-password']
             }),
 			success:function(data){
+				var pComplete = $('<p/>').addClass('register-complete').text('Register complete');
+				$('.index-page').append(pComplete);
 				$(layout).fadeOut(200);
 				$(wrap).fadeOut(200);
-				location.href  = initConfiguration.rootContext+initConfiguration.rootFolder+'registerComplete.html';			
+				setTimeout(function(){$('.register-complete').fadeOut(200)},3000);			
 			},
 			error:function(e){
 				 _showError('#register-email');

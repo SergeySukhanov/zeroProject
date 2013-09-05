@@ -76,3 +76,8 @@ display: inline-block;
    margin-top: -5px;
    display: inline-block;
 }
+
+.register-complete {
+background-color: #286301;
+font-family: "Oswald Light";
+}

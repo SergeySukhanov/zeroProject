@@ -106,8 +106,8 @@ var initConfiguration = {
 	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 	
 	labelsSilder:{
-		intensity:"intensity",
-		frequency:"frequency",
+		distance:"distance",
+		floors:"floors",
 		calories:"calories",
 		steps:"steps",
 		itemsOnWorkDay:"items on work day",
