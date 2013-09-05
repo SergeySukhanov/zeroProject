@@ -114,9 +114,10 @@ top: 91%;
 height: 10px;
 width: 50px !important;
 color: #333333;
-left: -7px;
-font-size: 9px;
+left: 1px;
+font-size: 10px;
 font-weight: 400;
+font-family: Tahoma;
 }
 
 .diagram-item-wrap > * {

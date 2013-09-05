@@ -120,7 +120,7 @@ Zero.ChartsSettings = (function(module){
             	var diagramItem = $('<div/>').addClass('diagram-item');
             	var newDate = new Date(diagramData[j].date);
             	var day = newDate.getDate();
-		        var month = initConfiguration.monthList[newDate.getMonth()];
+		        var month = initConfiguration.monthShortList[newDate.getMonth()];
 		        var formatDate = day + ' ' + month;
             	var diagramSubTitle = $('<span/>').addClass('diagram-sub-title').text(formatDate);
             	    
