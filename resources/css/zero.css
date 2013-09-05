@@ -178,3 +178,7 @@ header, nav, section, article, aside, footer {
 	width: 250px;
 	margin-right: 10px;
 	}		
+	
+.account-list {
+	margin: 10px 0 20px 0;
+	}	

@@ -1,7 +1,10 @@
 Zero.GoogleAccount = (function(module){
-	var m = {}, accountHolder, 	tokkens = module.getTokens();
+	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_accounts = [], nike_account = false, fitbit_account = false; 
+			
 	
 	_getGoogleAuthUrl = function() {
+		
+		
 		
 		try{
 			$.ajax({
@@ -18,7 +21,8 @@ Zero.GoogleAccount = (function(module){
 				success: function (resp) {		
 					var params = {
 						text : 'Add Google Account',
-						title : 'Google Account'
+						title : 'Google Account',
+						type : 'Google'
 					}				
 					_drawGoogleAuthButton(resp.authorizationURL, params)
 				},
@@ -32,6 +36,8 @@ Zero.GoogleAccount = (function(module){
 	}
 	
 	_getFitBitAuthUrl = function() {		
+	
+	
 		try{
 			$.ajax({
 				beforeSend: function (request) {
@@ -45,7 +51,8 @@ Zero.GoogleAccount = (function(module){
 					var params = {
 						text : 'Add Fitbit Account',
 						className : 'fitbit',
-						title : 'Fitbit Account'
+						title : 'Fitbit Account',
+						type : 'Fitbit'
 					}
 					_drawGoogleAuthButton(resp.authorizationURL, params);
 					_getNikeConnectHtml();
@@ -67,6 +74,12 @@ Zero.GoogleAccount = (function(module){
 				'id' : 'nikeTokken',
 			}),
 			bt = $('<button />').text('Connect');
+			
+			
+			if(nike_account) {
+				text = $('<p />').html('You have already coonect with Nike Access.<br />If You want reconnect with new Nike Access token please point it in field below');
+				bt.text('Reconnect')
+			}
 			
 			header.appendTo(html);
 			text.appendTo(html);
@@ -107,8 +120,26 @@ Zero.GoogleAccount = (function(module){
 	}
 	
 	
+	_anylizeAccounts = function(){
+		var accounts = initConfiguration.settingsData.accounts;		
+		
+		for(var i=0; i < accounts.length; i++) {
+			if(accounts[i].type == 'GOOGLE') {
+				g_accounts.push(accounts[i].externalId);
+			}
+			if(accounts[i].type == 'NIKE') {
+				nike_account = true;
+			}
+			if(accounts[i].type == 'FITBIT') {
+				fitbit_account = true;
+			}			
+		}
+		
+	}
+	
 	_setAccountHolder = function(holder) {
 		accountHolder = holder;
+		_anylizeAccounts();
 		_getGoogleAuthUrl();
 		_getFitBitAuthUrl();
 	}
@@ -129,6 +160,24 @@ Zero.GoogleAccount = (function(module){
 		if(params.title && params.title != '') {
 			header.appendTo(html);
 		}
+		
+		if(params.type == 'Google') {
+			if(g_accounts && g_accounts.length) {
+				var list = $('<div />').addClass('account-list');			
+				for(var i = 0; i < g_accounts.length; i++) {
+					var item = $('<div />').addClass('item').text(g_accounts[i]);
+					item.appendTo(list)
+				}				
+				list.appendTo(html)
+			}
+			
+		}
+
+		if(params.type == 'Fitbit' && fitbit_account) {
+			$bt.text('Change FitBit Accout');
+		}		
+		
+		
 		$bt.appendTo(html);
 		html.appendTo(accountHolder);
 		
