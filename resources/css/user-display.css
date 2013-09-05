@@ -43,6 +43,7 @@ display: inline-block;
 position: relative;
 z-index: 300;
 border-top: 1px solid #cccccc;
+min-height: 400px;
 }
 
 .willpower-diagram {
@@ -73,7 +74,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce5f5f', end
 
 }
 .diagram-body {
-height: 200px;
+height: 150px;
 position: relative;
 margin-bottom: 30px;
 border-bottom: 1px solid #666666;

@@ -76,7 +76,7 @@ Zero.ChartsSettings = (function(module){
             	_createSlider(wrapSliders, dataSliders[i]); 
             }
             
-            _createCols(diagramBody);
+            // _createCols(diagramBody);
             
            console.log('good');         
 	    },
@@ -118,7 +118,11 @@ Zero.ChartsSettings = (function(module){
 	    	for(var j=0; j<diagramData.length; j++){
             	var diagramItemWrap = $('<div/>').addClass('diagram-item-wrap');
             	var diagramItem = $('<div/>').addClass('diagram-item');
-            	var diagramSubTitle = $('<span/>').addClass('diagram-sub-title').text(diagramData[j].date);
+            	var newDate = new Date(diagramData[j].date);
+            	var day = newDate.getDate();
+		        var month = initConfiguration.monthList[newDate.getMonth()];
+		        var formatDate = day + ' ' + month;
+            	var diagramSubTitle = $('<span/>').addClass('diagram-sub-title').text(formatDate);
             	    
             	    diagramItemWrap.append(diagramItem);
             	    diagramItemWrap.append(diagramSubTitle);
