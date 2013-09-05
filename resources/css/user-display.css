@@ -92,6 +92,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .diagram-item{
     height: 0px;
     box-shadow: 1px 0px 3px #666666;
+    opacity: 0.6;
+}
+
+.account-photo img {
+width: 107%;
 }
 
 .diagram-item-wrap {
@@ -99,14 +104,19 @@ width: 30px;
 display: inline-block;
 margin-left: 20px;
 height: 100%;
+position: relative;
 }
 .diagram-sub-title {
 font-size: 57%;
 display: inline-block;
 color: #666666;
-top: 105%;
+top: 91%;
 height: 10px;
 width: 50px !important;
+color: #333333;
+left: -7px;
+font-size: 9px;
+font-weight: 400;
 }
 
 .diagram-item-wrap > * {

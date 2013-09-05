@@ -62,6 +62,7 @@ function onJsGraphDataLoad(series) {
                       borderRadius:0,
                       backgroundColor:'#ffffff'
                       
+                      
 					},
 					
 					credits : {
@@ -74,7 +75,7 @@ function onJsGraphDataLoad(series) {
 
 					colors : ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
 					rangeSelector:{
-						enabled : false,
+						enabled : true,
 						selected:0,
 						inputEnabled:false,
 						buttons: [{
@@ -85,21 +86,6 @@ function onJsGraphDataLoad(series) {
 							type: 'week',
 							count: 1,
 							text: '1w'
-						},{
-							type: 'month',
-							count: 1,
-							text: '1m'
-						}, {
-							type: 'month',
-							count: 6,
-							text: '6m'
-						}, {
-							type: 'year',
-							count: 1,
-							text: '1y'
-						}, {
-							type: 'all',
-							text: 'All'
 						}]
 					},
 					navigator:{

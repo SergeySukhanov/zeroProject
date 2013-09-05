@@ -2,7 +2,7 @@ Zero.TitleController = (function(module){
 	var view = {},
 	
 	    config = {
-		
+		  faceImg:"face.png"
 	    },
 	
 	    _render = function(){
@@ -35,7 +35,11 @@ Zero.TitleController = (function(module){
 	    
 	    _createAccountName = function(wrap){
 	    	var wrapper = wrap;
+	    	var root = initConfiguration.getRootLocation();
 	    	var divPhoto = $('<div/>').addClass('account-photo');
+	    	var imgFace = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.faceImg);
+	    	    divPhoto.append(imgFace);
+	    	    
 	    	var divWelcome = $('<div/>').addClass('welcome-user');
 	    	
 	    	var h1 = $('<h1/>').text('Good');
