@@ -155,6 +155,7 @@ header, nav, section, article, aside, footer {
 		box-shadow:         0px 1px 5px rgba(50, 50, 50, 0.75);		
 		cursor: pointer;
 		margin-left: 0;
+		color: #000;
 		}
 	
 	#accountBlock button.fitbit {

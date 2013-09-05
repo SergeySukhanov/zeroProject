@@ -121,7 +121,7 @@ Zero.GoogleAccount = (function(module){
 			$bt.addClass(params.className)
 		}
 		$bt.bind('click', function(e) {
-			var params = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes,width=500,height=500, top=100, left=100";
+			var params = "menubar=no,location=yes,resizable=yes,scrollbars=yes,status=yes,width=500,height=500, top=100, left=100";
 			window.open($(this).data('google-link'), params);
 			e.preventDefault();
 		})	
