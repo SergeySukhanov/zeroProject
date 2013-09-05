@@ -62,6 +62,7 @@ Zero.GoogleAccount = (function(module){
 	_getNikeConnectHtml = function() {
 		var html = $('<div />').addClass('account-item'),
 			header = $('<h2/>').text('Nike Connect'),
+			step1 = $('<p/>').html("Login with you email and password:<a></a>"),
 			text = $('<p />').text('Please point your Nike Access token in field below'),
 			nikeTokken = $('<input />').attr({
 				'id' : 'nikeTokken',

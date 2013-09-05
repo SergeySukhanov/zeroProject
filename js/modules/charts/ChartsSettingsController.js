@@ -92,6 +92,8 @@ Zero.ChartsSettings = (function(module){
 	    		                             "value":comfort.min+';'+comfort.max
 	    	                               });	    	                               
 	    	wrapSlider.append(inputSlider);
+	    	var labelSlider = $('<label/>').text(initConfiguration.labelsSilder[data.filter]);
+	    	wrapSlider.append(labelSlider);
 	    	wrap.append(wrapSlider);
 	    	
            $('#'+data.filter).slider({ 

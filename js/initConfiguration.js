@@ -103,7 +103,18 @@ var initConfiguration = {
    },
 	
 	monthList:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	
+	labelsSilder:{
+		intensity:"intensity",
+		frequency:"frequency",
+		calories:"calories",
+		steps:"steps",
+		itemsOnWorkDay:"items on work day",
+		itemsOnPlayDay:"items on play day",
+		itemsGap:"items gap",
+		itemsSteps:"items steps"
+	}
 
 	 
 }

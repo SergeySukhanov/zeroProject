@@ -103,12 +103,11 @@ display: inline-block;
 color: #666666;
 top: 82%;
 height: 10px;
-width: 50px !important;
 color: #333333;
-left: 6px;
 font-size: 13px;
 font-weight: 500;
 font-family: "Oswald LIght";
+text-align: center;
 }
 
 .diagram-item-wrap > * {
