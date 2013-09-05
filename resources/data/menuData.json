@@ -3,11 +3,11 @@
 "registerForm":[
    {
      "id":"register-login",
-     "label":"Login:",
+     "label":"Name:",
      "value":null,
      "type":"text",
-     "placeholder":"Enter your Login",
-     "errorMessage":"please enter your login"
+     "placeholder":"Enter your name",
+     "errorMessage":"please enter your Name"
    },
    {
      "id":"register-email",
