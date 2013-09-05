@@ -73,7 +73,7 @@ Zero.GoogleAccount = (function(module){
 			bt = $('<button />').text('Connect');
 			
 			if(nike_account) {
-				text = $('<p>You have allready Nike Access!!!<br />If You want reconnect please point you new Nike Access token in field below</p>');
+				text = $('<p>You have Nike Account linked.<br />If You want reconnect please point you new Nike Access token in field below</p>');
 			}
 			
 			header.appendTo(html);
