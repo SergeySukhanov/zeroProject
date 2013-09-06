@@ -37,6 +37,8 @@ Zero.Calendar = (function(module){
 				success: function (resp) {		
 				
 					if(resp.events && resp.events.length > 0 ) {
+						resp.events.reverse();
+					
 						for(var i = 0; i < resp.events.length; i++) {
 							var event = _getEventHtml(resp.events[i]);
 							event.appendTo(calendarView);						
