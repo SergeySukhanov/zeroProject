@@ -29,7 +29,19 @@ var initConfiguration = {
 	
 	//settings
 	urlSettings:'http://zerosrv02.domain.corp/api_srv/V1/settings',
-	urlWillpower:'http://zerosrv02.domain.corp/api_srv/V1/willpower',
+	urlWillpower:'http://zerosrv02.domain.corp/api_srv/V1/willpower',/*    urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
+	urlLogin:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
+	
+	urlCharts:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getChartsData',
+	urlCalendarsList:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/calendars',
+	urlEventsCalendar:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/calendarEvents',
+
+	urlGoogleAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getNikeConnect',
+	
+	urlSettings:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/settings',
+	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/willpower',*/
 	
 	
 	diagramData:{
@@ -106,8 +118,8 @@ var initConfiguration = {
 	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 	
 	labelsSilder:{
-		intensity:"intensity",
-		frequency:"frequency",
+		distance:"distance",
+		floors:"floors",
 		calories:"calories",
 		steps:"steps",
 		itemsOnWorkDay:"items on work day",

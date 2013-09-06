@@ -96,11 +96,30 @@ Zero.ChartsSettings = (function(module){
 	    	wrapSlider.append(inputSlider);
 	    	wrapSlider.append(labelSlider);
 	    	wrap.append(wrapSlider);
+	    	var currentStep;
+	    	switch(data.filter){
+	    		case "calories":currentStep = 100;
+	    		break;
+	    		case "steps":currentStep = 1000;
+	    		break;
+	    		case "distance":currentStep = 100;
+	    		break;
+	    		case "floors":currentStep = 10;
+	    		break;
+	    		case "itemsOnWorkDay":currentStep = 1;
+	    		break;
+	    		case "itemsOnPlayDay":currentStep = 1;
+	    		break;
+	    		case "itemsGap":currentStep = 10;
+	    		break;
+	    		case "itemsSteps":currentStep = 100;
+	    		break;
+	    	}
 	    	
            $('#'+data.filter).slider({ 
            	    from: parseInt(equalizer.min), 
            	    to: parseInt(equalizer.max), 
-           	    step: 1000, 
+           	    step: currentStep, 
            	    smooth: false, 
            	    round: 1, 
            	    skin: "round_plastic",
@@ -142,7 +161,16 @@ Zero.ChartsSettings = (function(module){
 	    
 	    _createDiagramCol = function(item, data){
 	    	var wrapper = $('.diagram-body');
-	    	var percentSpan = $('<span/>').text(data.percent+'%');
+	    	if(data.percent > 100){
+	    		data.percent = 100;
+	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	}else if(data.percent < -100){
+	    		data.percent = -100;
+	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	}else{
+	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	}
+	    	// var percentSpan = $('<span/>').text(data.percent+'%');
 	    	item.append(percentSpan);
 	    	
 	       	item.animate({
