@@ -104,8 +104,8 @@ Zero.Events = (function(module){
 			var event = eventsArray[i],
 				html = $('<div />').addClass('event'),
 				header = $('<h3 />').text(event.subject),
-				editLink = $('<a />').attr('href', '#').addClass('icon-link edit-link').text('edit').data('event-id', event.id),
-				removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('remove').data('event-id', event.id);
+				editLink = $('<a />').attr('href', '#').addClass('icon-link edit-link').text('Edit').data('event-id', event.id),
+				removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('Delete').data('event-id', event.id);
 				
 			header.appendTo(html);		
 			editLink.appendTo(html);		
