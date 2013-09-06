@@ -323,6 +323,40 @@ Zero.Events = (function(module){
 		return row;			
 	}
 	
+	_checkObj = function(obj) {
+		var answer = [], valid = true;
+		
+		if(obj.startTime == '') {
+			valid = false;
+			answer.push('startTime');
+		}
+		if(obj.endTime == '') {
+			valid = false;
+			answer.push('endTime');
+		}	
+		if(obj.subject == '') {
+			valid = false;
+			answer.push('subject');
+		}			
+
+		if(!valid) {
+			return answer;
+		} else {
+			return valid;
+		}
+		
+	}
+	
+	_showErrors = function(arr, popup) {
+		
+		$('input.error-element', popup).removeClass('error-element');
+	
+		for(var i=0; i < arr.length; i++) {
+			var el = $('input[name = "' + arr[i]+'"]', popup);
+			el.addClass('error-element');
+		}
+	}
+	
 	_addGoogleEvent = function(popup, calId) {
 		var obj = {
 			'startTime' : ($.datepicker.formatDate( '@', $('input[name = "startTime"]', popup).datepicker( "getDate" )))/1000,
@@ -334,6 +368,15 @@ Zero.Events = (function(module){
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow'
 		}
+		
+		var valid = _checkObj(obj);
+		
+		
+		if(valid != true) {
+			_showErrors(valid, popup);
+			return;
+		}
+		
 		
 		try{			
 			$.ajax({
@@ -446,6 +489,14 @@ Zero.Events = (function(module){
 		}	
 	
 		e.preventDefault();
+
+		var valid = _checkObj(obj);
+		
+		
+		if(valid != true) {
+			_showErrors(valid, popup);
+			return;
+		}
 		
 		try{			
 			$.ajax({

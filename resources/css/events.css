@@ -113,3 +113,7 @@
 		width: 100px;
 		vertical-align: top;
 		}		
+
+.error-element {
+	border: 1px solid indianred!important;
+	}		
