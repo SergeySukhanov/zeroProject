@@ -24,7 +24,7 @@ Zero.Events = (function(module){
 					}
 				},
 				error : function(error) {
-					console.log(error);
+					
 				}
 			})		
 		}catch(e){
@@ -113,7 +113,7 @@ Zero.Events = (function(module){
 					} 
 				},
 				error : function(error) {
-					console.log(error);
+					
 				}
 			})		
 		}catch(e){
@@ -212,7 +212,7 @@ Zero.Events = (function(module){
 					}
 				},
 				error : function(error) {
-					console.log(error);
+					
 				}
 			})		
 		}catch(e){
@@ -419,7 +419,7 @@ Zero.Events = (function(module){
 					}
 				},
 				error : function(error) {
-					console.log(error);
+				
 				}
 			})		
 		}catch(e){
@@ -452,7 +452,7 @@ Zero.Events = (function(module){
 					}
 				},
 				error : function(error) {
-					console.log(error);
+					
 				}
 			})		
 		}catch(e){
@@ -539,7 +539,7 @@ Zero.Events = (function(module){
 					}
 				},
 				error : function(error) {
-					console.log(error);
+					
 				}
 			})		
 		}catch(e){

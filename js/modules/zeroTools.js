@@ -137,7 +137,37 @@ Zero.Tools = (function(module){
 		return answer;
 	}
 	
+	m.ajaxErrorHandler = function() {
+		$(document).ajaxError(function (e, jqxhr, settings, exception) {
+		
+			//var status = jqxhr.status;
+			/*
+			if(status === 404) {
+
+			} else {
+
+			}
+			*/
+			
+			var title = jqxhr.status + ' - ' + jqxhr.statusText,
+			body = $('<div />').addClass('popup-content').html('<div>' + jqxhr.responseJSON.error + '</div>'),
+			btClose = $('<button />').text('Close').appendTo(body),
+			popuHolder = $('#popupHolder');
+			popup = module.Tools.getPopup(title, body);			
+			btClose.bind('click', function(e){
+				module.Tools.destroyPopup(popup);
+			})
+			
+			popup.appendTo(popuHolder);	
+			popuHolder.show();					
+			
+			
+
+		});	
 	
+	}
+	
+	m.ajaxErrorHandler();
 	
 	return m;
 }(Zero));
