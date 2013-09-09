@@ -1,7 +1,10 @@
 Zero.Events = (function(module){
 	var m = {},
 	_holder,
-	tokkens = module.getTokens();		
+	tokkens = module.getTokens(),
+	_calendarStartRange = Math.round(new Date().getTime() / 1000),
+	_calendarEndRange = Math.round(parseInt(new Date().getTime() / 1000) + 86400),
+	_accounts;
 
 	_getCalendars = function() {
 		try{
@@ -15,8 +18,9 @@ Zero.Events = (function(module){
 				contentType: "application/json",
 				success: function (resp) {			
 					if(resp && resp.accounts && resp.accounts.length > 0) {
-						_holder.html('');
-						_drawCalendars(resp.accounts);
+						_accounts = resp.accounts;
+						_drawCalendarsTimeRange();						
+						_drawCalendars();
 					}
 				},
 				error : function(error) {
@@ -29,12 +33,33 @@ Zero.Events = (function(module){
 		
 	}
 		
+	_drawCalendarsTimeRange = function() {
+		var html = $('<div />').attr('id', 'calendarRange'),
+			startRangeValue = module.Tools.fortmatStampToTimePicker(_calendarStartRange),
+			endRangeValue = module.Tools.fortmatStampToTimePicker(_calendarEndRange),
+			startRange = _eventFormRow('startRange', 'Show events from:', 'jq-datepicker', '', startRangeValue),
+			endRange = _eventFormRow('endRange', 'till: ', 'jq-datepicker', '', endRangeValue),
+			btSetRange = $('<button />').text('Apply data range');
+		
+		
+		btSetRange.bind('click', function(e){
+			_drawCalendars();
+			e.preventDefault();
+		})
+		
+		startRange.appendTo(html);
+		endRange.appendTo(html);		
+		btSetRange.appendTo(html);
+		html.insertBefore(_holder);
+	}
+
 	    
-	_drawCalendars = function(callArr) {			
+	_drawCalendars = function() {	
+		var callArr = _accounts;
+		_holder.html('');
 		for(var i=0; i < callArr.length; i++) {
 			var calendars = callArr[i].calendars;
-			for(var j=0; j < calendars.length; j++) {
-			
+			for(var j=0; j < calendars.length; j++) {			
 				if(calendars[j].accessRole == 'owner') {
 					var calendar = _getCalendarHtml(calendars[j]);				
 					calendar.appendTo(_holder);
@@ -62,8 +87,8 @@ Zero.Events = (function(module){
 	}
 		
 	_getEvents = function(id, holder){
-		var now = Math.round(new Date().getTime() / 1000)
-		var end = Math.round(parseInt(new Date().getTime() / 1000) + 1000000)
+		var now = ($.datepicker.formatDate( '@', $('input[name = "startRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
+			end = ($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000;
 
 		try{			
 			$.ajax({
@@ -272,7 +297,7 @@ Zero.Events = (function(module){
 			if(minutes < 10) {minutes = '0' + minutes;}
 			
 			
-			if(0 < minutes && minutes < 15  ) { minutes = 15; console.warn('here') };
+			if(0 < minutes && minutes < 15  ) { minutes = 15;};
 			if(15 < minutes && minutes < 30  ) { minutes = 30 };
 			if(30 < minutes && minutes < 45  ) { minutes = 45 };
 			if(45 < minutes && minutes < 59  ) { minutes = '00'; hours = hours + 1};
@@ -315,7 +340,6 @@ Zero.Events = (function(module){
 			}
 			if(val) {				
 				formElement.val(val);
-				console.warn(formElement);
 			}		
 			
 			formElement.appendTo(row);
@@ -391,7 +415,7 @@ Zero.Events = (function(module){
 				success: function (resp) {									
 					if(resp.errorCode && resp.errorCode == 1) {
 						module.Tools.destroyPopup(popup);
-						_getCalendars();
+						_drawCalendars();
 					}
 				},
 				error : function(error) {

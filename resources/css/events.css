@@ -117,3 +117,18 @@
 .error-element {
 	border: 1px solid indianred!important;
 	}		
+	
+	
+#calendarRange .row {
+	display: inline-block;	
+	}
+	#calendarRange .row input {
+		border: 1px solid #CCCCCC;
+		border-radius: 3px 3px 3px 3px;
+		font: 14px/22px "Zero";
+		padding: 2px 4px;	
+		margin-right: 10px;
+		}
+	#calendarRange .row label {
+		padding-right: 5px;
+		}	
