@@ -42,7 +42,7 @@ Zero.Events = (function(module){
 			btSetRange = $('<button />').text('Apply data range');
 		
 		
-		btSetRange.bind('click', function(e){
+		btSetRange.bind('click', function(e){		
 			_drawCalendars();
 			e.preventDefault();
 		})
@@ -54,20 +54,46 @@ Zero.Events = (function(module){
 	}
 
 	    
-	_drawCalendars = function() {	
-		var callArr = _accounts;
-		_holder.html('');
-		for(var i=0; i < callArr.length; i++) {
-			var calendars = callArr[i].calendars;
-			for(var j=0; j < calendars.length; j++) {			
-				if(calendars[j].accessRole == 'owner') {
-					var calendar = _getCalendarHtml(calendars[j]);				
-					calendar.appendTo(_holder);
-					_getEvents(calendars[j].id,calendar);				
-				}
-			}
+	_validateRange = function() {
+		var answer = true,
+			holder = $('#calendarRange'),
+			start = ($.datepicker.formatDate( '@', $('input[name = "startRange"]', holder).datepicker( "getDate" )))/1000,
+			end = ($.datepicker.formatDate( '@', $('input[name = "endRange"]', holder).datepicker( "getDate" )))/1000,
+			errorArr = ['startRange', 'endRange'];
 			
-		}		
+			if(end < start) {				
+				return errorArr;
+			}
+			if(end == 0 || start == 0) {
+				return errorArr;
+			}
+		
+		_clearErrors(holder);
+		return answer;
+		
+	}	
+		
+	_drawCalendars = function() {	
+		var callArr = _accounts,		
+			isValid = _validateRange();
+		
+		if(isValid === true) {
+			_holder.html('');
+			for(var i=0; i < callArr.length; i++) {
+				var calendars = callArr[i].calendars;
+				for(var j=0; j < calendars.length; j++) {			
+					if(calendars[j].accessRole == 'owner') {
+						var calendar = _getCalendarHtml(calendars[j]);				
+						calendar.appendTo(_holder);
+						_getEvents(calendars[j].id,calendar);				
+					}
+				}
+				
+			}				
+		} else {
+			_showErrors(isValid, $('#calendarRange'));
+		}
+
 	}
 		
 	_getCalendarHtml = function(callObj) {
@@ -369,6 +395,10 @@ Zero.Events = (function(module){
 			return valid;
 		}
 		
+	}
+	
+	_clearErrors = function(holder) {
+		$('.error-element', holder).removeClass('error-element');
 	}
 	
 	_showErrors = function(arr, popup) {
