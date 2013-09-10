@@ -53,7 +53,12 @@ Zero.Events = (function(module){
 		html.insertBefore(_holder);
 	}
 
-	    
+
+	function startTimeSort(a, b) {
+		return a.startTime - b.startTime;
+	}
+	
+	
 	_validateRange = function() {
 		var answer = true,
 			holder = $('#calendarRange'),
@@ -133,9 +138,9 @@ Zero.Events = (function(module){
 					"calendarIds": id 
 					},			
 				success: function (resp) {									
-					if(resp.events && resp.events.length > 0 ) {
-						_getEventsHtml(resp.events, holder);
-						//events.appendTo(holder);
+					if(resp.events && resp.events.length > 0 ) {					
+						var arr = resp.events;
+						_getEventsHtml(arr.sort(startTimeSort), holder);
 					} 
 				},
 				error : function(error) {
@@ -149,16 +154,16 @@ Zero.Events = (function(module){
 	}
 
 	_getEventsHtml = function(eventsArray, holder) {
-		
-		
 		for(var i=0; i < eventsArray.length; i++) {
 			var event = eventsArray[i],
 				html = $('<div />').addClass('event'),
 				header = $('<h3 />').text(event.subject),
 				editLink = $('<a />').attr('href', '#').addClass('icon-link edit-link').text('Edit').data('event-id', event.id),
-				removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('Delete').data('event-id', event.id);
+				removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('Delete').data('event-id', event.id),
+				time = $('<div>' + Zero.Tools.getFormatedDate(event.startTime) + ' - ' + Zero.Tools.getFormatedDate(event.endTime) + '</div>');
 				
 			header.appendTo(html);		
+			time.appendTo(html);
 			editLink.appendTo(html);		
 			removeLink.appendTo(html);	
 			
