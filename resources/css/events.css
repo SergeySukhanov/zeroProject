@@ -132,3 +132,7 @@
 	#calendarRange .row label {
 		padding-right: 5px;
 		}	
+		
+.past-event {
+	opacity: 0.5
+	}		

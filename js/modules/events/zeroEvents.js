@@ -160,7 +160,8 @@ Zero.Events = (function(module){
 				header = $('<h3 />').text(event.subject),
 				editLink = $('<a />').attr('href', '#').addClass('icon-link edit-link').text('Edit').data('event-id', event.id),
 				removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('Delete').data('event-id', event.id),
-				time = $('<div>' + Zero.Tools.getFormatedDate(event.startTime) + ' - ' + Zero.Tools.getFormatedDate(event.endTime) + '</div>');
+				time = $('<div>' + Zero.Tools.getFormatedDate(event.startTime) + ' - ' + Zero.Tools.getFormatedDate(event.endTime) + '</div>'),
+				now = Math.round(new Date().getTime() / 1000)
 				
 			header.appendTo(html);		
 			time.appendTo(html);
@@ -171,6 +172,11 @@ Zero.Events = (function(module){
 			editLink.bind('click', function(e){
 				_editEvent(e);
 			});
+			
+			
+			if(event.endTime < now && !event.recurrence) {
+				html.addClass('past-event');
+			}
 			
 			html.appendTo(holder);
 		}
@@ -257,19 +263,7 @@ Zero.Events = (function(module){
 	}
 	
 	/*Add event*/
-	function eventModel() {
-		var model = {};
-		
-		model.startTime = '';
-		model.startTimeZone = '';
-		model.endTime = '';
-		model.endTimeZone = '';
-		model.subject = '';
-		model.location = '';
-		model.description = '';
-		return model 
-	}
-	
+
 	_addEventButton = function(calId) {
 		var bt = $('<button />').addClass('add-event').text('New Event').data('cal-id', calId);
 		bt.bind('click', _showEventAddPopup);
@@ -570,7 +564,7 @@ Zero.Events = (function(module){
 				success: function (resp) {									
 					if(resp && resp.errorCode == '1') {
 						module.Tools.destroyPopup(popup);
-						_getCalendars();						
+						_drawCalendars();						
 					}
 				},
 				error : function(error) {
