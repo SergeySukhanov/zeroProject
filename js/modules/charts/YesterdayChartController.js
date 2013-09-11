@@ -20,6 +20,7 @@ Zero.YesterdayController = (function(module){
 
 	    },
 	    
+	    
 	    _handlers = function(){
 	    	
 	    },

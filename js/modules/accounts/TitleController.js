@@ -2,7 +2,7 @@ Zero.TitleController = (function(module){
 	var view = {},
 	
 	    config = {
-		  faceImg:"face.png"
+		  faceImg:"face1.png"
 	    },
 	
 	    _render = function(){

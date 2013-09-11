@@ -2,62 +2,79 @@
 {
 "registerForm":[
    {
-     "id":"register-login",
-     "label":"Name:",
+     "id":"register-first-name",
      "value":null,
      "type":"text",
-     "placeholder":"Enter your name",
-     "errorMessage":"please enter your Name"
+     "placeholder":"first name",
+     "typeField":"name"
+   },
+   {
+     "id":"register-last-name",
+     "value":null,
+     "type":"text",
+     "placeholder":"last name",
+     "typeField":"name"
    },
    {
      "id":"register-email",
-     "label":"Email:",
      "value":null,
      "type":"text",
-     "placeholder":"Enter your email",
-     "errorMessage":"please enter your email"
+     "placeholder":"email address",
+     "typeField":"email"
+   },
+   {
+     "id":"register-confirm-email",
+     "value":null,
+     "type":"text",
+     "placeholder":"confirm email",
+     "typeField":"confirm-email"
    },
    {
      "id":"register-password",
-     "label":"Password:",
      "value":null,
      "type":"password",
-     "placeholder":"Enter your password",
-     "errorMessage":"please enter your password"
+     "placeholder":"password",
+     "rule":[{
+              "id":"length",
+              "message":"8 to 20 characters one lowercase letter"
+            },
+            {
+               "id":"specSymbol",
+               "message":"one number one symbol"
+            },
+            {
+              "id":"uppercase",
+              "message":"one uppercase letter"
+            }
+           ],
+     "typeField":"password"
    },
     {
-     "id":"register-password-repeat",
-     "label":"Repeat password:",
+     "id":"register-confirm-password",
      "value":null,
      "type":"password",
-     "placeholder":"Repeat your password",
-     "errorMessage":"please repeat your password"
+     "placeholder":"confirm password",
+     "typeField":"confirm-password"
    },
    {
      "id":"register-button",
-     "label":null,
-     "value":"Register",
+     "value":"Create My Account",
      "type":"button",
-     "placeholder":null,
-     "errorMessage":null
+     "placeholder":null
    }
 ],
 "loginForm":[
   {
      "id":"auth-email",
-     "label":"Email:",
      "value":null,
      "type":"text",
-     "placeholder":"Enter your email",
-     "errorMessage":"please enter your email"
+     "placeholder":"email"
    },
    {
      "id":"auth-password",
-     "label":"Password:",
      "value":null,
      "type":"password",
-     "placeholder":"Enter your password",
-     "errorMessage":"please enter your password"
+     "placeholder":"password"
    },
    {
      "id":"auth-button",

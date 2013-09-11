@@ -18,3 +18,14 @@ font-family: Oswald;
 padding-top: 6px;
 font-weight: 200;
 }
+
+.footer-index {
+margin-top: 30px;
+}
+
+.message-footer-wrap p {
+font-family: "Oswald";
+font-size: 13px;
+font-weight: 200;
+line-height: 16px;
+}

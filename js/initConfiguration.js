@@ -1,6 +1,6 @@
 var initConfiguration = {
 	 rootContext:location.protocol + "//" + location.host,
-	 rootFolder:'/',
+	 rootFolder:'/zeroProject/',
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
@@ -44,75 +44,7 @@ var initConfiguration = {
 	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/willpower',*/
 	
 	
-	diagramData:{
-      "min":"0",
-      "max":"100",
-      "dataOfDay":[
-         {
-           "date":"1 october",
-           "percent":100
-         },
-         {
-           "date":"2 october",
-           "percent":100
-         },
-         {
-           "date":"3 october",
-           "percent":100
-         },
-         {
-           "date":"4 october",
-           "percent":100
-         },
-         {
-           "date":"1 october",
-           "percent":100
-         },
-         {
-           "date":"2 october",
-           "percent":100
-         },
-         {
-           "date":"3 october",
-           "percent":100
-         },
-         {
-           "date":"4 october",
-           "percent":100
-         },{
-           "date":"1 october",
-           "percent":100
-         },
-         {
-           "date":"2 october",
-           "percent":-100
-         },
-         {
-           "date":"3 october",
-           "percent":100
-         },
-         {
-           "date":"4 october",
-           "percent":100
-         },{
-           "date":"1 october",
-           "percent":100
-         },
-         {
-           "date":"2 october",
-           "percent":-100
-         },
-         {
-           "date":"3 october",
-           "percent":100
-         },
-         {
-           "date":"4 october",
-           "percent":100
-         }
-         
-      ]
-   },
+	
 	
 	monthList:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],

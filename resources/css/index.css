@@ -1,56 +1,61 @@
 @import "login-register.css" screen;
 
 .content-page.index-page {
-    width: 960px;
-    margin: 0 auto;
     position: relative;
     z-index: 1000;
-    color:#bbb;
-}
-.content-page.index-page > *{
-	padding:0px 30px;
-	text-align:center;
-	
-}
-.header-index > *{
-	margin-bottom:15px;
+    color:#a9b2b7;
+    
 }
 
-.title-wrapper h1{
-	font-size: 169px;
-    line-height: 150px;
-    padding-top: 70px;
-    font-weight: 200;
+.content-page.index-page > * {
+text-align: center;
+}
+.title-wrap {
+
 }
 
-.brand-wrapper img {
-    width: 38%;
+.title-wrap h1 {
+font-size: 624%;
+font-weight: 100;
+line-height: 100%;
+font-family: "Zero";
+margin-bottom: 5%;
+padding-top: 10%;
 }
 
-.link-wrapper a {
-    margin-right: 20px;  
-    font-size: 24px;
-    text-decoration: none;
-    font-family: Tahoma;
-    color:#3cc6f0;
+.brand-wrap img {
+width: 20%;
 }
 
-
-.link-wrapper a:hover {
-    text-decoration: underline;
+.brand-wrap {
+margin-bottom: 3%;
 }
 
-.subtitle-wrapper h2,
-.footer-wrapper p {
-    color: #888888;
+.row.name-row {
+display: inline-block;
+width: 50%;
 }
 
-.subtitle-wrapper h2{
-	font-size: 30px;
-   font-weight: 200;
+.row.name-row input {
+width: 128px;
 }
 
-.footer-wrapper p{
-	font-size:22px;
-	font-weight:200;
+.register-wrap img {
+width: 10%;
+}
+
+.register-wrap h3 {
+font-weight: 200;
+font-size: 346%;
+}
+
+.success-link {
+text-decoration: none;
+margin-top: 20px;
+display: inline-block;
+color:#269ABD;
+}
+
+.success-link:hover{
+	text-decoration:underline;
 }
