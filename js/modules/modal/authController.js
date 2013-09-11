@@ -137,7 +137,12 @@ function AuthController(options){
 	   	  });
 	   	  
 	   	  input.bind('blur', function(event){
-	   	  	_validation(event);
+	   	  	if(wrap.parent().parent().hasClass('login')){
+	   	  		_validationLogin(event);
+	   	  	}else{
+	   	  	   _validation(event);	
+	   	  	}
+	   	  	
 	   	  });
 	   	  
 	   	  input.bind('keyup', function(event){
@@ -167,6 +172,15 @@ function AuthController(options){
 	   	  	  }
 	   	  });
 	   	  
+	   },
+	   
+	   _validationLogin = function(){
+	   	   var elem = $(event.currentTarget);
+	   	   if(elem.val() == ""){	   	   	
+	   	   	 _showErrorMessage(elem);
+	   	   }else{
+	   	   	 _showSuccessMessage(elem);
+	   	   }
 	   }
 	   
 	   _validation = function(event){

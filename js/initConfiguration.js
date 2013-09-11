@@ -1,6 +1,6 @@
 var initConfiguration = {
 	 rootContext:location.protocol + "//" + location.host,
-	 rootFolder:'/zeroProject/',
+	 rootFolder:'/',
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
@@ -41,7 +41,8 @@ var initConfiguration = {
 	urlNikeAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getNikeConnect',
 	
 	urlSettings:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/settings',
-	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/willpower',*/
+	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/willpower',   
+  */
 	
 	
 	
