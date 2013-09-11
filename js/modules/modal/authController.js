@@ -174,7 +174,7 @@ function AuthController(options){
 	   	  
 	   },
 	   
-	   _validationLogin = function(){
+	   _validationLogin = function(event){
 	   	   var elem = $(event.currentTarget);
 	   	   if(elem.val() == ""){	   	   	
 	   	   	 _showErrorMessage(elem);
