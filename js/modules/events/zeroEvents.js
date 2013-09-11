@@ -282,7 +282,9 @@ Zero.Events = (function(module){
 			btOk = $('<button />').text('Add Event'),
 			btCancel = $('<button />').text('Cancel'),
 			popup,
-			popuHolder = $('#popupHolder');
+			popuHolder = $('#popupHolder'),
+			startInput = $('input', startTime),
+			endInput = $('input', endTime);
 				
 			startTime.appendTo(popupContent);
 			endTime.appendTo(popupContent);
@@ -302,6 +304,13 @@ Zero.Events = (function(module){
 			
 			btOk.appendTo(popupContent);
 			btCancel.appendTo(popupContent);
+			
+			startInput.bind('change', function(e){
+				var newTime = $(this).datepicker( "getDate" )/1000 + 3600;
+				newTime = module.Tools.fortmatStampToTimePicker(newTime);
+				endInput.val(newTime);
+			})
+			
 			
 			popup.appendTo(popuHolder);	
 			popuHolder.show();					
