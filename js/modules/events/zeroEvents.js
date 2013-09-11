@@ -375,6 +375,8 @@ Zero.Events = (function(module){
 	_checkObj = function(obj) {
 		var answer = [], valid = true;
 		
+		
+		
 		if(obj.startTime == '') {
 			valid = false;
 			answer.push('startTime');
@@ -388,6 +390,12 @@ Zero.Events = (function(module){
 			answer.push('subject');
 		}			
 
+		if(obj.endTime < obj.startTime) {
+			valid = false;
+			answer.push('endTime');		
+			answer.push('startTime');		
+		} 
+		
 		if(!valid) {
 			return answer;
 		} else {
@@ -421,6 +429,8 @@ Zero.Events = (function(module){
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow'
 		}
+		
+		
 		
 		var valid = _checkObj(obj);
 		
