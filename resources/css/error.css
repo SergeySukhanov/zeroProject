@@ -37,7 +37,7 @@ cursor: pointer;
 }
 
 .wrap-rule + .error {
-top: 11%;
+top: 13%;
 }
 
 .error-small{
@@ -48,4 +48,9 @@ top: 11%;
 .success-small{
 	background-image:url('../images/icon-success-big.PNG');
 	background-position: -6px -4px;
+}
+
+.message-rule-field {
+width: 196px;
+display: inline-block;
 }
