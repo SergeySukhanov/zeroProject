@@ -41,11 +41,11 @@ top: 11%;
 }
 
 .error-small{
-	background-image:url('../images/icon-error-big.png');
+	background-image:url('../images/icon-error-big.PNG');
 	background-position: -6px -4px;
 }
 
 .success-small{
-	background-image:url('../images/icon-success-big.png');
+	background-image:url('../images/icon-success-big.PNG');
 	background-position: -6px -4px;
 }
