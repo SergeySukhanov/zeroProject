@@ -6,6 +6,7 @@ function AuthController(options){
 	    config = {
 	    	textLink:options.textLink,
 	    	srcZeroSuccess:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'successAjax.png',
+	    	srcPreloader:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'preload.gif'
 	    },
 	
 	   _renderLogin = function(){
@@ -382,6 +383,9 @@ function AuthController(options){
 	},
 	 _registerAjax = function(wrap, dataForm){
 	 	var fullName = dataForm['register-first-name']+' '+dataForm['register-last-name'];
+	 	var mainWrap = wrap.parent().parent();
+	 	    mainWrap.empty();
+	 	_preload(mainWrap);
 		try{
 		  $.ajax({
 			url:initConfiguration.urlRegister,
@@ -403,6 +407,11 @@ function AuthController(options){
 		}catch(e){
 			console.log(e);
 		}
+	},
+	
+	_preload = function(wrap){
+		var preload = $('<img/>').attr('src', config.srcPreloader);
+		wrap.append(preload);
 	},
 	
 	_postRenderRegister = function(data){
