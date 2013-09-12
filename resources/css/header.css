@@ -1,5 +1,8 @@
 .header {
 background-color: #111111;
+position: fixed;
+width: 100%;
+z-index: 30000;
 }
 
 .header > * {
@@ -9,7 +12,7 @@ position:relative;
 }
 
 .wrapper-brand {
-width: 20%;
+width: 250px;
 }
 
 .wrapper-time-date {
@@ -24,6 +27,8 @@ padding-top: 3px;
 .wrapper-menu {
 width: 18%;
 text-align: right;
+float: right;
+margin-right: 7%;
 }
 
 .wrapper-menu ul {

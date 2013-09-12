@@ -14,8 +14,9 @@ function Equalizer(options){
 	    },
 	    
 	    _createSlider = function(){
-	    	var mainLayout = $('<div/>');
-	    	var leftArrow = $('<>')
+	    	var mainLayout = $('<div/>').addClass('wrap-sliders');
+	    	var leftArrow = $('<div/>').addClass('left-arrow');
+	    	var rightArrow = $('<div/>').addClass('right-arrow');
 	    },
 	    
 	    _handlers = function(){

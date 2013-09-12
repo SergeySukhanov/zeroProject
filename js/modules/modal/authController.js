@@ -397,9 +397,7 @@ function AuthController(options){
                _postRenderRegister(data);
 			},
 			error:function(e){
-				 _showError('#register-email');
-				
-				
+				 _showError('#register-email');								
 			}
 		  });
 		}catch(e){
