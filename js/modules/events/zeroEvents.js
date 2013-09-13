@@ -599,6 +599,9 @@ Zero.Events = (function(module){
 	m.init = function(holder) {	
 		_setHolder(holder);		
 	}
+
 	
 	return m;
 }(Zero));
+
+

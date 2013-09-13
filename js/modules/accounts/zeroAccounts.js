@@ -11,7 +11,8 @@ Zero.GoogleAccount = (function(module){
 				url: initConfiguration.urlGoogleAuthorizationURL,
 				type: 'GET',
 				data : {
-					mode : 'web'
+					mode : 'web',
+					redirect : location.protocol + "//" + location.host + '/transport.html' 					
 				},
 				dataType: 'json',
 				contentType: "application/json",
@@ -41,6 +42,10 @@ Zero.GoogleAccount = (function(module){
 				},							
 				url: initConfiguration.urlFitBitAuthorizationURL,
 				type: 'GET',
+				data : {
+					mode : 'web',
+					redirect : location.protocol + "//" + location.host + '/transport.html' 
+				},				
 				dataType: 'json',
 				contentType: "application/json",
 				success: function (resp) {	
@@ -134,6 +139,11 @@ Zero.GoogleAccount = (function(module){
 	
 	_setAccountHolder = function(holder) {
 		accountHolder = holder;
+		
+		g_account = [];
+		nike_account = null;
+		fitbit_account = null;		
+		
 		_analyzeAccounts();
 		_getGoogleAuthUrl();
 		_getFitBitAuthUrl();
@@ -181,13 +191,16 @@ Zero.GoogleAccount = (function(module){
 	
 	
 	m.closeConnectWindow = function(w) {
+		accountHolder.html('')
+		_setAccountHolder(accountHolder);
 		w.close();
-		console.warn('page closed');
 	}
 	
 	m.init = function(holder) {		
 		_setAccountHolder(holder);
+		
 	}
+	
 	
 	return m;
 }(Zero));
