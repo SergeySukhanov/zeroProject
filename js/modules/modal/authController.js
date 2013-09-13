@@ -6,7 +6,7 @@ function AuthController(options){
 	    config = {
 	    	textLink:options.textLink,
 	    	srcZeroSuccess:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'successAjax.png',
-	    	srcZeroError:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'errorAjax.png',
+	    	srcZeroError:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'errorAjax.PNG',
 	    	srcPreloader:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'preload.gif'
 	    },
 	
