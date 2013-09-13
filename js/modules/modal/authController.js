@@ -6,6 +6,7 @@ function AuthController(options){
 	    config = {
 	    	textLink:options.textLink,
 	    	srcZeroSuccess:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'successAjax.png',
+	    	srcZeroError:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'errorAjax.png',
 	    	srcPreloader:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.imagesFolder+'preload.gif'
 	    },
 	
@@ -384,8 +385,9 @@ function AuthController(options){
 	 _registerAjax = function(wrap, dataForm){
 	 	var fullName = dataForm['register-first-name']+' '+dataForm['register-last-name'];
 	 	var mainWrap = wrap.parent().parent();
-	 	    mainWrap.empty();
-	 	_preload(mainWrap);
+	 	    mainWrap.children('.register').empty();
+	 	    mainWrap.children('.login').hide();
+	 	_preload(mainWrap.children('.register'));
 		try{
 		  $.ajax({
 			url:initConfiguration.urlRegister,
@@ -415,33 +417,69 @@ function AuthController(options){
 	},
 	
 	_postRenderRegister = function(data){
+		var message;
 		if(data.errorCode == 1){
 			_successDisplay(parseData['register-first-name']);
+		}else if(data.errorCode == 3){
+		   message = "Sorry, user already exists.";
+		   _errorDisplay(message)
 		}
 	},
 	
 	_successDisplay = function(name){
-		var wrap = $('.register-wrap');
+		var wrap = $('.register');
 		  wrap.empty();
 		var messageText = 'thank you '+name+', you are on your way<br/> to something good.'
 		var successImg = $('<img/>').attr('src', config.srcZeroSuccess);
 		var successTitle = $('<h3/>').text('success!');
 		var successMessage = $('<p/>').html(messageText);
-		var linkSuccess = $('<a/>').attr('href', '#').addClass('success-link').text('view your account');
+		var linkSuccess = $('<a/>').attr('href', '#').addClass('success-link').text('return login form');
 		
 		wrap.append(successImg);
 		wrap.append(successTitle);
 		wrap.append(successMessage);
 		wrap.append(linkSuccess);
 		
+		
 		$('.success-link').bind('click', function(event){
           	 event.preventDefault();
-          	 var localDataParse = {};
-          	    localDataParse['auth-email'] = parseData['register-email'];
-          	    localDataParse['auth-password'] = parseData['register-password'];
-          	 _loginAjax(wrap, localDataParse);
+          	var mainWrap = $('.register-wrap');
+	   	      mainWrap.children().empty();
+	   	      mainWrap.children().show(); 
+          	 Zero.PageIndexController.parseData($('.register'), $('.login'));
+          	var title = $('.title-wrap').children();
+          	var brand = $('.brand-wrap');
+          	var box = $('.login').find('.inner-popup');
+          	box.slideDown(300);
           });
-	};
+	},
+	
+	_errorDisplay = function(message){
+		var wrap = $('.register');
+		  wrap.empty();
+		var messageText = message;
+		var errorImg = $('<img/>').attr('src', config.srcZeroError);
+		var errorTitle = $('<h3/>').text('error!');
+		var errorMessage = $('<p/>').html(messageText);
+		var linkError = $('<a/>').attr('href', '#').addClass('error-link').text('return register form');
+	    wrap.append(errorImg);
+		wrap.append(errorTitle);
+		wrap.append(errorMessage);
+		wrap.append(linkError)
+		  
+		$('.error-link').bind('click', function(event){
+          	 event.preventDefault();
+          	 var mainWrap = $('.register-wrap');
+	   	      mainWrap.children().empty();
+	   	      mainWrap.children().show(); 
+          	 Zero.PageIndexController.parseData($('.register'), $('.login'));
+          	var title = $('.title-wrap').children();
+          	var brand = $('.brand-wrap');
+          	var box = $('.register').find('.inner-popup');
+          	box.slideDown(300);
+          	  	
+          });
+	}
 	   
    view.initialize = function(){
    	  _renderLogin();  

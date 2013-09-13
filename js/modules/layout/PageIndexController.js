@@ -55,7 +55,7 @@ Zero.PageIndexController = (function(module){
             wrapperHeader.append(brandWrap);
             wrapperHeader.append(registerWrap);
            
-           _parseData(register, login);
+           view.parseData(register, login);
            //create footer
             var messageFooterWrap = $('<div/>').addClass('message-footer-wrap');
             var message = $('<p/>').html(config.textFooter); 
@@ -65,7 +65,7 @@ Zero.PageIndexController = (function(module){
             
 	    },
 	    
-	    _parseData = function(reg, log){
+	    view.parseData = function(reg, log){
 	    	var data = config.dataPopup;
 	    	new AuthController({data:data[0].registerForm, wrap:reg, textLink:"Register now"});
 	    	new AuthController({data:data[0].loginForm, wrap:log, textLink:"or log in"});           

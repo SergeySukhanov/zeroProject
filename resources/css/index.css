@@ -49,13 +49,13 @@ font-weight: 200;
 font-size: 346%;
 }
 
-.success-link {
+.success-link, .error-link {
 text-decoration: none;
 margin-top: 20px;
 display: inline-block;
 color:#269ABD;
 }
 
-.success-link:hover{
+.success-link:hover, .error-link:hover{
 	text-decoration:underline;
 }
