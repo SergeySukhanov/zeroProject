@@ -14,7 +14,7 @@ position: relative;
 
 .copyright-wrapper p {
 color: #ffffff;
-font-family: Oswald;
+font-family: "Ma Condensed";
 padding-top: 6px;
 font-weight: 200;
 }
@@ -24,7 +24,7 @@ margin-top: 30px;
 }
 
 .message-footer-wrap p {
-font-family: "Oswald";
+font-family: "Ma Condensed";
 font-size: 13px;
 font-weight: 200;
 line-height: 16px;

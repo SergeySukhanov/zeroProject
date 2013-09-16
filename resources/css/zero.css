@@ -1,5 +1,5 @@
-@import url("oswald/oswald.css");
 @import url("zero/zero.css");
+@import url("ma/ma_font.css");
 * {
 	margin: 0;
 	padding: 0;
@@ -8,14 +8,6 @@
 header, nav, section, article, aside, footer {
 	display: block;
 }
-
-
-.oswald {
-	font-family : "Oswald", Tahoma;
-	}
-.oswaldLight {
-	font-family : "Oswald Light", Tahoma;
-	}	
 	
 .zero {
 	font-family : "Zero", Tahoma;
@@ -68,13 +60,13 @@ margin-top: 60px;
 	margin: 36px 80px 0 0;
 	}
 	.weather .grad {
-		font: normal 48px/54px "Oswald Light";
+		font: normal 48px/54px "Ma Condensed";
 		}
 		.weather .grad sup {
 			font-size: 30px;
 			}
 	.weather .text {
-		font: normal 18px/20px "Oswald Light";
+		font: normal 18px/20px "Ma Condensed";
 		}
 /*
 	Time
@@ -91,11 +83,11 @@ margin-top: 60px;
 	}
 
 .time {
-	font: normal 36px/44px "Oswald Light";
+	font: normal 36px/44px "Ma Condensed";
 	margin-bottom: 10px;
 	}
 .place {
-	font: normal 18px/20px "Oswald Light";
+	font: normal 18px/20px "Ma Condensed";
 	}	
 
 	
@@ -104,7 +96,7 @@ margin-top: 60px;
 */	
 	
 .calendar {
-	font-family : "Oswald Light", Tahoma;
+	font-family : "Ma Condensed", Tahoma;
 	color: #6a7379;
 	border-top: 1px dashed #c5c5c5;
 	margin: 0 5%;
@@ -125,7 +117,7 @@ margin-top: 60px;
 		border-radius: 10px;
 		}	
 	.calendar .event h2 {
-		font: normal 20px/42px "Oswald Light", Times;
+		font: normal 20px/42px "Ma Condensed", Times;
 		}	
 	.calendar .event h3 {
 		font-weight: bold;
@@ -172,7 +164,7 @@ margin-top: 60px;
 	margin: 0 0 40px 0;
 	}		
 	.account-item h2 {
-		font: normal 22px/22px "Oswald Light";
+		font: normal 22px/22px "Ma Condensed";
 		}
 		
 #nikeTokken {

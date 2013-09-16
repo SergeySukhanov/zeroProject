@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Ma Condensed';
+    src: url('mabetab-boldcondensed.otf-webfont.eot');
+    src: url('mabetab-boldcondensed.otf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('mabetab-boldcondensed.otf-webfont.woff') format('woff'),
+         url('mabetab-boldcondensed.otf-webfont.ttf') format('truetype'),
+         url('mabetab-boldcondensed.otf-webfont.svg#ma_beta_bbold_condensed') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Ma Condensed Light';
+    src: url('mabetab-lightcondensed.otf-webfont.eot');
+    src: url('mabetab-lightcondensed.otf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('mabetab-lightcondensed.otf-webfont.woff') format('woff'),
+         url('mabetab-lightcondensed.otf-webfont.ttf') format('truetype'),
+         url('mabetab-lightcondensed.otf-webfont.svg#ma_beta_blight_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'Ma Condensed';
+    src: url('mabetab-regularcondensed.otf-webfont.eot');
+    src: url('mabetab-regularcondensed.otf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('mabetab-regularcondensed.otf-webfont.woff') format('woff'),
+         url('mabetab-regularcondensed.otf-webfont.ttf') format('truetype'),
+         url('mabetab-regularcondensed.otf-webfont.svg#ma_beta_bregular_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

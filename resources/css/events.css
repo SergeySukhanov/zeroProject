@@ -20,7 +20,7 @@
 	
 	}	
 	.popup h1 {
-		font: normal 36px/44px "Oswald Light";
+		font: normal 36px/44px "Ma Condensed";
 		margin: 0 20px 10px;	
 		}
 	.popup .popup-content {
@@ -37,7 +37,7 @@
 	font: normal 14px/22px "Zero";
 	}
 	#eventsBlock h1 {
-		font: normal 36px/44px "Oswald Light";
+		font: normal 36px/44px "Ma Condensed";
 		margin: 0 0 20px 0;
 		}
 		
@@ -48,7 +48,7 @@
 	
 	}		
 	.calendar-event  h2{
-		font: normal 22px/22px "Oswald Light";
+		font: normal 22px/22px "Ma Condensed";
 		margin: 0 0 5px 0;
 		overflow: hidden;
 		position: relative;
@@ -65,7 +65,7 @@
 			}
 		
 	.calendar-event  h3 {
-		font: normal 18px/24px "Oswald Light";
+		font: normal 18px/24px "Ma Condensed";
 		}
 	
 	/*

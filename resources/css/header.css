@@ -54,7 +54,7 @@ list-style-type: none;
 font-size: 16px;
 text-decoration: none;
 color: #ffffff;
-font-family: Oswald;
+font-family: Ma Condensed;
 }
 
 .wrapper-menu a:hover {
@@ -62,7 +62,7 @@ font-family: Oswald;
 }
 
 .current-item, .time-head {
-font-family: Oswald;
+font-family: Ma Condensed;
 font-size: 20px;
 color: #ffffff;
 cursor:pointer;
@@ -74,7 +74,7 @@ display: inline-block;
 }
 
 .time-head {
-   font-family: "Oswald Light";
+   font-family: "Ma Condensed";
    font-size: 29px;
    color: #ffffff;
    font-weight: 200;
@@ -84,5 +84,5 @@ display: inline-block;
 
 .register-complete {
 background-color: #286301;
-font-family: "Oswald Light";
+font-family: "Ma Condensed";
 }

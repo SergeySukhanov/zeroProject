@@ -3,7 +3,7 @@ text-align: left;
 display: inline-block;
 margin-left: 5%;
 margin-top: 1%;
-font-family: "Oswald Light";
+font-family: "Ma Condensed";
 font-weight: 200;
 font-size: 20px;
 color: #444444;
@@ -106,7 +106,7 @@ height: 10px;
 color: #333333;
 font-size: 13px;
 font-weight: 500;
-font-family: "Oswald LIght";
+font-family: "Ma Condensed";
 text-align: center;
 }
 .diagram-item-wrap > * {
@@ -116,7 +116,7 @@ bottom: 0;
 }
 
 .diagram-item span {
-font-family: 'Oswald Light';
+font-family: 'Ma Condensed';
 position: relative;
 top: -21px;
 margin-left: 10%;
@@ -125,7 +125,7 @@ margin-left: 10%;
 .willpower-diagram h3 {
 margin-bottom: 24px;
 font-size: 27px;
-font-family: "Oswald Light";
+font-family: "Ma Condensed";
 }
 
 .diagram-item-wrap:last-child {
@@ -145,7 +145,7 @@ margin-right: 10px;
 }
 
 .col label {
-font-family: 'Oswald Light';
+font-family: 'Ma Condensed';
 text-decoration: underline;
 cursor: pointer;
 color: #0072BC;
@@ -161,13 +161,13 @@ margin-top: 3%;
 }
 
 .reset-settings a {
-font-family: "Oswald Light";
+font-family: "Ma Condensed";
 color: #0072BC;
 }
 
 .chart-yesterday {
 color: #666666;
-font-family: "Oswald Light";
+font-family: "Ma Condensed";
 border-top: 1px dashed #999999;
 padding-top: 15px;
 margin-left: 15px;
@@ -175,6 +175,7 @@ margin-right: 15px;
 }
 .header-yes {
 text-align: center;
+font-family: "Ma Condensed Light";
 }
 
 .chart-yesterday h2 {
