@@ -15,6 +15,10 @@ display: inline-block;
 vertical-align: top;
 }
 
+#userHolder h1 {
+	font-family: "Ma Condensed Light"
+	}
+
 .account-photo{
 width: 100px;
 height: 100px;
