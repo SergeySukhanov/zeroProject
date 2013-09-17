@@ -37,10 +37,10 @@ Zero.Calendar = (function(module){
 				success: function (resp) {		
 				
 					if(resp.events && resp.events.length > 0 ) {
-						resp.events.reverse();
+						var arr = resp.events.sort(startTimeSort)
 					
-						for(var i = 0; i < resp.events.length; i++) {
-							var event = _getEventHtml(resp.events[i]);
+						for(var i = 0; i < arr.length; i++) {
+							var event = _getEventHtml(arr[i]);
 							event.appendTo(calendarView);						
 						}					
 						_holder.html('');
@@ -130,6 +130,10 @@ Zero.Calendar = (function(module){
 		
 		
 	}
+	
+	function startTimeSort(a, b) {
+		return a.startTime - b.startTime;
+	}	
 	
 	m.init = function(holder) {				
 		_setHolder(holder);		
