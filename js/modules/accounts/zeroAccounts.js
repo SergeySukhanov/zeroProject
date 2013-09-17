@@ -11,7 +11,6 @@ Zero.GoogleAccount = (function(module){
 				url: initConfiguration.urlGoogleAuthorizationURL,
 				type: 'GET',
 				data : {
-					mode : 'web',
 					redirect : location.protocol + "//" + location.host + '/transport.html' 					
 				},
 				dataType: 'json',
@@ -122,6 +121,7 @@ Zero.GoogleAccount = (function(module){
 	
 	_analyzeAccounts = function() {
 		var accounts = initConfiguration.settingsData.accounts;
+				
 		
 		for(var i = 0; i < accounts.length; i++) {
 			if(accounts[i].type  == 'GOOGLE') {
@@ -133,7 +133,8 @@ Zero.GoogleAccount = (function(module){
 			if(accounts[i].type  == 'FITBIT') {
 				fitbit_account= true;
 			}						
-		}			
+		}
+			
 	};
 	
 	
@@ -191,9 +192,28 @@ Zero.GoogleAccount = (function(module){
 	
 	
 	m.closeConnectWindow = function(w) {
-		accountHolder.html('')
-		_setAccountHolder(accountHolder);
-		w.close();
+		accountHolder.html('');		
+		$.ajax({
+			beforeSend: function (request) {
+				request.setRequestHeader("Access-Token", tokkens.accessToken);
+			},							
+			url: initConfiguration.urlSettings,
+			type: 'GET',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (resp) {	
+				if(resp && resp.result && resp.result.accounts) {
+					accounts = resp.result.accounts;
+					initConfiguration.settingsData.accounts = accounts; 					
+				}
+				_setAccountHolder(accountHolder);
+				Zero.Calendar.init($('#calendarHolder'));
+				w.close();				
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		})		
 	}
 	
 	m.init = function(holder) {		

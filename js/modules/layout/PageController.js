@@ -20,9 +20,12 @@ Zero.PageController = (function(module){
 					contentType:'aplication/json',
 					success:function(data){
 						initConfiguration.settingsData = data.result;
-						console.log(data.result);
+						//console.log(data.result);
 						_postRender();
-						Zero.ChartsSettings.getAjaxWillpower();
+						
+						if(Zero && Zero.ChartsSettings) {
+							Zero.ChartsSettings.getAjaxWillpower();
+						}
 					},
 					error:function(error){
 						console.log(error);
