@@ -22,7 +22,6 @@ Zero.PageController = (function(module){
 						initConfiguration.settingsData = data.result;
 						//console.log(data.result);
 						_postRender();
-						
 						if(Zero && Zero.ChartsSettings) {
 							Zero.ChartsSettings.getAjaxWillpower();
 						}
