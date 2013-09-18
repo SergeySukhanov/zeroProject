@@ -20,7 +20,11 @@ var Zero = (function(m){
 		eventPage:{
     		url:'events.html',
     		moduleName:'PageEventsController'
-    	}		
+    	},		
+		settingsPage:{
+    		url:'settings.html',
+    		moduleName:'PageSettingsController'
+    	}				
     };
     
 	_checkAuth = function() {

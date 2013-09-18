@@ -22,6 +22,11 @@ Zero.LoadPageController = (function(module){
 				page.initialize(list.eventPage.moduleName);
 				break;
 			}			
+			case initConfiguration.getRootLocation()+list.settingsPage.url : {
+				page = Zero.PageController;
+				page.initialize(list.settingsPage.moduleName);
+				break;
+			}						
 			
 		}
 	}
