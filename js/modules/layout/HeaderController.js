@@ -15,7 +15,7 @@ Zero.HeaderController = (function(module){
 	    		},
 	    		main:{
 	    			id:'main-item',
-	    			namePage:'Main',
+	    			namePage:'Board',
 	    			url:'main.html'
 	    		},
 				
@@ -79,7 +79,7 @@ Zero.HeaderController = (function(module){
 	    var header = $('header.header'); 
 	       var root = initConfiguration.getRootLocation();
            var wrapperBrand = $('<div/>').addClass('wrapper-brand');
-           var brand = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.brandImg);
+           var brand = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.headerImg);
            var brandLink  = $('<a/>');
            var link;
            if(localStorage.accessToken){
@@ -93,9 +93,9 @@ Zero.HeaderController = (function(module){
            brandLink.append(brand);
            wrapperBrand.append(brandLink);
            
-           var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
-           var time = $('<div/>').addClass('time-head');               
-              wrapperTimeDate.append(time);
+           // var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
+           // var time = $('<div/>').addClass('time-head');               
+              // wrapperTimeDate.append(time);
               
            var menu = $('<div/>').addClass('wrapper-menu');
            var currentItem = $('<span/>').addClass('current-item');
@@ -104,13 +104,15 @@ Zero.HeaderController = (function(module){
                menu.append(ul);
                
            header.append(wrapperBrand);
-           header.append(wrapperTimeDate);
+           // header.append(wrapperTimeDate);
            header.append(menu);
            // Zero.SettingsController.initialize();
 	    },
 	    
 	    _createMenu = function(root){
 	    	var ul = $('<ul/>');
+	    	var cornerMenu = $('<span/>').addClass('corner-menu');
+	    	    ul.append(cornerMenu);
 	    	var data = config.configMenu;
 	    	for(var prop in data[0]){
 	    		var li = $('<li/>').attr('id', data[0][prop].id);
