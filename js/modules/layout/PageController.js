@@ -56,6 +56,7 @@ Zero.PageController = (function(module){
            var footer = Zero.FooterController;
                footer.initialize();
            Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
+           Zero.Tools.selectUpdate($('.dropdown'));
 	    },
 	    
 	    _setParams = function(param){

@@ -165,7 +165,11 @@ Zero.Tools = (function(module){
 
 		});	
 	
-	},
+	}
+	
+	m.selectUpdate = function(elems){
+		elems.styler();
+	}
 	
 	m.CheckboxUpdate = function(options){
 	var view = this,

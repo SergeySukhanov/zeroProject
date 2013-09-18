@@ -8,6 +8,7 @@
 @import "jslider.css" screen;
 @import "error.css" screen;
 @import "jslider.round.plastic.css" screen;
+@import "jquery.formstyler.css" screen;
 *{margin:0; padding:0; border:0;}
 
 html, body{
@@ -60,7 +61,7 @@ color: #ffffff;
 	height: 100%;
 	background-color: #fff;
 	border-radius: 14px;
-	z-index: 90;
+	z-index: 9;
 	}
 .control {
 	width: 50%;
@@ -70,7 +71,11 @@ color: #ffffff;
 	border-radius: 14px;
 	background-color: #ffffff;
 	box-shadow: -1px 1px 1px #888888;	
-	z-index: 1000;
+	z-index: 10;
 	left: 50%;
 	cursor: pointer;
 	}
+	
+select.dropdown{
+	width: 200px;
+}

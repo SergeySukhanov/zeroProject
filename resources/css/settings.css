@@ -95,5 +95,8 @@
 .settings-content .checkbox-text {
 	display: inline-block;
 	margin-left: 134px;
+	vertical-align: top;
+    margin-top: 3px;
+    margin-right: 10px;
 	}		
 		

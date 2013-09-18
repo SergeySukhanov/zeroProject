@@ -143,7 +143,8 @@ Zero.Settings = (function(module){
 		if(type == 'dropdown') {
 			el = $('<select />').attr({
 					'name' : name,
-					'id' : name,			
+					'id' : name,
+					'class':'dropdown'			
 			});
 			for(var i = 0; i < val.length; i++) {
 				var obj = val[i];
