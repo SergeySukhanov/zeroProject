@@ -174,6 +174,8 @@ Zero.Tools = (function(module){
 	    	elems:options.elems	    	
 	    },
 	    
+	    once = 0,
+	    
 	    _render = function(el){
 	    	var input = $(el);
 	    	var wrapperUpdateCheckbox = $('<div/>').addClass('control-checkbox');
@@ -185,15 +187,22 @@ Zero.Tools = (function(module){
 	    },
 	    _handlers = function(wrap){
 	    	$(wrap).find('.control').bind('click', function(event){
-	    		_actionCheckbox($(event.target));
+	    		if(once == 0){
+	    			once = 1;
+	    		  _actionCheckbox($(event.target));	
+	    		}
 	    	});
 	    	$(wrap).find('.back-layer').bind('click', function(event){
-	    		var control = $(event.target).prev();
-	    		_actionCheckbox(control);
+	    		if(once == 0){
+	    			once = 1;
+	    			var control = $(event.target).prev();
+	    		   _actionCheckbox(control);
+	    		}
 	    	});
 	    };
 	    
 	    _createControl = function(wrap){
+	    	var input = wrap.find('input');
 	    	var wrapSwitcher = $('<div/>').addClass('wrap-switcher');
 	    	var backLayer = $('<div/>').addClass('back-layer');
 	    	
@@ -202,7 +211,11 @@ Zero.Tools = (function(module){
 	    	wrapSwitcher.append(control);
 	    	wrapSwitcher.append(backLayer);
 	    	wrap.append(wrapSwitcher);
-	    	
+	    	if(input.prop('checked')){
+	    		_animateUpdateControl(backLayer, control, true);
+	    	}else{
+	    		_animateUpdateControl(backLayer, control, false);
+	    	}
 	    }
 	    
 	    _actionCheckbox = function(elem){
@@ -217,7 +230,7 @@ Zero.Tools = (function(module){
 	    		originalInput.removeAttr('checked');
 	    		_animateUpdateControl(backLayer, updateInput, false);
 	    	}
-	    	console.log(originalInput.prop('checked'));
+	    	
 	    },
 	    
 	    _animateUpdateControl = function(back, control, flag){
@@ -229,16 +242,20 @@ Zero.Tools = (function(module){
 	    		control.animate({
 	    			left:'0%',
 	    			boxShadow:'1px 1px 1px #888888'
-	    		    },400);
+	    		    },400, function(){
+	    		    	once = 0;
+	    		    });
 	    	}else{
 	    		back.animate({
-	    			backgroundColor:"#a1a1a1"
-	    		},500);
+	    			backgroundColor:"#ffffff"
+	    		},400);
 	    		
 	    		control.animate({
 	    			left:'50%',
 	    			boxShadow:'-1px 1px 1px #888888'
-	    		},500);
+	    		},400, function(){
+	    			once = 0;
+	    		});
 	    	}
 	    };
 	

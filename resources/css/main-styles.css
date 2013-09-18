@@ -71,6 +71,6 @@ color: #ffffff;
 	background-color: #ffffff;
 	box-shadow: -1px 1px 1px #888888;	
 	z-index: 1000;
-	left: 0;
+	left: 50%;
 	cursor: pointer;
 	}
