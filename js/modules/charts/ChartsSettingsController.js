@@ -7,9 +7,11 @@ Zero.ChartsSettings = (function(module){
 		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to set your schedule targets.",
 		   liveTitle:"Live",
 		   doTitle:"Do",
-		   dataSliders:{}
+		   dataSliders:{},
 		   
 	    },
+	    _liveSettings,
+	    _doSettings,
 	    
 	    tokkens = module.getTokens(),
 	
@@ -24,7 +26,7 @@ Zero.ChartsSettings = (function(module){
 					dataType:'json',
 					contentType:'aplication/json',
 					success:function(data){
-						initConfiguration.filtersData = data.result;
+						config.dataSliders = data.result;
 						console.log();
 						_postRender();
 					},
@@ -60,6 +62,8 @@ Zero.ChartsSettings = (function(module){
             var actSettings = $('<div/>').addClass('act-settings');
             var liveSettings = $('<div/>').addClass('live-settings');
             var doSettings = $('<div/>').addClass('do-settings');
+                _liveSettings = liveSettings;
+                _doSettings = doSettings;
             
             var actH3 = $('<h3/>').text(config.actTitle);
             var actP = $('<p/>').text(config.actP);
@@ -86,23 +90,21 @@ Zero.ChartsSettings = (function(module){
             wrapper.append(wrapSettings);
             
             var wrapSliders;
-            var dataSliders = initConfiguration.filtersData || {};
+            var dataSliders = config.dataSliders || {};
             
             
             
             for(var i=0; i<dataSliders.length; i++){
             	if(dataSliders[i].section == "live"){
-            		wrapSliders = liveSettings;
+            		wrapSliders = _liveSettings;
             	}else{
-            		wrapSliders = doSettings;
+            		wrapSliders = _doSettings;
             	}            	
             	_createSlider(wrapSliders, dataSliders[i]); 
             }
             
-            // _createCols(diagramBody);
-            _getAjaxWillpower();
-            
-           console.log('good');         
+            _getAjaxWillpower();
+                  
 	    },
 	    
 	    _createSlider = function(wrap, data){
@@ -145,8 +147,8 @@ Zero.ChartsSettings = (function(module){
            	    smooth: false, 
            	    round: 1, 
            	    skin: "round_plastic",
-                callback: function( value ){
-                   _formatDataSettings();
+                callback: function( value ){                	
+                   _formatDataSettings(value);
                 }
            	    
            	});
@@ -200,20 +202,20 @@ Zero.ChartsSettings = (function(module){
 	       	}, 2000);
 	    },
 	    
-	    _setAjaxSettings = function(dataFilters){
+	    _setAjaxSettings = function(dataFilter){
 	    	
 	    	try{	    		
 	    		$.ajax({
 	    			beforeSend: function (request) {
 					   request.setRequestHeader("Access-Token", tokkens.accessToken);
 				    },
-	    			url:initConfiguration.urlSliders,
+	    			url:initConfiguration.urlSliders+'/'+dataFilter.filter,
 	    			type:'PUT',
 	    			dataType:'json',
 	    			contentType:'application/json',
-	    			data:JSON.stringify(dataFilters),
-	    			success:function(data){
-	    				view.getAjaxWillpower();
+	    			data:JSON.stringify(dataFilter),
+	    			success:function(data){	    				
+	    				_getAjaxWillpower();
 	    			},
 	    			error:function(error){
 	    				console.log(error);
@@ -237,7 +239,21 @@ Zero.ChartsSettings = (function(module){
 					contentType:'aplication/json',
 					success:function(response){
 						console.log(response);
-						_paintChartsSettings();
+						var wrapSliders;
+						_liveSettings.empty();
+						_doSettings.empty();
+						config.dataSliders = response.result;
+                        var dataSliders = config.dataSliders || {};
+            
+                      for(var i=0; i<dataSliders.length; i++){
+            	        if(dataSliders[i].section == "live"){
+            	           	wrapSliders = _liveSettings;
+            	        }else{
+            		        wrapSliders = _doSettings;
+            	        }            	
+            	            _createSlider(wrapSliders, dataSliders[i]); 
+                     }
+						_getAjaxWillpower();
 					},
 					error:function(error){
 						console.log(error);
@@ -248,33 +264,28 @@ Zero.ChartsSettings = (function(module){
 	    	}
 	    },
 	    
-	    _formatDataSettings = function(){
-	    	var newData = initConfiguration.settingsData;
-	    	var saveData = newData.filters;
-	    	console.log(saveData);
-	    	var currentFilters = $('.layout-slider').children('input');
+	    _formatDataSettings = function(value){
+	    	var newData = config.dataSliders;
 	    	
+	    	var currentFilters = $('.layout-slider').children('input');
 	    	for(var i=0; i<currentFilters.length; i++){
 	    		var values = $(currentFilters[i]).val().split(';');
 	    		var minValue = parseInt(values[0]);
                 var maxValue = parseInt(values[1]);
-                var target = (maxValue-minValue)/2+minValue;
                 
-                for(var j=0; j<saveData.length; j++){
-                	if(saveData[j].filter == $(currentFilters[i]).attr('id')){
-                		var comfort = saveData[i].comfort;
-                		if(comfort.min != minValue){
-                			comfort.min = minValue;
-                		}
-                		if(comfort.max != maxValue){
-                			comfort.max = maxValue;
+                for(var j=0; j<newData.length; j++){
+                	if(newData[j].filter == $(currentFilters[i]).attr('id')){
+                		if(newData[j].comfortMin != minValue || newData[j].comfortMax != maxValue){
+                			console.log(newData[j]);
+                			newData[j].comfortMin = minValue;
+                			newData[j].comfortMax = maxValue;
+                		_setAjaxSettings(newData[j]);
+
                 		}
                 	}
-                }
-                   
+                }   
 	    	}
-	    	console.log(newData);
-	    	_setAjaxSettings(newData);
+	    	
 	    };
 	_getAjaxWillpower = function(){
 	    	try{	    		

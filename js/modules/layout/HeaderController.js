@@ -3,6 +3,9 @@ Zero.HeaderController = (function(module){
 	
 	    config = {
 	    	brandImg:'small-brand.png',
+	    	searchImg:'search-icon.PNG',
+	    	settingsImg:'settings-icon.PNG',
+	    	headerImg:'header-icon-brand.PNG',
 	    	
 	    	configMenu:[{
 	    		account:{

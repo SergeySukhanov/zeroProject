@@ -9,7 +9,8 @@ Zero.PageController = (function(module){
 	    tokkens = module.getTokens(),
 	    
 	    _render = function(){
-	    	try{
+	    	if(tokkens.accessToken){
+	    	   try{
 	    		$.ajax({
 	    		beforeSend: function (request) {
 					   request.setRequestHeader("Access-Token", tokkens.accessToken);
@@ -27,8 +28,11 @@ Zero.PageController = (function(module){
 						console.log(error);
 					}
 	    	    });
-	    	}catch(e){
-	    		console.log(e);
+	    	    }catch(e){
+	    		   console.log(e);
+	    	   }	
+	    	}else{
+	    		_postRender();
 	    	}
 	    },
 	    
