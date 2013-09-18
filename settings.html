@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="resources/css/settings.css" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="resources/css/ui/jquery-ui-1.10.3.custom.css" type="text/css" media="screen, projection" />
 	<script src="js/libs/jquery-1.10.2.min.js"></script>
+	<script src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/libs/jquery-ui-timepicker-addon.js"></script>
 	<script src="js/initConfiguration.js"></script>	
 	<script type="text/javascript" src="js/zeroController.js"></script>	
 	<script src="js/modules/zeroTools.js"></script>	
@@ -28,9 +30,32 @@
 
 <section id="wrapper">
 	<header class="header">
+	
 	</header>
-	<div class="content no-border">
-
+	<div class="content no-border settings-page">
+		<h1>Settings</h1>
+		
+		<div class="settings-content">
+			
+			<ul class="tabs-menu">
+				<li><a href="#personal">Personal</a></li>
+				<li><a href="#import">Import</a></li>
+				<li><a href="#time">Time Zones</a></li>
+				<li><a href="#unit">Units</a></li>
+				<li><a href="#calendar">Calendar</a></li>
+				<li><a href="#group">Groups</a></li>
+			</ul>
+			<div class="tabs-pages">
+				<div class="personal-tab tab-block"></div>
+				<div class="import-tab tab-block"></div>
+				<div class="time-tab tab-block"></div>
+				<div class="unit-tab tab-block"></div>
+				<div class="calendar-tab tab-block"></div>
+				<div class="group-tab tab-block"></div>
+			</div>
+			
+		</div>
+	
 	</div>
 </section>	
 <footer class="footer">

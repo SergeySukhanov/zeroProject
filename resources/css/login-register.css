@@ -24,7 +24,8 @@ border-bottom: 1px dashed #999999;
 padding-top: 15px;
 }
 
-.row input {
+.row input[type="text"], {
+.row input[type="password"], {
 width: 269px;
 border: 1px solid #cccccc;
 padding: 4px 26px 4px 8px;
@@ -32,7 +33,8 @@ font-family: "Zero";
 font-size: 15px;
 }
 
-.row input:focus{
+.row input[type="text"]:focus,{
+.row input[type="password"]:focus,{
 	outline:1px solid #3cc6f0;
 }
 

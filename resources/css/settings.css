@@ -1,0 +1,98 @@
+.c-inactive {
+	color : #d0d0d0;
+	}
+.c-active {
+	color : #f89931;
+	}	
+
+
+.settings-page {
+	color : #818281;
+	font-family: "Zero";
+	}
+	
+	.settings-page h1 {
+		font: normal 36px/44px "Ma Condensed";
+		margin: 10px 20px;
+		color: #7f8180;	
+		}
+
+.settings-content {
+	margin: 40px 20px 0 70px;
+	}
+	
+	.settings-content .tabs-menu ,
+	.settings-content .tabs-pages {
+		display: inline-block;
+		vertical-align: top;
+		}
+		
+	.settings-content .tabs-menu {
+		list-style: none;
+		width: 200px;
+		font-size: 20px;		
+		font-family: "Zero";
+		}	
+		.settings-content .tabs-menu li {
+			margin: 0 0 20px 0;
+			}
+			.settings-content .tabs-menu li a {
+				text-decoration: none;
+				color : #d0d0d0;
+				outline: none;
+				}
+			.settings-content .tabs-menu li a.c-active {
+				color : #f89931;				
+				}	
+			.settings-content .tabs-menu li a:hover {
+				color : #f89931;				
+				}	
+			
+			
+	.settings-content .tabs-pages .tab-block {
+		display: none;
+		}		
+	.settings-content .tabs-pages .active-tab {
+		display: block;
+		}	
+
+/*
+	Form
+*/		
+		
+.tab-block .row {
+	margin: 0 0 5px 0;
+	}
+		
+	.tab-block .row label {
+		display: inline-block;
+		width: 120px;
+		margin: 0 10px 0 0;  
+		text-align: right;
+		}	
+	
+	.tab-block .row input[type = 'text'] {
+		border: none;
+		border-bottom: 1px solid #e1e1e1;
+		font: normal 14px/18px "Zero";
+		width: 460px;
+		}	
+
+.settings-content .button-holder {
+	width: 840px;
+	margin: 140px 0 0 0;
+	text-align: right;
+	}
+	.settings-content .button-holder button {
+		background : #fff;
+		color : #e2e2e2;
+		}
+	.settings-content .button-holder button.bt-save {
+		color : #f89931;
+		}	
+		
+.settings-content .checkbox-text {
+	display: inline-block;
+	margin-left: 134px;
+	}		
+		

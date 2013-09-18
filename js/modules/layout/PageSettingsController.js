@@ -6,7 +6,7 @@ Zero.PageSettingsController = (function(module){
 	    },
 	
 	    _render = function(){
-		
+			Zero.Settings.init();
 			_postRender();
 	    },
 	    
