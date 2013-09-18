@@ -21,8 +21,9 @@ Zero.PageController = (function(module){
 					contentType:'aplication/json',
 					success:function(data){
 						initConfiguration.settingsData = data.result;
-						console.log(data.result);
+						//console.log(data.result);
 						_postRender();
+					
 					},
 					error:function(error){
 						console.log(error);
