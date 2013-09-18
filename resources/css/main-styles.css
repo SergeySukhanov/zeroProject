@@ -41,36 +41,36 @@ color: #ffffff;
 /*---checkbox---*/
 
 .control-checkbox {
-width: 100px;
-height: 50px;
-display: inline-block;
-position:relative;
-border:1px solid #e98d31;
-border-radius: 40px;
-}
+	width: 56px;
+	height: 28px;
+	display: inline-block;
+	position:relative;
+	border:1px solid #e98d31;
+	border-radius: 40px;
+	}
 
 .wrap-switcher {
-width: 100%;
-height: 100%;
-position: relative;
-}
+	width: 100%;
+	height: 100%;
+	position: relative;
+	}
 .back-layer {
-position: absolute;
-width: 100%;
-height: 100%;
-background-color: #a1a1a1;
-border-radius: 25px;
-z-index: 90;
-}
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	border-radius: 14px;
+	z-index: 90;
+	}
 .control {
-width: 50%;
-height: 100%;
-position: absolute;
-display: inline-block;
-border-radius: 50px;
-background-color: #ffffff;
-box-shadow: -1px 1px 1px #888888;
-left: 50%;
-z-index: 1000;
-cursor: pointer;
-}
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	display: inline-block;
+	border-radius: 14px;
+	background-color: #ffffff;
+	box-shadow: -1px 1px 1px #888888;	
+	z-index: 1000;
+	left: 0;
+	cursor: pointer;
+	}

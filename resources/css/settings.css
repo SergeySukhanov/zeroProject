@@ -86,6 +86,7 @@
 	.settings-content .button-holder button {
 		background : #fff;
 		color : #e2e2e2;
+		font-size: 20px;		
 		}
 	.settings-content .button-holder button.bt-save {
 		color : #f89931;

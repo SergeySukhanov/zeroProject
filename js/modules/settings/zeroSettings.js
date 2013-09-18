@@ -10,6 +10,8 @@ Zero.Settings = (function(module){
 
 		_createPersonalTab();
 		_createTimeTab();
+		_createImportTab();
+		_createUnitTab();
 			
 		btRevert.appendTo(buttonHolder);
 		btSave.appendTo(buttonHolder);
@@ -35,6 +37,32 @@ Zero.Settings = (function(module){
 		
 	};
 	
+	_createImportTab = function() {
+		var holder = $('.tabs-pages .import-tab'),
+			fAcc = _createFormRowHtml('accelerometer', 'Accelerometer', 'checkbox', null, true),
+			fLocation = _createFormRowHtml('location', 'Location', 'checkbox',  null, true),
+			fContacts = _createFormRowHtml('contacts', 'Contacts', 'checkbox', null, true);
+			
+			
+		fAcc.appendTo(holder);	
+		fLocation.appendTo(holder);	
+		fContacts.appendTo(holder);	
+			
+	};
+	
+	_createUnitTab = function() {
+		var holder = $('.tabs-pages .unit-tab'),
+			unitValues = [
+				{'metric' : 'metric'},
+				{'english' : 'english'}
+			],
+			fMetrics = _createFormRowHtml('metric', 'Set Units', 'dropdown', unitValues),
+			fInherit = _createFormRowHtml('metricFromDevice', 'inherit settings from sync device', 'checkbox');
+		
+		fMetrics.appendTo(holder);
+		fInherit.appendTo(holder);
+			
+	};
 	
 	_createTimeTab = function() {
 		var holder = $('.tabs-pages .time-tab'),
@@ -75,13 +103,10 @@ Zero.Settings = (function(module){
 		fSync.appendTo(holder);
 		fSecondary.appendTo(holder);	
 		fTravel.appendTo(holder);
-		
-		console.warn(holder);
-		
 			
 	};
 	
-	_createFormRowHtml = function(name, text, type, val) {
+	_createFormRowHtml = function(name, text, type, val, useLabel) {
 		var html = $('<div />').addClass('row'),
 			label,
 			el,
@@ -90,7 +115,11 @@ Zero.Settings = (function(module){
 		if(type != 'checkbox') {
 			label = $('<label />').attr('for', name).text(text + ':')
 		} else {
-			checkboxText = $('<span />').addClass('checkbox-text').text(text);			
+			if(useLabel) {
+				label = $('<label />').attr('for', name).text(text + ':')
+			} else {
+				checkboxText = $('<span />').addClass('checkbox-text').text(text);			
+			}			
 		}
 		
 		if(type == 'string') {
@@ -129,6 +158,7 @@ Zero.Settings = (function(module){
 					'type' : 'checkbox',
 					'name' : name,
 					'id' : name,
+					'class' : 'checkbox'
 				});			
 		}
 		
