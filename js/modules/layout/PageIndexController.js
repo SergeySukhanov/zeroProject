@@ -31,8 +31,8 @@ Zero.PageIndexController = (function(module){
 	       _handlers();
 	    },
 	    
-	    _handlers = function(){
-	    	
+	    _handlers = function(){
+	    	Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
 	    };
 	    
 	    _paintIndex = function(){            var wrapperHeader = $('.header-index');

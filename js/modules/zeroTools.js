@@ -165,7 +165,91 @@ Zero.Tools = (function(module){
 
 		});	
 	
+	},
+	
+	m.CheckboxUpdate = function(options){
+	var view = this,
+	
+	    config = {
+	    	elems:options.elems	    	
+	    },
+	    
+	    _render = function(el){
+	    	var input = $(el);
+	    	var wrapperUpdateCheckbox = $('<div/>').addClass('control-checkbox');
+	    	var wrap = input.wrap(wrapperUpdateCheckbox);
+	    	var holder = wrap.parent(); 
+	    	input.hide();
+	    	_createControl(holder);
+	    	_handlers(holder);
+	    },
+	    _handlers = function(wrap){
+	    	$(wrap).find('.control').bind('click', function(event){
+	    		_actionCheckbox($(event.target));
+	    	});
+	    	$(wrap).find('.back-layer').bind('click', function(event){
+	    		var control = $(event.target).prev();
+	    		_actionCheckbox(control);
+	    	});
+	    };
+	    
+	    _createControl = function(wrap){
+	    	var wrapSwitcher = $('<div/>').addClass('wrap-switcher');
+	    	var backLayer = $('<div/>').addClass('back-layer');
+	    	
+	    	var control = $('<span/>').addClass('control');
+	    	
+	    	wrapSwitcher.append(control);
+	    	wrapSwitcher.append(backLayer);
+	    	wrap.append(wrapSwitcher);
+	    	
+	    }
+	    
+	    _actionCheckbox = function(elem){
+	    	var currentWrapper = $(elem).parents('.control-checkbox');
+	    	var originalInput = currentWrapper.find('input');
+	    	var backLayer = currentWrapper.find('.back-layer');
+	    	var updateInput = $(elem);
+	    	if(!originalInput.prop('checked')){
+	    		originalInput.prop('checked', 'checked');
+	    		_animateUpdateControl(backLayer, updateInput, true);
+	    	}else{
+	    		originalInput.removeAttr('checked');
+	    		_animateUpdateControl(backLayer, updateInput, false);
+	    	}
+	    	console.log(originalInput.prop('checked'));
+	    },
+	    
+	    _animateUpdateControl = function(back, control, flag){
+	    	if(flag == true){
+	    		back.animate({
+	    			backgroundColor:"#ff9934"
+	    		},400);
+	    		
+	    		control.animate({
+	    			left:'0%',
+	    			boxShadow:'1px 1px 1px #888888'
+	    		    },400);
+	    	}else{
+	    		back.animate({
+	    			backgroundColor:"#a1a1a1"
+	    		},500);
+	    		
+	    		control.animate({
+	    			left:'50%',
+	    			boxShadow:'-1px 1px 1px #888888'
+	    		},500);
+	    	}
+	    };
+	
+	view.init = function(){
+		$(config.elems).each(function(index, elem){
+			_render(elem);
+		});
 	}
+	
+	view.init();
+   };
 	
 	m.ajaxErrorHandler();
 	
