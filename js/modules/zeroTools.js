@@ -234,14 +234,18 @@ Zero.Tools = (function(module){
 	    },
 	    
 	    _animateUpdateControl = function(back, control, flag){
+	    	var wrapperCheckbox = back.parents('.control-checkbox');
 	    	if(flag == true){
 	    		back.animate({
 	    			backgroundColor:"#ff9934"
 	    		},400);
 	    		
+	    		wrapperCheckbox.animate({
+	    			borderColor:"#ff9934"
+	    		}, 400);
 	    		control.animate({
 	    			left:'0%',
-	    			boxShadow:'1px 1px 1px #888888'
+	    			boxShadow:'1px 1px 1px #cccccc'
 	    		    },400, function(){
 	    		    	once = 0;
 	    		    });
@@ -249,10 +253,12 @@ Zero.Tools = (function(module){
 	    		back.animate({
 	    			backgroundColor:"#ffffff"
 	    		},400);
-	    		
+	    		wrapperCheckbox.animate({
+	    			borderColor:"#cccccc"
+	    		}, 400);
 	    		control.animate({
 	    			left:'50%',
-	    			boxShadow:'-1px 1px 1px #888888'
+	    			boxShadow:'-1px 1px 1px #cccccc'
 	    		},400, function(){
 	    			once = 0;
 	    		});
