@@ -149,7 +149,7 @@ Zero.Settings = (function(module){
 			for(var i = 0; i < val.length; i++) {
 				var obj = val[i];
 				for(var key in obj) {
-					$('<option />').attr('id', obj[key]).text(key).appendTo(el);					
+					$('<option />').attr('value', obj[key]).text(key).appendTo(el);					
 				}
 			}
 		}
