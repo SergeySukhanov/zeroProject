@@ -1,5 +1,7 @@
 Zero.Settings = (function(module){
 	var m = {};
+	var calendarValues = [];	
+	
 	
 	_createTabs = function() {
 	
@@ -8,10 +10,13 @@ Zero.Settings = (function(module){
 			btSave = $('<button />').addClass('bt-save').text('Save'),
 			btRevert = $('<button />').addClass('bt-revert').text('Revert');
 
+			
+			
 		_createPersonalTab();
 		_createTimeTab();
 		_createImportTab();
 		_createUnitTab();
+		_createCalendarTab();
 			
 		btRevert.appendTo(buttonHolder);
 		btSave.appendTo(buttonHolder);
@@ -106,6 +111,80 @@ Zero.Settings = (function(module){
 			
 	};
 	
+	
+	_createCalendarTab = function() {
+		var holder = $('.tabs-pages .calendar-tab'),
+			alertValues = [
+				{'5 minutes before' : '5'},
+				{'10 minutes before' : '10'},
+				{'15 minutes before' : '15'},
+				{'30 minutes before' : '30'},
+				{'45 minutes before' : '45'},
+				{'1 hour before' : '60'}				
+			],		
+			fAlerts = _createFormRowHtml('alerts', 'Default Alert', 'dropdown', alertValues),
+			weekValues = [
+				{'Sunday' : '1'},
+				{'Monday' : '2'},
+				{'Tuesday' : '3'},
+				{'Wednesday' : '4'},
+				{'Thursday' : '5'},
+				{'Friday' : '6'},
+				{'Saturday' : '7'}
+			],
+			fWeek = _createFormRowHtml('weekStarts', 'Week Starts', 'dropdown', weekValues),
+			fShowDeclined = _createFormRowHtml('showDeclined', 'Show Declined', 'checkbox',  null, true),
+			fCheckIn = _createFormRowHtml('autoCheck', 'Auto Check-In', 'checkbox',  null, true);
+
+			
+			fCalendars = _createFormRowHtml('primaryCalendar', 'Primary', 'dropdown', calendarValues);
+			fCalendarsS = _createFormRowHtml('secondaryCalendar', 'Secondary', 'dropdown', calendarValues);
+			fHiddenCalendars = _createFormRowHtml('hiddenCalendar', 'Hidden', 'dropdown', calendarValues);
+			fHolyDayCalendars = _createFormRowHtml('holydaysCalendar', 'Holidays', 'dropdown', calendarValues);
+			
+			fCalendars.appendTo(holder);
+			fCalendarsS.appendTo(holder);
+			fHiddenCalendars.appendTo(holder);
+			fAlerts.appendTo(holder);
+			fHolyDayCalendars.appendTo(holder);
+			fWeek.appendTo(holder);
+			fShowDeclined.appendTo(holder);
+			fCheckIn.appendTo(holder);
+	
+	};
+	
+	
+	_getCalendars = function() {
+		var tokkens = module.getTokens();
+		$.ajax({
+			beforeSend: function (request) {
+				request.setRequestHeader("Access-Token", tokkens.accessToken);
+			},			
+			url: initConfiguration.urlCalendarsList,
+			type: 'GET',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (resp) {			
+				if(resp && resp.accounts && resp.accounts.length > 0) {
+					for(var i=0; i < resp.accounts.length; i++) {
+						var cal = resp.accounts[i].calendars;
+						for(var j=0; j < cal.length; j++) {
+							var item = cal[j];
+							var obj = {};
+							obj[cal[j].summary] = cal[j].id;
+							calendarValues.push(obj);							
+						}
+					}				
+					_createTabs();
+				}
+				
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		})		
+	}
+	
 	_createFormRowHtml = function(name, text, type, val, useLabel) {
 		var html = $('<div />').addClass('row'),
 			label,
@@ -151,7 +230,7 @@ Zero.Settings = (function(module){
 				for(var key in obj) {
 					$('<option />').attr('value', obj[key]).text(key).appendTo(el);					
 				}
-			}
+			};
 		}
 		
 		if(type == 'checkbox') {
@@ -160,13 +239,23 @@ Zero.Settings = (function(module){
 					'name' : name,
 					'id' : name,
 					'class' : 'checkbox'
-				});			
+				});	
+
 		}
 		
 		
 		if(label) label.appendTo(html);
 		if(checkboxText) checkboxText.appendTo(html);
 		el.appendTo(html);
+		
+		if(type == 'checkbox') {
+			Zero.Tools.CheckboxUpdate({elems: el});
+		}
+		if(type == 'dropdown') {
+			Zero.Tools.selectUpdate(el);
+		}
+		
+		
 		return html;
 	}
 	
@@ -206,13 +295,13 @@ Zero.Settings = (function(module){
 	_afterRender = function() {
 		$(function(){			
 			_handlerTabs();			
+           //Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
+           //Zero.Tools.selectUpdate($('.dropdown'));			
 		})
 	};
-
 	
-	m.init = function() {	
-		_createTabs();
-		//_createPersonalTab();
+	m.init = function() {		
+		_getCalendars();		
 		_afterRender();		
 	}
 	return m;
