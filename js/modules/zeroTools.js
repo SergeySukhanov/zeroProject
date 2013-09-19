@@ -168,7 +168,9 @@ Zero.Tools = (function(module){
 	}
 	
 	m.selectUpdate = function(elems){
-		elems.styler();
+		if($().styler != undefined){
+		  elems.styler();	
+		}
 	}
 	
 	m.CheckboxUpdate = function(options){
