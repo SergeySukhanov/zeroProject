@@ -1,7 +1,9 @@
 Zero.FooterController = (function(module){
 	var view = {},
 	
-	    config = {},
+	    config = {
+	    	brandImg:'small-brand.png'
+	    },
 	
 	    _render = function(){
 	       _postRender();
@@ -19,9 +21,9 @@ Zero.FooterController = (function(module){
 	    
 	    _paintFooter = function(){
 	       var footer = $('footer.footer');
-	       
+	       var root = initConfiguration.getRootLocation();
 	       var copyRightWrapper = $('<div/>').addClass('copyright-wrapper');
-	       var pCopy = $('<p/>').html('&copy; ZERO');
+	       var pCopy = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.brandImg);
 	           copyRightWrapper.append(pCopy);
 	           
 	           footer.append(copyRightWrapper);
