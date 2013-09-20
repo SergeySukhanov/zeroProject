@@ -24,11 +24,13 @@ Zero.HeaderController = (function(module){
 					namePage : 'Events',
 					url : 'events.html'
 				},
+				/*
 				settings : {
 					id : 'settings',
 					namePage : 'Settings',
 					url : 'settings.html'
-				},				
+				},
+				*/	
 	    		logout:{
 	    			id:'logout-item',
 	    			namePage:'Log out',

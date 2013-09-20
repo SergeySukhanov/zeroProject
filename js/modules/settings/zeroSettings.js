@@ -18,6 +18,11 @@ Zero.Settings = (function(module){
 		_createUnitTab();
 		_createCalendarTab();
 			
+			
+	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
+	    Zero.Tools.selectUpdate($('.dropdown'));
+			
+			
 		btRevert.appendTo(buttonHolder);
 		btSave.appendTo(buttonHolder);
 		buttonHolder.appendTo(holder);
@@ -149,8 +154,7 @@ Zero.Settings = (function(module){
 			fHolyDayCalendars.appendTo(holder);
 			fWeek.appendTo(holder);
 			fShowDeclined.appendTo(holder);
-			fCheckIn.appendTo(holder);
-	
+			fCheckIn.appendTo(holder);	
 	};
 	
 	
@@ -247,14 +251,6 @@ Zero.Settings = (function(module){
 		if(label) label.appendTo(html);
 		if(checkboxText) checkboxText.appendTo(html);
 		el.appendTo(html);
-		
-		if(type == 'checkbox') {
-			Zero.Tools.CheckboxUpdate({elems: el});
-		}
-		if(type == 'dropdown') {
-			Zero.Tools.selectUpdate(el);
-		}
-		
 		
 		return html;
 	}
