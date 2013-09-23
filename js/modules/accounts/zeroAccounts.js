@@ -11,7 +11,7 @@ Zero.GoogleAccount = (function(module){
 				url: initConfiguration.urlGoogleAuthorizationURL,
 				type: 'GET',
 				data : {
-					redirect : location.protocol + "//" + location.host + '/transport.html' 					
+					redirect : initConfiguration.getRootLocation() + 'transport.html' 					
 				},
 				dataType: 'json',
 				contentType: "application/json",
@@ -43,7 +43,7 @@ Zero.GoogleAccount = (function(module){
 				type: 'GET',
 				data : {
 					mode : 'web',
-					redirect : location.protocol + "//" + location.host + '/transport.html' 
+					redirect : initConfiguration.getRootLocation() + 'transport.html' 
 				},				
 				dataType: 'json',
 				contentType: "application/json",
