@@ -64,13 +64,25 @@ header, nav, section, article, aside, footer {
 	text-align: left;
 	margin: 36px 80px 0 0;
 	}
+    .weather .weatherimg{
+        max-height: 100px;
+        max-width: 100px;
+        width: 100px;
+        height: 100px;
+    }
+    .weather .weathermsg{
+        font: normal 18px/20px "Ma Condensed";
+    }
+    .weather .text{
+        display: inline-block;
+    }
 	.weather .grad {
 		font: normal 48px/54px "Ma Condensed";
 		}
 		.weather .grad sup {
 			font-size: 30px;
 			}
-	.weather .text {
+	.weather .type{
 		font: normal 18px/20px "Ma Condensed";
 		}
 /*

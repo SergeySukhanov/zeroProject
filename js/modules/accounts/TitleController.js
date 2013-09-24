@@ -72,7 +72,7 @@ Zero.TitleController = (function(module){
 	    },
 	    
 	    _createWeather = function(wrap){
-	    	
+	    	Zero.WeatherController.initialize();
 	    };
 	    
 	view.initialize = function(){
