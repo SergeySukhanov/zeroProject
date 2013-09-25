@@ -16,7 +16,7 @@ Zero.ModalController = (function(module){
 	    		                                                                   'background-color':'#333333', 
 	    		                                                                   'opacity':0.5
 	    	                                                                    });
-	    	var crossClose = $('<span/>').addClass('cross-close').addClass('popup');
+	    	// var crossClose = $('<span/>').addClass('cross-close').addClass('popup');
 	    	var outerPopupContainer = $('<div/>').addClass('popup-container').addClass('popup').attr('id', id);
 	    	var header = $('<div/>').addClass('header-popup-inner');
 	    	var content = $('<div/>').addClass('content-popup-inner');
@@ -26,20 +26,21 @@ Zero.ModalController = (function(module){
 	    	outerPopupContainer.append(content);
 	    	outerPopupContainer.append(footer);
 	    	
-	    	layout.append(crossClose);
+	    	// layout.append(crossClose);
 	    	$('body').append(layout);
 	    	$('body').append(outerPopupContainer);
 	    	_show();
 	    },
 	    
 	    _handlers = function(){
-	    	$('.cross-close').bind('click', function(event){
+	    	$('.layout-popup').bind('click', function(event){
 	    		_hide();
 	    	});
 	    	
+	    	
 	    	$(document).bind('keyup', function(event){
 	    		if(event.keyCode == 27){
-	    			$('.cross-close').trigger('click');
+	    			$('.layout-popup').trigger('click');
 	    		}
 	    	});
 	    },
