@@ -5,11 +5,14 @@ Zero.ModalController = (function(module){
 	    	
 	    },
 	    
+		popup = null,
+		
+		
 	    _create = function(id){
 	    	var heightOuter= $('#wrapper').outerHeight() + $('.footer').outerHeight();
 	    	var layout = $('<div/>').addClass('layout-popup').addClass('popup').css({
 	    		                                                                   'height':heightOuter,
-	    		                                                                   'z-index':10000, 
+	    		                                                                   'z-index':200, 
 	    		                                                                   'width':'100%',
 	    		                                                                   'position':'absolute',
 	    		                                                                   'top':0, 
@@ -21,17 +24,61 @@ Zero.ModalController = (function(module){
 	    	var header = $('<div/>').addClass('header-popup-inner');
 	    	var content = $('<div/>').addClass('content-popup-inner');
 	    	var footer = $('<div/>').addClass('footer-popup-inner');
+			var title = $('<h1 />').text('Welcome');
+			title.appendTo(header);
+			var btClose = $('<button />').addClass('close-popup').text('Cancel');
+			btClose.appendTo(header);
+			
+			btClose.bind('click', function(e){
+				_hide();
+			})
+			
 	    	
 	    	outerPopupContainer.append(header);
 	    	outerPopupContainer.append(content);
 	    	outerPopupContainer.append(footer);
 	    	
+			
+			
+			
 	    	
 	    	// layout.append(crossClose);
 	    	$('body').append(layout);
 	    	$('body').append(outerPopupContainer);
 	    	_handlers();
 	    	
+			outerPopupContainer.setHeader = function(text) {
+				var header = $('.header-popup-inner h1', outerPopupContainer);
+					header.text(text);				
+			}
+			
+			outerPopupContainer.setContent = function(text) {
+				var content = $('.content-popup-inner', outerPopupContainer);
+					content.html(text);	    	    
+				
+			}			
+			
+			outerPopupContainer.setFooter = function(text) {
+				var footer = $('.footer-popup-inner', outerPopupContainer);
+					footer.html(text);				
+			}			
+			
+			outerPopupContainer.setWidth = function(w) {
+				outerPopupContainer.width(w);
+				outerPopupContainer.css('marginLeft', w/2*(-1));
+			}
+			
+			outerPopupContainer.show = function() {
+				_show();
+			}
+
+			outerPopupContainer.hide = function(e) {
+				e.preventDefault();				
+				_hide();
+			}
+			
+			popup = outerPopupContainer;
+			
 	    	return outerPopupContainer;
 	    },
 	    
@@ -49,7 +96,7 @@ Zero.ModalController = (function(module){
 	    },
 	    
 	    _destroy = function(){
-	    	
+	    	$('.popup').remove();
 	    },
 	    
 	    _show = function(){
@@ -60,6 +107,7 @@ Zero.ModalController = (function(module){
 	    _hide = function(){
 	    	$('.popup').fadeOut(200);
 	    	console.log('hide');
+			_destroy();
 	    };
 	    
 	    view.getPopup = function(id){
@@ -67,7 +115,7 @@ Zero.ModalController = (function(module){
 	    	if(elemPopup.length == 0){
 	    		return _create(id);
 	    	}else{
-	    	   return elemPopup;
+	    	   return popup;
 	    	}
 	    };
 	    

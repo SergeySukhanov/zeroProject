@@ -14,7 +14,7 @@ var initConfiguration = {
 	 },
 //LOCAL	 
 	 //auth	  
-	apiUrl: 'http://zerosrv02.domain.corp/api_usr/V1/', 
+	apiUrl: 'http://zerosrv02.domain.corp/api_srv/V1/', 
 	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/w',
 	urlLogin:'http://zerosrv02.domain.corp/api_usr/V1/login',
 	

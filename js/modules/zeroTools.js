@@ -282,5 +282,17 @@ Zero.Tools = (function(module){
 	
 	m.ajaxErrorHandler();
 	
+	m.generateNoty = function(type, text) {
+		var n = noty({
+			text: text,
+			type: type,
+			dismissQueue: false,
+			layout: 'topRight',
+			theme: 'defaultTheme'
+		});
+		return n;
+	}
+	
+	
 	return m;
 }(Zero));

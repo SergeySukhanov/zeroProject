@@ -29,17 +29,15 @@ Zero.TitleController = (function(module){
             wrapperTitle.append(weatherHolder);
             
             _createAccountName(accountHolder);
-            _createWeather(weatherHolder); 
+            //_createWeather(weatherHolder); 
              
 	    },
 	    
 	    _createAccountName = function(wrap){
 	    	var wrapper = wrap;
-	    	var root = initConfiguration.getRootLocation();
-	    	var divPhoto = $('<div/>').addClass('account-photo');
-	    	var imgFace = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.faceImg);
-	    	    divPhoto.append(imgFace);
-	    	    
+	    	var divPhoto = $('<div/>').attr('id','userPhotoHolder').addClass('account-photo');
+            Zero.AccountPhotoController.initialize();
+
 	    	var divWelcome = $('<div/>').addClass('welcome-user');
 	    	
 	    	var h1 = $('<h1/>').text('Good');

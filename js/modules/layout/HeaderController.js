@@ -47,7 +47,7 @@ Zero.HeaderController = (function(module){
 				},
 				
 				settings : {
-					id :'settings',
+					id : 'settings',
 					namePage : 'Settings',
 					url : 'settings.html'
 				},
@@ -112,7 +112,14 @@ Zero.HeaderController = (function(module){
 	    	
 	    	
 	    	
-	    	setInterval(_intervalTime, 1000);           // $('.test-link').click(function(event){
+	    	setInterval(_intervalTime, 1000);			
+			$('#addGroup-item > a').bind('click', function(e){
+				e.preventDefault();
+				Zero.Team.addGroupPopup();	
+			})
+			
+			
+           // $('.test-link').click(function(event){
            	 // var linkPOpup =  Zero.ModalController.getPopup('test-popup');
            	 // console.log(linkPOpup);
            // });            
