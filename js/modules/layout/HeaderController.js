@@ -6,7 +6,28 @@ Zero.HeaderController = (function(module){
 	    	searchImg:'search-icon.PNG',
 	    	settingsImg:'settings-icon.PNG',
 	    	headerImg:'header-icon-brand.PNG',
-	    	
+	    	configAddMenu:[{
+	    	    event:{
+	    	    	id:'addEvent-item',
+	    	    	namePage:'event',
+	    	    	url:''
+	    	    },
+	    	    group:{
+	    	    	id:'addGroup-item',
+	    	    	namePage:'group',
+	    	    	url:''
+	    	    },
+	    	    message:{
+	    	    	id:'addMessage-item',
+	    	    	namePage:'message',
+	    	    	url:''
+	    	    },	    	    
+	    	    actionItem:{
+	    	    	id:'addItem-item',
+	    	    	namePage:'action item',
+	    	    	url:''
+	    	    }	
+	    	}],
 	    	configMenu:[{
 	    		account:{
 	    			id:'account-item',
@@ -57,6 +78,22 @@ Zero.HeaderController = (function(module){
 	    		var dropdown = $(event.currentTarget).next();
 	    		if(dropdown.css('display') == 'none'){
 	    			dropdown.slideDown();
+	    			if($('.added-wrapper ul').css('display') != 'none'){
+	    				$('.added-wrapper ul').slideUp();
+	    			}
+	    		}else{
+	    			dropdown.slideUp();
+	    		}
+	    		
+	    		
+	    	});
+	    	$('.adeed-link').on('click', function(event){
+	    		var dropdown = $(event.currentTarget).next();
+	    		if(dropdown.css('display') == 'none'){
+	    			dropdown.slideDown();
+	    			if($('.wrapper-menu ul').css('display') != 'none'){
+	    				$('.wrapper-menu ul').slideUp();
+	    			}
 	    		}else{
 	    			dropdown.slideUp();
 	    		}
@@ -68,10 +105,10 @@ Zero.HeaderController = (function(module){
 	    		window.location.href = initConfiguration.getRootLocation();
 	    	});
 	    	
-	    	setInterval(_intervalTime, 1000);           $('.test-link').click(function(event){
-           	 var linkPOpup =  Zero.ModalController.getPopup('test-popup');
-           	 console.log(linkPOpup);
-           });            
+	    	setInterval(_intervalTime, 1000);           // $('.test-link').click(function(event){
+           	 // var linkPOpup =  Zero.ModalController.getPopup('test-popup');
+           	 // console.log(linkPOpup);
+           // });            
 	    },
 	    
 	    _intervalTime = function(){
@@ -98,32 +135,46 @@ Zero.HeaderController = (function(module){
            brandLink.append(brand);
            wrapperBrand.append(brandLink);
            
-           var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
-           var time = $('<div/>').addClass('test-link').text('link');               
-              wrapperTimeDate.append(time);
+           // var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
+           // var time = $('<div/>').addClass('test-link').text('link');               
+              // wrapperTimeDate.append(time);           var setMenu = $('<div/>').addClass('set-menu');
+                      var addedWrapper = $('<div/>').addClass('added-wrapper');
+           var linkAdded = $('<span/>').addClass('adeed-link');
+           var ulAdd = _createMenu(root, config.configAddMenu); 
+               addedWrapper.append(linkAdded);
+               addedWrapper.append(ulAdd);  
               
            var menu = $('<div/>').addClass('wrapper-menu');
            var currentItem = $('<span/>').addClass('current-item');
-           var ul = _createMenu(root);
+           var ul = _createMenu(root, config.configMenu);
                menu.append(currentItem);
                menu.append(ul);
                
            header.append(wrapperBrand);
-           header.append(wrapperTimeDate);
-           header.append(menu);
-           // Zero.SettingsController.initialize();
+           setMenu.append(addedWrapper);
+           setMenu.append(menu);
+           // Zero.SettingsController.initialize();           header.append(setMenu);
 	    },
 	    
-	    _createMenu = function(root){
+	    _createMenuAdd = function(){
+	    	var ul = $('<ul/>');
+	    	var cornerAddMenu = $('<span/>').addClass('corner-menu-add');
+	    	ul.append(cornerAddMenu);
+	    	
+	    
+	    },
+	    
+	    _createMenu = function(root, data){
 	    	var ul = $('<ul/>');
 	    	var cornerMenu = $('<span/>').addClass('corner-menu');
 	    	    ul.append(cornerMenu);
-	    	var data = config.configMenu;
+	    	var data = data;
 	    	for(var prop in data[0]){
 	    		var li = $('<li/>').attr('id', data[0][prop].id);
-	    	 	var a = $('<a/>').attr({
-	    	 		              'href':root+data[0][prop].url
-	    	 	                 }).text(data[0][prop].namePage);
+	    	 	var a = $('<a/>').text(data[0][prop].namePage);
+	    	 	if(data[0][prop].url){
+	    	 		a.attr({'href':root+data[0][prop].url})
+	    	 	}
 	    	 	li.append(a);
 	    	 	ul.append(li);
 	    	  if(a.text() == 'Log out'){
@@ -140,7 +191,7 @@ Zero.HeaderController = (function(module){
 	    	var currentItemMenu;
 	    	   menu.each(function(index, elem){
 	    	   	  if($(elem).attr('href') == currentLocation){
-	    	   	  	displayItem.text($(elem).text());
+	    	   	  	// displayItem.text($(elem).text());
 	    	   	  }
 	    	   });
 	    },

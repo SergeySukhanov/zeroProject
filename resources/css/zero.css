@@ -62,7 +62,7 @@ header, nav, section, article, aside, footer {
 .weather {
 	display: inline-block;
     text-align: left;
-    margin: 23px 80px 0 0;
+    margin: 3px 80px 0 0;
     vertical-align: top;
     float: right;
 	}

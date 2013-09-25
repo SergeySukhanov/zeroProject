@@ -221,9 +221,24 @@ function AuthController(options){
 	   	   	 		   	   	 	
 	   	   	 }else if(elem.attr('id') == "register-first-name" || elem.attr('id') == "register-last-name"){
 	   	   	 	_showSuccessMessage(elem);
-	   	   	 }
-             
-	   	   }
+	   	   	 	
+	   	   	 }else if(elem.attr('id') == "register-zip"){
+	   	   	 		if(_validateZipCode(elem)){
+	   	   	 		_showSuccessMessage(elem);
+	   	   	 	    }else{
+	   	   	 		_showErrorMessage(elem);
+	   	   	 	    }          
+	   	     }
+	   	     
+	   	    }
+	   },
+	   
+	   _validateZipCode = function(elem){
+	   	 if(elem.val().length == 5){
+	   	 	return true;
+	   	 }else{
+	   	 	return false;
+	   	 }
 	   },
 	   
 	   _validateEmail = function(elem){

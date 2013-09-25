@@ -57,6 +57,13 @@
      "typeField":"confirm-password"
    },
    {
+     "id":"register-zip",
+     "value":null,
+     "type":"text",
+     "placeholder":"zip code",
+     "typeField":"zip-code"
+   },
+   {
      "id":"register-button",
      "value":"Create My Account",
      "type":"button",
