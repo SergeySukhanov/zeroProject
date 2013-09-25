@@ -29,7 +29,7 @@ Zero.TitleController = (function(module){
             wrapperTitle.append(weatherHolder);
             
             _createAccountName(accountHolder);
-            _createWeather(weatherHolder); 
+            //_createWeather(weatherHolder); 
              
 	    },
 	    

@@ -12,7 +12,7 @@ Zero.ModalController = (function(module){
 	    	var heightOuter= $('#wrapper').outerHeight() + $('.footer').outerHeight();
 	    	var layout = $('<div/>').addClass('layout-popup').addClass('popup').css({
 	    		                                                                   'height':heightOuter,
-	    		                                                                   'z-index':10000, 
+	    		                                                                   'z-index':200, 
 	    		                                                                   'width':'100%',
 	    		                                                                   'position':'absolute',
 	    		                                                                   'top':0, 
@@ -24,11 +24,23 @@ Zero.ModalController = (function(module){
 	    	var header = $('<div/>').addClass('header-popup-inner');
 	    	var content = $('<div/>').addClass('content-popup-inner');
 	    	var footer = $('<div/>').addClass('footer-popup-inner');
+			var title = $('<h1 />').text('Welcome');
+			title.appendTo(header);
+			var btClose = $('<button />').addClass('close-popup').text('Cancel');
+			btClose.appendTo(header);
+			
+			btClose.bind('click', function(e){
+				_hide();
+			})
+			
 	    	
 	    	outerPopupContainer.append(header);
 	    	outerPopupContainer.append(content);
 	    	outerPopupContainer.append(footer);
 	    	
+			
+			
+			
 	    	
 	    	// layout.append(crossClose);
 	    	$('body').append(layout);
@@ -36,8 +48,8 @@ Zero.ModalController = (function(module){
 	    	_handlers();
 	    	
 			outerPopupContainer.setHeader = function(text) {
-				var header = $('.header-popup-inner', outerPopupContainer);
-					header.html(text);				
+				var header = $('.header-popup-inner h1', outerPopupContainer);
+					header.text(text);				
 			}
 			
 			outerPopupContainer.setContent = function(text) {
@@ -58,6 +70,11 @@ Zero.ModalController = (function(module){
 			
 			outerPopupContainer.show = function() {
 				_show();
+			}
+
+			outerPopupContainer.hide = function(e) {
+				e.preventDefault();				
+				_hide();
 			}
 			
 			popup = outerPopupContainer;

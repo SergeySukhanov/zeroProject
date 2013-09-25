@@ -17,6 +17,9 @@
 	<script src="js/libs/draggable-0.1.js"></script>
 	<script src="js/libs/jquery.slider.js"></script>
 	<script src="js/libs/highstock.src.js"></script>
+	<script src="js/libs/noty/jquery.noty.js"></script>
+	<script src="js/libs/noty/layouts/topRight.js"></script>
+	<script src="js/libs/noty/themes/default.js"></script>
 	
 	<script src="js/initConfiguration.js"></script>
 	<script type="text/javascript" src="js/zeroController.js"></script>	
@@ -29,6 +32,8 @@
     <script src="js/modules/accounts/WeatherController.js"></script>
 	<script src="js/modules/calendar/zeroCalendar.js"></script>
 	<script src="js/modules/modal/ModalController.js"></script>
+	<script src="js/modules/team/zeroTeam.js"></script>
+	<script src="js/libs/jquery.autocomplete.min.js"></script>
 	
 	<script src="js/modules/layout/HeaderController.js"></script>
 	<script src="js/modules/layout/FooterController.js"></script>
@@ -97,6 +102,15 @@
 	</aside>	
 </section>	
 <footer class="footer">
+	<a href="#" id="addGroup">addGroup</a>
 </footer>
+
+<script type="text/javascript">
+	$('#addGroup').bind('click',function(e){	
+		Zero.Team.addGroupPopup();	
+		e.preventDefault();
+	})
+
+</script>
 </body>
 </html>
