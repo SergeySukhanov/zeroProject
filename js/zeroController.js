@@ -24,6 +24,10 @@ var Zero = (function(m){
 		settingsPage:{
     		url:'settings.html',
     		moduleName:'PageSettingsController'
+    	},
+    	groupsPage:{
+    		url:'groups.html',
+    		moduleName:'PageGroupsController'
     	}				
     };
     
