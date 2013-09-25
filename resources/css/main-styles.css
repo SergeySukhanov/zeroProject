@@ -79,3 +79,8 @@ color: #ffffff;
 select.dropdown{
 	width: 200px;
 }
+
+.jq-selectbox li {
+	font: normal 14px/16px "Ma Condensed"
+	}
+

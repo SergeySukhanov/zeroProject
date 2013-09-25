@@ -130,16 +130,11 @@ Zero.Settings = (function(module){
 			fAlerts = _createFormRowHtml('alerts', 'Default Alert', 'dropdown', alertValues),
 			weekValues = [
 				{'Sunday' : '1'},
-				{'Monday' : '2'},
-				{'Tuesday' : '3'},
-				{'Wednesday' : '4'},
-				{'Thursday' : '5'},
-				{'Friday' : '6'},
-				{'Saturday' : '7'}
+				{'Monday' : '2'}
 			],
 			fWeek = _createFormRowHtml('weekStarts', 'Week Starts', 'dropdown', weekValues),
-			fShowDeclined = _createFormRowHtml('showDeclined', 'Show Declined', 'checkbox',  null, true),
-			fCheckIn = _createFormRowHtml('autoCheck', 'Auto Check-In', 'checkbox',  null, true);
+			//fShowDeclined = _createFormRowHtml('showDeclined', 'Show Declined', 'checkbox',  null, true),
+			//fCheckIn = _createFormRowHtml('autoCheck', 'Auto Check-In', 'checkbox',  null, true);
 
 			
 			fCalendars = _createFormRowHtml('primaryCalendar', 'Primary', 'dropdown', calendarValues);
@@ -153,8 +148,8 @@ Zero.Settings = (function(module){
 			fAlerts.appendTo(holder);
 			fHolyDayCalendars.appendTo(holder);
 			fWeek.appendTo(holder);
-			fShowDeclined.appendTo(holder);
-			fCheckIn.appendTo(holder);	
+			//fShowDeclined.appendTo(holder);
+			//fCheckIn.appendTo(holder);	
 	};
 	
 	
