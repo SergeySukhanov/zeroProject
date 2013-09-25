@@ -67,7 +67,7 @@ Zero.ModalController = (function(module){
 	    	if(elemPopup.length == 0){
 	    		return _create(id);
 	    	}else{
-	    	   _show();
+	    	   return elemPopup;
 	    	}
 	    };
 	    
