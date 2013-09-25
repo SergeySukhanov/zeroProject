@@ -69,7 +69,8 @@ Zero.HeaderController = (function(module){
 	    	});
 	    	
 	    	setInterval(_intervalTime, 1000);           $('.test-link').click(function(event){
-           	  Zero.ModalController.getPopup('test-popup');
+           	 var linkPOpup =  Zero.ModalController.getPopup('test-popup');
+           	 console.log(linkPOpup);
            });            
 	    },
 	    

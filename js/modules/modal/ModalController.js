@@ -9,7 +9,7 @@ Zero.ModalController = (function(module){
 	    	var heightOuter= $('#wrapper').outerHeight() + $('.footer').outerHeight();
 	    	var layout = $('<div/>').addClass('layout-popup').addClass('popup').css({
 	    		                                                                   'height':heightOuter,
-	    		                                                                   'z-index':100000000, 
+	    		                                                                   'z-index':10000, 
 	    		                                                                   'width':'100%',
 	    		                                                                   'position':'absolute',
 	    		                                                                   'top':0, 
@@ -26,10 +26,13 @@ Zero.ModalController = (function(module){
 	    	outerPopupContainer.append(content);
 	    	outerPopupContainer.append(footer);
 	    	
+	    	
 	    	// layout.append(crossClose);
 	    	$('body').append(layout);
 	    	$('body').append(outerPopupContainer);
-	    	_show();
+	    	_handlers();
+	    	
+	    	return outerPopupContainer;
 	    },
 	    
 	    _handlers = function(){
@@ -62,8 +65,7 @@ Zero.ModalController = (function(module){
 	    view.getPopup = function(id){
 	    	var elemPopup = $('#'+id);
 	    	if(elemPopup.length == 0){
-	    		_create(id);
-	    		_handlers();
+	    		return _create(id);
 	    	}else{
 	    	   _show();
 	    	}
