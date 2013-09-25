@@ -180,8 +180,21 @@ Zero.ChartsSettings = (function(module){
             		diagramItem.addClass('negative');
             	}
             	_createDiagramCol(diagramItem, diagramData[j]);
+            	console.log('done');
             }
+            _calculate(diagramItem.parents('#willPower'), diagramData);
 	    },
+	    
+	    _calculate = function(wrap, data){
+	    	var wrapper = wrap;
+	    	var data = data;
+	    	var widthOuter = wrapper.outerWidth();
+	    	var lengthDiagramItem = wrapper.find('.diagram-item-wrap').length;
+	    	
+	    	for(var i=0; i<lengthDiagramItem; i++){
+                   
+	    	}
+	    }
 	    
 	    _createDiagramCol = function(item, data){
 	    	var wrapper = $('.diagram-body');

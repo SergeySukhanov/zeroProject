@@ -68,7 +68,9 @@ Zero.HeaderController = (function(module){
 	    		window.location.href = initConfiguration.getRootLocation();
 	    	});
 	    	
-	    	setInterval(_intervalTime, 1000);
+	    	setInterval(_intervalTime, 1000);           $('.test-link').click(function(event){
+           	  Zero.ModalController.getPopup('test-popup');
+           });            
 	    },
 	    
 	    _intervalTime = function(){
@@ -95,9 +97,9 @@ Zero.HeaderController = (function(module){
            brandLink.append(brand);
            wrapperBrand.append(brandLink);
            
-           // var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
-           // var time = $('<div/>').addClass('time-head');               
-              // wrapperTimeDate.append(time);
+           var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
+           var time = $('<div/>').addClass('test-link').text('link');               
+              wrapperTimeDate.append(time);
               
            var menu = $('<div/>').addClass('wrapper-menu');
            var currentItem = $('<span/>').addClass('current-item');
@@ -106,7 +108,7 @@ Zero.HeaderController = (function(module){
                menu.append(ul);
                
            header.append(wrapperBrand);
-           // header.append(wrapperTimeDate);
+           header.append(wrapperTimeDate);
            header.append(menu);
            // Zero.SettingsController.initialize();
 	    },

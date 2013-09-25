@@ -61,8 +61,10 @@ header, nav, section, article, aside, footer {
 */	
 .weather {
 	display: inline-block;
-	text-align: left;
-	margin: 36px 80px 0 0;
+    text-align: left;
+    margin: 23px 80px 0 0;
+    vertical-align: top;
+    float: right;
 	}
     .weather .weatherimg{
         max-height: 100px;
