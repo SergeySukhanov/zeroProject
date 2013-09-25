@@ -5,6 +5,9 @@ Zero.ModalController = (function(module){
 	    	
 	    },
 	    
+		popup = null,
+		
+		
 	    _create = function(id){
 	    	var heightOuter= $('#wrapper').outerHeight() + $('.footer').outerHeight();
 	    	var layout = $('<div/>').addClass('layout-popup').addClass('popup').css({
@@ -32,6 +35,33 @@ Zero.ModalController = (function(module){
 	    	$('body').append(outerPopupContainer);
 	    	_handlers();
 	    	
+			outerPopupContainer.setHeader = function(text) {
+				var header = $('.header-popup-inner', outerPopupContainer);
+					header.html(text);				
+			}
+			
+			outerPopupContainer.setContent = function(text) {
+				var content = $('.content-popup-inner', outerPopupContainer);
+					content.html(text);	    	    
+				
+			}			
+			
+			outerPopupContainer.setFooter = function(text) {
+				var footer = $('.footer-popup-inner', outerPopupContainer);
+					footer.html(text);				
+			}			
+			
+			outerPopupContainer.setWidth = function(w) {
+				outerPopupContainer.width(w);
+				outerPopupContainer.css('marginLeft', w/2*(-1));
+			}
+			
+			outerPopupContainer.show = function() {
+				_show();
+			}
+			
+			popup = outerPopupContainer;
+			
 	    	return outerPopupContainer;
 	    },
 	    
@@ -49,7 +79,7 @@ Zero.ModalController = (function(module){
 	    },
 	    
 	    _destroy = function(){
-	    	
+	    	$('.popup').remove();
 	    },
 	    
 	    _show = function(){
@@ -60,6 +90,7 @@ Zero.ModalController = (function(module){
 	    _hide = function(){
 	    	$('.popup').fadeOut(200);
 	    	console.log('hide');
+			_destroy();
 	    };
 	    
 	    view.getPopup = function(id){
@@ -67,7 +98,7 @@ Zero.ModalController = (function(module){
 	    	if(elemPopup.length == 0){
 	    		return _create(id);
 	    	}else{
-	    	   return elemPopup;
+	    	   return popup;
 	    	}
 	    };
 	    
