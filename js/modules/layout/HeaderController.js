@@ -45,13 +45,18 @@ Zero.HeaderController = (function(module){
 					namePage : 'Events',
 					url : 'events.html'
 				},
-				/*
+				
 				settings : {
-					id : 'settings',
+					id :'settings',
 					namePage : 'Settings',
 					url : 'settings.html'
 				},
-				*/	
+				groups : {
+					id :'groups',
+					namePage :'Groups',
+					url :'groups.html'
+				},
+					
 	    		logout:{
 	    			id:'logout-item',
 	    			namePage:'Log out',
@@ -105,11 +110,14 @@ Zero.HeaderController = (function(module){
 	    		window.location.href = initConfiguration.getRootLocation();
 	    	});
 	    	
+	    	
+	    	
 	    	setInterval(_intervalTime, 1000);           // $('.test-link').click(function(event){
            	 // var linkPOpup =  Zero.ModalController.getPopup('test-popup');
            	 // console.log(linkPOpup);
            // });            
 	    },
+	    
 	    
 	    _intervalTime = function(){
 	    	var timeWrapper = $('.time-head');
