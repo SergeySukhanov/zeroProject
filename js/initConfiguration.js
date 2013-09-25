@@ -12,9 +12,8 @@ var initConfiguration = {
 	 getChartsData:function(){
 	 	return initConfiguration.urlCharts;
 	 },
-	 
-	 //auth
-	 
+//LOCAL	 
+	 //auth	  
 	apiUrl: 'http://zerosrv02.domain.corp/api_usr/V1/', 
 	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/w',
 	urlLogin:'http://zerosrv02.domain.corp/api_usr/V1/login',
@@ -33,20 +32,49 @@ var initConfiguration = {
 	urlSettings:'http://zerosrv02.domain.corp/api_srv/V1/settings',
 	urlSliders:'http://zerosrv02.domain.corp/api_srv/V1/willpower/sliders',
     urlWillpower:'http://zerosrv02.domain.corp/api_srv/V1/willpower/data',
-/*    urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
+    urlWeather:'http://zerosrv02.domain.corp/api_srv/V1/weather',
+
+//DEV
+ /*
+    urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
 	urlLogin:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
 	
-	urlCharts:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getChartsData',
-	urlCalendarsList:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/calendars',
-	urlEventsCalendar:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/calendarEvents',
+	urlCharts:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getChartsData',
+	urlCalendarsList:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/calendars',
+	urlEventsCalendar:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/calendarEvents',
 
 	urlGoogleAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getGoogleAuthorizationURL',
 	urlFitBitAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getFitbitAuthorizationURL',
 	urlNikeAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getNikeConnect',
 	
-	urlSettings:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/settings',
-	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/willpower',   
-  */
+	urlSettings:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/settings',
+	urlSliders:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
+	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
+	urlWeather:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
+*/	
+	
+//DEMO	
+	/*
+	urlRegister:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
+	urlLogin:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
+	
+	urlCharts:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getChartsData',
+	urlCalendarsList:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/calendars',
+	urlEventsCalendar:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/calendarEvents',
+
+	urlGoogleAuthorizationURL : 'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getNikeConnect',
+	
+	urlSettings:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/settings',
+	urlSliders:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
+	urlWillpower:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
+	urlWeather:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
+ 
+ 
+ 
+  
+*/
 	
 	
 	
