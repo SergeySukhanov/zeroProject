@@ -18,6 +18,13 @@ Zero.ModalController = (function(module){
 	    	                                                                    });
 	    	var crossClose = $('<span/>').addClass('cross-close').addClass('popup');
 	    	var outerPopupContainer = $('<div/>').addClass('popup-container').addClass('popup').attr('id', id);
+	    	var header = $('<div/>').addClass('header-popup-inner');
+	    	var content = $('<div/>').addClass('content-popup-inner');
+	    	var footer = $('<div/>').addClass('footer-popup-inner');
+	    	
+	    	outerPopupContainer.append(header);
+	    	outerPopupContainer.append(content);
+	    	outerPopupContainer.append(footer);
 	    	
 	    	layout.append(crossClose);
 	    	$('body').append(layout);
@@ -61,25 +68,19 @@ Zero.ModalController = (function(module){
 	    	}
 	    };
 	    
-	    view.setPopupHeader = function(wrap, context){
-	    	var header = $('<div/>').addClass('header-popup');
+	    view.setPopupHeader = function(context){
+	    	var header = $('.header-popup-inner');
 	    	    header.html(context);
-	    	    
-	    	$(wrap).append(header);
 	    };
 	    
-	    view.setPopupContent = function(wrap, context){
-	    	var content = $('<div/>').addClass('content-popup');
-	    	    content.html(context);
-	    	    
-	    	$(wrap).append(content);
+	    view.setPopupContent = function(context){
+	    	var content = $('.content-popup-inner');
+	    	    content.html(context);	    	    
 	    };
 	    
-	    view.setPopupFooter = function(wrap, config){
-	    	var footer = $('<div/>').addClass('footer-popup');
+	    view.setPopupFooter = function(config){
+	    	var footer = $('.footer-popup-inner');
 	    	    footer.html(context);
-	    	    
-	    	$(wrap).append(footer);
 	    };
 	
 	return view;
