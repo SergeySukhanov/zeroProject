@@ -23,14 +23,11 @@ Zero.TitleController = (function(module){
             var wrapperTitle = $('.header-block');
             
             var accountHolder = $('<div/>').attr('id', 'userHolder');
-            var weatherHolder = $('<div/>').attr('id', 'weatherHolder');
-            
+
             wrapperTitle.append(accountHolder);
             wrapperTitle.append(weatherHolder);
             
             _createAccountName(accountHolder);
-            //_createWeather(weatherHolder); 
-             
 	    },
 	    
 	    _createAccountName = function(wrap){
