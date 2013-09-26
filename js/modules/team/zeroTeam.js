@@ -7,6 +7,7 @@ Zero.Team = (function(module){
 		tokkens = module.getTokens();
 		
 		
+		
 	_getCreateGroupHtml = function(e) {
 		var html = $('<div />').addClass('create-group-holder'),			
 			name = $('<input />').attr({
@@ -114,6 +115,89 @@ Zero.Team = (function(module){
 		obj.description = $('#groupDescription', popup).val();	
 		obj.members = $('#participiantsHolder', popup).data('members');		
 		m.addGroupAction(obj, popup, e);
+	};
+
+	/*Group List*/
+	_drawUserGroups = function(obj) {
+		var holder = $('#teamList .teamList-holder');
+		holder.html('');
+		for(var i=0; i < obj.length; i++) {
+			if(obj[i].active) {
+				var item = _getGroupHtml(obj[i]);
+				item.appendTo(holder);
+			}	
+		}
+	};
+	
+	_getGroupHtml = function(obj) {
+		var html = $('<div />').addClass('group-item'),
+			title = $('<h2 />').text(obj.name),
+			description = $('<div />').addClass('group-desc').text(obj.description),
+			userId = initConfiguration.settingsData.userId,
+			linksHolder = $('<div />').addClass('actions'),
+			removeLink = $('<a />').attr({
+					'href' : '#',
+				}).text('remove group'),
+			viewLink = $('<a />').attr({
+					'href' : '#',
+				}).text('view group');
+			
+			viewLink.appendTo(linksHolder);
+			
+			if(userId === obj.owner) {
+				removeLink.appendTo(linksHolder);
+				
+				removeLink.bind('click', function(e){				
+					_showRemovePopup(obj.id, obj.name)
+					e.preventDefault();
+				})
+			}
+			
+			viewLink.bind('click', function(e){
+				module.Tools.generateNoty('info', 'Comming soon');
+				e.preventDefault();
+			})
+			
+			html.data('group-id', obj.id);			
+			title.appendTo(html);
+			description.appendTo(html);
+			linksHolder.appendTo(html)
+			
+			return html;
+	}
+	
+	/*Remove popup*/
+	_showRemovePopup = function(groupId, groupName) {
+		var popup = Zero.ModalController.getPopup('removeGroupPopup'),
+			content = $('<div />').html('<p>Do you realy want to delete Group "' + groupName + '" ?</p>'),
+			actionsHolder = $('<div />').addClass('actionHolder'),
+			btYes = $('<button />').text('Confrim'),
+			btNo = $('<button />').text('No');
+						
+			btYes.appendTo(actionsHolder);
+			btNo.appendTo(actionsHolder);
+			actionsHolder.appendTo(content);
+			
+			
+			btYes.bind('click', function(e){
+				popup.hide();
+				_deleteGroupAction(groupId, groupName);
+				e.preventDefault();
+			})
+			
+			btNo.bind('click', function(e){
+				popup.hide();
+				e.preventDefault();
+			})
+
+			popup.setWidth(600);	
+			popup.setHeader('Delete group');
+			popup.setContent(content);
+			popup.show();
+	
+	
+	
+
 	}
 	
 	
@@ -126,8 +210,8 @@ Zero.Team = (function(module){
 			type: 'GET',
 			dataType: 'json',
 			contentType: "application/json",
-			success: function (resp) {		
-				console.warn(resp);
+			success: function (resp) {	
+				_drawUserGroups(resp.result);	
 			},
 			error : function(error) {
 				console.log(error);
@@ -159,7 +243,7 @@ Zero.Team = (function(module){
 		})			
 	}
 	
-	m.deleteGroupAction = function(groupId) {
+	_deleteGroupAction = function(groupId, groupName) {
 		$.ajax({
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
@@ -168,12 +252,13 @@ Zero.Team = (function(module){
 			type: 'DELETE',
 			dataType: 'json',
 			contentType: "application/json",			
-			data : {
-				id : groupId
-			},
-			success: function (resp) {		
-			
-			
+			data : JSON.stringify({
+				'id' : groupId,
+				'name' : groupName
+			}),
+			success: function (resp) 	{		
+				Zero.Tools.generateNoty('success', 'Group "' + groupName + '" was successfully deleted');	
+				m.getUserGroups();
 			},
 			error : function(error) {
 				console.log(error);
@@ -202,7 +287,9 @@ Zero.Team = (function(module){
 	}
 	
 	
-	
+	m.init = function() {
+		m.getUserGroups();
+	}
 	
 	return m
 	

@@ -213,3 +213,32 @@ select.dropdown{
 	color : #7a7a7a;		
 	}
 	
+/*Popup Actions*/
+.popup .actionHolder {
+	text-align: right;
+	}	
+	.popup .actionHolder button {
+		display: inline-block;
+		border: none;
+		background: white;
+		color : #fda14b;
+		font: normal 18px/18px "Ma Condensed";		
+		}
+	
+/*Page template*/
+.module-block {
+	margin: 20px;
+	font: normal 14px/22px "Zero";
+	}	
+	.module-block h1 {
+		font: normal 36px/44px "Ma Condensed";
+		margin: 0 0 20px 0;	
+		}
+/*
+	noty_message
+*/		
+.noty_message {
+	font: normal 14px/22px "Zero";
+	}
+	
+	

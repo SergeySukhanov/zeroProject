@@ -1,0 +1,12 @@
+.group-item {
+	margin: 0 0 40px 0;
+	}
+	.group-item h2 {
+		font: normal 20px/24px "Ma Condensed";
+		margin: 0 0 10px;			
+		}
+	.group-item .actions  a{
+		display: inline-block;
+		margin: 0 20px 0 0;
+		font-size: 12px;
+		}	
