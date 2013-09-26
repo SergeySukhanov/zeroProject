@@ -7,8 +7,7 @@ Zero.WeatherController = (function(module){
 
         tokens = module.getTokens(),
 
-        _getLocationData = function() {
-            var wrapper = $('#weatherHolder');
+        _getLocationData = function(wrapper) {
             wrapper.addClass('weather');
             var message = $('<h1/>').text('Loading weather...').addClass('weathermsg');
             wrapper.append(message);
@@ -125,12 +124,12 @@ Zero.WeatherController = (function(module){
             console.log(data);
         },
 
-        _render = function() {
-            _getLocationData();
+        _render = function(wrapper) {
+            _getLocationData(wrapper);
         };
 
-    view.initialize = function(){
-        _render();
+    view.initialize = function(wrapper){
+        _render(wrapper);
     };
 
     return view;
