@@ -213,23 +213,49 @@ Zero.Events = (function(module){
 	
 	_removeEvent = function(e) {
 		var eventId = $(this).data('event-id'),
-			popup = module.Tools.getConfirmPopup('Remove Event', 'Are You sure to remove this event?', _removeEventAction, _clearRemovableId),
-			popuHolder = $('#popupHolder');
+			popup = Zero.ModalController.getPopup('addGroupPopup'),
+			popupContent = $('<div />').html('<p>Are You sure to remove this event?</p>'),
+			actionsHolder = $('<div />').addClass('actions-holder'),
+			btYes = $('<button />').text('Confirm'),
+			btNo = $('<button />').text('No');
+						
+			btYes.appendTo(actionsHolder);
+			btNo.appendTo(actionsHolder);
+			actionsHolder.appendTo(popupContent);
+			
+			btYes.bind('click', function(e){
+				_removeEventAction(e, popup);
+			
+			});
+			btNo.bind('click', function(e) {
+				popup.hide();
+				_clearRemovableId();
+			})
+			
+			//popup = module.Tools.getConfirmPopup('Remove Event', 'Are You sure to remove this event?', _removeEventAction, _clearRemovableId),
+			//popuHolder = $('#popupHolder');
 			
 		_setRemovableId(eventId);		
 		_setRemovableEvent($(this).closest('.event'))
 		
+		
+		popup.setHeader('Remove Event');
+		popup.setContent(popupContent);
+		popup.show();
+		
+		
+		/*
 		popup.appendTo(popuHolder);	
 		popuHolder.show();
+		*/
 		
 		e.preventDefault();
 	}
 	
 	
-	_removeEventAction = function(e) {
+	_removeEventAction = function(e, popup) {
 		var bt = $(e.target), 
 			removeId = _getRemovableId();
-			popup = bt.closest('.popup');
 
 
 		try{			
@@ -245,7 +271,8 @@ Zero.Events = (function(module){
 					if(resp.errorCode && resp.errorCode == 1) {
 						var event = _getRemovableEvent();
 						event.remove();
-						module.Tools.destroyPopup(popup);
+						//module.Tools.destroyPopup(popup);
+						popup.hide();
 					}
 				},
 				error : function(error) {
@@ -292,14 +319,16 @@ Zero.Events = (function(module){
 			location.appendTo(popupContent);
 			description.appendTo(popupContent);
 						
-			popup = module.Tools.getPopup('New Event', popupContent);
+			//popup = module.Tools.getPopup('New Event', popupContent);
+			popup = Zero.ModalController.getPopup('addGroupPopup')
 			
 			btOk.bind('click', function(e){
 				_addGoogleEvent(popup, calId);
 			})
 			
 			btCancel.bind('click', function(e){
-				module.Tools.destroyPopup(popup);
+				//module.Tools.destroyPopup(popup);
+				popup.hide();
 			})
 			
 			btOk.appendTo(popupContent);
@@ -311,9 +340,15 @@ Zero.Events = (function(module){
 				endInput.val(newTime);
 			})
 			
+			popup.setHeader('New Event');
+			popup.setContent(popupContent);
+			popup.show();
 			
+			
+			/*
 			popup.appendTo(popuHolder);	
-			popuHolder.show();					
+			popuHolder.show();	
+			*/	
 	}
 	
 	_getAddTimes = function() {
@@ -462,7 +497,8 @@ Zero.Events = (function(module){
 				contentType: "application/json",
 				success: function (resp) {									
 					if(resp.errorCode && resp.errorCode == 1) {
-						module.Tools.destroyPopup(popup);
+						//module.Tools.destroyPopup(popup);
+						popup.hide();
 						_drawCalendars();
 					}
 				},
@@ -529,21 +565,29 @@ Zero.Events = (function(module){
 			location.appendTo(popupContent);
 			description.appendTo(popupContent);
 						
-			popup = module.Tools.getPopup('Edit Event - '  + eventObj.subject, popupContent);
+			//popup = module.Tools.getPopup('Edit Event - '  + eventObj.subject, popupContent);
+			popup = Zero.ModalController.getPopup('addGroupPopup');
+
 			
 			btOk.bind('click', function(e){
 				_editGoogleEvent(popup, eventObj, e);
 			})
 			btCancel.bind('click', function(e){
-				module.Tools.destroyPopup(popup);
+				popup.hide();
 				e.preventDefault();
 			})			
 			
 			btOk.appendTo(popupContent);
 			btCancel.appendTo(popupContent);
 			
+			
+			popup.setHeader('Edit Event - '  + eventObj.subject, popupContent);
+			popup.setContent(popupContent);
+			popup.show();
+			/*
 			popup.appendTo(popuHolder);	
 			popuHolder.show();						
+			*/
 	};
 	
 	
@@ -582,7 +626,7 @@ Zero.Events = (function(module){
 				contentType: "application/json",
 				success: function (resp) {									
 					if(resp && resp.errorCode == '1') {
-						module.Tools.destroyPopup(popup);
+						popup.hide();
 						_drawCalendars();						
 					}
 				},

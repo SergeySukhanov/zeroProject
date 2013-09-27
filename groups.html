@@ -7,13 +7,17 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link rel="stylesheet" href="resources/css/main-styles.css" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" href="resources/css/events.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="resources/css/team.css" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="resources/css/ui/jquery-ui-1.10.3.custom.css" type="text/css" media="screen, projection" />
 	<script src="js/libs/jquery-1.10.2.min.js"></script>
 	<script src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/libs/jquery.animate-shadow-min.js"></script>
 	<script src="js/libs/jquery-ui-timepicker-addon.js"></script>
 	<script src="js/libs/jquery-ui-sliderAccess.js"></script>
+	<script src="js/libs/noty/jquery.noty.js"></script>
+	<script src="js/libs/noty/layouts/topRight.js"></script>
+	<script src="js/libs/noty/themes/default.js"></script>
+	
 	<script src="js/initConfiguration.js"></script>	
 	<script type="text/javascript" src="js/zeroController.js"></script>	
 	<script src="js/modules/zeroTools.js"></script>	
@@ -23,6 +27,9 @@
 	<script src="js/modules/layout/PageMainController.js"></script>	
 	<script src="js/modules/layout/PageGroupsController.js"></script>	
 	<script src="js/modules/layout/PageController.js"></script>	
+	<script src="js/modules/modal/ModalController.js"></script>
+	<script src="js/modules/team/zeroTeam.js"></script>	
+	<script src="js/libs/jquery.autocomplete.min.js"></script>
 	<script src="js/app.js"></script>
 </head>
 
@@ -31,8 +38,33 @@
 <section id="wrapper">
 	<header class="header">
 	</header>
-	<div class="content">
+	<div class="content no-border team-page">					
+		<div id="teamList" class="module-block">
+			<h1>Groups</h1>
+			<div class="teamList-holder">
 			
+			</div>
+			<div class="team-info">
+				<ul class="team-nav">
+					<li>
+						<a href="#team-messages" class="team-messages">Messages</a>
+					</li>
+					<li>
+						<a href="#team-members" class="team-members">Members</a>
+					</li>					
+					<li>
+						<a href="#team-info" class="team-info">Info</a>
+					</li>					
+				</ul>
+				<div class="team-messages-block block-tab">				
+					<p>Comming soon</p>
+				</div>
+				<div class="team-members-block block-tab">
+				</div>
+				<div class="team-info-block block-tab">				
+				</div>
+			</div>
+		</div>	
 	</div>	
 </section>	
 <footer class="footer">

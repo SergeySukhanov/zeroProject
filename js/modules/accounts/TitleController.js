@@ -21,16 +21,9 @@ Zero.TitleController = (function(module){
 	    
 	    _paintTitle = function(){
             var wrapperTitle = $('.header-block');
-            
             var accountHolder = $('<div/>').attr('id', 'userHolder');
-            var weatherHolder = $('<div/>').attr('id', 'weatherHolder');
-            
             wrapperTitle.append(accountHolder);
-            wrapperTitle.append(weatherHolder);
-            
             _createAccountName(accountHolder);
-            _createWeather(weatherHolder); 
-             
 	    },
 	    
 	    _createAccountName = function(wrap){
@@ -67,10 +60,6 @@ Zero.TitleController = (function(module){
 	    	
 	    	wrapper.append(divPhoto);
 	    	wrapper.append(divWelcome);
-	    },
-	    
-	    _createWeather = function(wrap){
-	    	Zero.WeatherController.initialize();
 	    };
 	    
 	view.initialize = function(){

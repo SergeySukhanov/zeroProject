@@ -1,0 +1,63 @@
+#wrapper .content.team-page {
+	width: 100%;
+}
+
+.group-item {
+	margin: 0 0 40px 0;
+	padding: 10px;
+	}
+	.group-item h2 {
+		font: normal 20px/24px "Ma Condensed";
+		margin: 0 0 10px;			
+		}
+	.group-item .actions  a{
+		display: inline-block;
+		margin: 0 20px 0 0;
+		font-size: 12px;
+		}	
+
+.group-item.active-item {
+	background: ghostwhite;
+	}		
+		
+		
+.teamList-holder {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 20px 0 0;
+	width: 35%;
+	}		
+.team-info 	{
+	display: inline-block;
+	vertical-align: top;
+	width: 60%;
+	display: none;	
+	}
+	
+.memebers-list {
+
+	}
+	.memebers-list ul {
+		list-style: none;
+		margin: 0; padding: 0;
+		}
+		.memebers-list ul li {
+			padding: 5px 0;
+			margin: 0 0 5px 0;
+			}
+	
+.team-nav {
+	margin: 0 0 20px 0; padding: 0;
+	list-style: none;
+	}	
+	.team-nav li {
+		display: inline-block;
+		margin: 0 20px;
+		}
+		.team-nav li a {
+			color: #cacaca;
+			text-decoration: none;
+			}
+		.team-nav li a.active {
+			color: #393939;
+			}	

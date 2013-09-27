@@ -6,7 +6,7 @@ Zero.PageGroupsController = (function(module){
 	    },
 	
 	    _render = function(){
-			
+			Zero.Team.init();
 	    },
 	    
 	    _postRender = function(data){

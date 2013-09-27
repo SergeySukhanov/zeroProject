@@ -73,7 +73,9 @@ Zero.ModalController = (function(module){
 			}
 
 			outerPopupContainer.hide = function(e) {
-				e.preventDefault();				
+				if(e) {
+					e.preventDefault();				
+				}				
 				_hide();
 			}
 			
