@@ -79,29 +79,13 @@ Zero.HeaderController = (function(module){
 	    _handlers = function(){
 	    	_menuActive();
 	    	_intervalTime();
-	    	$('.current-item').on('click', function(event){
-	    		var dropdown = $(event.currentTarget).next();
-	    		if(dropdown.css('display') == 'none'){
-	    			dropdown.slideDown();
-	    			if($('.added-wrapper ul').css('display') != 'none'){
-	    				$('.added-wrapper ul').slideUp();
-	    			}
-	    		}else{
-	    			dropdown.slideUp();
-	    		}
-	    		
-	    		
+	    	$('.current-item').on('click', function(event){               _showMenu(event);	    		
 	    	});
-	    	$('.adeed-link').on('click', function(event){
-	    		var dropdown = $(event.currentTarget).next();
-	    		if(dropdown.css('display') == 'none'){
-	    			dropdown.slideDown();
-	    			if($('.wrapper-menu ul').css('display') != 'none'){
-	    				$('.wrapper-menu ul').slideUp();
-	    			}
-	    		}else{
-	    			dropdown.slideUp();
-	    		}
+	    	$('.adeed-link').on('click', function(event){               _showMenu(event);
+	    	});
+	    	
+	    	$('.added-wrapper a').bind('click', function(event){
+	    		_hideMenu(event);
 	    	});
 	    	
 	    	$('#logout-item > a').on('click', function(event){
@@ -110,6 +94,10 @@ Zero.HeaderController = (function(module){
 	    		window.location.href = initConfiguration.getRootLocation();
 	    	});
 	    	
+	    	$(document).bind('click', function(event){
+	    		
+	    	})
+	    	
 	    	
 	    	
 	    	setInterval(_intervalTime, 1000);			
@@ -117,12 +105,7 @@ Zero.HeaderController = (function(module){
 				e.preventDefault();
 				Zero.Team.addGroupPopup();	
 			})
-			
-			
-           // $('.test-link').click(function(event){
-           	 // var linkPOpup =  Zero.ModalController.getPopup('test-popup');
-           	 // console.log(linkPOpup);
-           // });            
+			          
 	    },
 	    
 	    
@@ -180,7 +163,7 @@ Zero.HeaderController = (function(module){
 	    },
 	    
 	    _createMenu = function(root, data){
-	    	var ul = $('<ul/>');
+	    	var ul = $('<ul/>').addClass('popup-menu');
 	    	var cornerMenu = $('<span/>').addClass('corner-menu');
 	    	    ul.append(cornerMenu);
 	    	var data = data;
@@ -188,7 +171,7 @@ Zero.HeaderController = (function(module){
 	    		var li = $('<li/>').attr('id', data[0][prop].id);
 	    	 	var a = $('<a/>').text(data[0][prop].namePage);
 	    	 	if(data[0][prop].url){
-	    	 		a.attr({'href':root+data[0][prop].url})
+	    	 		a.attr({'href':root+data[0][prop].url});
 	    	 	}
 	    	 	li.append(a);
 	    	 	ul.append(li);
@@ -211,12 +194,21 @@ Zero.HeaderController = (function(module){
 	    	   });
 	    },
 	    
-	    _showMenu = function(){
-	    	
+	    _showMenu = function(event){
+	    	console.log(event);
+	    	var currentPopup = $(event.target).next();
+	    	$('.popup-menu').not(currentPopup).slideUp();
+	    	if(currentPopup.css('display') == 'none'){
+	    		currentPopup.slideDown();
+	    	}else{
+	    		currentPopup.slideUp();
+	    	}
 	    },
 	    
-	    _hideMenu = function(){
-	    	
+	    
+	    _hideMenu = function(event){
+	    	var parentUl = $(event.currentTarget).parents('.popup-menu');
+	    	parentUl.slideUp();
 	    };
 	    
 	view.initialize = function(){

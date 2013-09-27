@@ -23,7 +23,9 @@ vertical-align: top;
 width: 100px;
 height: 100px;
 border-radius: 300px;
-margin-bottom: 30px;
+margin-bottom: 37px;
+top: -15px;
+position: relative;
 }
 
 .welcome-user {

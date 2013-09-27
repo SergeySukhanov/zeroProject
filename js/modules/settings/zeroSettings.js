@@ -11,11 +11,10 @@ Zero.Settings = (function(module){
 			btRevert = $('<button />').addClass('bt-revert').text('Revert');
 
 			
-			
 		_createPersonalTab();
 		_createTimeTab();
-		_createImportTab();
-		_createUnitTab();
+		// _createImportTab();
+		// _createUnitTab();
 		_createCalendarTab();
 			
 			
@@ -26,6 +25,13 @@ Zero.Settings = (function(module){
 		btRevert.appendTo(buttonHolder);
 		btSave.appendTo(buttonHolder);
 		buttonHolder.appendTo(holder);
+		
+		btSave.bind('click', function(event){
+			_updateSettings(event, "save");
+		});
+		btRevert.bind('click', function(event){
+			_updateSettings(event, "reset");
+		});
 	
 	}
 	
@@ -111,8 +117,8 @@ Zero.Settings = (function(module){
 			
 		fPrimary.appendTo(holder);	
 		fSync.appendTo(holder);
-		fSecondary.appendTo(holder);	
-		fTravel.appendTo(holder);
+		// fSecondary.appendTo(holder);	
+		// fTravel.appendTo(holder);
 			
 	};
 	
@@ -139,14 +145,14 @@ Zero.Settings = (function(module){
 			
 			fCalendars = _createFormRowHtml('primaryCalendar', 'Primary', 'dropdown', calendarValues);
 			fCalendarsS = _createFormRowHtml('secondaryCalendar', 'Secondary', 'dropdown', calendarValues);
-			fHiddenCalendars = _createFormRowHtml('hiddenCalendar', 'Hidden', 'dropdown', calendarValues);
-			fHolyDayCalendars = _createFormRowHtml('holydaysCalendar', 'Holidays', 'dropdown', calendarValues);
+			fThirdCalendars = _createFormRowHtml('thirdCalendar', 'Third', 'dropdown', calendarValues);
+			// fHolyDayCalendars = _createFormRowHtml('holydaysCalendar', 'Holidays', 'dropdown', calendarValues);
 			
 			fCalendars.appendTo(holder);
 			fCalendarsS.appendTo(holder);
-			fHiddenCalendars.appendTo(holder);
+			fThirdCalendars.appendTo(holder);
 			fAlerts.appendTo(holder);
-			fHolyDayCalendars.appendTo(holder);
+			// fHolyDayCalendars.appendTo(holder);
 			fWeek.appendTo(holder);
 			//fShowDeclined.appendTo(holder);
 			//fCheckIn.appendTo(holder);	
@@ -273,8 +279,45 @@ Zero.Settings = (function(module){
 			}
 			
 		}	
-		
+		_handlers();
+	},
+	
+	_handlers = function(){
 	}
+	
+	_updateSettings = function(event, type){
+		var wrapperTabs = $('.tabs-pages');
+		var inputs = wrapperTabs.find('input');
+		var selects = wrapperTabs.find('select');
+		var objInput = {};
+		var objSelect = {};
+		  
+		
+		if(type=="save"){
+		  console.log('save');
+		  console.log(inputs);
+		  console.log(selects);	
+		}else if(type=="reset"){
+	      for(var i=0; i<inputs.length; i++){
+	      	if($(inputs[i]).attr('type') == "checkbox"){
+	      	   	if($(inputs[i]).prop('checked')){
+	      	   		objInput[$(inputs[i]).attr('id')] = true;
+	      	   	}else{
+	      	   		objInput[$(inputs[i]).attr('id')] = false;
+	      	   	}
+	      	}else{
+	      		objInput[$(inputs[i]).attr('id')] = $(inputs[i]).val();
+	      	    $(inputs[i]).val('');
+	      	}
+	      }	
+	      
+	      for(var j=0; j<selects.length; j++){
+	      	console.log(selects[j]);
+	      }
+	      console.log(objInput);
+		}
+	},
+	
 	
 	_showTab = function(tabName, tabPages) {
 		var tabRealName = tabName.substring(1, tabName.length) + '-tab';		

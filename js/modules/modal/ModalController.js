@@ -101,12 +101,10 @@ Zero.ModalController = (function(module){
 	    
 	    _show = function(){
 	    	$('.popup').fadeIn(200);
-	    	console.log('show');
 	    },
 	    
 	    _hide = function(){
 	    	$('.popup').fadeOut(200);
-	    	console.log('hide');
 			_destroy();
 	    };
 	    
