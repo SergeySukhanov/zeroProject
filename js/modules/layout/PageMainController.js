@@ -23,8 +23,8 @@ Zero.PageMainController = (function(module){
 	    		Zero.ChartsController.initialize();
 	    		Zero.ChartsSettings.initialize();
 	    		Zero.YesterdayController.initialize();
-                //Zero.NextUpEventsController.initialize();
-
+                Zero.NextUpEventsController.initialize();
+                Zero.SmallCalendarWidgetController.initialize($('#smallCalendarHolder'));
 				Zero.Calendar.init($('#calendarHolder'));
 			})
 	    },

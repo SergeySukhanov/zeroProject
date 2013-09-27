@@ -2,7 +2,7 @@ Zero.AccountPhotoController = (function(module){
     var view = {},
 
         config = {
-            faceImg:"no-photo.png"
+            faceImg:"no-photo.PNG"
         },
 
         tokens = module.getTokens(),

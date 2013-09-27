@@ -60,11 +60,11 @@ header, nav, section, article, aside, footer {
 	Weather
 */	
 .weather {
-	display: inline-block;
+    display: inline-block;
     text-align: left;
     margin: 3px 80px 0 0;
     vertical-align: top;
-    float: right;
+    float: left;
 	}
     .weather .weatherimg{
         max-height: 100px;
@@ -95,6 +95,16 @@ header, nav, section, article, aside, footer {
 	margin: 17px 0 20px 0;
 	text-align: center;
 	}
+
+.weather-clock-block {
+    display: inline-block;
+    margin: 17px 0 20px 0;
+    text-align: center;
+    display: inline-block;
+    }
+    .weather-clock-block .town{
+        float: right;
+    }
 
 .town {
 	display: inline-block;
