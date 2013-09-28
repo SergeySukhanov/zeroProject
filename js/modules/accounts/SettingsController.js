@@ -25,7 +25,7 @@ Zero.SettingsController = (function(module){
 	    },
 	    
 	    _handlers = function(data){
-	    	console.log(data);
+	    	//console.log(data);
 	    };
 	    
 	    _paintSettings = function(){

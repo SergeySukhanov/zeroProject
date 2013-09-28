@@ -21,7 +21,8 @@ Zero.PageController = (function(module){
 					contentType:'aplication/json',
 					success:function(data){
 						initConfiguration.settingsData = data.result;
-						//console.log(data.result);
+						module.buildCalendarAccounts();
+						
 						_postRender();
 					
 					},
@@ -62,7 +63,9 @@ Zero.PageController = (function(module){
 	    
 	    _setParams = function(param){
 	    	_param = param
-	    }
+	    },
+		
+		
 	    
 	view.initialize = function(param){
 		_setParams(param);

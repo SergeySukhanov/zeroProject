@@ -60,6 +60,31 @@ var Zero = (function(m){
 		return answer;
 	}
 	
+	//Calendars Account
+	m.buildCalendarAccounts = function() {
+		var accounts = initConfiguration.settingsData.accounts;
+		var calendars = initConfiguration.settingsData.calendarAccounts = new Array();
+		if(accounts && accounts.length !=0) {
+			for(var i=0; i < accounts.length; i++) {
+				if(accounts[i].type == 'GOOGLE') {
+					calendars.push(accounts[i]);
+				}
+			}
+		}		
+	}
+	
+	m.getCalendarAccounts = function() {
+		var answer = false;
+		
+		if(initConfiguration.settingsData.calendarAccounts) {
+			answer = initConfiguration.settingsData.calendarAccounts;
+		}
+		
+		return answer;
+	}
+	
+	
+	
 	m.init = function() {
 		var auth = _checkAuth(), 
 			url = window.location.href,

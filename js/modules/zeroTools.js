@@ -57,10 +57,11 @@ Zero.Tools = (function(module){
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var ampm = hours >= 12 ? 'pm' : 'am';
+		
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0'+minutes : minutes;
-        var strTime = hours + ':' + minutes + ' ' + ampm;
+        var strTime = hours + ':' + minutes + ' ' + ampm;				
         return strTime;
     },
 
@@ -150,28 +151,20 @@ Zero.Tools = (function(module){
 	
 	m.ajaxErrorHandler = function() {
 		$(document).ajaxError(function (e, jqxhr, settings, exception) {
-		
-			//var status = jqxhr.status;
-			/*
-			if(status === 404) {
-
-			} else {
-
-			}
-			*/
-			
 			var title = jqxhr.status + ' - ' + jqxhr.statusText,
-			body = $('<div />').addClass('popup-content').html('<div>' + jqxhr.responseJSON.error + '</div>'),
+			body = $('<div />').addClass('popup-content').html('<div>' + jqxhr.responseJSON.msg + '</div>'),
 			btClose = $('<button />').text('Close').appendTo(body),
-			popuHolder = $('#popupHolder');
-			popup = module.Tools.getPopup(title, body);			
+			
+			popup = Zero.ModalController.getPopup('ajaxError');
+			
 			btClose.bind('click', function(e){
-				module.Tools.destroyPopup(popup);
+				popup.hide();
 			})
 			
-			popup.appendTo(popuHolder);	
-			popuHolder.show();					
 			
+			popup.setHeader('Connection Error');
+			popup.setContent(body);
+			popup.show();
 			
 
 		});	
@@ -343,6 +336,20 @@ Zero.Tools = (function(module){
 		});
 		return n;
 	}
+	
+	
+	m.extendClone = function(source, target) {
+		var keys = Object.keys(source),
+			i = keys.length - 1,
+			k,
+			target = target || {};
+		do {
+			k = keys[i];
+			target[k] = source[k];
+		}
+		while (i--);
+	return target;
+}
 	
 	
 	return m;

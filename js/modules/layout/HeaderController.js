@@ -101,11 +101,16 @@ Zero.HeaderController = (function(module){
 	    	
 	    	
 	    	setInterval(_intervalTime, 1000);			
-			$('#addGroup-item > a').bind('click', function(e){
-				e.preventDefault();
+			$('#addGroup-item > a').bind('click', function(e){				
 				Zero.Team.addGroupPopup();	
+				e.preventDefault();
 			})
-			          
+			          
+			$('#addEvent-item > a').bind('click',function(e){			
+				Zero.Events.showEventPopup();
+				e.preventDefault();
+			})		  
+					  
 	    },
 	    
 	    
