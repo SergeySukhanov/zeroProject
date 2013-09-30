@@ -44,9 +44,9 @@ var initConfiguration = {
 	urlCalendarsList:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/calendars',
 	urlEventsCalendar:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/calendarEvents',
 
-	urlGoogleAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/getNikeConnect',
+	urlGoogleAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getNikeConnect',
 	
 	urlSettings:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/settings',
 	urlSliders:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
