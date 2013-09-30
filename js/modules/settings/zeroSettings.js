@@ -7,7 +7,7 @@ Zero.Settings = (function(module){
 	
 		var holder = $('.settings-content'),	
 			buttonHolder = $('<div />').addClass('button-holder'),
-			btSave = $('<button />').addClass('bt-save').text('Save'),
+			btSave = $('<button />').addClass('bt-save').text('Save');
 
 			
 		_createPersonalTab();
@@ -32,14 +32,14 @@ Zero.Settings = (function(module){
 	
 	_createPersonalTab = function() {
 		var holder = $('.tabs-pages .personal-tab'),
-			fName = _createFormRowHtml('name', 'Name', 'string'),
+			// fName = _createFormRowHtml('name', 'Name', 'string'),
 			fUserName = _createFormRowHtml('username', 'Username', 'string'),
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
 			fHeight = _createFormRowHtml('height', 'Height', 'string'),
 			fWeight = _createFormRowHtml('weight', 'Weight', 'string'),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker');
 			
-		fName.appendTo(holder);
+		// fName.appendTo(holder);
 		fUserName.appendTo(holder);
 		fEmail.appendTo(holder);
 		fHeight.appendTo(holder);

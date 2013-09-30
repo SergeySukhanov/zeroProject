@@ -170,3 +170,7 @@ border-right: 1px solid #cccccc;
 cursor:pointer;
 color: #666666;
 }
+
+.added-wrapper a:hover{
+	text-decoration:underline;
+}
