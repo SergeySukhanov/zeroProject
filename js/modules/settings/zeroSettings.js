@@ -7,8 +7,7 @@ Zero.Settings = (function(module){
 	
 		var holder = $('.settings-content'),	
 			buttonHolder = $('<div />').addClass('button-holder'),
-			btSave = $('<button />').addClass('bt-save').text('Save'),
-			btRevert = $('<button />').addClass('bt-revert').text('Revert');
+			btSave = $('<button />').addClass('bt-save').text('Save'),
 
 			
 		_createPersonalTab();
@@ -21,16 +20,12 @@ Zero.Settings = (function(module){
 	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
 	    Zero.Tools.selectUpdate($('.dropdown'));
 			
-			
-		btRevert.appendTo(buttonHolder);
+			
 		btSave.appendTo(buttonHolder);
 		buttonHolder.appendTo(holder);
 		
 		btSave.bind('click', function(event){
 			_updateSettings(event, "save");
-		});
-		btRevert.bind('click', function(event){
-			_updateSettings(event, "reset");
 		});
 	
 	}
@@ -298,27 +293,10 @@ Zero.Settings = (function(module){
 		  console.log(inputs);
 		  console.log(selects);	
 		}else if(type=="reset"){
-	      for(var i=0; i<inputs.length; i++){
-	      	if($(inputs[i]).attr('type') == "checkbox"){
-	      	   	if($(inputs[i]).prop('checked')){
-	      	   		objInput[$(inputs[i]).attr('id')] = true;
-	      	   	}else{
-	      	   		objInput[$(inputs[i]).attr('id')] = false;
-	      	   	}
-	      	}else{
-	      		objInput[$(inputs[i]).attr('id')] = $(inputs[i]).val();
-	      	    $(inputs[i]).val('');
-	      	}
-	      }	
-	      
-	      for(var j=0; j<selects.length; j++){
-	      	console.log(selects[j]);
-	      }
-	      console.log(objInput);
-		}
+	     
+	    }
 	},
-	
-	
+
 	_showTab = function(tabName, tabPages) {
 		var tabRealName = tabName.substring(1, tabName.length) + '-tab';		
 		$('.active-tab', tabPages).removeClass('active-tab');
