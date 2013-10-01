@@ -5,9 +5,15 @@ Zero.SmallCalendarWidgetController = (function(module){
 
         _render = function(holder){
             _paintCalendar(holder);
+            _handlers();
         },
 
         _handlers = function(){
+        	$('.addEventButton').bind('click', function(event){
+        		console.log('click');
+        		Zero.Events.showEventPopup();
+				e.preventDefault();
+        	})
         },
 
         _paintCalendar = function(wrapper){
@@ -21,7 +27,7 @@ Zero.SmallCalendarWidgetController = (function(module){
             divWeatherClock.append(timeLocationBlock);
             wrapper.append(divWeatherClock);
             _addDatePicker(wrapper);
-            var addEventButton = $('<a/>').addClass('addEventButton').addClass('cf');
+            var addEventButton = $('<div/>').addClass('addEventButton').addClass('cf');
             var plus = $('<p/>').text("+");
             var text = $('<div/>').text("ADD EVENT");
             addEventButton.append(plus);

@@ -105,6 +105,7 @@ vertical-align: top;
     display: inline-block;
 vertical-align: top;
 position:relative;
+margin-top: -60px;
     }
     .weather-clock-block .town{
         float: right;
@@ -302,22 +303,37 @@ position:relative;
 
 .smalldatepicker {
     position: relative;
-    padding-left: 40px;
+    padding-left: 16px;
 }
 
 .addEventButton {
-    color:#FF9933;
+    color: #FF9933;
+cursor: pointer;
+display: inline-block;
+width: 100%;
+z-index: 100;
+position: relative;
+    
+}
+
+.addEventButton:hover{
+	background-color:#cccccc;
+	opacity:0.7;
 }
 
     .addEventButton p{
-        float: left;
         font: normal 30px/32px "Ma Condensed";
-        padding-left: 110px;
-        text-align: right;
+display: inline-block;
+margin-right: 10px;
     }
 
     .addEventButton div{
-        font: normal 24px/26px "Ma Condensed";color:#FF9933;
-        padding-left: 5px;
-        padding-top: 5px;
+       font: normal 24px/26px "Ma Condensed";
+color: #FF9933;
+display: inline-block;
     }
+    
+    
+.weather-clock-block.cf{
+	margin:17px 12px 41px -4px;
+}
