@@ -28,7 +28,7 @@ padding-top: 3px;
 }
 
 .wrapper-menu {
-margin-right: 60px;
+margin-right: 25px;
 }
 
 .wrapper-menu ul {
@@ -86,6 +86,7 @@ display:inline-block;
 background-image:url(../images/settings-icon.PNG);
 background-repeat:no-repeat;
 background-position: -9px -70px;
+cursor: pointer;
 }
 .current-item:hover{
 	background-position: -8px -5px;
@@ -174,3 +175,18 @@ color: #666666;
 .added-wrapper a:hover{
 	text-decoration:underline;
 }
+
+.log-out-link{
+	background-image: url(../images/quit-icon.PNG);
+background-repeat: no-repeat;
+background-position: -8px -1px;
+width: 45px;
+height: 45px;
+display: inline-block;
+cursor:pointer
+}
+
+.log-out-link:hover{
+	background-image: url(../images/quit-icon-active.PNG);
+}
+
