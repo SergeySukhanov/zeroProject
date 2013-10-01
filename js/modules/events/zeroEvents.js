@@ -606,7 +606,7 @@ Zero.Events = (function(module){
 			contentType: "application/json",
 			data: {
 				"start" : now,
-				"amount": 1,
+				"amount": 2,
 				"direction": 1,
 				"calendarIds": calIds
 			},

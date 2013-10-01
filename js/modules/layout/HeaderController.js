@@ -79,7 +79,7 @@ Zero.HeaderController = (function(module){
 	    _handlers = function(){
 	    	_menuActive();
 	    	_intervalTime();
-	    	$('.current-item').on('click', function(event){               _showMenu(event);	    		
+	    	$('.current-item').on('click', function(event){               window.location.href = initConfiguration.getRootLocation()+'settings.html';	    		
 	    	});
 	    	$('.adeed-link').on('click', function(event){               _showMenu(event);
 	    	});
@@ -88,7 +88,7 @@ Zero.HeaderController = (function(module){
 	    		_hideMenu(event);
 	    	});
 	    	
-	    	$('#logout-item > a').on('click', function(event){
+	    	$('.log-out-link').on('click', function(event){
 	    		event.preventDefault;
 	    		localStorage.clear();
 	    		window.location.href = initConfiguration.getRootLocation();
@@ -149,13 +149,18 @@ Zero.HeaderController = (function(module){
               
            var menu = $('<div/>').addClass('wrapper-menu');
            var currentItem = $('<span/>').addClass('current-item');
-           var ul = _createMenu(root, config.configMenu);
+           // var ul = _createMenu(root, config.configMenu);
                menu.append(currentItem);
-               menu.append(ul);
+               // menu.append(ul);
                
            header.append(wrapperBrand);
            setMenu.append(addedWrapper);
            setMenu.append(menu);
+           
+           var logOutLinkWrapper = $('<div/>').addClass('log-out-wrapper');
+           var logOutLink = $('<span/>').addClass('log-out-link');
+               logOutLinkWrapper.append(logOutLink);
+            setMenu.append(logOutLinkWrapper);   
            // Zero.SettingsController.initialize();           header.append(setMenu);
 	    },
 	    
@@ -192,11 +197,12 @@ Zero.HeaderController = (function(module){
 	    	var displayItem = $('.current-item');
 	    	var currentLocation = window.location.href;
 	    	var currentItemMenu;
-	    	   menu.each(function(index, elem){
-	    	   	  if($(elem).attr('href') == currentLocation){
-	    	   	  	// displayItem.text($(elem).text());
-	    	   	  }
-	    	   });
+	    	   // menu.each(function(index, elem){
+	    	   	  // if($(elem).attr('href') == currentLocation){
+	    	   	  	// // displayItem.text($(elem).text());
+// 
+	    	   	  // }
+	    	   // });
 	    },
 	    
 	    _showMenu = function(event){

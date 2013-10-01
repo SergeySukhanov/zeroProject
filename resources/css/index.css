@@ -59,3 +59,15 @@ color:#269ABD;
 .success-link:hover, .error-link:hover{
 	text-decoration:underline;
 }
+
+.gradient-layout{
+	background: #fbddc3;
+background: -moz-linear-gradient(-45deg,  #fbddc3 0%, #bbd3fa 100%);
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fbddc3), color-stop(100%,#bbd3fa));
+background: -webkit-linear-gradient(-45deg,  #fbddc3 0%,#bbd3fa 100%);
+background: -o-linear-gradient(-45deg,  #fbddc3 0%,#bbd3fa 100%);
+background: -ms-linear-gradient(-45deg,  #fbddc3 0%,#bbd3fa 100%);
+background: linear-gradient(135deg,  #fbddc3 0%,#bbd3fa 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbddc3', endColorstr='#bbd3fa',GradientType=1 );
+
+}

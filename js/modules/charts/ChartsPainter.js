@@ -35,7 +35,7 @@ function onJsGraphDataLoad(series) {
 				$('#diagramHolder').highcharts('StockChart', {
 					chart : {
                       borderRadius:0,
-                      backgroundColor:'#ffffff'
+                      backgroundColor:'transparent'
                       
                       
 					},
@@ -45,7 +45,9 @@ function onJsGraphDataLoad(series) {
 					},
 					
 					legend : {
-						enabled : true
+						enabled : true,
+						y:1,
+						borderWidth:0
 					},
 
 					colors : ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
@@ -65,20 +67,21 @@ function onJsGraphDataLoad(series) {
 					},
 					navigator:{
 
-						enabled:true,
-						maskFill:'rgba(255,255,255,1)',
-						height:5,
-						series:{
-							lineWidth:0,
-							type:'spline',
-							color:'#000000'},
-						xAxis:{
-							labels:{
-								enabled:false
-						}
-                }
+						enabled:false,
+						// maskFill:'rgba(255,255,255,1)',
+						// height:0,
+						// series:{
+							// lineWidth:0,
+							// type:'spline',
+							// color:'#fff'},
+						// xAxis:{
+							// labels:{
+								// enabled:false
+						// }
+                // }
 					},
 					scrollbar: {
+						enabled:false,
 						barBackgroundColor: 'white',
 						buttonBackgroundColor: 'gray',
 						trackBackgroundColor: 'none',

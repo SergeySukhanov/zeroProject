@@ -17,7 +17,7 @@ Zero.YesterdayController = (function(module){
 	    _postRender = function(data){
 	       _paintYesterday();
 	       // _handlers();
-
+         
 	    },
 	    
 	    

@@ -53,6 +53,7 @@ header, nav, section, article, aside, footer {
 	/*height: 130px;
 	text-align: right;*/
 	position: relative;
+	margin-bottom: -30px;
 	}	
 	
 
