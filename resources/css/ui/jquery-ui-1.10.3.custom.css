@@ -335,16 +335,16 @@
 	font-size: 1em;
 }
 .ui-widget-content {
-	border: 1px solid #404040;
-	background: #121212 url(images/ui-bg_gloss-wave_16_121212_500x100.png) 50% top repeat-x;
+	/*border: 1px solid #404040;
+	background: #121212 url(images/ui-bg_gloss-wave_16_121212_500x100.png) 50% top repeat-x;*/
 	color: #eeeeee;
 }
 .ui-widget-content a {
 	color: #eeeeee;
 }
 .ui-widget-header {
-	border: 1px solid #404040;
-	background: #888888 url(images/ui-bg_highlight-hard_15_888888_1x100.png) 50% 50% repeat-x;
+	/*border: 1px solid #404040;
+	background: #888888 url(images/ui-bg_highlight-hard_15_888888_1x100.png) 50% 50% repeat-x;*/
 	color: #ffffff;
 	font-weight: bold;
 }
@@ -357,8 +357,8 @@
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	border: 1px solid #cccccc;
-	background: #adadad url(images/ui-bg_highlight-soft_35_adadad_1x100.png) 50% 50% repeat-x;
+	/*border: 1px solid #cccccc;
+	background: #adadad url(images/ui-bg_highlight-soft_35_adadad_1x100.png) 50% 50% repeat-x;*/
 	font-weight: normal;
 	color: #333333;
 }
@@ -374,8 +374,8 @@
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	border: 1px solid #dddddd;
-	background: #dddddd url(images/ui-bg_highlight-soft_60_dddddd_1x100.png) 50% 50% repeat-x;
+	/*border: 1px solid #dddddd;
+	background: #dddddd url(images/ui-bg_highlight-soft_60_dddddd_1x100.png) 50% 50% repeat-x;*/
 	font-weight: normal;
 	color: #000000;
 }

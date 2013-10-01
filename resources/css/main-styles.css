@@ -242,3 +242,15 @@ select.dropdown{
 	}
 	
 	
+.main-content {
+width: 74%;
+display: inline-block;
+}
+
+.opacity-layout{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+	opacity:0.6;
+}
