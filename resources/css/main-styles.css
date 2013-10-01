@@ -255,3 +255,9 @@ select.dropdown{
 #addGroupPopup #isGroup {
 	width: 20px;
 	}	
+	
+.main-content {
+	max-height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	}	

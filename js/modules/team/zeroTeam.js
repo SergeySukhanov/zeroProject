@@ -139,8 +139,7 @@ Zero.Team = (function(module){
 	
 	
 	
-	m.addGroupPopup = function() {
-	
+	m.addGroupPopup = function() {	
 		var popup = Zero.ModalController.getPopup('addGroupPopup'),				
 			footer = $('<div />').addClass('groupPopupFooter'),
 			addBt = $('<button />').text('Done'),
@@ -152,7 +151,7 @@ Zero.Team = (function(module){
 			listItem = $('<a />').attr({
 					'href' : '#',
 					'class' : 'ListGroup'
-				}).text('Add Group');
+				}).text('List Group');
 				
 			addItem.appendTo(toolbar);	
 			listItem.appendTo(toolbar);	
