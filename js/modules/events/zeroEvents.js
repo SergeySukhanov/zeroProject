@@ -11,6 +11,71 @@ Zero.Events = (function(module){
 		
 	_activeCalendarId = null;
 
+	/*
+		New versions of calendars getter
+	*/
+	
+	m.selectCalendar = null;
+	m.selectGroup = null;
+	
+	_getCalendarsSelector = function(s) {
+		m.selectCalendar = this;	
+		_getCalendars(_buildCalendarSelector)
+	}
+	
+	
+	_getGroupSelector = function() {
+		m.selectGroup = this;
+		Zero.Team.getUserOwnerGroups(_buildGroupsSelector);
+	}
+	
+	_buildGroupsSelector = function() {
+		var resp = this;
+		for(var i=0; i<resp.length;i++) {
+			var item = $('<option />').val(resp[i].id).text(resp[i].name);
+			item.appendTo(m.selectGroup);
+		}
+	}
+	
+	_buildCalendarSelector = function() {	
+		for(var i=0; i<_accounts.length; i++) {		
+			var calendars = _accounts[i].calendars;
+			for(var j=0; j<calendars.length; j++) {
+				if(calendars[j].accessRole == 'owner') {
+					var item = $('<option />').val(calendars[j].id).text(calendars[j].summary);
+					item.appendTo(m.selectCalendar);
+				}
+			}
+		}
+	}
+	
+	_getCalendars = function(callback) {	
+		if(!_accounts || _accounts.length == 0) {
+			$.ajax({
+				beforeSend: function (request) {
+					request.setRequestHeader("Access-Token", tokkens.accessToken);
+				},			
+				url: initConfiguration.urlCalendarsList,
+				type: 'GET',
+				dataType: 'json',
+				contentType: "application/json",
+				success: function (resp) {			
+					if(resp && resp.accounts && resp.accounts.length > 0) {
+						_accounts = resp.accounts;
+						callback.apply();
+					}
+				},
+				error : function(error) {
+					
+				}
+			})			
+		} else {
+			callback.apply();
+		}	
+	}
+	
+	
+	
 	_drawCalendarsTimeRange = function() {
 		var html = $('<div />').attr('id', 'calendarRange'),
 			startRangeValue = module.Tools.fortmatStampToTimePicker(_calendarStartRange),
@@ -374,6 +439,27 @@ Zero.Events = (function(module){
 						'class' : 'jq-datepicker'
 					})						
 				break;
+				case 'select' : 
+					formElement = $('<select />').attr({
+						'name' : name,
+						'id' : name,
+						'class' : className
+					});
+
+					if(typeof(val) != 'function') {
+						for(var i = 0; i < val.length; i++) {
+							var obj = val[i];
+							for(var key in obj) {
+								$('<option />').attr('value', obj[key]).text(key).appendTo(formElement);					
+							}
+						};	
+					} else {
+						(function(el, ZeroEvents) {
+							val.apply(el, ZeroEvents);	
+						})(formElement, m);
+						
+					}					
+				break;
 				default : 
 					formElement = $('<input/>').attr({
 						'name' : name,
@@ -386,11 +472,12 @@ Zero.Events = (function(module){
 			if(type == 'jq-datepicker') {
 				formElement.datetimepicker();
 			}
-			if(val) {				
+			if(val && type != 'select') {				
 				formElement.val(val);
 			}		
 			
 			formElement.appendTo(row);
+				
 		
 		return row;			
 	}
@@ -441,40 +528,8 @@ Zero.Events = (function(module){
 		}
 	}
 
-	/*
-		New versions of calendars getter
-	*/
-	
-	_getCalendars = function(callback) {	
-		if(!_accounts || _accounts.length == 0) {
-			$.ajax({
-				beforeSend: function (request) {
-					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},			
-				url: initConfiguration.urlCalendarsList,
-				type: 'GET',
-				dataType: 'json',
-				contentType: "application/json",
-				success: function (resp) {			
-					if(resp && resp.accounts && resp.accounts.length > 0) {
-						_accounts = resp.accounts;
-						callback.apply();
-					}
-				},
-				error : function(error) {
-					
-				}
-			})			
-		} else {
-			callback.apply();
-		}	
-	}
 	
 	/*New versions of event popup for add end edit*/
-	_getCalendarsSelector = function() {
-		console.warn(_accounts);
-	}
-	
 	
 	_showEventPopup = function(eventObj) {
 		var times = _getAddTimes();
@@ -487,7 +542,8 @@ Zero.Events = (function(module){
 			'description' : '',			
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow',
-			'attendees' : new Array()			
+			'attendees' : new Array(),
+			'teamId' : null
 		}
 		
 		if(eventObj) {
@@ -510,9 +566,45 @@ Zero.Events = (function(module){
 			endInput = $('input', endTime),			
 			attendeesBlock = _getAttendeesBlock(eventModel.attendees);
 		
+		if(!eventObj) {
+			var isGroup = $('<input />').attr({
+				'type' : 'checkbox',
+				'id' : 'isGroup',
+				'name' : 'isGroup'	
+				}),
+				label = $('<label />').attr({
+					'for' : 'isGroup'
+				}).text('Group Event'),
+				isGroupHolder = $('<div />').addClass('isGroupHolder'),
+				groupSelectorWrapper = $('<div />').addClass('groupSelectorWrapper'),
+				groupSelectorHolder = _eventFormRow('teamId', 'Choose Team', 'select', '', _getGroupSelector)
+				
+				isGroup.appendTo(isGroupHolder);
+				label.appendTo(isGroupHolder);				
+				
+			isGroupHolder.appendTo(popupContent);	
+			groupSelectorHolder.appendTo(groupSelectorWrapper);
+			groupSelectorWrapper.hide();
+			groupSelectorWrapper.appendTo(popupContent);
+			
+			isGroup.bind('change', function(){
+				if(isGroup[0].checked) {
+					groupSelectorWrapper.show();
+					attendeesBlock.hide();
+				} else {
+					groupSelectorWrapper.hide();
+					attendeesBlock.show();
+				}
+			})
+			
+			
+			
+		}
+		
 		
 		if(!eventObj && !_activeCalendarId) {
-			var calendarSelector = _getCalendarsSelector();
+			var calendarSelector = _eventFormRow('calendarId', 'Choose Calendar', 'select', '', _getCalendarsSelector);
+			calendarSelector.appendTo(popupContent);
 		}
 		
 		startTime.appendTo(popupContent);
@@ -525,9 +617,16 @@ Zero.Events = (function(module){
 					
 		popup = Zero.ModalController.getPopup('addGroupPopup')
 		
-		btOk.bind('click', function(e){
-			_addCalendarEvent(_activeCalendarId, popup, eventModel.id)
-		})
+		if(!eventObj && !_activeCalendarId) {
+			btOk.bind('click', function(e){
+				_addCalendarEvent($('#calendarId option:selected').val(), popup, eventModel.id)
+			})				
+		} else {
+			btOk.bind('click', function(e){
+				_addCalendarEvent(_activeCalendarId, popup, eventModel.id)
+			})		
+		}
+		
 		
 		btCancel.bind('click', function(e){
 			popup.hide();
@@ -544,6 +643,7 @@ Zero.Events = (function(module){
 		
 		popup.setHeader(eventModel ? eventModel.subject : 'New Event');
 		popup.setContent(popupContent);
+		popup.setWidth('80%');
 		popup.show();	
 	}
 	
@@ -558,9 +658,14 @@ Zero.Events = (function(module){
 			'description' : $('textarea[name = "description"]', popup).val(),			
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow',
-			'attendees' : $('.attendees-list', popup).data('attendees')
+			'attendees' : $('.attendees-list', popup).data('attendees')			
 		}	
 		var valid = _checkObj(obj);
+				
+		if($('#isGroup')[0].checked) {
+			obj.teamId = $('#teamId option:selected').val(); 
+			obj.attendees = new Array();
+		}		
 				
 		if(valid != true) {
 			_showErrors(valid, popup);

@@ -143,11 +143,24 @@ Zero.Team = (function(module){
 	
 		var popup = Zero.ModalController.getPopup('addGroupPopup'),				
 			footer = $('<div />').addClass('groupPopupFooter'),
-			addBt = $('<button />').text('Done');
+			addBt = $('<button />').text('Done'),
+			toolbar = $('<div />').addClass('group-menu'),
+			addItem = $('<a />').attr({
+					'href' : '#',
+					'class' : 'addGroup'
+				}).text('Add Group'),
+			listItem = $('<a />').attr({
+					'href' : '#',
+					'class' : 'ListGroup'
+				}).text('Add Group');
+				
+			addItem.appendTo(toolbar);	
+			listItem.appendTo(toolbar);	
 			addBt.appendTo(footer);
 
 			popup.setWidth(600);	
 			popup.setHeader('Create a new group');
+			popup.setToolbar(toolbar);
 			popup.setContent(_getCreateGroupHtml());
 			popup.setFooter(footer);
 			popup.show();
@@ -449,6 +462,32 @@ Zero.Team = (function(module){
 				console.log(error);
 			}
 		})		
+	}
+	
+	m.getUserOwnerGroups = function(callback) {
+		$.ajax({
+			beforeSend: function (request) {
+				request.setRequestHeader("Access-Token", tokkens.accessToken);
+			},				
+			url: moduleUrls.team,
+			type: 'GET',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (resp) {	
+				var obj = [];
+				if(resp && resp.result) {
+					for(var i=0; i<resp.result.length; i++) {
+						if(resp.result[i].owner == initConfiguration.settingsData.userId) {
+							obj.push(resp.result[i])	
+						}
+					}
+				}			
+				callback.apply(obj);	
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		})	
 	}
 	
 	
