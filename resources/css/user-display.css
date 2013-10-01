@@ -49,6 +49,10 @@ display: inline-block;
 position: relative;
 z-index: 300;
 min-height: 400px;
+width: 74%;
+display: inline-block;
+vertical-align: top;
+}
 }
 
 .willpower-diagram {

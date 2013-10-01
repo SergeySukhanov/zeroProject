@@ -142,7 +142,7 @@ cursor:pointer;
 	display:none;
 }
 .added-wrapper {
-margin-right: 32px;
+margin-right: 25px;
 }
 
 .added-wrapper ul {
@@ -188,5 +188,9 @@ cursor:pointer
 
 .log-out-link:hover{
 	background-image: url(../images/quit-icon-active.PNG);
+}
+
+#nextUpEventsHolder {
+display: inline-block;
 }
 

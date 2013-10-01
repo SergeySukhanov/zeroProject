@@ -816,7 +816,7 @@ Zero.Events = (function(module){
         var ampm = startTime.ampm;
 
         if(eventNum == 0){
-            html = $('<div class="nextUpEvent leftNextupEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
+            html = $('<div class="nextUpEvent leftNextUpEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
                 + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
                 + '<h1>' + event.subject + '<h1/>'
                 + '<h4>You Are Attending<h4/>'

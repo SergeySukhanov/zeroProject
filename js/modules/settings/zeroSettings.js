@@ -7,20 +7,24 @@ Zero.Settings = (function(module){
 	
 		var holder = $('.settings-content'),	
 			buttonHolder = $('<div />').addClass('button-holder'),
-			btSave = $('<button />').addClass('bt-save').text('Save');
+			btSave = $('<button />').addClass('bt-save').text('Save');
+
 
 			
 		_createPersonalTab();
 		_createTimeTab();
-		// _createImportTab();
-		// _createUnitTab();
+		// _createImportTab();
+
+		// _createUnitTab();
+
 		_createCalendarTab();
 			
 			
 	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
 	    Zero.Tools.selectUpdate($('.dropdown'));
-			
-			
+
+        Zero.GoogleAccount.init($('.tabs-pages .account-tab'));
+
 		btSave.appendTo(buttonHolder);
 		buttonHolder.appendTo(holder);
 		
@@ -32,14 +36,16 @@ Zero.Settings = (function(module){
 	
 	_createPersonalTab = function() {
 		var holder = $('.tabs-pages .personal-tab'),
-			// fName = _createFormRowHtml('name', 'Name', 'string'),
+			// fName = _createFormRowHtml('name', 'Name', 'string'),
+
 			fUserName = _createFormRowHtml('username', 'Username', 'string'),
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
 			fHeight = _createFormRowHtml('height', 'Height', 'string'),
 			fWeight = _createFormRowHtml('weight', 'Weight', 'string'),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker');
 			
-		// fName.appendTo(holder);
+		// fName.appendTo(holder);
+
 		fUserName.appendTo(holder);
 		fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
@@ -113,7 +119,8 @@ Zero.Settings = (function(module){
 		fPrimary.appendTo(holder);	
 		fSync.appendTo(holder);
 		// fSecondary.appendTo(holder);	
-		// fTravel.appendTo(holder);
+		// fTravel.appendTo(holder);
+
 			
 	};
 	
@@ -141,13 +148,15 @@ Zero.Settings = (function(module){
 			fCalendars = _createFormRowHtml('primaryCalendar', 'Primary', 'dropdown', calendarValues);
 			fCalendarsS = _createFormRowHtml('secondaryCalendar', 'Secondary', 'dropdown', calendarValues);
 			fThirdCalendars = _createFormRowHtml('thirdCalendar', 'Third', 'dropdown', calendarValues);
-			// fHolyDayCalendars = _createFormRowHtml('holydaysCalendar', 'Holidays', 'dropdown', calendarValues);
+			// fHolyDayCalendars = _createFormRowHtml('holydaysCalendar', 'Holidays', 'dropdown', calendarValues);
+
 			
 			fCalendars.appendTo(holder);
 			fCalendarsS.appendTo(holder);
 			fThirdCalendars.appendTo(holder);
 			fAlerts.appendTo(holder);
-			// fHolyDayCalendars.appendTo(holder);
+			// fHolyDayCalendars.appendTo(holder);
+
 			fWeek.appendTo(holder);
 			//fShowDeclined.appendTo(holder);
 			//fCheckIn.appendTo(holder);	

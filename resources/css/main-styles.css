@@ -250,14 +250,27 @@ select.dropdown{
 	font: normal 14px/22px "Zero";
 	}
 	
-	
-	
+
+.main-content {
+width: 74%;
+display: inline-block;
+}
+
+.opacity-layout{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+	opacity:0.6;
+}
+
 #addGroupPopup #isGroup {
 	width: 20px;
 	}	
 	
-.main-content {
+.popup .main-content {
 	max-height: 500px;
 	overflow: hidden;
 	overflow-y: auto;
 	}	
+	
