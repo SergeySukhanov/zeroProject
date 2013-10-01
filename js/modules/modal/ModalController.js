@@ -25,7 +25,9 @@ Zero.ModalController = (function(module){
 	    	var content = $('<div/>').addClass('content-popup-inner');
 	    	var footer = $('<div/>').addClass('footer-popup-inner');
 			var title = $('<h1 />').text('Welcome');
+			var toolbarMenu = $('<div />').addClass('popup-toolbar-menu');						
 			title.appendTo(header);
+			toolbarMenu.appendTo(header);
 			var btClose = $('<button />').addClass('close-popup').text('Cancel');
 			btClose.appendTo(header);
 			
@@ -54,9 +56,14 @@ Zero.ModalController = (function(module){
 			
 			outerPopupContainer.setContent = function(text) {
 				var content = $('.content-popup-inner', outerPopupContainer);
-					content.html(text);	    	    
-				
+					content.html(text);	    	    				
 			}			
+			
+			outerPopupContainer.setToolbar = function(obj) {
+				if(obj) {
+					obj.appendTo(toolbarMenu);
+				}
+			}
 			
 			outerPopupContainer.setFooter = function(text) {
 				var footer = $('.footer-popup-inner', outerPopupContainer);
@@ -65,7 +72,7 @@ Zero.ModalController = (function(module){
 			
 			outerPopupContainer.setWidth = function(w) {
 				outerPopupContainer.width(w);
-				outerPopupContainer.css('marginLeft', w/2*(-1));
+				outerPopupContainer.css('marginLeft', outerPopupContainer.width()/2*(-1));
 			}
 			
 			outerPopupContainer.show = function() {

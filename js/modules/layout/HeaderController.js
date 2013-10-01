@@ -107,7 +107,7 @@ Zero.HeaderController = (function(module){
 			})
 			          
 			$('#addEvent-item > a').bind('click',function(e){			
-				Zero.Events.showEventPopup();
+				Zero.Events.showEventPopup(null,'add');
 				e.preventDefault();
 			})		  
 					  

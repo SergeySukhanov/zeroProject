@@ -11,6 +11,71 @@ Zero.Events = (function(module){
 		
 	_activeCalendarId = null;
 
+	/*
+		New versions of calendars getter
+	*/
+	
+	m.selectCalendar = null;
+	m.selectGroup = null;
+	
+	_getCalendarsSelector = function(s) {
+		m.selectCalendar = this;	
+		_getCalendars(_buildCalendarSelector)
+	}
+	
+	
+	_getGroupSelector = function() {
+		m.selectGroup = this;
+		Zero.Team.getUserOwnerGroups(_buildGroupsSelector);
+	}
+	
+	_buildGroupsSelector = function() {
+		var resp = this;
+		for(var i=0; i<resp.length;i++) {
+			var item = $('<option />').val(resp[i].id).text(resp[i].name);
+			item.appendTo(m.selectGroup);
+		}
+	}
+	
+	_buildCalendarSelector = function() {	
+		for(var i=0; i<_accounts.length; i++) {		
+			var calendars = _accounts[i].calendars;
+			for(var j=0; j<calendars.length; j++) {
+				if(calendars[j].accessRole == 'owner') {
+					var item = $('<option />').val(calendars[j].id).text(calendars[j].summary);
+					item.appendTo(m.selectCalendar);
+				}
+			}
+		}
+	}
+	
+	_getCalendars = function(callback) {	
+		if(!_accounts || _accounts.length == 0) {
+			$.ajax({
+				beforeSend: function (request) {
+					request.setRequestHeader("Access-Token", tokkens.accessToken);
+				},			
+				url: initConfiguration.urlCalendarsList,
+				type: 'GET',
+				dataType: 'json',
+				contentType: "application/json",
+				success: function (resp) {			
+					if(resp && resp.accounts && resp.accounts.length > 0) {
+						_accounts = resp.accounts;
+						callback.apply();
+					}
+				},
+				error : function(error) {
+					
+				}
+			})			
+		} else {
+			callback.apply();
+		}	
+	}
+	
+	
+	
 	_drawCalendarsTimeRange = function() {
 		var html = $('<div />').attr('id', 'calendarRange'),
 			startRangeValue = module.Tools.fortmatStampToTimePicker(_calendarStartRange),
@@ -21,6 +86,7 @@ Zero.Events = (function(module){
 		
 		
 		btSetRange.bind('click', function(e){		
+			$('.calendar-event', $(this).closest('.events-calendars-holder')).remove();
 			_drawCalendars();
 			e.preventDefault();
 		})
@@ -28,7 +94,10 @@ Zero.Events = (function(module){
 		startRange.appendTo(html);
 		endRange.appendTo(html);		
 		btSetRange.appendTo(html);
-		html.insertBefore(_holder);
+		
+		
+		
+		html.appendTo(_holder);
 	}
 
 
@@ -38,6 +107,7 @@ Zero.Events = (function(module){
 	
 	
 	_validateRange = function() {
+		
 		var answer = true,
 			holder = $('#calendarRange'),
 			start = ($.datepicker.formatDate( '@', $('input[name = "startRange"]', holder).datepicker( "getDate" )))/1000,
@@ -58,10 +128,10 @@ Zero.Events = (function(module){
 		
 	_drawCalendars = function() {	
 		var callArr = _accounts,		
-			isValid = _validateRange();
+			isValid = true //_validateRange();
 		
 		if(isValid === true) {
-			_holder.html('');
+			//_holder.html('');
 			for(var i=0; i < callArr.length; i++) {
 				var calendars = callArr[i].calendars;
 				for(var j=0; j < calendars.length; j++) {			
@@ -84,12 +154,12 @@ Zero.Events = (function(module){
 			callDeas = callObj.description,
 			html = $('<div />').addClass('calendar-event').data('cal-id', callObj.id),
 			header = $('<h2 />').text(callObj.summary),
-			description = $('<div />').addClass('calendar-description').text(callObj.description),
-			addButton = _addEventButton(callObj.id);
+			description = $('<div />').addClass('calendar-description').text(callObj.description);
+			//addButton = _addEventButton(callObj.id);
 			if(callObj.description && callObj.description != '') {
 				description.appendTo(header);
 			}			
-			addButton.appendTo(header);
+			//addButton.appendTo(header);
 			header.appendTo(html);			
 			
 		return html;			
@@ -374,6 +444,27 @@ Zero.Events = (function(module){
 						'class' : 'jq-datepicker'
 					})						
 				break;
+				case 'select' : 
+					formElement = $('<select />').attr({
+						'name' : name,
+						'id' : name,
+						'class' : className
+					});
+
+					if(typeof(val) != 'function') {
+						for(var i = 0; i < val.length; i++) {
+							var obj = val[i];
+							for(var key in obj) {
+								$('<option />').attr('value', obj[key]).text(key).appendTo(formElement);					
+							}
+						};	
+					} else {
+						(function(el, ZeroEvents) {
+							val.apply(el, ZeroEvents);	
+						})(formElement, m);
+						
+					}					
+				break;
 				default : 
 					formElement = $('<input/>').attr({
 						'name' : name,
@@ -386,11 +477,12 @@ Zero.Events = (function(module){
 			if(type == 'jq-datepicker') {
 				formElement.datetimepicker();
 			}
-			if(val) {				
+			if(val && type != 'select') {				
 				formElement.val(val);
 			}		
 			
 			formElement.appendTo(row);
+				
 		
 		return row;			
 	}
@@ -441,42 +533,10 @@ Zero.Events = (function(module){
 		}
 	}
 
-	/*
-		New versions of calendars getter
-	*/
-	
-	_getCalendars = function(callback) {	
-		if(!_accounts || _accounts.length == 0) {
-			$.ajax({
-				beforeSend: function (request) {
-					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},			
-				url: initConfiguration.urlCalendarsList,
-				type: 'GET',
-				dataType: 'json',
-				contentType: "application/json",
-				success: function (resp) {			
-					if(resp && resp.accounts && resp.accounts.length > 0) {
-						_accounts = resp.accounts;
-						callback.apply();
-					}
-				},
-				error : function(error) {
-					
-				}
-			})			
-		} else {
-			callback.apply();
-		}	
-	}
 	
 	/*New versions of event popup for add end edit*/
-	_getCalendarsSelector = function() {
-		console.warn(_accounts);
-	}
 	
-	
-	_showEventPopup = function(eventObj) {
+	_getEventBlock = function(eventObj) {
 		var times = _getAddTimes();
 		var eventModel = {		
 			'startTime' : times[0],
@@ -487,15 +547,16 @@ Zero.Events = (function(module){
 			'description' : '',			
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow',
-			'attendees' : new Array()			
+			'attendees' : new Array(),
+			'teamId' : null
 		}
 		
 		if(eventObj) {
 			eventModel = Zero.Tools.extendClone(eventObj,eventModel);			
 			eventModel.startTime = module.Tools.fortmatStampToTimePicker(eventModel.startTime);
 			eventModel.endTime = module.Tools.fortmatStampToTimePicker(eventModel.endTime);
-		}
-	
+		}	
+		
 		var popupContent = $('<div />').addClass('addEvent'),
 			startTime = _eventFormRow('startTime', 'Starts', 'jq-datepicker', '', eventModel.startTime),
 			endTime = _eventFormRow('endTime', 'Ends', 'jq-datepicker', '', eventModel.endTime),				
@@ -510,9 +571,45 @@ Zero.Events = (function(module){
 			endInput = $('input', endTime),			
 			attendeesBlock = _getAttendeesBlock(eventModel.attendees);
 		
+		if(!eventObj) {
+			var isGroup = $('<input />').attr({
+				'type' : 'checkbox',
+				'id' : 'isGroup',
+				'name' : 'isGroup'	
+				}),
+				label = $('<label />').attr({
+					'for' : 'isGroup'
+				}).text('Group Event'),
+				isGroupHolder = $('<div />').addClass('isGroupHolder'),
+				groupSelectorWrapper = $('<div />').addClass('groupSelectorWrapper'),
+				groupSelectorHolder = _eventFormRow('teamId', 'Choose Team', 'select', '', _getGroupSelector)
+				
+				isGroup.appendTo(isGroupHolder);
+				label.appendTo(isGroupHolder);				
+				
+			isGroupHolder.appendTo(popupContent);	
+			groupSelectorHolder.appendTo(groupSelectorWrapper);
+			groupSelectorWrapper.hide();
+			groupSelectorWrapper.appendTo(popupContent);
+			
+			isGroup.bind('change', function(){
+				if(isGroup[0].checked) {
+					groupSelectorWrapper.show();
+					attendeesBlock.hide();
+				} else {
+					groupSelectorWrapper.hide();
+					attendeesBlock.show();
+				}
+			})
+			
+			
+			
+		}
+		
 		
 		if(!eventObj && !_activeCalendarId) {
-			var calendarSelector = _getCalendarsSelector();
+			var calendarSelector = _eventFormRow('calendarId', 'Choose Calendar', 'select', '', _getCalendarsSelector);
+			calendarSelector.appendTo(popupContent);
 		}
 		
 		startTime.appendTo(popupContent);
@@ -521,30 +618,97 @@ Zero.Events = (function(module){
 		location.appendTo(popupContent);
 		description.appendTo(popupContent);
 		
-		attendeesBlock.appendTo(popupContent);
-					
-		popup = Zero.ModalController.getPopup('addGroupPopup')
+		attendeesBlock.appendTo(popupContent);	
+
+		if(!eventObj && !_activeCalendarId) {
+			btOk.bind('click', function(e){
+				_addCalendarEvent($('#calendarId option:selected').val(), popupContent, eventModel.id)
+			})				
+		} else {
+			btOk.bind('click', function(e){
+				_addCalendarEvent(_activeCalendarId, popupContent, eventModel.id)
+			})		
+		}
 		
-		btOk.bind('click', function(e){
-			_addCalendarEvent(_activeCalendarId, popup, eventModel.id)
-		})
 		
 		btCancel.bind('click', function(e){
-			popup.hide();
+			//popup.hide();
+			var popup = $(this).closest('.popup-container');
+			var closeLink = $('.close-popup', popup);
+			console.warn(closeLink);
+			closeLink.click();
 		})
 		
 		btOk.appendTo(popupContent);
-		btCancel.appendTo(popupContent);
+		btCancel.appendTo(popupContent);		
 		
 		startInput.bind('change', function(e){
 			var newTime = $(this).datepicker( "getDate" )/1000 + 3600;
 			newTime = module.Tools.fortmatStampToTimePicker(newTime);
 			endInput.val(newTime);
-		})
+		})		
 		
-		popup.setHeader(eventModel ? eventModel.subject : 'New Event');
+		return popupContent;
+	}
+	
+	_getGroupBlock = function() {
+		var holder = $('<div />').addClass('events-calendars-holder');
+		_holder = holder;		
+		return holder;
+		
+	}
+	
+	_showEventPopup = function(eventObj, mode) {
+	
+		var eventBlock = _getEventBlock(eventObj);
+		var groupBlock = _getGroupBlock();
+		var popup = Zero.ModalController.getPopup('addGroupPopup');
+		
+		var popupContent = $('<div />').addClass('main-content');
+		var toolbar = $('<div />').addClass('popup-toolbar');
+		var add = $('<a />').attr({
+			'href' : '#',
+			'class' : 'add-icon'
+			}).text('add'),
+			list = $('<a />').attr({
+			'href' : '#',
+			'class' : 'list-icon'
+			}).text('list');
+		
+		
+		add.appendTo(toolbar);
+		list.appendTo(toolbar);
+		
+		add.bind('click', function(e){
+			eventBlock.show();
+			groupBlock.hide();
+			popup.setHeader('New Event');
+			
+			e.preventDefault();
+		})
+		list.bind('click', function(e){
+			eventBlock.hide();
+			groupBlock.show();		
+			popup.setHeader('Events List');
+			e.preventDefault();
+		})		
+		
+		eventBlock.appendTo(popupContent);
+		groupBlock.appendTo(popupContent);
+			
+		groupBlock.hide();	
+		
+		
+		
+		
+		popup.setHeader(eventObj ? $('#subject', eventBlock).val() : 'New Event');
+		popup.setToolbar(toolbar);
 		popup.setContent(popupContent);
+		popup.setWidth('80%');
 		popup.show();	
+		
+		_getCalendars(_calendarList);					
+		
 	}
 	
 	
@@ -558,9 +722,14 @@ Zero.Events = (function(module){
 			'description' : $('textarea[name = "description"]', popup).val(),			
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow',
-			'attendees' : $('.attendees-list', popup).data('attendees')
+			'attendees' : $('.attendees-list', popup).data('attendees')			
 		}	
 		var valid = _checkObj(obj);
+				
+		if($('#isGroup')[0].checked) {
+			obj.teamId = $('#teamId option:selected').val(); 
+			obj.attendees = new Array();
+		}		
 				
 		if(valid != true) {
 			_showErrors(valid, popup);
