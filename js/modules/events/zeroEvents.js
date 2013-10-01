@@ -619,7 +619,7 @@ Zero.Events = (function(module){
 	
 	_paintNextUpEvents = function(data) {
 		var wrapper = $('#nextUpEventsHolder');
-            wrapper.addClass('nextupevents');
+            wrapper.addClass('nextupevents').addClass('cf');
             wrapper.empty();
 			
             if(data != null && data.events && data.events.length > 0 ) {
@@ -643,23 +643,25 @@ Zero.Events = (function(module){
 		var description = event.description || '';
 		var persons = _getAttendees(event.attendees);
 		var subject = event.subject || '';
+        var time = startTime.time;
+        var ampm = startTime.ampm;
 
-		if(eventNum == 0){
-		html = $('<div class="nextEventFirst"><h3>NEXT UP</h3>'
-			+ '<p>' + startTime + '</p>'
-			+ '<h1>' + subject + '</h1>'
-			+ '<h4>You Are Attending</h4>'
-			+ '<h2>' + location + '</h2>'
-			+ '<span>' + description + '</span>'
-			+ '</div>');
-		} else {
-			html = $('<div class="nextEventSecond">' + '<h1>' + subject + '</h1>' +
-				+ '<p>' + startTime + '</p>'
-				+ '<h4>You Are Attending</h4>'
-				+ '<h2>' + location + '</h2>'
-				+ '<span>' + description + '</span>'
-				+ '</div>');
-		}
+        if(eventNum == 0){
+            html = $('<div class="nextUpEvent leftNextupEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
+                + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                + '<h1>' + event.subject + '<h1/>'
+                + '<h4>You Are Attending<h4/>'
+                + '<h2>' + event.location + '<h2/>'
+                + '<span>' + event.description + '<span/>'
+                + '</div>');
+        } else {
+            html = $('<div class="nextUpEvent rightNextUpEvent">' + '<div class="eventHeader cf"><h1>' + event.subject + '<h1/>' +
+                + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                + '<h4>You Are Attending<h4/>'
+                + '<h2>' + location + '<h2/>'
+                + '<span>' + event.description + '<span/>'
+                + '</div>');
+        }
 
 		return html;	
 	}

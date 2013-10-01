@@ -57,12 +57,12 @@ Zero.Tools = (function(module){
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var ampm = hours >= 12 ? 'pm' : 'am';
-		
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0'+minutes : minutes;
-        var strTime = hours + ':' + minutes + ' ' + ampm;				
-        return strTime;
+        var strTime = hours + ':' + minutes;
+        var res = {time:strTime, ampm:ampm};
+        return res;
     },
 
 	m.getConfirmPopup = function(title, text, actionOk, actionNo) {
@@ -276,43 +276,50 @@ Zero.Tools = (function(module){
 	    },
 
          m.getLocationName = function(lng, lat, func){
-             $.getJSON('http://maps.googleapis.com/maps/api/geocode/json', {
-                 latlng: lat + "," + lng,
-                 sensor: 'false',
-                 language: 'en'
-             }, function(result, status) {
-                if (status == "success1") {
-                    console.log(result)
-                    var res = result.results;
-                    if (res[1]) {
-                        //formatted address
-                        //console.log(results[0].formatted_address)
-                        //find country name
-                        for (var i=0; i<res[0].address_components.length; i++) {
-                            for (var b=0;b<res[0].address_components[i].types.length;b++) {
+             try{
+                 $.getJSON('http://maps.googleapis.com/maps/api/geocode/json', {
+                     latlng: lat + "," + lng,
+                     sensor: 'false',
+                     language: 'en'
+                 }, function(result, status) {
+                    if (status == "success1") {
+                        console.log(result)
+                        var res = result.results;
+                        if (res[1]) {
+                            //formatted address
+                            //console.log(results[0].formatted_address)
+                            //find country name
+                            for (var i=0; i<res[0].address_components.length; i++) {
+                                for (var b=0;b<res[0].address_components[i].types.length;b++) {
 
-                                //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-                                if (res[0].address_components[i].types[b] == "administrative_area_level_1") {
-                                    //this is the object you are looking for
-                                    city= res[0].address_components[i];
-                                    break;
+                                    //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                                    if (res[0].address_components[i].types[b] == "administrative_area_level_1") {
+                                        //this is the object you are looking for
+                                        city= res[0].address_components[i];
+                                        break;
+                                    }
                                 }
                             }
+                            //city data
+                            func(city.long_name);
+                            return;
+                        } else {
+                            console.log("No results found");
+                            return;
                         }
-                        //city data
-                        func(city.long_name);
-                        return;
                     } else {
-                        console.log("No results found");
+                        $.get("http://ipinfo.io", function(response) {
+                            func(response.city);
+                        }, "jsonp")
                         return;
                     }
-                } else {
-                    $.get("http://ipinfo.io", function(response) {
-                        func(response.city);
-                    }, "jsonp")
-                    return;
-                }
-             });
+                 });
+             }catch(Exception){
+                 $.get("http://ipinfo.io", function(response) {
+                     func(response.city);
+                 }, "jsonp")
+                 return;
+             }
         };
 	
 	view.init = function(){

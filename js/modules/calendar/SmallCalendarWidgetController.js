@@ -11,14 +11,22 @@ Zero.SmallCalendarWidgetController = (function(module){
         },
 
         _paintCalendar = function(wrapper){
+            var divWeatherClock = $('<div/>').addClass('weather-clock-block').addClass("cf");
             var divWeather = $('<div/>').addClass('weather');
-            wrapper.append(divWeather);
-            //_createWeather(divWeather);
+            divWeatherClock.append(divWeather);
+            _createWeather(divWeather);
             var timeLocationBlock = $('<div/>').addClass('town c-dgrey');
             _locationBlock = timeLocationBlock;
             _paintClock(timeLocationBlock);
-            wrapper.append(timeLocationBlock);
-            //_addDatePicker(wrapper);
+            divWeatherClock.append(timeLocationBlock);
+            wrapper.append(divWeatherClock);
+            _addDatePicker(wrapper);
+            var addEventButton = $('<a/>').addClass('addEventButton').addClass('cf');
+            var plus = $('<p/>').text("+");
+            var text = $('<div/>').text("ADD EVENT");
+            addEventButton.append(plus);
+            addEventButton.append(text);
+            wrapper.append(addEventButton);
         },
 
         _createWeather = function(wrap){
@@ -54,7 +62,7 @@ Zero.SmallCalendarWidgetController = (function(module){
         _getTimeNow = function(){
             var date = new Date();
             var time = Zero.Tools.formatAMPM(date);
-            return time;
+            return time.time + time.ampm;
         },
 
         _addDatePicker = function(wrapper){
