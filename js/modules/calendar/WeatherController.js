@@ -86,10 +86,10 @@ Zero.WeatherController = (function(module){
             var divWeather = $('<div/>');
             var img = $('<img/>').attr('src', data.result.weatherIconUrl).addClass('weathericon');
             var text = $('<div/>').addClass('text');
-            var temp = $('<h1/>').text(tempValue).addClass('grad');
+            var temp = $('<div/>').text(tempValue).addClass('grad');
             var sup = $('<sup/>').text('o');
             temp.append(sup);
-            var type = $('<span/>').text(typeValue).addClass('type');
+            var type = $('<div/>').text(typeValue).addClass('type');
             divWeather.append(img);
             text.append(temp);
             text.append(type);

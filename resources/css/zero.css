@@ -67,28 +67,31 @@ vertical-align: top;
     margin: 3px 0 0 0;
     vertical-align: top;
     float: left;
-    padding:0 5%;
+    padding:0 2px;
 	}
-    .weather .weatherimg{
-        max-height: 100px;
-        max-width: 100px;
-        width: 100px;
-        height: 100px;
+    .weather .weathericon{
+        max-height: 70px;
+        max-width: 70px;
+        width: 70px;
+        height: 70px;
+        vertical-align: top;
     }
     .weather .weathermsg{
-        font: normal 18px/20px "Ma Condensed";
+        font: normal 16px/18px "Ma Condensed";
+        width: 70px;
     }
     .weather .text{
         display: inline-block;
+        vertical-align: top;
     }
 	.weather .grad {
-		font: normal 48px/54px "Ma Condensed";
+		font: normal 30px/32px "Ma Condensed";
 		}
 		.weather .grad sup {
-			font-size: 30px;
+			font-size: 20px;
 			}
 	.weather .type{
-		font: normal 18px/20px "Ma Condensed";
+		font: normal 14px/16px "Ma Condensed";
 		}
 /*
 	Time
@@ -110,19 +113,20 @@ margin-top: -60px;
     .weather-clock-block .town{
         float: right;
         vertical-align: top;
+        margin-left: 20px;
+        margin-top: 8px;
     }
 
 .town {
 	display: inline-block;
-	padding: 0 5%;
 	}
 
 .time {
-	font: normal 36px/44px "Ma Condensed";
-	margin-bottom: 10px;
+	font: normal 30px/32px "Ma Condensed";
+	margin-bottom: 4px;
 	}
 .place {
-	font: normal 18px/20px "Ma Condensed";
+	font: normal 14px/16px "Ma Condensed";
 	}	
 
 	
@@ -247,72 +251,73 @@ margin-top: -60px;
     border: 1px solid #B5B5B5;
 }
 
-    .nextUpEvent .eventHeader{
-        padding:10px;
-    }
+.nextUpEvent .eventHeader{
+    padding:10px;
+}
 
-    .nextUpEvent .eventHeader h1{
-        float: left;
-        color: #444444;
-        font: normal 32px/34px "Ma Condensed";
-        padding-left: 0;
-        padding-right: 30px;
-        width: 80px;
-    }
+.nextUpEvent .eventHeader h1{
+    float: left;
+    color: #444444;
+    font: normal 32px/34px "Ma Condensed";
+    padding-left: 0;
+    padding-right: 30px;
+    width: 80px;
+}
 
-    .nextUpEvent h3{
-        color: #00AD63;
-        text-transform: uppercase;
-        font: normal 28px/30px "Ma Condensed";
-        float:left;
-    }
+.nextUpEvent h3{
+    color: #00AD63;
+    text-transform: uppercase;
+    font: normal 28px/30px "Ma Condensed";
+    float:left;
+}
 
-    .nextUpEvent .eventtime{
-        color: #444444;
-        display:inline-block;
-        float:right;
-        vertical-align: top;
-        font: normal 46px/48px "Ma Condensed";
-    }
+.nextUpEvent .eventtime{
+    color: #444444;
+    display:inline-block;
+    float:right;
+    vertical-align: top;
+    font: normal 46px/48px "Ma Condensed";
+}
 
-    .nextUpEvent .eventtime .ampm{
-        color: #444444;
-        float:right;
-        text-transform: uppercase;
-        font: normal 20px/22px "Ma Condensed";
-        padding-top: 5px;
-        margin-left: -10px;
-    }
+.nextUpEvent .eventtime .ampm{
+    color: #444444;
+    float:right;
+    text-transform: uppercase;
+    font: normal 20px/22px "Ma Condensed";
+    padding-top: 5px;
+    margin-left: -10px;
+}
 
-    .nextUpEvent h1{
-        color: #444444;
-        font: normal 28px/30px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-    }
+.nextUpEvent h1{
+    color: #444444;
+    font: normal 28px/30px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+}
 
-    .nextUpEvent h2{
-        color: #444444;
-        font: normal 22px/24px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-    }
+.nextUpEvent h2{
+    color: #444444;
+    font: normal 22px/24px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+}
 
-    .nextUpEvent h4{
-        color:#B5B5B5;
-        font: normal 20px/22px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-        padding-bottom:10px;
-    }
+.nextUpEvent h4{
+    color:#B5B5B5;
+    font: normal 20px/22px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+}
 
-    .nextUpEvent span{
-        color:#B5B5B5;
-        font: normal 16px/18px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-        padding-bottom:10px;
-    }
+.nextUpEvent span{
+    color:#B5B5B5;
+    font: normal 16px/18px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+}
+
 
 .cf:after {
     content: "";
