@@ -54,7 +54,7 @@ var initConfiguration = {
 	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
 	urlWeather:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
 */
-	
+
 //DEMO	
 	/*
 	urlRegister:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',

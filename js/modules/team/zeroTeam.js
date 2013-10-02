@@ -181,7 +181,11 @@ Zero.Team = (function(module){
 			description.appendTo(html);
 			
 			html.bind('click', function(e){
-				_setActiveGroup(html, obj);
+				if(html.hasClass('active-item')){
+					return;
+				} else {
+					_setActiveGroup(html, obj);								
+				}
 				e.preventDefault();
 			})
 			
@@ -236,7 +240,7 @@ Zero.Team = (function(module){
 				var deleteBt = $('<button />').addClass('remove-button').text('Delete group');
 				var editBt = $('<button />').addClass('edit-button').text('Edit group')
 				
-				editBt.appendTo(holder);				
+				editBt.appendTo(infoblock);				
 				deleteBt.appendTo(infoblock);
 				
 				deleteBt.bind('click', function(e){
