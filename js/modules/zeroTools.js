@@ -282,7 +282,7 @@ Zero.Tools = (function(module){
                      sensor: 'false',
                      language: 'en'
                  }, function(result, status) {
-                    if (status == "success1") {
+                    if (status == "success") {
                         console.log(result)
                         var res = result.results;
                         if (res[1]) {

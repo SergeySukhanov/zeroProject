@@ -589,53 +589,101 @@ Zero.Events = (function(module){
 	
 	/* Next up section */
 	m.nextUpEvents = function(holder) {
-		var calendars = _getCalendars(_buildNextUpEvent)
-	}
-	
-	_buildNextUpEvent = function() {
-		var now = Math.round(new Date().getTime() / 1000)
-		var calIds = _getCalIds(_accounts);
-		
-		$.ajax({
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			url: initConfiguration.urlEventsCalendar,
-			type: 'GET',
-			dataType: 'json',
-			contentType: "application/json",
-			data: {
-				"start" : now,
-				"amount": 2,
-				"direction": 1,
-				"calendarIds": calIds
-			},
-			success: function (resp) {
-				_paintNextUpEvents(resp);
-			}
-		})				
+		_getSettings();
 	}
 
-	
-	_paintNextUpEvents = function(data) {
-		var wrapper = $('#nextUpEventsHolder');
-            wrapper.addClass('nextupevents').addClass('cf');
-            wrapper.empty();
-			
-            if(data != null && data.events && data.events.length > 0 ) {
-                var arr = data.events.sort(startTimeSort);
-                for(var i = 0; i < arr.length; i++) {
-                    var event = _getNextUpEventHtml(arr[i], i);
-                    wrapper.append(event);
-                }
-            } else {
-                var message = $('<h1/>').text('No events in calendars');
-                wrapper.append(message);
+    _getSettings = function() {
+        $.ajax({
+            beforeSend: function (request) {
+                request.setRequestHeader("Access-Token", tokkens.accessToken);
+            },
+            url: initConfiguration.urlSettings,
+            type: 'GET',
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                _buildNextUpEvent(data.result);
+            },
+            error : function(error) {
+                console.log(error);
             }
+        })
+    }
+	
+	_buildNextUpEvent = function(settings) {
+		var calIds = settings.visibleCalendarIds;
+		var length = calIds.length > 1 ? 2 : calIds.length;
+        var wrapper = $('#nextUpEventsHolder');
+        wrapper.addClass('nextupevents').addClass('cf');
+        wrapper.empty();
+		for(i = 0; i < length; i++){
+           var func = i == 0 ? _paintFirstRow : _paintNextRow;
+           _getNextUpEvent(calIds[i], func);
+        }
+	}
+
+	_getNextUpEvent = function(calIds, func){
+        var now = Math.round(new Date().getTime() / 1000);
+        $.ajax({
+            beforeSend: function (request) {
+                request.setRequestHeader("Access-Token", tokkens.accessToken);
+            },
+            url: initConfiguration.urlEventsCalendar,
+            type: 'GET',
+            dataType: 'json',
+            contentType: "application/json",
+            data: {
+                "start" : now,
+                "amount": 2,
+                "direction": 1,
+                "calendarIds": calIds
+            },
+            success: function (data) {
+                func(data);
+            }
+        })
+    }
+
+    _paintFirstRow = function(data) {
+        var wrapper = $('#nextUpEventsHolder');
+        wrapper.addClass('nextupevents').addClass('cf');
+        wrapper.empty();
+        _paintNextUpEvents(wrapper, data, true);
+    }
+
+    _paintNextRow = function(data) {
+        var wrapper = $('#nextUpEventsHolder');
+        _paintNextUpEvents(wrapper, data, false);
+    }
+
+	_paintNextUpEvents = function(wrapper, data, firstCalendar) {
+        if(data != null && data.events && data.events.length > 0 ) {
+            if(data.events.length == 1){
+                var arr = [data.events[0],data.events[0]];
+            } else {
+                var arr = data.events.sort(startTimeSort);
+            }
+
+            var rowDiv = $('<div/>');
+            for(var i = 0; i < arr.length; i++) {
+                if(i%2 == 0){
+                    rowDiv = $('<div/>');
+                    if(i == 0){
+                        rowDiv.addClass('firstRow');
+                    }
+                    else {
+                        rowDiv.addClass('nextRow');
+                    }
+                    wrapper.append(rowDiv);
+                }
+                var event = _getNextUpEventHtml(arr[i], i, firstCalendar);
+                rowDiv.append(event);
+            }
+        }
 	}
 	
 	
-	_getNextUpEventHtml = function(event, eventNum ){
+	_getNextUpEventHtml = function(event, eventNum, firstEvent){
 		var html;
 		var startDate = new Date(event.startTime*1000);
 		var startTime = Zero.Tools.formatAMPM(startDate);
@@ -646,20 +694,23 @@ Zero.Events = (function(module){
         var time = startTime.time;
         var ampm = startTime.ampm;
 
-        if(eventNum == 0){
+        if(firstEvent && eventNum == 0){
             html = $('<div class="nextUpEvent leftNextUpEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
                 + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
-                + '<h1>' + event.subject + '<h1/>'
-                + '<h4>You Are Attending<h4/>'
-                + '<h2>' + event.location + '<h2/>'
-                + '<span>' + event.description + '<span/>'
-                + '</div>');
-        } else {
-            html = $('<div class="nextUpEvent rightNextUpEvent">' + '<div class="eventHeader cf"><h1>' + event.subject + '<h1/>' +
-                + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                + '<h1>' + subject + '<h1/>'
                 + '<h4>You Are Attending<h4/>'
                 + '<h2>' + location + '<h2/>'
-                + '<span>' + event.description + '<span/>'
+                + '<span>' + description + '<span/>'
+                + '</div>');
+        } else {
+            var className = "rightNextUpEvent";
+            if(eventNum%2 == 0){
+                className = "leftNextUpEvent";
+            }
+            html = $('<div class="nextUpEvent ' + className + '">' + '<div class="eventHeader cf"><h1>' + subject + '<h1/>'
+                + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                + '<h2>' + location + '<h2/>'
+                + '<span>' + description + '<span/>'
                 + '</div>');
         }
 
