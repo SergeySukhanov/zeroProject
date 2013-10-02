@@ -1,0 +1,283 @@
+.popup{
+    display:none;
+}
+
+
+.popup {
+	width: 400px;
+	margin: 0 auto;
+	background: white;
+	border-radius: 5px;
+	padding: 20px 0;
+	font: normal 14px/22px "Zero";
+	-webkit-box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 1px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 1px 5px rgba(50, 50, 50, 0.75);		
+	
+	}	
+	.popup h1 {
+		font: normal 36px/44px "Ma Condensed";
+		margin: 0 20px 10px;	
+		}
+	.popup .popup-content {
+		margin: 0 20px;
+		}	
+	.popup .buttons-wrapper {
+		text-align: center;
+		}
+
+
+
+.popup-content .row {
+	margin: 0 0 10px 0;
+	}		
+	.popup-content .row  label {
+		display: inline-block;
+		width: 100px;
+		vertical-align: top;
+		}		
+
+.error-element {
+	border: 1px solid indianred!important;
+	}		
+
+	
+.popup-container {
+	width: 400px;
+	position: fixed;
+	background-color: #fff;
+	top: 0;
+	z-index: 300;
+	margin-top: 200px;
+	left: 50%;
+	margin-left: -200px;
+	}
+.popup-container.popup {
+	padding: 20px 0 0;
+	}	
+	
+	.popup-container .content-popup-inner {
+		margin: 0 20px;
+		}
+	.popup-container .header-popup-inner {
+		width: 100%;
+		overflow: hidden;
+		}
+		.popup-container .header-popup-inner h1{
+			display: inline-block;
+			}
+		.popup-container .header-popup-inner .popup-toolbar-menu	{
+			float: right;			
+			}
+			
+			.header-popup-inner .popup-toolbar-menu .add-icon {
+				float: left;
+				width: 38px;	
+				height: 38px;
+				text-indent: -10000px;
+				background: url(../images/popupAdd.PNG) 0 0 no-repeat;
+				margin-right: 10px;
+				}
+				.header-popup-inner .popup-toolbar-menu .add-icon:hover,
+				.header-popup-inner .popup-toolbar-menu .add-icon.active {
+					background: url(../images/popupAdd.PNG) 0 -66px no-repeat;
+					}
+			.header-popup-inner .popup-toolbar-menu .list-icon {
+				width: 38px;	
+				height: 38px;
+				float: left;			
+				text-indent: -10000px;
+				background: url(../images/listPopup.PNG) 0 8px no-repeat;
+				}				
+				.header-popup-inner .popup-toolbar-menu .list-icon:hover,
+				.header-popup-inner .popup-toolbar-menu .list-icon.active{
+					background: url(../images/listPopup.PNG) 0 -68px no-repeat;
+					}
+		.header-popup-inner .close-popup {
+			border: none;
+			background: white;
+			color : #fda14b;
+			font: normal 18px/18px "Ma Condensed";
+			float: right;
+			margin-top: 0;		
+			}		
+			
+
+.jq-selectbox li {
+    font: normal 14px/16px "Ma Condensed"
+    }
+	
+.autocomplete-suggestions {
+	background-color: white;
+	}	
+	.autocomplete-suggestions .autocomplete-suggestion {
+		padding: 4px 10px;
+		background: white;
+		width: 400px;
+		cursor: pointer;
+		font: normal 17px/22px "Ma Condensed";
+		color : #7a7a7a;		
+		}
+		.autocomplete-suggestions .autocomplete-suggestion strong {
+			color: #12d1f9;
+			font-weight: normal;
+			}	
+			
+			
+
+
+.popup .content-popup-inner .row input {
+	width: 98%;
+	font: normal 17px/22px "Ma Condensed";
+	border: none;
+	border-bottom: 1px solid #e5e5e5;
+	margin: 5px 0;
+	color : #7a7a7a;
+	text-indent: 20px;
+	padding: 4px 0;
+	}
+.popup .content-popup-inner .row select  {
+	display: inline-block;
+	border: 1px solid #e5e5e5;
+	}	
+	.popup .content-popup-inner .row select option {
+		display: block;
+		height: 20px;
+		line-height: 20px;
+		}
+	
+.livesearch-input {
+	width: 40%;
+	font: normal 17px/22px "Ma Condensed";
+	border: none;
+	border-bottom: 1px solid #e5e5e5;
+	margin: 5px 0;
+	color : #7a7a7a;
+	text-indent: 20px;
+	padding: 4px 0;
+	}	
+	
+	
+	
+.popup .content-popup-inner .row textarea {
+	width: 98%;
+	border: 1px solid #e5e5e5;	
+	height: 50px;
+	}	
+
+.popup .content-popup-inner .row .title {
+	font: normal 20px/22px "Ma Condensed";
+	color : #777777;
+	margin: 10px 0;
+
+	}
+	
+.popup .content-popup-inner .row .groupPopupFooter {
+	text-align: right;
+	}	
+	.popup .content-popup-inner .row .groupPopupFooter button {
+		display: inline-block;
+		border: none;
+		background: white;
+		color : #fda14b;
+		font: normal 18px/18px "Ma Condensed";
+		margin-top: 0;	 
+		}
+#participiantsHolder {
+	color : #777777;
+	}		
+
+.popup .content-popup-inner .row .add-button {
+	border: none;
+	background: white;
+	font: normal 17px/22px "Ma Condensed";
+	color : #7a7a7a;		
+	}
+	
+/*Popup Actions*/
+.popup .actionHolder {
+	text-align: right;
+	}	
+	.popup .actionHolder button {
+		display: inline-block;
+		border: none;
+		background: white;
+		color : #fda14b;
+		font: normal 18px/18px "Ma Condensed";		
+		}			
+		
+
+#addGroupPopup #isGroup {
+	width: 20px;
+	}	
+	
+.popup .main-content {
+	max-height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	width: 100%;
+	}			
+	
+.create-group-holder  input{
+	width: 98%;
+	font: normal 17px/22px "Ma Condensed";
+	border: none;
+	border-bottom: 1px solid #e5e5e5;
+	margin: 5px 0;
+	color : #7a7a7a;
+	text-indent: 20px;
+	padding: 4px 0;
+	}	
+.create-group-holder  #searchCriteria {
+	width: 40%;
+	}	
+	
+.popup .group-holder	 {
+	width: 100%;
+	overflow:hidden;
+	}
+	.popup .group-holder	 .group-list {
+		width: 200px;
+		float: left;
+		margin-right: 10px;
+		}
+	.popup .group-holder .group-window {
+		float: left;
+		width: 540px;
+		display: none;
+		}	
+		.team-nav {
+			display: block;
+			list-style: none;
+			margin: 0 0 10px 0;
+			}	
+			.popup .group-holder .group-window ul.team-nav li {
+				display: inline-block;
+				margin: 0 10px 0 0;
+				}
+		
+		
+.group-list h2 {
+	font: normal 22px/24px "Ma Condensed";
+	}
+.group-list .group-item {
+	margin: 0 0 10px 0;
+	}	
+	.group-list .group-item.active-item {
+		background: ghostwhite;
+		}
+
+
+.team-nav li a {
+	color: #cacaca;
+	text-decoration: none;
+	}
+.team-nav li a.active {
+	color: #393939;
+	}
+		
+		
+.memebers-list ul {list-style: none;}		
+.add-group-button {
+	clear: both;
+	}
