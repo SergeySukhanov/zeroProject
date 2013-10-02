@@ -61,3 +61,6 @@
 		.team-nav li a.active {
 			color: #393939;
 			}	
+.memebers-list ul li {
+	display: block;
+	}			

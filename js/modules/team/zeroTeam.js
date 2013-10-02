@@ -4,8 +4,8 @@ Zero.Team = (function(module){
 			team : initConfiguration.apiUrl + 'team',
 			userSearch : initConfiguration.apiUrl + 'user'			
 		},
-		tokkens = module.getTokens();
-		
+		tokkens = module.getTokens(),
+		_activePopup = null;
 		
 	_getUserLine = function(obj, holder) {
 		var item = $('<div />'),
@@ -130,46 +130,29 @@ Zero.Team = (function(module){
 			arr.push(item);			
 			$('#searchCriteria').val('');
 		})
-			
+		
+		var addGroupButtonHolder = $('<div />'),
+			addGroupButton;
+		
+		if(obj) {
+			addGroupButton = $('<button />').addClass('edit-group-button').text('Edit Group');		
+			addGroupButton.bind('click', function(e){
+				_editGroup(obj, html, e)
+			})				
+		} else {
+			addGroupButton = $('<button />').addClass('add-group-button').text('Add Group');		
+			addGroupButton.bind('click', function(e){
+				_addGroup(html, e)
+			})		
+		}
+		
+		addGroupButton.appendTo(addGroupButtonHolder);
+		addGroupButtonHolder.appendTo(html);
+		
+		
 		return html;	
 	};	
-	
-	
-	
-	
-	
-	
-	m.addGroupPopup = function() {	
-		var popup = Zero.ModalController.getPopup('addGroupPopup'),				
-			footer = $('<div />').addClass('groupPopupFooter'),
-			addBt = $('<button />').text('Done'),
-			toolbar = $('<div />').addClass('group-menu'),
-			addItem = $('<a />').attr({
-					'href' : '#',
-					'class' : 'addGroup'
-				}).text('Add Group'),
-			listItem = $('<a />').attr({
-					'href' : '#',
-					'class' : 'ListGroup'
-				}).text('List Group');
-				
-			addItem.appendTo(toolbar);	
-			listItem.appendTo(toolbar);	
-			addBt.appendTo(footer);
 
-			popup.setWidth(600);	
-			popup.setHeader('Create a new group');
-			popup.setToolbar(toolbar);
-			popup.setContent(_getCreateGroupHtml());
-			popup.setFooter(footer);
-			popup.show();
-			
-			addBt.bind('click', function(e){
-				_addGroup(popup, e);
-			})
-	};
-	
-	
 	_addGroup = function(popup, e) {
 		var obj = {};
 		obj.name = $('#groupName', popup).val();
@@ -178,19 +161,6 @@ Zero.Team = (function(module){
 		m.addGroupAction(obj, popup, e);
 	};
 
-	/*Group List*/
-	_drawUserGroups = function(obj) {
-		var holder = $('#teamList .teamList-holder');
-		holder.html('');
-		for(var i=0; i < obj.length; i++) {
-			if(obj[i].active) {
-				var item = _getGroupHtml(obj[i]);
-				item.appendTo(holder);
-			}	
-		}
-		
-		_groupsTabsHandlers();
-	};
 	
 	_getGroupHtml = function(obj) {
 		var html = $('<div />').addClass('group-item'),
@@ -210,45 +180,6 @@ Zero.Team = (function(module){
 			title.appendTo(html);
 			description.appendTo(html);
 			
-			
-			//Edit
-			if(userId === obj.owner) {
-				removeLink.appendTo(linksHolder);
-				
-				removeLink.bind('click', function(e){				
-					_showRemovePopup(obj.id, obj.name)
-					e.preventDefault();
-				})
-				
-				editLink.appendTo(linksHolder);
-				editLink.bind('click', function(e){
-
-				var popup = Zero.ModalController.getPopup('addGroupPopup'),				
-					footer = $('<div />').addClass('groupPopupFooter'),
-					addBt = $('<button />').text('Update');
-					addBt.appendTo(footer);
-
-					popup.setWidth(600);	
-					popup.setHeader('Edit group');
-					popup.setContent(_getCreateGroupHtml(obj));
-					popup.setFooter(footer);
-					popup.show();
-					
-					addBt.bind('click', function(e){
-						_editGroup(obj, popup, e);
-					})				
-					
-					
-					e.preventDefault();
-				})									
-				linksHolder.appendTo(html)				
-			}
-			//Edit End
-			
-			
-
-			
-			
 			html.bind('click', function(e){
 				_setActiveGroup(html, obj);
 				e.preventDefault();
@@ -258,17 +189,13 @@ Zero.Team = (function(module){
 	}
 	
 	_setActiveGroup = function(group, obj) {
-		var parent = group.closest('.teamList-holder');
+		var parent = group.closest('.group-list');
 		$('.active-item ', parent).removeClass('active-item');
 		group.addClass('active-item');
-		
-		_viewGroupTabs(group, obj);
-		
+		_viewGroupTabs(group, obj);		
 	}
 	
-	_groupsTabsHandlers = function() {
-		var holder = $('.team-info');
-			
+	_groupsTabsHandlers = function(holder) {	
 		$('ul li a', holder).bind('click', function(e){
 			var name = $(this).attr('href').substring(1, $(this).attr('href').length);
 			$('ul li a.active', holder).removeClass('active');
@@ -277,15 +204,12 @@ Zero.Team = (function(module){
 			$('.' + name + '-block', holder).show();			
 			e.preventDefault();			
 		})	
-			
-		
-		
 	}
 	
 	_viewGroupTabs = function(group, obj) {
 		var messages = obj.messages,
 			members = obj.members,
-			holder = $('.team-info'),
+			holder = $('.group-window'),
 			membersblock = $('.team-members-block', holder),
 			infoblock = $('.team-info-block', holder),
 			messageblock = $('.team-messages-block', holder),
@@ -294,7 +218,7 @@ Zero.Team = (function(module){
 			membersblock.html('')
 			
 			if(members && members.length !=0) {
-				memberList.html(_createMemberList(obj.members));
+				memberList.html(_createMemberList(obj.members, obj.owner));
 			} else {
 				memberList.html('<p>No members in group');
 			}
@@ -307,20 +231,40 @@ Zero.Team = (function(module){
 			memberList.appendTo(membersblock);
 			infoblock.html('<p>Deleting a group will remove all associated messages and upcoming associated events. Contacts will not be deleted.');	
 
+			
+			if(obj.owner == initConfiguration.settingsData.userId) {
+				var deleteBt = $('<button />').addClass('remove-button').text('Delete group');
+				var editBt = $('<button />').addClass('edit-button').text('Edit group')
+				
+				editBt.appendTo(holder);				
+				deleteBt.appendTo(infoblock);
+				
+				deleteBt.bind('click', function(e){
+					_removeGroup(obj, $(this));
+					e.preventDefault();
+				});
+				
+				editBt.bind('click',function(e) {
+					_activePopup.hide()
+					m.showGroupPopup(obj, 'edit');					
+					e.preventDefault();
+				})
+				
+				
+			}
+						
 			$('.block-tab', holder).hide();
+			
 			infoblock.show();
 			
 			$('ul li a.active', holder.parent()).removeClass('active');
-			
-			
-			
 			$('a.team-info', holder.parent()).addClass('active');
 			
 			holder.css('display', 'inline-block');
 		
 	}
 	
-	_createMemberList = function(arr) {
+	_createMemberList = function(arr, owner) {
 		var html = $('<ul />');
 		for(var i=0; i < arr.length; i++) {
 			var item = $('<li />'),
@@ -328,11 +272,29 @@ Zero.Team = (function(module){
 				mail = $('<span />').addClass('person-mail');
 				
 			if(arr[i].name) {
-				name.text(arr[i].name);
+				name.text(arr[i].name + ' (');
 				name.appendTo(item)
+				mail.text(arr[i].email + ')')			
+			} else {
+				mail.text(arr[i].email)			
 			}				
-			mail.text(arr[i].email)			
+			
 			mail.appendTo(item)
+			
+			/*
+			if(owner == initConfiguration.settingsData.userId && initConfiguration.settingsData.userId != arr[i].userId) {
+				var a = $('<a />').attr({
+						'href' : '#',
+						'class' : 'remove-member-icon'
+					}).text('remove');
+				a.appendTo(item);	
+				
+				a.bind('click', function(e) {
+				
+				})
+			}
+			*/
+			
 			item.appendTo(html)			
 		}
 		
@@ -341,41 +303,35 @@ Zero.Team = (function(module){
 	}
 	
 	/*Remove popup*/
-	_showRemovePopup = function(groupId, groupName) {
-		var popup = Zero.ModalController.getPopup('removeGroupPopup'),
-			content = $('<div />').html('<p>Do you realy want to delete Group "' + groupName + '" ?</p>'),
-			actionsHolder = $('<div />').addClass('actionHolder'),
+	
+	_removeGroup = function(obj, bt) {
+		var info = $('<div />').addClass('remove-info').html('<p>Do you realy want to delete Group "' + obj.name + '" ?</p>'),
 			btYes = $('<button />').text('Confirm'),
 			btNo = $('<button />').text('No');
-						
-			btYes.appendTo(actionsHolder);
-			btNo.appendTo(actionsHolder);
-			actionsHolder.appendTo(content);
 			
-			
-			btYes.bind('click', function(e){
-				popup.hide();
-				_deleteGroupAction(groupId, groupName);
-				e.preventDefault();
-			})
-			
-			btNo.bind('click', function(e){
-				popup.hide();
-				e.preventDefault();
-			})
+		btYes.appendTo(info);
+		btNo.appendTo(info);
+		info.insertAfter(bt);
 
-			popup.setWidth(600);	
-			popup.setHeader('Delete group');
-			popup.setContent(content);
-			popup.show();
+		btYes.bind('click', function(e){
+			_deleteGroupAction(obj.id, obj.name);
+			e.preventDefault();
+		})		
+		
+		btNo.bind('click', function(e){
+			info.remove();
+			e.preventDefault();
+		})		
+	} 
 	
-	
-	
-
+	_deleteActiveGroup = function() {
+		var holder = $('#groupPopup');
+		$('.group-list .active-item', holder).remove();
+		$('.group-window').hide();		
 	}
+
 	
-	
-	m.getUserGroups = function() {
+	m.getUserGroups = function(callback) {
 		$.ajax({
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
@@ -385,7 +341,12 @@ Zero.Team = (function(module){
 			dataType: 'json',
 			contentType: "application/json",
 			success: function (resp) {	
-				_drawUserGroups(resp.result);	
+				if(callback) {
+					callback.apply(resp.result);
+				} else {
+					//_drawUserGroups(resp.result);	
+				}
+				
 			},
 			error : function(error) {
 				console.log(error);
@@ -405,12 +366,8 @@ Zero.Team = (function(module){
 			contentType: "application/json",			
 			data : JSON.stringify(groupObj),
 			success: function (resp) {		
-				if(popup && popup.hide) {
-					popup.hide(e);
-				}			
 				Zero.Tools.generateNoty('success', 'Group "' + groupObj.name + '" successfully created');
-				m.getUserGroups();
-				
+				_activePopup.hide();				
 			},
 			error : function(error) {
 				console.log(error);
@@ -433,7 +390,8 @@ Zero.Team = (function(module){
 			}),
 			success: function (resp) 	{		
 				Zero.Tools.generateNoty('success', 'Group "' + groupName + '" was successfully deleted');	
-				m.getUserGroups();
+				_deleteActiveGroup();
+				//m.getUserGroups();
 			},
 			error : function(error) {
 				console.log(error);
@@ -453,9 +411,9 @@ Zero.Team = (function(module){
 			contentType: "application/json",			
 			data : JSON.stringify(groupObj),
 			success: function (resp) {		
-				popup.hide();
+				_activePopup.hide();
 				Zero.Tools.generateNoty('success', 'Group "' + groupObj.name + '" was successfully updated');		
-				m.getUserGroups();
+				//m.getUserGroups();
 			},
 			error : function(error) {
 				console.log(error);
@@ -492,6 +450,115 @@ Zero.Team = (function(module){
 	
 	m.init = function() {
 		m.getUserGroups();
+	}
+	
+	_groupHolder = null;
+	
+	
+	_drawPopupListGroup = function(obj) {
+		_drawPopupGroupListWrapper(this);
+	}
+	
+	_drawPopupGroupListWrapper = function(objList) {
+		for(var i=0; i< objList.length; i++) {
+			var item = _getGroupHtml(objList[i]);
+			item.appendTo(_groupHolder);
+		}		
+	}
+	
+	_getUserGroupsWrapper = function() {
+		var html = $('<div />').addClass('group-holder'),
+			groupList = $('<div />').addClass('group-list'),
+			groupInfo = $('<div />').addClass('group-window'),
+			groupNav = $('<ul />').addClass('team-nav'),
+			groupNavHtml = '<li><a href="#team-messages" class="team-messages">Messages</a></li>'  
+						+ '<li><a href="#team-members" class="team-members">Members</a></li>' 
+						+ '<li><a href="#team-info" class="team-info">Info</a></li>';
+			groupTabs = $('<div />').addClass('group-tabs');			
+			tabsHtml = '<div class="team-messages-block block-tab">Messages</div>'
+					 + '<div class="team-members-block block-tab">Members</div>'
+					 + '<div class="team-info-block block-tab">Info</div>'	
+						
+			
+			groupNav.html(groupNavHtml);
+			groupNav.appendTo(groupInfo);
+			
+			groupTabs.html(tabsHtml);
+			groupTabs.appendTo(groupInfo);
+			
+			
+			
+		_groupHolder = groupList;
+		m.getUserGroups(_drawPopupListGroup);
+		groupList.appendTo(html);
+		groupInfo.appendTo(html);
+		
+		return html;
+	}
+	
+	m.showGroupPopup = function(groupObj, mode) {
+		var addTab = _getCreateGroupHtml(groupObj),
+			listTab = _getUserGroupsWrapper(),
+			popup = Zero.ModalController.getPopup('groupPopup'),
+			toolbar = $('<div />').addClass('group-menu'),
+			addItem = $('<a />').attr({
+					'href' : '#',
+					'class' : 'add-icon'
+				}).text('Add Group'),
+			listItem = $('<a />').attr({
+					'href' : '#',
+					'class' : 'list-icon'
+				}).text('List Group'),
+			popupContent = $('<div />').addClass('popup-tabs-holder');
+
+			addTab.appendTo(popupContent);
+			listTab.appendTo(popupContent);
+			
+			addItem.appendTo(toolbar);	
+			listItem.appendTo(toolbar);	
+			
+			
+			if(mode == 'add') {
+				listTab.hide();
+				addItem.addClass('active');
+				popup.setHeader('New group');
+			}
+			if(mode == 'edit') {
+				listTab.hide();
+				popup.setHeader('Edit group');
+				addItem.addClass('active');
+			}			
+			
+			listItem.bind('click', function(e){
+				addItem.removeClass('active');
+				$(this).addClass('active');
+				listTab.show();
+				addTab.hide();
+				popup.setHeader('Groups List');
+				e.preventDefault();
+			})
+			addItem.bind('click', function(e){
+				listItem.removeClass('active');
+				$(this).addClass('active');			
+				listTab.hide();
+				addTab.show();
+				popup.setHeader('New Group');
+				e.preventDefault();
+			})			
+			
+			
+			_groupsTabsHandlers(listTab);
+			
+			
+			popup.setWidth(800);				
+			popup.setToolbar(toolbar);
+			popup.setContent(popupContent);
+			popup.show();
+			
+			_activePopup = popup;
+			
+	
+	
 	}
 	
 	return m
