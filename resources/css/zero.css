@@ -310,12 +310,16 @@ display: inline-block;
 width: 100%;
 z-index: 100;
 position: relative;
+padding-bottom: 10px;
+border-top: 1px solid #cccccc;
+padding-top: 10px;
     
 }
 
 .addEventButton:hover{
 	background-color:#cccccc;
 	opacity:0.7;
+	color:#ffffff;
 }
 
     .addEventButton p{
@@ -326,13 +330,12 @@ margin-right: 10px;
 
     .addEventButton div{
        font: normal 24px/26px "Ma Condensed";
-color: #FF9933;
 display: inline-block;
     }
     
     
 .weather-clock-block.cf{
-	margin: 15px 0px 15px 0px;
+	margin: 28px 0px 15px 0px;
 border-bottom: 1px solid #cccccc;
 width: 100%;
 }
@@ -343,4 +346,5 @@ border-bottom: 1px solid #FF9933;
 
 .weather-clock-block.cf > * {
 display: inline-block;
+margin-bottom: 18px;
 }
