@@ -154,6 +154,9 @@ select.dropdown{
 			float: right;
 			margin-top: 0;
 			}
+		.popup-container .header-popup-inner .popup-toolbar-menu	{
+			display: inline-block;
+			}
 
 .jq-selectbox li {
     font: normal 14px/16px "Ma Condensed"
@@ -184,6 +187,12 @@ select.dropdown{
 	text-indent: 20px;
 	padding: 4px 0;
 	}
+.popup .content-popup-inner .row select  {
+	display: inline-block;
+	}	
+.popup .content-popup-inner .row textarea {
+	width: 100%;
+	}	
 
 #addGroupPopup .title {
 	font: normal 20px/22px "Ma Condensed";
@@ -241,7 +250,7 @@ select.dropdown{
 	font: normal 14px/22px "Zero";
 	}
 	
-	
+
 .main-content {
 width: 74%;
 display: inline-block;
@@ -254,3 +263,14 @@ display: inline-block;
 	background-color:#fff;
 	opacity:0.6;
 }
+
+#addGroupPopup #isGroup {
+	width: 20px;
+	}	
+	
+.popup .main-content {
+	max-height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	}	
+	

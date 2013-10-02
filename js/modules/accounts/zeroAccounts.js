@@ -207,7 +207,7 @@ Zero.GoogleAccount = (function(module){
 					initConfiguration.settingsData.accounts = accounts; 					
 				}
 				_setAccountHolder(accountHolder);
-				Zero.Calendar.init($('#calendarHolder'));
+				//Zero.Calendar.init($('#calendarHolder'));
 				w.close();				
 			},
 			error : function(error) {
@@ -217,8 +217,7 @@ Zero.GoogleAccount = (function(module){
 	}
 	
 	m.init = function(holder) {		
-		_setAccountHolder(holder);
-		
+		_setAccountHolder(holder);		
 	}
 	
 	
