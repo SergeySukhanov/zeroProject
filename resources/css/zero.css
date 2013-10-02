@@ -63,11 +63,9 @@ vertical-align: top;
 	Weather
 */	
 .weather {
-    text-align: left;
-    margin: 3px 0 0 0;
+
     vertical-align: top;
-    float: left;
-    padding:0 2px;
+    margin-right: 27px;
 	}
     .weather .weathericon{
         max-height: 70px;
@@ -111,10 +109,7 @@ position:relative;
 margin-top: -60px;
     }
     .weather-clock-block .town{
-        float: right;
         vertical-align: top;
-        margin-left: 20px;
-        margin-top: 8px;
     }
 
 .town {
@@ -330,7 +325,8 @@ margin-top: -60px;
 
 .smalldatepicker {
     position: relative;
-    padding-left: 16px;
+    margin-left: 15px;
+margin-right: 15px;
 }
 
 .addEventButton {
@@ -340,6 +336,9 @@ display: inline-block;
 width: 100%;
 z-index: 100;
 position: relative;
+padding-top: 10px;
+padding-bottom: 15px;
+border-top: 1px solid #cccccc;
     
 }
 
@@ -361,6 +360,12 @@ display: inline-block;
     }
     
     
-.weather-clock-block.cf{
-	margin:17px 12px 41px -4px;
+.weather-clock-block.cf {
+margin: 11px 0px 22px 0px;
+width: 100%;
+border-bottom: 1px solid #cccccc;
+}
+
+.weather-clock-block.cf > * {
+display: inline-block;
 }
