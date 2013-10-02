@@ -26,10 +26,11 @@ Zero.ModalController = (function(module){
 	    	var footer = $('<div/>').addClass('footer-popup-inner');
 			var title = $('<h1 />').text('Welcome');
 			var toolbarMenu = $('<div />').addClass('popup-toolbar-menu');						
+			var btClose = $('<button />').addClass('close-popup').text('Cancel');			
+			
 			title.appendTo(header);
-			toolbarMenu.appendTo(header);
-			var btClose = $('<button />').addClass('close-popup').text('Cancel');
 			btClose.appendTo(header);
+			toolbarMenu.appendTo(header);			
 			
 			btClose.bind('click', function(e){
 				_hide();

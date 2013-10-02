@@ -83,18 +83,6 @@
 		display: inline-block;
 		margin: 0 0 0 20px;
 		}	
-.popup-content .row {
-	margin: 0 0 10px 0;
-	}		
-	.popup-content .row  label {
-		display: inline-block;
-		width: 100px;
-		vertical-align: top;
-		}		
-
-.error-element {
-	border: 1px solid indianred!important;
-	}		
 	
 	
 #calendarRange .row {
