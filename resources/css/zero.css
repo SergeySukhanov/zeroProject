@@ -65,27 +65,31 @@ vertical-align: top;
 .weather {
 
     vertical-align: top;
+    margin-right: 27px;
 	}
-    .weather .weatherimg{
-        max-height: 100px;
-        max-width: 100px;
-        width: 100px;
-        height: 100px;
+    .weather .weathericon{
+        max-height: 70px;
+        max-width: 70px;
+        width: 70px;
+        height: 70px;
+        vertical-align: top;
     }
     .weather .weathermsg{
-        font: normal 18px/20px "Ma Condensed";
+        font: normal 16px/18px "Ma Condensed";
+        width: 70px;
     }
     .weather .text{
         display: inline-block;
+        vertical-align: top;
     }
 	.weather .grad {
-		font: normal 48px/54px "Ma Condensed";
+		font: normal 30px/32px "Ma Condensed";
 		}
 		.weather .grad sup {
-			font-size: 30px;
+			font-size: 20px;
 			}
 	.weather .type{
-		font: normal 18px/20px "Ma Condensed";
+		font: normal 14px/16px "Ma Condensed";
 		}
 /*
 	Time
@@ -110,15 +114,14 @@ margin-top: -60px;
 
 .town {
 	display: inline-block;
-	padding: 0 5%;
 	}
 
 .time {
-	font: normal 36px/44px "Ma Condensed";
-	
+	font: normal 30px/32px "Ma Condensed";
+	margin-bottom: 4px;
 	}
 .place {
-	font: normal 18px/20px "Ma Condensed";
+	font: normal 14px/16px "Ma Condensed";
 	}	
 
 	
@@ -211,81 +214,105 @@ margin-top: -60px;
 	margin: 10px 0 20px 0;
 	}
 
-.leftNextupEvent{
-    float:right;
+.leftNextUpEvent{
+    float:left;
 }
 
 .rightNextUpEvent{
     float:right;
 }
 
-.nextUpEvent {
-     border: 1px solid #B5B5B5;
+.nextupevents .firstRow .leftNextUpEvent {
+    width: 350px;
+    height: 250px;
 }
 
-    .nextUpEvent .eventHeader{
-        padding:10px;
-    }
+.nextupevents .firstRow .rightNextUpEvent {
+    width: 260px;
+    height: 250px;
+}
 
-    .nextUpEvent .eventHeader h1{
-        color: #444444;
-        font: normal 42px/44px "Ma Condensed";
-    }
+.nextupevents .nextRow .leftNextUpEvent {
+    width: 260px;
+    height: 200px;
+}
 
-    .nextUpEvent h3{
-        color: #00AD63;
-        text-transform: uppercase;
-        font: normal 22px/24px "Ma Condensed";
-        font-weight: bold;
-        float:left;
-    }
+.nextupevents .nextRow .rightNextUpEvent {
+    width: 350px;
+    height: 200px;
+}
 
-    .nextUpEvent .eventtime{
-        color: #444444;
-        display:inline-block;
-        float:right;
-        vertical-align: top;
-        font: normal 52px/54px "Ma Condensed";
-    }
+.nextUpEvent {
+    border: 1px solid #B5B5B5;
+}
 
-    .nextUpEvent .eventtime .ampm{
-        color: #444444;
-        display:inline-block;
-        float:right;
-        text-transform: uppercase;
-        vertical-align: top;
-        font: normal 24px/26px "Ma Condensed";
-    }
+.nextUpEvent .eventHeader{
+    padding:10px;
+}
 
-    .nextUpEvent h1{
-        color: #444444;
-        font: normal 32px/34px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-    }
+.nextUpEvent .eventHeader h1{
+    float: left;
+    color: #444444;
+    font: normal 32px/34px "Ma Condensed";
+    padding-left: 0;
+    padding-right: 30px;
+    width: 80px;
+}
 
-    .nextUpEvent h2{
-        color: #444444;
-        font: normal 26px/28px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-    }
+.nextUpEvent h3{
+    color: #00AD63;
+    text-transform: uppercase;
+    font: normal 28px/30px "Ma Condensed";
+    float:left;
+}
 
-    .nextUpEvent h4{
-        color:#B5B5B5;
-        font: normal 26px/28px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-        padding-bottom:10px;
-    }
+.nextUpEvent .eventtime{
+    color: #444444;
+    display:inline-block;
+    float:right;
+    vertical-align: top;
+    font: normal 46px/48px "Ma Condensed";
+}
 
-    .nextUpEvent span{
-        color:#B5B5B5;
-        font: normal 20px/22px "Ma Condensed";
-        padding-left:10px;
-        padding-right:10px;
-        padding-bottom:10px;
-    }
+.nextUpEvent .eventtime .ampm{
+    color: #444444;
+    float:right;
+    text-transform: uppercase;
+    font: normal 20px/22px "Ma Condensed";
+    padding-top: 5px;
+    margin-left: -10px;
+}
+
+.nextUpEvent h1{
+    color: #444444;
+    font: normal 28px/30px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.nextUpEvent h2{
+    color: #444444;
+    font: normal 22px/24px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.nextUpEvent h4{
+    color:#B5B5B5;
+    font: normal 20px/22px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+}
+
+.nextUpEvent span{
+    color:#B5B5B5;
+    font: normal 16px/18px "Ma Condensed";
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+}
+
 
 .cf:after {
     content: "";
@@ -298,8 +325,7 @@ margin-top: -60px;
 
 .smalldatepicker {
     position: relative;
-    display: block;
-margin-left: 15px;
+    margin-left: 15px;
 margin-right: 15px;
 }
 
@@ -310,16 +336,15 @@ display: inline-block;
 width: 100%;
 z-index: 100;
 position: relative;
-padding-bottom: 10px;
-border-top: 1px solid #cccccc;
 padding-top: 10px;
+padding-bottom: 15px;
+border-top: 1px solid #cccccc;
     
 }
 
 .addEventButton:hover{
 	background-color:#cccccc;
 	opacity:0.7;
-	color:#ffffff;
 }
 
     .addEventButton p{
@@ -330,21 +355,17 @@ margin-right: 10px;
 
     .addEventButton div{
        font: normal 24px/26px "Ma Condensed";
+color: #FF9933;
 display: inline-block;
     }
     
     
-.weather-clock-block.cf{
-	margin: 28px 0px 15px 0px;
-border-bottom: 1px solid #cccccc;
+.weather-clock-block.cf {
+margin: 11px 0px 22px 0px;
 width: 100%;
-}
-
-.ui-datepicker-calendar thead tr {
-border-bottom: 1px solid #FF9933;
+border-bottom: 1px solid #cccccc;
 }
 
 .weather-clock-block.cf > * {
 display: inline-block;
-margin-bottom: 18px;
 }

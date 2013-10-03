@@ -2,7 +2,8 @@ Zero.WeatherController = (function(module){
     var view = {},
 
         config = {
-            units:"metric"
+            units:"metric",
+            wrapper: ""
         },
 
         tokens = module.getTokens(),
@@ -24,7 +25,7 @@ Zero.WeatherController = (function(module){
 
         _showPosition = function(position)
         {
-            var filter = { 'lon' : position.coords.longitude, 'lat' : position.coords.latitude, 'units' : config.units }
+            var filter = { 'lon' : position.coords.longitude, 'lat' : position.coords.latitude, 'client' : 'leia', 'units' : config.units }
             _getWeatherData(filter);
         },
 
@@ -61,7 +62,7 @@ Zero.WeatherController = (function(module){
         },
 
         _paintWeatherBox = function(data){
-            var wrapper = $('#weatherHolder');
+            var wrapper = config.wrapper;
             wrapper.addClass('weather');
             wrapper.empty();
             if(data == null){
@@ -82,37 +83,13 @@ Zero.WeatherController = (function(module){
                 return;
             }
             var typeValue = data.result.weatherType.toLowerCase();;
-            var root = initConfiguration.getRootLocation();
             var divWeather = $('<div/>');
-            var imgName = '';
-            switch(typeValue){
-                case "sky is clear":imgName = "skyisclear.png";
-                    break;
-                case "clouds":imgName = "clouds.png";
-                    break;
-                case "few clouds":imgName = "fewclouds.png";
-                    break;
-                case "scattered clouds":imgName = "scatteredclouds.png";
-                    break;
-                case "broken clouds":imgName = "scatteredclouds.png";
-                    break;
-                case "shower rain":imgName = "showers.png";
-                    break;
-                case "rain":imgName = "rain.png";
-                    break;
-                case "thunderstorm":imgName = "thunderstorm.png";
-                    break;
-                case "snow":imgName = "snow.png";
-                    break;
-                case "mist":imgName = "mist.png";
-                    break;
-            }
-            var img = $('<img/>').attr('src', root+initConfiguration.imagesFolder+"weather_icons/"+imgName).addClass('weathericon');
+            var img = $('<img/>').attr('src', data.result.weatherIconUrl).addClass('weathericon');
             var text = $('<div/>').addClass('text');
-            var temp = $('<h1/>').text(tempValue).addClass('grad');
+            var temp = $('<div/>').text(tempValue).addClass('grad');
             var sup = $('<sup/>').text('o');
             temp.append(sup);
-            var type = $('<span/>').text(typeValue).addClass('type');
+            var type = $('<div/>').text(typeValue).addClass('type');
             divWeather.append(img);
             text.append(temp);
             text.append(type);
@@ -129,6 +106,7 @@ Zero.WeatherController = (function(module){
         };
 
     view.initialize = function(wrapper){
+        config.wrapper = wrapper;
         _render(wrapper);
     };
 
