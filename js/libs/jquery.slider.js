@@ -272,6 +272,10 @@
       value: this.o.labels[1].o.find("span")
     });
 
+	
+	
+    if(!$this.settings.value) return;
+    if( !$this.settings.value.split(";")[1] ){
     if($this.settings.value){
        if( !$this.settings.value.split(";")[1] ){
       this.settings.single = true;
