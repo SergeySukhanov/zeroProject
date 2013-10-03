@@ -475,7 +475,7 @@ Zero.Events = (function(module){
 			
 			label.appendTo(row);
 			if(type == 'jq-datepicker') {
-				formElement.datetimepicker();
+				//formElement.datetimepicker();
 			}
 			if(val && type != 'select') {				
 				formElement.val(val);
