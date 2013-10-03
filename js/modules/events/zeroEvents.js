@@ -818,9 +818,11 @@ Zero.Events = (function(module){
                 "start" : now,
                 "amount": 2,
                 "direction": 1,
-                "calendarIds": calIds
+                "calendarIds": calIds,
+                "onlyTitles": 0
             },
             success: function (data) {
+                console.log(data);
                 func(data);
             }
         })
@@ -828,76 +830,76 @@ Zero.Events = (function(module){
 
     _paintFirstRow = function(data) {
         var wrapper = $('#nextUpEventsHolder');
-        wrapper.addClass('nextupevents').addClass('cf');
-        wrapper.empty();
-        _paintNextUpEvents(wrapper, data, true);
+        if(data != null && data.events && data.events.length > 0 ) {
+            var arr = data.events.sort(startTimeSort);
+            var rowDiv = $('<div/>').addClass('firstRow');
+            wrapper.prepend(rowDiv);
+            var length = arr.length > 2 ? 2 : arr.length;
+            for(var i = 0; i < length; i++) {
+                var event = arr[i];
+                var startDate = new Date(event.startTime*1000);
+                var startTime = Zero.Tools.formatAMPM(startDate);
+                var location = event.location || '';
+                var description = event.description || '';
+                var persons = _getAttendees(event.attendees);
+                var subject = event.subject || '';
+                var time = startTime.time;
+                var ampm = startTime.ampm;
+
+                if(i == 0) {
+                    var html = $('<div class="nextUpEvent leftNextUpEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
+                        + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                        + '<div class="leftEventBorder"><h1>' + subject + '<h1/>'
+                        + '<h4>You Are Attending<h4/>'
+                        + '<h2>' + location + '<h2/>'
+                        + '<span>' + description + '<span/>'
+                        + '</div></div>');
+                } else {
+                    var html = $('<div class="nextUpEvent rightNextUpEvent">' + '<div class="eventHeader cf"><h1>' + subject + '<h1/>'
+                        + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                        + '<h4>You Are Attending<h4/>'
+                        + '<h2>' + location + '<h2/>'
+                        + '<span>' + description + '<span/>'
+                        + '</div>');
+                }
+
+                rowDiv.append(html);
+            }
+        }
     }
 
     _paintNextRow = function(data) {
         var wrapper = $('#nextUpEventsHolder');
-        _paintNextUpEvents(wrapper, data, false);
-    }
-
-	_paintNextUpEvents = function(wrapper, data, firstCalendar) {
         if(data != null && data.events && data.events.length > 0 ) {
-            if(data.events.length == 1){
-                var arr = [data.events[0],data.events[0]];
-            } else {
-                var arr = data.events.sort(startTimeSort);
-            }
+            var arr = data.events.sort(startTimeSort);
+            var rowDiv = $('<div/>').addClass('nextRow');
+            wrapper.append(rowDiv);
+            var length = arr.length > 2 ? 2 : arr.length;
+            for(var i = 0; i < length; i++) {
+                var event = arr[i];
+                var startDate = new Date(event.startTime*1000);
+                var startTime = Zero.Tools.formatAMPM(startDate);
+                var location = event.location || '';
+                var description = event.description || '';
+                var persons = _getAttendees(event.attendees);
+                var subject = event.subject || '';
+                var time = startTime.time;
+                var ampm = startTime.ampm;
 
-            var rowDiv = $('<div/>');
-            for(var i = 0; i < arr.length; i++) {
-                if(i%2 == 0){
-                    rowDiv = $('<div/>');
-                    if(i == 0){
-                        rowDiv.addClass('firstRow');
-                    }
-                    else {
-                        rowDiv.addClass('nextRow');
-                    }
-                    wrapper.append(rowDiv);
+                var className = "rightNextUpEvent";
+                if(i == 0){
+                    className = "leftNextUpEvent";
                 }
-                var event = _getNextUpEventHtml(arr[i], i, firstCalendar);
-                rowDiv.append(event);
+                html = $('<div class="nextUpEvent ' + className + '">' + '<div class="eventHeader cf"><h1>' + subject + '<h1/>'
+                    + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
+                    + '<h2>' + location + '<h2/>'
+                    + '<span>' + description + '<span/>'
+                    + '</div>');
+
+                rowDiv.append(html);
             }
         }
-	}
-	
-	
-	_getNextUpEventHtml = function(event, eventNum, firstEvent){
-		var html;
-		var startDate = new Date(event.startTime*1000);
-		var startTime = Zero.Tools.formatAMPM(startDate);
-		var location = event.location || '';
-		var description = event.description || '';
-		var persons = _getAttendees(event.attendees);
-		var subject = event.subject || '';
-        var time = startTime.time;
-        var ampm = startTime.ampm;
-
-        if(firstEvent && eventNum == 0){
-            html = $('<div class="nextUpEvent leftNextUpEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
-                + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
-                + '<h1>' + subject + '<h1/>'
-                + '<h4>You Are Attending<h4/>'
-                + '<h2>' + location + '<h2/>'
-                + '<span>' + description + '<span/>'
-                + '</div>');
-        } else {
-            var className = "rightNextUpEvent";
-            if(eventNum%2 == 0){
-                className = "leftNextUpEvent";
-            }
-            html = $('<div class="nextUpEvent ' + className + '">' + '<div class="eventHeader cf"><h1>' + subject + '<h1/>'
-                + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
-                + '<h2>' + location + '<h2/>'
-                + '<span>' + description + '<span/>'
-                + '</div>');
-        }
-
-		return html;	
-	}
+    }
 		
 	m.init = function(holder) {	
 		$(function(){
