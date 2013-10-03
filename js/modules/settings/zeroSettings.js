@@ -163,7 +163,7 @@ Zero.Settings = (function(module){
 	};
 	
 	
-	_getCalendars = function() {
+	_getCalendarsSettings = function() {
 		var tokkens = module.getTokens();
 		$.ajax({
 			beforeSend: function (request) {
@@ -322,7 +322,7 @@ Zero.Settings = (function(module){
 	};
 	
 	m.init = function() {		
-		_getCalendars();		
+		_getCalendarsSettings();		
 		_afterRender();		
 	}
 	return m;

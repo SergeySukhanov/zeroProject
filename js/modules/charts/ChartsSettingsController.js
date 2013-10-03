@@ -109,11 +109,10 @@ Zero.ChartsSettings = (function(module){
 	    
 	    _createSlider = function(wrap, data){
 	    	var wrapSlider = $('<div/>').addClass('layout-slider');
-	    	var inputSlider = $('<input/>').attr({
+	    	var inputSlider = $('<div/>').addClass('slider-filter').attr({
 	    		                             'id':data.filter,
 	    		                             'type':'slider',
-	    		                             'name':data.filter,
-	    		                             "value":data.comfortMin+';'+data.comfortMax
+	    		                             'name':data.filter
 	    	                               });	  
 	    	var labelSlider = $('<label/>').text(initConfiguration.labelsSilder[data.filter]);
 	    	  	                               
@@ -141,14 +140,30 @@ Zero.ChartsSettings = (function(module){
 	    	}
 	    	
            $('#'+data.filter).slider({ 
-           	    from: parseInt(data.min), 
-           	    to: parseInt(data.max), 
+           	    min: parseInt(data.min), 
+           	    max: parseInt(data.max), 
            	    step: currentStep, 
-           	    smooth: false, 
-           	    round: 1, 
-           	    skin: "round_plastic",
-                callback: function( value ){                	
-                   _formatDataSettings(value);
+           	    range: true, 
+           	    values:[data.comfortMin, data.comfortMax], 
+           	    create:function( event, ui ){
+           	    	console.log(event);
+           	    	var handlerLeft = $(event.target).children().eq(1);
+           	    	var handlerRight = $(event.target).children().eq(2);
+           	    	
+           	    	var popupHandlerLeft = $('<span/>').addClass('popup-handler').addClass('popup-handler-left').text(data.comfortMin);
+           	    	var popupHandlerRight = $('<span/>').addClass('popup-handler').addClass('popup-handler-right').text(data.comfortMax);
+           	    	
+           	    	handlerLeft.append(popupHandlerLeft);
+           	    	handlerRight.append(popupHandlerRight);
+           	    },
+           	    slide:function(event, ui){
+           	    	$(event.target).find('.popup-handler-left').text(ui.values[0]);
+           	    	$(event.target).find('.popup-handler-right').text(ui.values[1]);
+           	    },
+                stop: function( event, ui ){ 
+                	console.log(event);
+                	console.log(ui);               	
+                   _formatDataSettings(event, ui);
                 }
            	    
            	});
@@ -277,17 +292,15 @@ Zero.ChartsSettings = (function(module){
 	    	}
 	    },
 	    
-	    _formatDataSettings = function(value){
+	    _formatDataSettings = function(event, value){
 	    	var newData = config.dataSliders;
 	    	
-	    	var currentFilters = $('.layout-slider').children('input');
-	    	for(var i=0; i<currentFilters.length; i++){
-	    		var values = $(currentFilters[i]).val().split(';');
+	    		var values = value.values;
 	    		var minValue = parseInt(values[0]);
                 var maxValue = parseInt(values[1]);
                 
                 for(var j=0; j<newData.length; j++){
-                	if(newData[j].filter == $(currentFilters[i]).attr('id')){
+                	if(newData[j].filter == $(event.target).attr('name')){
                 		if(newData[j].comfortMin != minValue || newData[j].comfortMax != maxValue){
                 			console.log(newData[j]);
                 			newData[j].comfortMin = minValue;
@@ -296,8 +309,7 @@ Zero.ChartsSettings = (function(module){
 
                 		}
                 	}
-                }   
-	    	}
+                 }
 	    	
 	    };
 	_getAjaxWillpower = function(){
