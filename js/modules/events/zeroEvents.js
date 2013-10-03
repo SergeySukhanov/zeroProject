@@ -70,7 +70,10 @@ Zero.Events = (function(module){
 				success: function (resp) {			
 					if(resp && resp.accounts && resp.accounts.length > 0) {
 						_accounts = resp.accounts;
-						callback.apply();
+						if(callback) {
+							callback.apply();								
+						}
+						
 					}
 				},
 				error : function(error) {

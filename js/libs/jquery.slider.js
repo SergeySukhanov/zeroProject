@@ -276,8 +276,11 @@
 	
     if(!$this.settings.value) return;
     if( !$this.settings.value.split(";")[1] ){
+    if($this.settings.value){
+       if( !$this.settings.value.split(";")[1] ){
       this.settings.single = true;
       this.domNode.addDependClass("single");
+    }	
     }
 
     if( !$this.settings.limits )

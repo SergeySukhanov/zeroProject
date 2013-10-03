@@ -33,9 +33,10 @@ body{
 button {
 margin: 10px;
 padding: 10px 12px;
-background-color: #222222;
+background-color: transparent;
 cursor: pointer;
-color: #ffffff;
+color: #FF9933;
+font: normal 18px/18px "Ma Condensed";
 
 }
 
@@ -127,4 +128,12 @@ display: inline-block;
 	opacity:0.6;
 }
 
+.popup-handler {
+font-size: 11px;
+position: absolute;
+text-decoration: none;
+display: inline-block;
+top: 11px;
+color: #666666;
+}
 	

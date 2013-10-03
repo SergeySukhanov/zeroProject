@@ -283,18 +283,28 @@ padding-top: 22px;
 }
 .ui-slider .ui-slider-handle {
 	position: absolute;
-	z-index: 2;
-	width: 1.2em;
-	height: 1.2em;
-	cursor: default;
+z-index: 2;
+width: 11px;
+height: 12px;
+cursor: default;
+background-color: #1463D8;
+outline: none;
 }
 .ui-slider .ui-slider-range {
 	position: absolute;
-	z-index: 1;
-	font-size: .7em;
-	display: block;
-	border: 0;
-	background-position: 0 0;
+z-index: 1;
+font-size: 1.7em;
+display: block;
+border: 0;
+background: #f4fffb;
+background: -moz-linear-gradient(left,  #f4fffb 0%, #3a85ff 48%, #f7faff 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f4fffb), color-stop(48%,#3a85ff), color-stop(100%,#f7faff));
+background: -webkit-linear-gradient(left,  #f4fffb 0%,#3a85ff 48%,#f7faff 100%);
+background: -o-linear-gradient(left,  #f4fffb 0%,#3a85ff 48%,#f7faff 100%);
+background: -ms-linear-gradient(left,  #f4fffb 0%,#3a85ff 48%,#f7faff 100%);
+background: linear-gradient(to right,  #f4fffb 0%,#3a85ff 48%,#f7faff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fffb', endColorstr='#f7faff',GradientType=1 );
+
 }
 
 /* For IE8 - See #6727 */
@@ -304,7 +314,10 @@ padding-top: 22px;
 }
 
 .ui-slider-horizontal {
-	height: .8em;
+	height: 5px;
+	width:70%;
+	display:inline-block;
+	background-color: #fcfcfc;
 }
 .ui-slider-horizontal .ui-slider-handle {
 	top: -.3em;
