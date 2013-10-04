@@ -1,7 +1,8 @@
 Zero.Settings = (function(module){
 	var m = {};
-	var calendarValues = [];	
-	
+	var calendarValues = [];
+    var tokkens = module.getTokens();
+	var settings = {}
 	
 	_createTabs = function() {
 	
@@ -18,7 +19,7 @@ Zero.Settings = (function(module){
 		// _createUnitTab();
 
 		_createCalendarTab();
-			
+        _getSettings();
 			
 	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
 	    Zero.Tools.selectUpdate($('.dropdown'));
@@ -31,18 +32,24 @@ Zero.Settings = (function(module){
 		btSave.bind('click', function(event){
 			_updateSettings(event, "save");
 		});
-	
 	}
 	
 	_createPersonalTab = function() {
-		var holder = $('.tabs-pages .personal-tab'),
+        var genderValues = [
+            {'Male' : 'male'},
+            {'Female' : 'female'}
+        ];
+
+        var holder = $('.tabs-pages .personal-tab'),
 			// fName = _createFormRowHtml('name', 'Name', 'string'),
 
 			fUserName = _createFormRowHtml('username', 'Username', 'string'),
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
 			fHeight = _createFormRowHtml('height', 'Height', 'string'),
 			fWeight = _createFormRowHtml('weight', 'Weight', 'string'),
-			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker');
+			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker'),
+            fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues);
+
 			
 		// fName.appendTo(holder);
 
@@ -51,7 +58,7 @@ Zero.Settings = (function(module){
 		fHeight.appendTo(holder);
 		fWeight.appendTo(holder);
 		fBirthday.appendTo(holder);
-		
+        fGender.appendTo(holder);
 	};
 	
 	_createImportTab = function() {
@@ -137,8 +144,8 @@ Zero.Settings = (function(module){
 			],		
 			fAlerts = _createFormRowHtml('alerts', 'Default Alert', 'dropdown', alertValues),
 			weekValues = [
-				{'Sunday' : '1'},
-				{'Monday' : '2'}
+				{'Sunday' : "SUNDAY"},
+				{'Monday' : "MONDAY"}
 			],
 			fWeek = _createFormRowHtml('weekStarts', 'Week Starts', 'dropdown', weekValues),
 			//fShowDeclined = _createFormRowHtml('showDeclined', 'Show Declined', 'checkbox',  null, true),
@@ -288,23 +295,6 @@ Zero.Settings = (function(module){
 	
 	_handlers = function(){
 	}
-	
-	_updateSettings = function(event, type){
-		var wrapperTabs = $('.tabs-pages');
-		var inputs = wrapperTabs.find('input');
-		var selects = wrapperTabs.find('select');
-		var objInput = {};
-		var objSelect = {};
-		  
-		
-		if(type=="save"){
-		  console.log('save');
-		  console.log(inputs);
-		  console.log(selects);	
-		}else if(type=="reset"){
-	     
-	    }
-	},
 
 	_showTab = function(tabName, tabPages) {
 		var tabRealName = tabName.substring(1, tabName.length) + '-tab';		
@@ -319,11 +309,133 @@ Zero.Settings = (function(module){
            //Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
            //Zero.Tools.selectUpdate($('.dropdown'));			
 		})
-	};
+	},
+
+    _renderSettings = function(data){
+        settings = data.result;
+
+        if (settings.username){
+            $('#username').val(settings.username);
+        }
+
+        if(settings.email){
+            $('#mail').val(settings.email);
+        }
+
+        if(settings.height){
+            $('#height').val(settings.height);
+        }
+
+        if(settings.weight){
+            $('#weight').val(settings.weight);
+        }
+
+        if (settings.firstDayOfWeek)
+        {
+            $('#weekStarts').val(settings.firstDayOfWeek).change();
+        }
+
+        if (settings.birthDate)
+        {
+            var date = new Date(settings.birthDate*1000);
+            var month = date.getMonth() + 1;
+            $('#birthday').val(month + "/" + date.getDate() + "/" + date.getFullYear());
+        }
+
+        if (settings.gender){
+            $('#gender').val(settings.gender).change();
+        }
+
+        if (settings.visibleCalendarIds && settings.visibleCalendarIds.length == 3)
+        {
+            $('#primaryCalendar').val(settings.visibleCalendarIds[0]).change();
+            $('#secondaryCalendar').val(settings.visibleCalendarIds[1]).change();
+            $('#thirdCalendar').val(settings.visibleCalendarIds[2]).change();
+        }
+
+        if(settings.timeZoneOffsets && settings.timeZoneOffsets.primary){
+            $('#primary').val(settings.timeZoneOffsets.primary).change();
+        }
+
+        Zero.Tools.selectUpdate($('.dropdown'));
+    },
+
+    _updateSettings = function(event, type){
+         if(type=="save"){
+            _saveSettings();
+        } else if(type=="reset"){
+           //console.log('reset');
+        }
+    },
+
+     _getSettings = function() {
+         $.ajax({
+             beforeSend: function (request) {
+                 request.setRequestHeader("Access-Token", tokkens.accessToken);
+             },
+             url: initConfiguration.urlSettings,
+             type: 'GET',
+             dataType: 'json',
+             contentType: "application/json",
+             success: function (data) {
+                 _renderSettings(data);
+             },
+             error : function(error) {
+                 console.log(error);
+             }
+         })
+     },
+
+     _saveSettings = function() {
+         settings.username = $('#username').val();
+         //settings.email = $('#mail').val();
+         settings.gender = $('#gender').val();
+         settings.height = $('#height').val();
+         settings.weight = $('#weight').val();
+         try{
+             var date = new Date($('#birthday').val()).getTime()/1000;
+             settings.birthDate = date;
+         }catch(ex){
+             console.log(ex);
+         }
+         settings.firstDayOfWeek = $('#weekStarts').val();
+         settings.visibleCalendarIds = [$('#primaryCalendar').val(), $('#secondaryCalendar').val(), $('#thirdCalendar').val()];
+         var timezone1 = $('#primary').val();
+         settings.timeZoneOffsets = { "primary":timezone1 }
+         _putSettings(settings);
+     }
+
+     _putSettings = function(settings) {
+         $.ajax({
+             beforeSend: function (request) {
+                 request.setRequestHeader("Access-Token", tokkens.accessToken);
+             },
+             url: initConfiguration.urlSettings + "/" + settings.userId,
+             type: 'PUT',
+             dataType: 'json',
+             contentType: "application/json",
+             data : JSON.stringify(settings),
+             success: function (resp) {
+                 if(resp && resp.code == '1') {
+                     var btClose = $('<button />').text('Ok');
+                     var popup = Zero.ModalController.getPopup('settingsSaved');
+                     btClose.bind('click', function(e){
+                         popup.hide();
+                     })
+                     popup.setHeader('Settings saved');
+                     popup.setContent(btClose);
+                     popup.show();
+                 }
+             },
+             error : function(error) {
+                 console.log(error);
+             }
+         })
+     };
 	
-	m.init = function() {		
+	m.init = function() {
 		_getCalendars();		
-		_afterRender();		
+		_afterRender();
 	}
 	return m;
 }(Zero));
