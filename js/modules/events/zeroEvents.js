@@ -34,6 +34,10 @@ Zero.Events = (function(module){
 		for(var i=0; i<resp.length;i++) {
 			var item = $('<option />').val(resp[i].id).text(resp[i].name);
 			item.appendTo(m.selectGroup);
+			
+			if(i == resp.length-1) {
+				Zero.Tools.selectUpdate(m.selectGroup);
+			}
 		}
 	}
 	
@@ -44,8 +48,12 @@ Zero.Events = (function(module){
 				if(calendars[j].accessRole == 'owner') {
 					var item = $('<option />').val(calendars[j].id).text(calendars[j].summary);
 					item.appendTo(m.selectCalendar);
-				}
+				}				
 			}
+			
+			setTimeout(function(){
+				Zero.Tools.selectUpdate(m.selectCalendar)
+			},100)
 		}
 	}
 	
@@ -62,7 +70,10 @@ Zero.Events = (function(module){
 				success: function (resp) {			
 					if(resp && resp.accounts && resp.accounts.length > 0) {
 						_accounts = resp.accounts;
-						callback.apply();
+						if(callback) {
+							callback.apply();								
+						}
+						
 					}
 				},
 				error : function(error) {
@@ -166,8 +177,8 @@ Zero.Events = (function(module){
 	}
 		
 	_getEvents = function(id, holder){
-		var now = ($.datepicker.formatDate( '@', $('input[name = "startRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
-			end = ($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000;
+		var now = _calendarStartRange,//($.datepicker.formatDate( '@', $('input[name = "startRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
+			end = _calendarEndRange//($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000;
 
 			$.ajax({
 				beforeSend: function (request) {
@@ -448,7 +459,7 @@ Zero.Events = (function(module){
 					formElement = $('<select />').attr({
 						'name' : name,
 						'id' : name,
-						'class' : className
+						'class' : 'dropdown'
 					});
 
 					if(typeof(val) != 'function') {
@@ -575,7 +586,8 @@ Zero.Events = (function(module){
 			var isGroup = $('<input />').attr({
 				'type' : 'checkbox',
 				'id' : 'isGroup',
-				'name' : 'isGroup'	
+				'name' : 'isGroup',
+				'class' : 'checkbox'	
 				}),
 				label = $('<label />').attr({
 					'for' : 'isGroup'
@@ -705,9 +717,15 @@ Zero.Events = (function(module){
 		popup.setToolbar(toolbar);
 		popup.setContent(popupContent);
 		popup.setWidth('80%');
+
+	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});		
+		
+		_activePopup = popup;
+		
 		popup.show();	
 		
-		_getCalendars(_calendarList);					
+		_getCalendars(_calendarList);		
+		
 		
 	}
 	
@@ -747,8 +765,11 @@ Zero.Events = (function(module){
 			contentType: "application/json",
 			success: function (resp) {									
 				if(resp && resp.errorCode == '1') {
+					/*
 					popup.hide();
 					_drawCalendars();						
+					*/
+					_activePopup.hide();
 				}
 			}
 		})		

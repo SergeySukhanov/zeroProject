@@ -8,6 +8,7 @@ function Equalizer(options){
 	    },
 	    
 	    _render = function(id, el){
+			console.warn(el);
 	    	_currentId = id;
 	    	_currentEl = el;
 	    	_createSlider();

@@ -19,7 +19,7 @@ Zero.Settings = (function(module){
 		// _createUnitTab();
 
 		_createCalendarTab();
-        _getSettings();
+        _loadSettings();
 			
 	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});
 	    Zero.Tools.selectUpdate($('.dropdown'));
@@ -170,7 +170,7 @@ Zero.Settings = (function(module){
 	};
 	
 	
-	_getCalendars = function() {
+	_getCalendarsSettings = function() {
 		var tokkens = module.getTokens();
 		$.ajax({
 			beforeSend: function (request) {
@@ -368,7 +368,7 @@ Zero.Settings = (function(module){
         }
     },
 
-     _getSettings = function() {
+     _loadSettings = function() {
          $.ajax({
              beforeSend: function (request) {
                  request.setRequestHeader("Access-Token", tokkens.accessToken);
@@ -434,7 +434,7 @@ Zero.Settings = (function(module){
      };
 	
 	m.init = function() {
-		_getCalendars();		
+		_getCalendarsSettings();		
 		_afterRender();
 	}
 	return m;

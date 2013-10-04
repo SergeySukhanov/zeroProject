@@ -160,11 +160,11 @@ Zero.Tools = (function(module){
 			btClose.bind('click', function(e){
 				popup.hide();
 			})
-			
-			
+
 			popup.setHeader('Connection Error');
 			popup.setContent(body);
 			popup.show();
+
 			
 
 		});	
@@ -235,9 +235,11 @@ Zero.Tools = (function(module){
 	    	var updateInput = $(elem);
 	    	if(!originalInput.prop('checked')){
 	    		originalInput.prop('checked', 'checked');
+				originalInput.trigger('change');
 	    		_animateUpdateControl(backLayer, updateInput, true);
 	    	}else{
 	    		originalInput.removeAttr('checked');
+				originalInput.trigger('change');
 	    		_animateUpdateControl(backLayer, updateInput, false);
 	    	}
 	    	
