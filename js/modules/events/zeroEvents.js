@@ -720,6 +720,8 @@ Zero.Events = (function(module){
 
 	    Zero.Tools.CheckboxUpdate({elems:$('.checkbox')});		
 		
+		_activePopup = popup;
+		
 		popup.show();	
 		
 		_getCalendars(_calendarList);		
@@ -763,8 +765,11 @@ Zero.Events = (function(module){
 			contentType: "application/json",
 			success: function (resp) {									
 				if(resp && resp.errorCode == '1') {
+					/*
 					popup.hide();
 					_drawCalendars();						
+					*/
+					_activePopup.hide();
 				}
 			}
 		})		

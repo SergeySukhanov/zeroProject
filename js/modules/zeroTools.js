@@ -172,7 +172,6 @@ Zero.Tools = (function(module){
 	}
 	
 	m.selectUpdate = function(elems){
-		console.warn(elems);
 		if($().styler != undefined){
 		  elems.styler();	
 		}
