@@ -1,5 +1,6 @@
 Zero.Tools = (function(module){
-	var m = {};
+	var m = {},
+		tokkens = module.getTokens();
 	
 	m.getFormatedDate = function(timestamp) {
 		var date = new Date(timestamp*1000);
@@ -357,8 +358,22 @@ Zero.Tools = (function(module){
 			target[k] = source[k];
 		}
 		while (i--);
-	return target;
-}
+		return target;
+	}
+	
+	
+	
+	//Global 
+	
+	if(tokkens && tokkens.accessToken && tokkens.accessToken != '') {
+		$.ajaxSetup({
+			beforeSend : function (request) {
+				request.setRequestHeader("Access-Token", tokkens.accessToken);
+			}
+		})		
+	}
+	
+
 	
 	
 	return m;

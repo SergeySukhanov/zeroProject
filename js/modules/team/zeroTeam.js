@@ -89,9 +89,6 @@ Zero.Team = (function(module){
 		
         searchInput.autocomplete({
             serviceUrl: moduleUrls.userSearch,
-            params: {
-				'token' :  tokkens.accessToken
-            },
             paramName: 'search',
             minChars: 3,
             position: 'absolute',
@@ -337,9 +334,11 @@ Zero.Team = (function(module){
 	
 	m.getUserGroups = function(callback) {
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/	
 			url: moduleUrls.team,
 			type: 'GET',
 			dataType: 'json',
@@ -361,9 +360,11 @@ Zero.Team = (function(module){
 	m.addGroupAction = function(groupObj, popup, e) {
 		//groupObj - group json
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/	
 			url: moduleUrls.team,
 			type: 'POST',
 			dataType: 'json',
@@ -381,9 +382,11 @@ Zero.Team = (function(module){
 	
 	_deleteGroupAction = function(groupId, groupName) {
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/
 			url: moduleUrls.team + '/' + groupId,
 			type: 'DELETE',
 			dataType: 'json',
@@ -406,9 +409,11 @@ Zero.Team = (function(module){
 	m.updateGroupAction = function(groupObj, popup, e) {
 	
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/	
 			url: moduleUrls.team + '/' + groupObj.id,
 			type: 'PUT',
 			dataType: 'json',
@@ -427,9 +432,11 @@ Zero.Team = (function(module){
 	
 	m.getUserOwnerGroups = function(callback) {
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/
 			url: moduleUrls.team,
 			type: 'GET',
 			dataType: 'json',

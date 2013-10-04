@@ -60,9 +60,11 @@ Zero.Events = (function(module){
 	_getCalendars = function(callback) {	
 		if(!_accounts || _accounts.length == 0) {
 			$.ajax({
+				/*
 				beforeSend: function (request) {
 					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},			
+				},
+				*/	
 				url: initConfiguration.urlCalendarsList,
 				type: 'GET',
 				dataType: 'json',
@@ -181,9 +183,11 @@ Zero.Events = (function(module){
 			end = _calendarEndRange//($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000;
 
 			$.ajax({
+				/*
 				beforeSend: function (request) {
 					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},				
+				},
+				*/	
 				url: initConfiguration.urlEventsCalendar,
 				type: 'GET',
 				dataType: 'json',
@@ -312,9 +316,11 @@ Zero.Events = (function(module){
 
 
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/	
 			url: initConfiguration.urlEventsCalendar + '/' + removeId,
 			type: 'DELETE',
 			dataType: 'json',
@@ -755,9 +761,11 @@ Zero.Events = (function(module){
 		}
 		
 		$.ajax({
+			/*
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},				
+			},
+			*/
 			url: eventId ? initConfiguration.urlEventsCalendar + '/' + eventId : initConfiguration.urlEventsCalendar,
 			type: eventId ? 'PUT' : 'POST',
 			dataType: 'json',
@@ -784,9 +792,11 @@ Zero.Events = (function(module){
 
     _getSettings = function() {
         $.ajax({
+			/*
             beforeSend: function (request) {
                 request.setRequestHeader("Access-Token", tokkens.accessToken);
             },
+			*/
             url: initConfiguration.urlSettings,
             type: 'GET',
             dataType: 'json',
@@ -815,9 +825,11 @@ Zero.Events = (function(module){
 	_getNextUpEvent = function(calIds, func){
         var now = Math.round(new Date().getTime() / 1000);
         $.ajax({
+			/*
             beforeSend: function (request) {
                 request.setRequestHeader("Access-Token", tokkens.accessToken);
             },
+			*/
             url: initConfiguration.urlEventsCalendar,
             type: 'GET',
             dataType: 'json',
