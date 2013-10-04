@@ -401,7 +401,12 @@ Zero.Settings = (function(module){
          settings.firstDayOfWeek = $('#weekStarts').val();
          settings.visibleCalendarIds = [$('#primaryCalendar').val(), $('#secondaryCalendar').val(), $('#thirdCalendar').val()];
          var timezone1 = $('#primary').val();
-         settings.timeZoneOffsets = { "primary":timezone1 }
+         if(timezone1 == "auto"){
+             var d = new Date()
+             var offset = d.getTimezoneOffset();
+             timezone1 =  -offset/60;
+         }
+         settings.timeZoneOffsets = { "primary":timezone1 };
          _putSettings(settings);
      }
 
