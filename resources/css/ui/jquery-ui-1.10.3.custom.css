@@ -86,15 +86,59 @@
 	width: 100%;
 	height: 100%;
 }
+.weather-clock-block .ui-datepicker {
+background-color: transparent;
+box-shadow: none;
+padding: 0px;
+}
 .ui-datepicker {
 	width: 17em;
 	padding: .2em .2em 0;
 	display: none;
+	background-color: #fcfcfc;
+box-shadow: 2px 2px 5px 0px #666666;
+padding: 19px;
 }
 .ui-datepicker .ui-datepicker-header {
 	position: relative;
 	padding: .2em 0;
 }
+
+.ui-timepicker-div {
+color: #FF9933;
+width: 80%;
+display: block;
+margin: 0 auto;
+}
+
+.ui-timepicker-div .ui-slider {
+background-color: #FF9933;
+width: 100%;
+}
+
+.ui_tpicker_time_label {
+display: none;
+}
+
+.ui_tpicker_time {
+display: none;
+}
+
+.ui-timepicker-div .ui-slider .ui-slider-handle {
+position: absolute;
+z-index: 2;
+cursor: default;
+outline: none;
+border-right: none;
+border-left: none;
+border-bottom: none;
+width: 11px;
+height: 11px;
+background-color: #693E13;
+border-radius: 20px;
+top: -3px;
+}
+
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
 	position: absolute;
@@ -204,6 +248,7 @@ padding-top: 22px;
 	padding: .2em .6em .3em .6em;
 	width: auto;
 	overflow: visible;
+	color:#FF9933;
 }
 .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
 	float: left;
@@ -282,13 +327,13 @@ padding-top: 22px;
 	text-align: left;
 }
 .ui-slider .ui-slider-handle {
-	position: absolute;
+position: absolute;
 z-index: 2;
-width: 11px;
-height: 12px;
 cursor: default;
-background-color: #1463D8;
 outline: none;
+border-right: 7px solid transparent;
+border-left: 7px solid transparent;
+border-bottom: 11px solid #1463D8;
 }
 .ui-slider .ui-slider-range {
 	position: absolute;
@@ -320,7 +365,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fffb', end
 	background-color: #fcfcfc;
 }
 .ui-slider-horizontal .ui-slider-handle {
-	top: -.3em;
+	top: 4px;
 	margin-left: -.6em;
 }
 .ui-slider-horizontal .ui-slider-range {
@@ -429,6 +474,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fffb', end
 border-radius: 51px;
 	font-weight: normal;
 	color: #FF9933;
+}
+.ui-slider-handle.ui-state-active{
+	position: absolute;
+z-index: 2;
+cursor: default;
+outline: none;
+border-right: 7px solid transparent;
+border-left: 7px solid transparent;
+border-bottom: 11px solid #1463D8;
+border-top:0px;
+border-radius:0px;
 }
 .ui-state-active a,
 .ui-state-active a:link,
@@ -723,25 +779,25 @@ cursor:pointer;
 .ui-corner-top,
 .ui-corner-left,
 .ui-corner-tl {
-	border-top-left-radius: 5px;
+	/*border-top-left-radius: 5px;*/
 }
 .ui-corner-all,
 .ui-corner-top,
 .ui-corner-right,
 .ui-corner-tr {
-	border-top-right-radius: 5px;
+	/*border-top-right-radius: 5px;*/
 }
 .ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-left,
 .ui-corner-bl {
-	border-bottom-left-radius: 5px;
+	/*border-bottom-left-radius: 5px;*/
 }
 .ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-right,
 .ui-corner-br {
-	border-bottom-right-radius: 5px;
+	/*border-bottom-right-radius: 5px;*/
 }
 
 /* Overlays */
