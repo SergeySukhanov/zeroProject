@@ -174,40 +174,57 @@ margin-top: -60px;
 	margin: 0 0 0 20px;
 	}
 	.account-tab button {
-		border: 1px solid #f1f1f1;
 		background: white;
-		padding: 5px 10px;
-		border-bottom: 2px solid #0072bc;
-		border-radius: 5px;
-		font-family: "Zero";
-		border-bottom: 2px solid #0072bc;
-		-webkit-box-shadow: 0px 1px 5px rgba(50, 50, 50, 0.75);
-		-moz-box-shadow:    0px 1px 5px rgba(50, 50, 50, 0.75);
-		box-shadow:         0px 1px 5px rgba(50, 50, 50, 0.75);		
+		padding-top: 10px;
+        font: normal 14px/22px "Zero";
 		cursor: pointer;
-		margin-left: 0;
-		color: #000;
+		margin-left: -15px;
+        color: #818281;
+        border:none;
 		}
-	
-	.account-tab button.fitbit {
-		border-bottom: 2px solid #ea7147;
-		}
-		
+
 .account-item {
 	font: normal 14px/18px "Zero";
 	margin: 0 0 40px 0;
 	}		
 	.account-item h2 {
-		font: normal 22px/22px "Ma Condensed";
+		font: normal 22px/22px "Zero";
 		}
+    .account-item h3 {
+        padding-top: 10px;
+        font: bold 14px/18px "Zero";
+        text-decoration:underline;
+    }
+    .account-item .googleAccount .g1{
+        color:#0147F7
+    }
+    .account-item .googleAccount .o1{
+        color:#F6022B
+    }
+    .account-item .googleAccount .o2{
+        color:#FFB102
+    }
+    .account-item .googleAccount .g2{
+        color:#0147F7
+    }
+    .account-item .googleAccount .l{
+        color:#02CD35
+    }
+    .account-item .googleAccount .e{
+        color:#FF223F
+    }
+
+    .account-item .fitbitAccount span{
+        color:#292929
+    }
 		
 #nikeTokken {
 	border : 1px solid #ccc;
 	border-radius: 3px;
-	font: normal 14px/22px "Zero";
+	font: normal 12px/16px "Zero";
 	padding: 6px 4px;
 	width: 250px;
-	margin-right: 10px;
+	margin-right: 20px;
 	}		
 	
 .account-list, .nike-info {

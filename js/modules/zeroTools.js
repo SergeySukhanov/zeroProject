@@ -323,6 +323,10 @@ Zero.Tools = (function(module){
                  }, "jsonp")
                  return;
              }
+        },
+
+        _addInputValidador = function(field, regexp, errorMessage) {
+
         };
 	
 	view.init = function(){

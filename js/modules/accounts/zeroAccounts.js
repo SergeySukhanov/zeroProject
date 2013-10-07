@@ -2,7 +2,7 @@ Zero.GoogleAccount = (function(module){
 	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_account = [], nike_account, fitbit_account;
 	
 	_getGoogleAuthUrl = function() {
-		
+        var html = '<div class="googleAccount">add another <span class="g1">G</span><span class="o1">o</span><span class="o2">o</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span> account</div>';
 		try{
 			$.ajax({
 				beforeSend: function (request) {
@@ -17,8 +17,8 @@ Zero.GoogleAccount = (function(module){
 				contentType: "application/json",
 				success: function (resp) {		
 					var params = {
-						text : 'Add Google Account',
-						title : 'Google Account',
+						html : html,
+						title : 'Google Account(s)',
 						type : 'Google'
 						
 					}				
@@ -33,7 +33,8 @@ Zero.GoogleAccount = (function(module){
 		};			
 	}
 	
-	_getFitBitAuthUrl = function() {		
+	_getFitBitAuthUrl = function() {
+        var html = '<div class="fitbitAccount">add another <span class="f">f</span><span class="i1">i</span><span class="t1">t</span><span class="b">b</span><span class="i2">i</span><span class="t2">t</span> account</div>';
 		try{
 			$.ajax({
 				beforeSend: function (request) {
@@ -49,9 +50,9 @@ Zero.GoogleAccount = (function(module){
 				contentType: "application/json",
 				success: function (resp) {	
 					var params = {
-						text : 'Add Fitbit Account',
+						html : html,
 						className : 'fitbit',
-						title : 'Fitbit Account',
+						title : 'FitBit Account',
 						type : 'FitBit'
 					}
 					_drawGoogleAuthButton(resp.authorizationURL, params);
@@ -69,7 +70,8 @@ Zero.GoogleAccount = (function(module){
 	_getNikeConnectHtml = function() {
 		var html = $('<div />').addClass('account-item'),
 			header = $('<h2/>').text('Nike Connect'),
-			step1 = $('<p/>').addClass('nike-info').html('Login with you email and password:<a href="https://developer.nike.com/"> https://developer.nike.com/</a><br />Get your nike access token on <a href=" https://developer.nike.com/console"> https://developer.nike.com/console</a>'),
+            registered = $('<h3/>').text('Registered Account'),
+            step1 = $('<p/>').addClass('nike-info').html('Login with you email and password:<a href="https://developer.nike.com/"> https://developer.nike.com/</a><br />Get your nike access token on <a href=" https://developer.nike.com/console"> https://developer.nike.com/console</a>'),
 			text = $('<p />').text('Please point your Nike Access token in field below'),
 			nikeTokken = $('<input />').attr({
 				'id' : 'nikeTokken',
@@ -81,6 +83,7 @@ Zero.GoogleAccount = (function(module){
 			}
 			
 			header.appendTo(html);
+            registered.appendTo(html);
 			step1.appendTo(html);
 			text.appendTo(html);
 			nikeTokken.appendTo(html);
@@ -153,7 +156,11 @@ Zero.GoogleAccount = (function(module){
 	_drawGoogleAuthButton = function(link, params) {	
 		var html = $('<div />').addClass('account-item');
 		var header = $('<h2 />').text(params.title)
-		var $bt = $('<button />').data('google-link', link).text(params.text);
+		var $bt = $('<button />').data('google-link',link);//.attr('src', link);
+        var imgLink = "";
+        var img = $('<img/>').attr('src', imgLink);
+        $bt.append(img);
+        $bt.append(params.html);
 		if(params.className) { 
 			$bt.addClass(params.className)
 		}
@@ -166,7 +173,11 @@ Zero.GoogleAccount = (function(module){
 		if(params.title && params.title != '') {
 			header.appendTo(html);
 		}
-		
+
+        if(params.type == 'FitBit' && fitbit_account) {
+            var registered = $('<h3/>').text('Registered Account');
+            registered.appendTo(html);
+        }
 		
 		if(params.type == 'Google') {
 			if(g_account && g_account.lenght != 0) {
@@ -179,15 +190,9 @@ Zero.GoogleAccount = (function(module){
 				list.appendTo(html);
 			}
 		}
-		
-		if(params.type == 'FitBit' && fitbit_account) {
-			$bt.text('Change FitBit Account');
-		}
-		
-		
+
 		$bt.appendTo(html);
 		html.appendTo(accountHolder);
-		
 	}
 	
 	

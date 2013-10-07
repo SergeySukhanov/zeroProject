@@ -113,7 +113,6 @@ function AuthController(options){
 	   	  	      }
 	   	  	      wrapRule.append(innerRuleWrap);
 	   	  	   wrap.append(wrapRule);
-	   	  	    
 	   	  }
 	   	  
 	   	  if(dataItem.typeField == "name"){
@@ -154,7 +153,9 @@ function AuthController(options){
 	   	  	
 	   	  	if($(event.currentTarget).attr('id') == "register-password"){
 	   	  		_validateRulePassword(event);
-	   	  	}
+	   	  	}
+
+
 	   	  });
 	   	  
 	   	  
@@ -321,7 +322,8 @@ function AuthController(options){
        	   specSymbol.children('.icon-rule-field').removeClass('success-small').addClass('error-class');
        }   
 
-         // return answer;
+         // return answer;
+
        },
 	   
 	   
