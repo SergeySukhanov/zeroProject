@@ -30,7 +30,7 @@ Zero.YesterdayController = (function(module){
 	       var wrap = $('.chart-yesterday');
 	       var h1yes = $('<h1/>').addClass('header-yes').text(config.title);
 	       var subH2 = $('<h2/>').text(config.subTitle);
-	       var chartImg = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.chart);
+	       var chart = $('<div/>').attr('id', 'yesterdayCharts');
 	       var yesChart = $('<div/>').addClass('wrap-p');
 	       var pArticle1 = $('<p/>').text(config.article1);
 	       var pArticle2 = $('<p/>').text(config.article2);
@@ -40,7 +40,7 @@ Zero.YesterdayController = (function(module){
 	       
 	       wrap.append(h1yes);
 	       wrap.append(subH2);
-	       wrap.append(chartImg);
+	       wrap.append(chart);
 	       wrap.append(yesChart);
 	    };
 	    
