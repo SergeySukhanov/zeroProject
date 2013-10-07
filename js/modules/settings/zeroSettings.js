@@ -191,10 +191,9 @@ Zero.Settings = (function(module){
 							obj[cal[j].summary] = cal[j].id;
 							calendarValues.push(obj);							
 						}
-					}				
-					_createTabs();
+					}
 				}
-				
+                _createTabs();
 			},
 			error : function(error) {
 				console.log(error);

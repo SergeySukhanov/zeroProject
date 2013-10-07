@@ -1,6 +1,7 @@
 Zero.GoogleAccount = (function(module){
 	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_account = [], nike_account, fitbit_account;
-	
+	var addButtonImg = initConfiguration.getRootLocation()+initConfiguration.imagesFolder+"addedCircle.png";
+
 	_getGoogleAuthUrl = function() {
         var html = '<div class="googleAccount">add another <span class="g1">G</span><span class="o1">o</span><span class="o2">o</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span> account</div>';
 		try{
@@ -74,7 +75,7 @@ Zero.GoogleAccount = (function(module){
             step1 = $('<p/>').addClass('nike-info').html('Login with you email and password:<a href="https://developer.nike.com/"> https://developer.nike.com/</a><br />Get your nike access token on <a href=" https://developer.nike.com/console"> https://developer.nike.com/console</a>'),
 			text = $('<p />').text('Please point your Nike Access token in field below'),
 			nikeTokken = $('<input />').attr({
-				'id' : 'nikeTokken',
+				'id' : 'nikeTokken'
 			}),
 			bt = $('<button />').text('Connect');
 			
@@ -157,8 +158,7 @@ Zero.GoogleAccount = (function(module){
 		var html = $('<div />').addClass('account-item');
 		var header = $('<h2 />').text(params.title)
 		var $bt = $('<button />').data('google-link',link);//.attr('src', link);
-        var imgLink = "";
-        var img = $('<img/>').attr('src', imgLink);
+        var img = $('<img/>').attr('src', addButtonImg);
         $bt.append(img);
         $bt.append(params.html);
 		if(params.className) { 

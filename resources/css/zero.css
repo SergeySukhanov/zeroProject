@@ -198,6 +198,14 @@ margin-top: -60px;
         font: bold 14px/18px "Zero";
         text-decoration:underline;
     }
+    .account-item img{
+        width:20px;
+        height:20px;
+        margin-right: 10px;
+    }
+    .account-item .googleAccount{
+        display:inline-block;
+    }
     .account-item .googleAccount .g1{
         color:#0147F7
     }
@@ -215,6 +223,10 @@ margin-top: -60px;
     }
     .account-item .googleAccount .e{
         color:#FF223F
+    }
+
+    .account-item .fitbitAccount{
+        display:inline-block;
     }
 
     .account-item .fitbitAccount span{
