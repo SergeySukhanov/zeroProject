@@ -80,9 +80,9 @@
 		}	
 
 .settings-content .button-holder {
-	width: 840px;
-	margin: 140px 0 0 0;
-	text-align: right;
+	width: 50%;
+margin: 100px 0 0 0;
+text-align: right;
 	}
 	.settings-content .button-holder button {
 		background : #fff;

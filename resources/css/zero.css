@@ -19,6 +19,9 @@ header, nav, section, article, aside, footer {
 	color : #383e44;
 	}
 	
+#yesterdayCharts {
+min-height: 200px;
+}
 	
 #wrapper {
 	width: 100%;
