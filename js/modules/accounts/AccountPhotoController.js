@@ -41,12 +41,6 @@ Zero.AccountPhotoController = (function(module){
         _paintAvatar = function(data){
             var root = initConfiguration.getRootLocation();
 
-            if(data == null){
-                var imgFace = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.faceImg);
-                wrapper.prepend(imgFace);
-                return;
-            }
-
             if(data && data.length > 0){
                 var willpower = data[data.length-1].percent;
             }
@@ -89,6 +83,8 @@ Zero.AccountPhotoController = (function(module){
             path.attr('stroke',color);
             path.attr('stroke-width','5');
             path.animate({arc: [xc, yc, willpower, radius]}, 3e3);
+
+            paper.image(root+initConfiguration.imagesFolder+config.faceImg,10,10,80,80);
         },
 
         _handlers = function(data){

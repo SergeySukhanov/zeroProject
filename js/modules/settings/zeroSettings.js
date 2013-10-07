@@ -57,6 +57,7 @@ Zero.Settings = (function(module){
 		fUserName.appendTo(holder);
 		fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
+        //Zero.Tools.addInputValidador(holder, new RegExp(/[A-Z]/g),"Error");
 		fWeight.appendTo(holder);
 		fBirthday.appendTo(holder);
         fGender.appendTo(holder);
