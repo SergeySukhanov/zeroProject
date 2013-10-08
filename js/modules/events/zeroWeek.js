@@ -106,7 +106,6 @@ Zero.Week = (function(module){
 		
 		for(var i=0; i<7; i++) {
 			//var a = paper.rect(i * columnWidth, 10, columnWidth+1, pH-35, 0).attr({'fill' : "#fff", 'stroke-opacity' : '0.2'});
-			//var textString = _getDateHeader(week[i].date);				
 				var events = calendarWithEvents[i].events;
 				
 				if(events) {
@@ -122,9 +121,7 @@ Zero.Week = (function(module){
 						
 						if(calId == calendars[0]) {xOffset = i==0 ? xOffset = 30 : xOffset = 10; fillColor = fillArray[0]};
 						if(calId == calendars[1]) {xOffset = i==0 ? xOffset = 65 : xOffset = 45; fillColor = fillArray[1]};
-						if(calId == calendars[2]) {xOffset = i==0 ? xOffset = 100 : xOffset = 80; fillColor = fillArray[2]};
-						
-						console.warn(startTime.minutes*0.45);
+						if(calId == calendars[2]) {xOffset = i==0 ? xOffset = 100 : xOffset = 80; fillColor = fillArray[2]};						
 						
 						evRec = paper.rect(i*columnWidth + xOffset, startTime.hour*40 + startTime.minutes*0.6 + 10, 20, diff/1.5, 2).attr({
 								'fill' : fillColor,
@@ -134,11 +131,7 @@ Zero.Week = (function(module){
 						_setEventRectClick(evRec, events[j]);
 					}				
 				}
-				/*
-				paper.text(i * columnWidth + 50, 14, textString).attr({
-					'font-size' : '16px'
-				});
-				*/
+
 		}
 		
 		for(var i=0; i<7; i++) {
@@ -206,7 +199,6 @@ Zero.Week = (function(module){
 	}
 	
 	_drawFullEvent = function(event) {
-		console.warn(event);
 		var holder = $('#eventInfo'),
 			blockTitle = $('<h2 />').text('Event Details'),
 			title = $('<h3 />').text(event.subject),
@@ -261,7 +253,6 @@ Zero.Week = (function(module){
 	_getWeekHeaders = function() {
 		var date = new Date();
 		var day = date.getDay()-1;
-		//console.warn(day);
 		var holder = $('#weekWrapper');
 			var ul = $('<ul />');
 			
