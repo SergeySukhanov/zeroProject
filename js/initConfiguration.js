@@ -37,7 +37,7 @@ var initConfiguration = {
 */
 
 //DEV
-
+   apiUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/',
     urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
 	urlLogin:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
 	
