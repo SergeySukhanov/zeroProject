@@ -98,7 +98,7 @@ Zero.WeatherController = (function(module){
         },
 
         _handlers = function(data){
-            console.log(data);
+            // console.log(data);
         },
 
         _render = function(wrapper) {

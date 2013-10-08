@@ -36,7 +36,7 @@ Zero.ChartsController = (function(module){
                           "plots":dataType
                     }),
 					success:function(data){
-						console.log(data);
+						// console.log(data);
 						onJsGraphDataLoad(holder, data, nowFlag);
 						_postRender();
 					},
