@@ -2,7 +2,7 @@ Zero.WeatherController = (function(module){
     var view = {},
 
         config = {
-            units:"metric",
+            units:"imperial",
             wrapper: ""
         },
 

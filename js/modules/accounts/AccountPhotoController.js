@@ -41,13 +41,12 @@ Zero.AccountPhotoController = (function(module){
         _paintAvatar = function(data){
             var root = initConfiguration.getRootLocation();
 
-            if(data == null){
-                var imgFace = $('<img/>').attr('src', root+initConfiguration.imagesFolder+config.faceImg);
-                wrapper.prepend(imgFace);
-                return;
+            if(data && data.length > 0){
+                var willpower = data[data.length-1].percent;
             }
-
-            var willpower = data[data.length-1].percent;
+            else{
+                var willpower = 0;
+            }
             var paper = Raphael('userPhotoHolder', 170, 170);
 
             paper.customAttributes.arc = function(xc, yc, power, r){
@@ -85,7 +84,7 @@ Zero.AccountPhotoController = (function(module){
             path.attr('stroke-width','5');
             path.animate({arc: [xc, yc, willpower, radius]}, 3e3);
 
-            var imgExample = paper.image(root+initConfiguration.imagesFolder+config.faceImg,10,10,80,80);
+            paper.image(root+initConfiguration.imagesFolder+config.faceImg,10,10,80,80);
         },
 
         _handlers = function(data){

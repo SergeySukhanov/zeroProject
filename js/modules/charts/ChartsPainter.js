@@ -1,4 +1,4 @@
-function onJsGraphDataLoad(series) {
+function onJsGraphDataLoad(holder, series, flag) {
 		var graphsData = null;
 			graphsData = series.charts;
 			var data = [];
@@ -29,10 +29,11 @@ function onJsGraphDataLoad(series) {
 			var generalTooltip = {
 						xDateFormat: '%b %e, %l %p'
 			}
-            $('#diagramHolder').empty();
-			try {
+            $(holder).empty();
+			if(flag){
+				try {
                 
-				$('#diagramHolder').highcharts('StockChart', {
+				$(holder).highcharts('StockChart', {
 					chart : {
                       borderRadius:0,
                       backgroundColor:'transparent'
@@ -78,7 +79,8 @@ function onJsGraphDataLoad(series) {
 							// labels:{
 								// enabled:false
 						// }
-                // }
+                // }
+
 					},
 					scrollbar: {
 						enabled:false,
@@ -117,5 +119,96 @@ function onJsGraphDataLoad(series) {
 			} catch (e) {
 				console.log(e)
 				throw e;
+			 }
+			}else{
+				try {
+                
+				$(holder).highcharts('StockChart', {
+					chart : {
+                      borderRadius:0,
+                      backgroundColor:'transparent'
+                      
+                      
+					},
+					
+					credits : {
+						enabled : false
+					},
+					
+					legend : {
+						enabled : false,
+						y:1,
+						borderWidth:0
+					},
+
+					colors : ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
+					rangeSelector:{
+						enabled : false,
+						selected:0,
+						inputEnabled:false,
+						buttons: [{
+							type: 'day',
+							count: 1,
+							text: '1d'
+						},{
+							type: 'week',
+							count: 1,
+							text: '1w'
+						}]
+					},
+					navigator:{
+
+						enabled:false,
+						// maskFill:'rgba(255,255,255,1)',
+						// height:0,
+						// series:{
+							// lineWidth:0,
+							// type:'spline',
+							// color:'#fff'},
+						// xAxis:{
+							// labels:{
+								// enabled:false
+						// }
+                // }
+
+					},
+					scrollbar: {
+						enabled:false,
+						barBackgroundColor: 'white',
+						buttonBackgroundColor: 'gray',
+						trackBackgroundColor: 'none',
+						trackBorderWidth: 0
+					},
+
+					xAxis : {
+						gridLineWidth:1,
+						plotLines : [{
+							value : 0,
+							width : 0,
+							color : 'silver'
+						}],
+						labels:{
+							enabled:true
+						},
+						
+					},
+					yAxis : {
+						gridLineWidth:1,
+						plotLines : [{
+							value : 0,
+							width : 0,
+							color : 'silver'
+						}],
+						labels:{
+							enabled:false
+						}
+					},
+					tooltip:generalTooltip,
+					series : data
+				});
+			} catch (e) {
+				console.log(e)
+				throw e;
+			 }
 			}
 		}

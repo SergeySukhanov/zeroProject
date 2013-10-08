@@ -37,7 +37,8 @@ Zero.Settings = (function(module){
 	_createPersonalTab = function() {
         var genderValues = [
             {'Male' : 'male'},
-            {'Female' : 'female'}
+            {'Female' : 'female'},
+            {'Other' : 'other'}
         ];
 
         var holder = $('.tabs-pages .personal-tab'),
@@ -56,6 +57,7 @@ Zero.Settings = (function(module){
 		fUserName.appendTo(holder);
 		fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
+        //Zero.Tools.addInputValidador(holder, new RegExp(/[A-Z]/g),"Error");
 		fWeight.appendTo(holder);
 		fBirthday.appendTo(holder);
         fGender.appendTo(holder);
@@ -124,7 +126,7 @@ Zero.Settings = (function(module){
 			fTravel = _createFormRowHtml('syncToDevice', 'toggle for travel', 'checkbox'),
 			
 		fPrimary.appendTo(holder);	
-		fSync.appendTo(holder);
+		//fSync.appendTo(holder);
 		// fSecondary.appendTo(holder);	
 		// fTravel.appendTo(holder);
 
@@ -161,7 +163,7 @@ Zero.Settings = (function(module){
 			fCalendars.appendTo(holder);
 			fCalendarsS.appendTo(holder);
 			fThirdCalendars.appendTo(holder);
-			fAlerts.appendTo(holder);
+			// fAlerts.appendTo(holder);
 			// fHolyDayCalendars.appendTo(holder);
 
 			fWeek.appendTo(holder);
@@ -190,10 +192,9 @@ Zero.Settings = (function(module){
 							obj[cal[j].summary] = cal[j].id;
 							calendarValues.push(obj);							
 						}
-					}				
-					_createTabs();
+					}
 				}
-				
+                _createTabs();
 			},
 			error : function(error) {
 				console.log(error);

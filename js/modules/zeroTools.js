@@ -337,6 +337,28 @@ Zero.Tools = (function(module){
                  }, "jsonp")
                  return;
              }
+        },
+
+        _validation = function(event, regexp, errorMessage){
+            var elem = $(event.currentTarget);
+            if(regexp.test(elem.val())){
+                var errorEl = $(elem).parent().find('.error');
+                errorEl.addClass('false-error').removeClass('true-error');
+                errorEl.fadeIn(100);
+            }
+        },
+
+            m.addInputValidador = function(field, regexp, errorMessage) {
+            var errorBlock = $('<div/>').addClass('error');
+            var errorMessage = $('<span/>').addClass('error-message');
+            var errorLabel = $('<span/>').addClass('error-label');
+            errorBlock.append(errorMessage);
+            errorBlock.append(errorLabel);
+            field.append(errorBlock);
+
+            input.bind('blur', function(event, regexp, errorMessage){
+               _validation(event);
+            });
         };
 	
 	view.init = function(){

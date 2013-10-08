@@ -6,11 +6,17 @@ Zero.ChartsController = (function(module){
 	    },
 	    
 	
-	    _getCharts = function(dataType){
-	    	// Zero.Tools.date2timestamp(2013, 7,23, 0, 0, 0)               // Math.round(new Date().getTime()/1000)
-	    	var start = 1377867041;
-	    	var finish =Math.round(new Date().getTime()/1000);
-	    	var duration = finish - start;
+	    _getCharts = function(nowFlag, dataType, holder){
+	    	// Zero.Tools.date2timestamp(2013, 7,23, 0, 0, 0)               // Math.round(new Date().getTime()/1000)
+               var now =Math.round(new Date().getTime()/1000);
+               var week = 604800;            if(nowFlag){
+	    	   var start = Math.round(new Date().getTime()/1000)-week;
+	    	   var finish = now;	
+            }else{
+            	var start = Math.round(new Date().getTime()/1000)-(week*2);
+	    	    var finish = now-week;	
+            }
+	    	
 	    	
 	    	var tokkens = module.getTokens();	
 			try{
@@ -25,13 +31,13 @@ Zero.ChartsController = (function(module){
 					data:({
                           "start":start, 
                           "direction":1, 
-                          "duration":duration,
+                          "duration":week,
                           "interval":15,  
                           "plots":dataType
                     }),
 					success:function(data){
 						console.log(data);
-						onJsGraphDataLoad(data);
+						onJsGraphDataLoad(holder, data, nowFlag);
 						_postRender();
 					},
 					error:function(error){
@@ -62,7 +68,7 @@ Zero.ChartsController = (function(module){
 	    };
 	    
 	    _paintCharts= function(){
-
+             
 	    },
 	    
 	    _initNewCharts = function(type){
@@ -76,14 +82,16 @@ Zero.ChartsController = (function(module){
 	    		case 'fitbit': dataType = "fitbitCalories, fitbitSteps, fitbitDistance, fitbitFloors"
 	    		break;
 	    	}
-	    	_getCharts(dataType);
+	    	_getCharts(true, dataType, '#diagramHolder');
+		    _getCharts(false, dataType, '#yesterdayCharts');
 	    	
 	    }
 
 	    
 	view.initialize = function(){
 		var dataType = "nikeSteps, nikeCalories, nikeFuel";
-		_getCharts(dataType);
+		_getCharts(true, dataType, '#diagramHolder');
+		_getCharts(false, dataType, '#yesterdayCharts');
 		_handlers();
 	};	
 	return view;
