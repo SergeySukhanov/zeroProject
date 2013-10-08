@@ -365,6 +365,13 @@ position: relative;
 width: 79%;
 }
 
+.nextUpEvent > span {
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+width: 90%;
+display: inline-block;
+}
 
 .cf:after {
     content: "";
