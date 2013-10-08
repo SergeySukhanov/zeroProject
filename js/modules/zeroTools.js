@@ -325,7 +325,7 @@ Zero.Tools = (function(module){
              }
         },
 
-        _validation = function(event, regexp, errorMessage){
+        m.validation = function(event, regexp, errorMessage){
             var elem = $(event.currentTarget);
             if(regexp.test(elem.val())){
                 var errorEl = $(elem).parent().find('.error');
@@ -343,7 +343,7 @@ Zero.Tools = (function(module){
             field.append(errorBlock);
 
             input.bind('blur', function(event, regexp, errorMessage){
-               _validation(event);
+               m.validation(event);
             });
         };
 	
