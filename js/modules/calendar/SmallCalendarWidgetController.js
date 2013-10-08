@@ -13,7 +13,7 @@ Zero.SmallCalendarWidgetController = (function(module){
         		console.log('click');
         		Zero.Events.showEventPopup();
 				e.preventDefault();
-        	})
+        	})        	
         },
 
         _paintCalendar = function(wrapper){

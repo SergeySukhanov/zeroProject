@@ -2,7 +2,7 @@ Zero.Tools = (function(module){
 	var m = {},
 		tokkens = module.getTokens();
 	
-	m.getFormatedDate = function(timestamp) {
+	m.getFormatedDate = function(timestamp, withoutTime, type) {
 		var date = new Date(timestamp*1000);
 		var day = date.getDate();
 		var month = date.getMonth() + 1;
@@ -10,7 +10,11 @@ Zero.Tools = (function(module){
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
 		var seconds = date.getSeconds();	
-
+		var monthArray = [
+			'January','February','March','April','May','June','July','August','September','October','November','December'
+		]
+		
+		
 		if(month < 10) {
 			month = '0' + month;
 		}		
@@ -23,6 +27,16 @@ Zero.Tools = (function(module){
 		}						
 		
 		var formattedTime = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;	
+		
+		if(type && type == 'weekView') {
+		
+			var ampm = hours >= 12 ? 'pm' : 'am';
+			hours = hours % 12;
+			hours = hours ? hours : 12;
+		
+			formattedTime = monthArray[month-1] + ' ' + day + ', ' + year + ' ' + hours + ':' + minutes + ' ' + ampm;
+		}
+		
 		return formattedTime;	
 	}	
 	

@@ -1,0 +1,112 @@
+#paper {
+	width: 840px;
+	overflow: hidden;
+	overflow-y: auto;
+	height: 320px;
+	}
+	
+#weekWrapper  ul {
+	
+	list-style: none;
+	width: 840px;
+	overflow: hidden;
+	-webkit-box-shadow: 0px 8px 5px rgba(50, 50, 50, 0.25);
+	-moz-box-shadow:    0px 8px 5px rgba(50, 50, 50, 0.25);
+	box-shadow:         0px 8px 5px rgba(50, 50, 50, 0.25);	
+	}	
+	#weekWrapper  ul li {
+		float: left;
+		width: 119px;
+		text-align: center;
+		font: bold 24px/24px "Ma Condensed";
+		text-transform: uppercase;
+		border-right: 1px solid #efeff0;
+		margin: 0;
+		padding: 15px 0;
+		color: #d0d0d0;
+		}
+		#weekWrapper ul li.active {
+			color : #000;
+			}
+		
+
+#eventInfo {
+	margin-top: 10px;
+	}
+		
+#eventInfo h2{
+	font-family: "Ma Condensed";
+	font-size: 26px;
+	font-weight: normal;
+	margin-left: 10px;
+	}		
+.event-info {
+	width: 840px;
+	font-family: "Ma Condensed";
+	font-size: 18px;
+	}		
+	
+	
+	.event-info h3 {
+		padding: 5px 0;
+		font-size: 22px;
+		font-weight: normal;
+		}
+	
+	.event-info .inline-block {
+		width: 300px;
+		margin-left: 10px;
+		display: inline-block;
+		vertical-align: top;
+		max-height: 200px;
+		overflow: hidden;
+		overflow-y: auto;
+		}
+	.event-info .center-block {
+		width: 320px;
+		}		
+	.event-info .right-block {
+		width: 180px;
+		}		
+	
+	.event-info .center-block h3 {
+		margin-left: 20px;
+		padding: 5px 0;
+		border-bottom: 1px solid #cbcccc;
+		}
+	
+	
+		.event-info .inline-block ul {
+			list-style: none;
+			font-size: 14px;
+			margin-left: 20px;
+			margin-top: 10px;
+			}
+			.event-info .inline-block ul li {
+				margin: 0 0 5px 0;
+				}
+	
+	.event-info .event-description {
+		padding: 5px 0;
+		font-size: 15px;
+		}
+	
+	.event-info .timeBlock {
+		padding: 5px 0;
+		border-bottom: 1px solid #cbcccc;
+		text-align: right;
+		width: 100%;
+		overflow: hidden;
+		}
+	.event-info .timeBlock span {
+		display: inline-block;
+		width: 90px;
+		float: left;
+		text-align: left;
+		}
+	
+	.event-info .location {
+		border-top: 1px solid #cbcccc;
+		padding: 5px 0;
+		margin-bottom: 10px;
+		}	

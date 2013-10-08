@@ -35,6 +35,7 @@ var initConfiguration = {
     urlWillpower:'http://zerosrv02.domain.corp/api_srv/V1/willpower/data',
     urlWeather:'http://zerosrv02.domain.corp/api_srv/V1/weather',
 
+
 //DEV
 /*
     urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
@@ -52,7 +53,8 @@ var initConfiguration = {
 	urlSliders:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
 	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
 	urlWeather:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
-*/
+*/	
+	
 //DEMO	
 	/*
 	urlRegister:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
