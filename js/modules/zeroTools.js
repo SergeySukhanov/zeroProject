@@ -298,7 +298,7 @@ Zero.Tools = (function(module){
                      latlng: lat + "," + lng,
                      sensor: 'false',
                      language: 'en'
-                 }, function(result, status) {
+                 }).done( function(result, status) {
                     if (status == "success") {
                         console.log(result)
                         var res = result.results;
@@ -321,43 +321,63 @@ Zero.Tools = (function(module){
                             func(city.long_name);
                             return;
                         } else {
-                            console.log("No results found");
+                            m.getLocationByIP(func);
                             return;
                         }
                     } else {
-                        $.get("http://ipinfo.io", function(response) {
-                            func(response.city);
-                        }, "jsonp")
+                        m.getLocationByIP(func);
                         return;
                     }
-                 });
+                 }).fail(function() {
+                     m.getLocationByIP(func);
+                     return;
+                 }
+                 );
              }catch(Exception){
-                 $.get("http://ipinfo.io", function(response) {
-                     func(response.city);
-                 }, "jsonp")
+                 m.getLocationByIP(func);
                  return;
              }
         },
 
-        m.validation = function(event, regexp, errorMessage){
-            var elem = $(event.currentTarget);
-            if(regexp.test(elem.val())){
-                var errorEl = $(elem).parent().find('.error');
-                errorEl.addClass('false-error').removeClass('true-error');
-                errorEl.fadeIn(100);
-            }
+        m.getLocationByIP = function(func) {
+            $.get("http://ipinfo.io", function(response) {
+                func(response.city);
+            }, "jsonp");
         },
 
-            m.addInputValidador = function(field, regexp, errorMessage) {
+        m._hasValidationErrors = function(parentElem){
+            if(parentElem.find('.false-error').length > 0){
+                return true;
+            }
+            return false;
+        }
+
+        m.showValidationSuccess = function(elem){
+            var errorEl = $(elem).parent().find('.error');
+            errorEl.addClass('true-error').removeClass('false-error');
+            var msg = errorEl.find('.error-message');
+            msg.text("");
+            errorEl.fadeIn(100);
+        }
+
+        m.showValidationError = function(elem, message) {
+            var errorEl = $(elem).parent().find('.error');
+            errorEl.addClass('false-error').removeClass('true-error');
+            var msg = errorEl.find('.error-message');
+            msg.text(message);
+            errorEl.fadeIn(100);
+        },
+
+        m.addInputValidator = function(field, func) {
             var errorBlock = $('<div/>').addClass('error');
-            var errorMessage = $('<span/>').addClass('error-message');
             var errorLabel = $('<span/>').addClass('error-label');
+            var errorMessage = $('<span/>').addClass('error-message');
             errorBlock.append(errorMessage);
             errorBlock.append(errorLabel);
-            field.append(errorBlock);
+            field.after(errorBlock);
 
-            input.bind('blur', function(event, regexp, errorMessage){
-               m.validation(event);
+            field.bind('blur', function(event){
+               func(event);
             });
         };
 	
