@@ -298,7 +298,7 @@ Zero.Tools = (function(module){
                      latlng: lat + "," + lng,
                      sensor: 'false',
                      language: 'en'
-                 }, function(result, status) {
+                 }).done( function(result, status) {
                     if (status == "success") {
                         console.log(result)
                         var res = result.results;
@@ -321,22 +321,28 @@ Zero.Tools = (function(module){
                             func(city.long_name);
                             return;
                         } else {
-                            console.log("No results found");
+                            m.getLocationByIP(func);
                             return;
                         }
                     } else {
-                        $.get("http://ipinfo.io", function(response) {
-                            func(response.city);
-                        }, "jsonp")
+                        m.getLocationByIP(func);
                         return;
                     }
-                 });
+                 }).fail(function() {
+                     m.getLocationByIP(func);
+                     return;
+                 }
+                 );
              }catch(Exception){
-                 $.get("http://ipinfo.io", function(response) {
-                     func(response.city);
-                 }, "jsonp")
+                 m.getLocationByIP(func);
                  return;
              }
+        },
+
+        m.getLocationByIP = function(func) {
+            $.get("http://ipinfo.io", function(response) {
+                func(response.city);
+            }, "jsonp");
         },
 
         m._hasValidationErrors = function(parentElem){
