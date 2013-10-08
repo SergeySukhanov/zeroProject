@@ -7,7 +7,9 @@ Zero.PageEventsController = (function(module){
 	
 	    _render = function(){
 			$(function() {
-				Zero.Events.init($('#eventsBlockContent'))
+				//Zero.Events.init($('#eventsBlockContent'))
+				Zero.Week.init();
+				
 			})			
 	    },
 	    
