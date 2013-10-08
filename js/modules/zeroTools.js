@@ -325,25 +325,39 @@ Zero.Tools = (function(module){
              }
         },
 
-        _validation = function(event, regexp, errorMessage){
-            var elem = $(event.currentTarget);
-            if(regexp.test(elem.val())){
-                var errorEl = $(elem).parent().find('.error');
-                errorEl.addClass('false-error').removeClass('true-error');
-                errorEl.fadeIn(100);
+        m._hasValidationErrors = function(parentElem){
+            if(parentElem.find('.false-error').length > 0){
+                return true;
             }
+            return false;
+        }
+
+        m.showValidationSuccess = function(elem){
+            var errorEl = $(elem).parent().find('.error');
+            errorEl.addClass('true-error').removeClass('false-error');
+            var msg = errorEl.find('.error-message');
+            msg.text("");
+            errorEl.fadeIn(100);
+        }
+
+        m.showValidationError = function(elem, message) {
+            var errorEl = $(elem).parent().find('.error');
+            errorEl.addClass('false-error').removeClass('true-error');
+            var msg = errorEl.find('.error-message');
+            msg.text(message);
+            errorEl.fadeIn(100);
         },
 
-            m.addInputValidador = function(field, regexp, errorMessage) {
+        m.addInputValidator = function(field, func) {
             var errorBlock = $('<div/>').addClass('error');
-            var errorMessage = $('<span/>').addClass('error-message');
             var errorLabel = $('<span/>').addClass('error-label');
+            var errorMessage = $('<span/>').addClass('error-message');
             errorBlock.append(errorMessage);
             errorBlock.append(errorLabel);
-            field.append(errorBlock);
+            field.after(errorBlock);
 
-            input.bind('blur', function(event, regexp, errorMessage){
-               _validation(event);
+            field.bind('blur', function(event){
+               func(event);
             });
         };
 	
