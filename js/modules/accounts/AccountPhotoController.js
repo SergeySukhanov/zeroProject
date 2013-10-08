@@ -88,7 +88,7 @@ Zero.AccountPhotoController = (function(module){
         },
 
         _handlers = function(data){
-            console.log(data);
+            // console.log(data);
         };
 
     view.initialize = function(){
