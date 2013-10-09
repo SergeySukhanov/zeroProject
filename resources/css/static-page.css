@@ -1,0 +1,49 @@
+.header.static-page-header {
+padding-left: 50px;
+box-shadow: none;
+position: relative;
+width: 95%;
+
+}
+
+.header.static-page-header h1 {
+font-family: Zero;
+font-size: 35px;
+color: #666666;
+font-weight: 200;
+display: block;
+margin-bottom: 10px;
+}
+
+.header.static-page-header small {
+font-family: Zero;
+color: #666666;
+margin-bottom: 10px;
+margin-left: 30px;
+width: 47%;
+}
+
+.content.static-page {
+margin-top: 19px !important;
+padding-left: 50px;
+width: 70% !important;
+}
+
+.content.static-page h2 {
+font-family: Zero;
+font-weight: 200;
+color: #666666;
+margin-bottom: 10px;
+}
+
+.content.static-page p {
+text-indent: 10px;
+margin-top: 10px;
+color: #555555;
+width: 100%;
+font-family: Zero;
+font-size: 15px;
+margin-bottom: 10px;
+}
+}
+
