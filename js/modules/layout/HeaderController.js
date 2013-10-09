@@ -208,7 +208,7 @@ Zero.HeaderController = (function(module){
 	    },
 	    
 	    _showMenu = function(event){
-	    	console.log(event);
+	    	// console.log(event);
 	    	var currentPopup = $(event.target).next();
 	    	$('.popup-menu').not(currentPopup).slideUp();
 	    	if(currentPopup.css('display') == 'none'){

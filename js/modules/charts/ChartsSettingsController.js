@@ -146,7 +146,6 @@ Zero.ChartsSettings = (function(module){
            	    range: true, 
            	    values:[data.comfortMin, data.comfortMax], 
            	    create:function( event, ui ){
-           	    	console.log(event);
            	    	var handlerLeft = $(event.target).children().eq(1);
            	    	var handlerRight = $(event.target).children().eq(2);
            	    	
@@ -160,9 +159,7 @@ Zero.ChartsSettings = (function(module){
            	    	$(event.target).find('.popup-handler-left').text(ui.values[0]);
            	    	$(event.target).find('.popup-handler-right').text(ui.values[1]);
            	    },
-                stop: function( event, ui ){ 
-                	console.log(event);
-                	console.log(ui);               	
+                stop: function( event, ui ){               	
                    _formatDataSettings(event, ui);
                 }
            	    
@@ -175,6 +172,10 @@ Zero.ChartsSettings = (function(module){
 	    	  return false;
 	    	}else{
 	    		var diagramData = config;
+	    	}
+	    	if(diagramData.length == 0){
+	    		wrap.hide();
+	    		return false;
 	    	}
 	    	for(var j=0; j<diagramData.length; j++){
             	var diagramItemWrap = $('<div/>').addClass('diagram-item-wrap');
@@ -195,7 +196,7 @@ Zero.ChartsSettings = (function(module){
             		diagramItem.addClass('negative');
             	}
             	_createDiagramCol(diagramItem, diagramData[j]);
-            	console.log('done');
+            	// console.log('done');
             }
             _calculate(diagramItem.parents('#willPower'), diagramData);
 	    },
@@ -302,7 +303,7 @@ Zero.ChartsSettings = (function(module){
                 for(var j=0; j<newData.length; j++){
                 	if(newData[j].filter == $(event.target).attr('name')){
                 		if(newData[j].comfortMin != minValue || newData[j].comfortMax != maxValue){
-                			console.log(newData[j]);
+                			// console.log(newData[j]);
                 			newData[j].comfortMin = minValue;
                 			newData[j].comfortMax = maxValue;
                 		_setAjaxSettings(newData[j]);
@@ -323,7 +324,7 @@ Zero.ChartsSettings = (function(module){
 	    			dataType:'json',
 	    			contentType:'application/json',
 	    			success:function(data){
-	    				console.log(data.result);
+	    				// console.log(data.result);
 	    				_createCols($('.diagram-body'), data.result)
 	    			},
 	    			error:function(error){

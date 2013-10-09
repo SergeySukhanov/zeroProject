@@ -54,8 +54,17 @@
 		}		
 	.settings-content .tabs-pages .active-tab {
 		display: block;
-		}	
+		}
 
+    .settings-content .error{
+        top: 10%;
+        right: 0%;
+    }
+
+    .settings-content .error .error-message {
+        margin-left:40px;
+        width: 200px;
+    }
 /*
 	Form
 */		

@@ -2,7 +2,8 @@ Zero.Settings = (function(module){
 	var m = {};
 	var calendarValues = [];
     var tokkens = module.getTokens();
-	var settings = {}
+	var settings = {};
+    var isValid = true;
 	
 	_createTabs = function() {
 	
@@ -30,9 +31,21 @@ Zero.Settings = (function(module){
 		buttonHolder.appendTo(holder);
 		
 		btSave.bind('click', function(event){
-			_updateSettings(event, "save");
+		    _updateSettings(event, "save");
 		});
 	}
+
+    _validateNumeric = function(event){
+        var elem = $(event.currentTarget);
+        var regexpNum = new RegExp(/^-?(\d*\.)?\d*$/);
+        var val = elem.val().replace(',', '.');
+        if(val == "" || regexpNum.test(val))
+        {
+            Zero.Tools.showValidationSuccess(elem);
+        }else{
+            Zero.Tools.showValidationError(elem, "value must be a number ");
+        }
+    }
 	
 	_createPersonalTab = function() {
         var genderValues = [
@@ -46,8 +59,8 @@ Zero.Settings = (function(module){
 
 			fUserName = _createFormRowHtml('username', 'Username', 'string'),
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
-			fHeight = _createFormRowHtml('height', 'Height', 'string'),
-			fWeight = _createFormRowHtml('weight', 'Weight', 'string'),
+			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _validateNumeric),
+			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _validateNumeric),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker'),
             fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues);
 
@@ -57,7 +70,6 @@ Zero.Settings = (function(module){
 		fUserName.appendTo(holder);
 		fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
-        //Zero.Tools.addInputValidador(holder, new RegExp(/[A-Z]/g),"Error");
 		fWeight.appendTo(holder);
 		fBirthday.appendTo(holder);
         fGender.appendTo(holder);
@@ -202,7 +214,7 @@ Zero.Settings = (function(module){
 		})		
 	}
 	
-	_createFormRowHtml = function(name, text, type, val, useLabel) {
+	_createFormRowHtml = function(name, text, type, val, useLabel, validationFunc) {
 		var html = $('<div />').addClass('row'),
 			label,
 			el,
@@ -259,12 +271,14 @@ Zero.Settings = (function(module){
 				});	
 
 		}
-		
-		
+
 		if(label) label.appendTo(html);
 		if(checkboxText) checkboxText.appendTo(html);
-		el.appendTo(html);
-		
+        el.appendTo(html);
+        if (validationFunc){
+            Zero.Tools.addInputValidator(el, validationFunc);
+        }
+
 		return html;
 	}
 	
@@ -362,6 +376,10 @@ Zero.Settings = (function(module){
     },
 
     _updateSettings = function(event, type){
+         var holder = $('.tabs-pages .personal-tab');
+         if(Zero.Tools._hasValidationErrors(holder)){
+             return;
+         }
          if(type=="save"){
             _saveSettings();
         } else if(type=="reset"){

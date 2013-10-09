@@ -347,7 +347,7 @@ function AuthController(options){
 	     	  errorEl.addClass('true-error').removeClass('false-error');  
 	     	  errorEl.fadeIn(100);
 	     	  
-	      var countSuccess = $(elem).parent().parent().find('.true-error').length;;
+	      var countSuccess = $(elem).parent().parent().find('.true-error').length;
 	      var countFields = $(elem).parent().parent().find('input').not("input[type='button']").length;
 	      var button = $(elem).parent().parent().find("input[type='button']");
 	      if(countSuccess == countFields){
