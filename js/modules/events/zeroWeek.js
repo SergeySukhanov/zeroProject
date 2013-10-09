@@ -4,13 +4,13 @@ Zero.Week = (function(module){
 		calendars = new Array(),
 		weekdays = new Array(),
 		calendarWithEvents = [
-			{'name' : 'monday'},
-			{'name' : 'tuesday'},
-			{'name' : 'wednesday'},
-			{'name' : 'thursday'},
-			{'name' : 'friday'},
-			{'name' : 'saturday'},
-			{'name' : 'sunday'}			
+			{'name' : 'monday', 'events' : new Array()},
+			{'name' : 'tuesday', 'events' : new Array()},
+			{'name' : 'wednesday', 'events' : new Array()},
+			{'name' : 'thursday', 'events' : new Array()},
+			{'name' : 'friday', 'events' : new Array()},
+			{'name' : 'saturday', 'events' : new Array()},
+			{'name' : 'sunday', 'events' : new Array()}			
 		],
 		ajaxSuccess = new Array();
 
@@ -52,10 +52,66 @@ Zero.Week = (function(module){
 
 
 	_getWeekEvents = function() {	
+		
 		for(var i=0; i < weekdays.length; i++) {
-			_getDayEvents(i, weekdays[i] );
-		}		
+			var day = weekdays[i],
+				order = i;			
+			_getDayEvents(order, day);
+		}
+		
+		//_getAllEventsPerWeek(weekdays[0], weekdays[6]) 
+		
+		
+		
+		
 		_startCheckFilling();	
+	}
+	
+	_getAllEventsPerWeek = function(start, end) {
+		$.ajax({
+			url: initConfiguration.urlEventsCalendar,
+			type: 'GET',
+			dataType: 'json',
+			contentType: "application/json",
+			data: {
+				"start" : start,
+				"end" : end+86400,
+				"direction": 1, 
+				"amount": 100, 
+				"calendarIds": calendars.toString()
+				},			
+			success: function (resp) {	
+				//console.warn(resp);
+				if(resp && resp.events) {
+					_fillCalendarWithEvents(resp.events);
+				}
+				
+				/*
+				calendarWithEvents[order].events = resp.events;
+				ajaxSuccess.push(true)
+				*/
+			},
+			error : function(error) {
+				ajaxSuccess.push(false);
+			}
+		})		
+	}
+	
+	_fillCalendarWithEvents = function(arr) {
+		for(var i=0; i<arr.length; i++) {
+			_pushToCalendarEvent(arr[i])			
+			if(i == arr.length-1) {
+				_startDraw();
+			}
+		}
+		
+	}
+	_pushToCalendarEvent = function(event) {
+		var evTime = new Date(event.startTime*1000);	
+			order = evTime.getDay();
+			
+		console.warn(event);	
+		calendarWithEvents[order-1].events.push(event);
 	}
 	
 	_getDayEvents = function(order, weekday) {
@@ -90,6 +146,7 @@ Zero.Week = (function(module){
 	}
 	
 	_startDraw = function() {
+		console.warn(calendarWithEvents)
 		var paperHolder = $('#paper');
 		
 		if(paperHolder.length == 0) return;
