@@ -146,7 +146,6 @@ Zero.Week = (function(module){
 	}
 	
 	_startDraw = function() {
-		console.warn(calendarWithEvents)
 		var paperHolder = $('#paper');
 		
 		if(paperHolder.length == 0) return;
@@ -309,27 +308,29 @@ Zero.Week = (function(module){
 	
 	_getWeekHeaders = function() {
 		var date = new Date();
-		var day = date.getDay()-1;
+			date.setHours(0,0,0,0);
 		var holder = $('#weekWrapper');
 			var ul = $('<ul />');
 			
+			
+			
 			for(var i =0; i < weekdays.length; i++) {
 				var text = _getDateHeader(weekdays[i]),
-					li = $('<li />').text(text);		
-					if(i == day) {
+					li = $('<li />').text(text);					
+					if(weekdays[i] == date/1000) {
 						li.addClass('active');
 					}	
 					li.appendTo(ul);
 			}
-			ul.appendTo(holder);
-				
+			ul.appendTo(holder);			
 	}
 	
-	m.init = function() {
-			weekdays = _getWeeksTimestamps();		
-			calendars = initConfiguration.settingsData.visibleCalendarIds;		
-			_getWeekHeaders();
-			_getWeekEvents();				
+	m.init = function(date) {
+		ajaxSuccess = new Array();
+		weekdays = _getWeeksTimestamps(date);		
+		calendars = initConfiguration.settingsData.visibleCalendarIds;		
+		_getWeekHeaders();
+		_getWeekEvents();				
 	}
 	
 	return m;

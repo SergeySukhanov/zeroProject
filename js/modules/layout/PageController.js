@@ -27,7 +27,13 @@ Zero.PageController = (function(module){
 					
 					},
 					error:function(error){
-						console.log(error);
+					
+					
+						//console.log(error);
+						if(error && error.status == '401') {
+							localStorage.clear();
+							window.location = initConfiguration.getRootLocation();
+						}
 					}
 	    	    });
 	    	    }catch(e){
