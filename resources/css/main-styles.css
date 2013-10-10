@@ -143,6 +143,18 @@ color: #666666;
 .chatLog {
 	display: none;
 	}	
+	.chat-window {
+		height: 405px;
+		overflow: hidden;
+		overflow-y: auto;	
+		}
+	.chat_message {
+		border: 1px solid #CCCCCC;
+		width: 300px;
+		border-radius: 2px;
+		font: normal 14px/18px "Zero";
+		padding: 2px 5px;
+		}	
 	
 	
 #weekView {
@@ -160,3 +172,23 @@ color: #666666;
 	#weekView .popup-action {
 		text-align:right;
 		}
+
+		
+/*group-list*/
+
+.group-list {
+	max-height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	}
+	.group-list h2 {
+		font: normal 22px/24px "Ma Condensed";
+		}
+	.group-list .group-item {
+		margin: 0 0 10px 0;
+		cursor:pointer;
+		padding: 10px;
+		}	
+	.group-list .group-item.active-item {
+		background: ghostwhite;
+		}	

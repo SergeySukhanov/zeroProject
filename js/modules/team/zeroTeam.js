@@ -222,7 +222,7 @@ Zero.Team = (function(module){
 			infoblock = $('.team-info-block', holder),
 			messageblock = $('.team-messages-block', holder),
 			memberList = $('<div />').addClass('memebers-list'),
-			messageChat = $('<div />').attr('id', 'chat_' + obj.id);
+			messageChat = $('<div />').attr('id', 'chat_' + obj.id).addClass('chat-window');
 			messageInput = $('<input/>').attr({
 					'type' : 'text',
 					'class' : 'chat_message'
@@ -359,11 +359,6 @@ Zero.Team = (function(module){
 	
 	m.getUserGroups = function(callback) {
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/	
 			url: moduleUrls.team,
 			type: 'GET',
 			dataType: 'json',
@@ -385,11 +380,6 @@ Zero.Team = (function(module){
 	m.addGroupAction = function(groupObj, popup, e) {
 		//groupObj - group json
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/	
 			url: moduleUrls.team,
 			type: 'POST',
 			dataType: 'json',
@@ -407,11 +397,6 @@ Zero.Team = (function(module){
 	
 	_deleteGroupAction = function(groupId, groupName) {
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/
 			url: moduleUrls.team + '/' + groupId,
 			type: 'DELETE',
 			dataType: 'json',
@@ -434,11 +419,6 @@ Zero.Team = (function(module){
 	m.updateGroupAction = function(groupObj, popup, e) {
 	
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/	
 			url: moduleUrls.team + '/' + groupObj.id,
 			type: 'PUT',
 			dataType: 'json',
@@ -457,11 +437,6 @@ Zero.Team = (function(module){
 	
 	m.getUserOwnerGroups = function(callback) {
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/
 			url: moduleUrls.team,
 			type: 'GET',
 			dataType: 'json',
@@ -511,9 +486,9 @@ Zero.Team = (function(module){
 						+ '<li><a href="#team-members" class="team-members">Members</a></li>' 
 						+ '<li><a href="#team-info" class="team-info">Info</a></li>';
 			groupTabs = $('<div />').addClass('group-tabs');			
-			tabsHtml = '<div class="team-messages-block block-tab">Messages</div>'
-					 + '<div class="team-members-block block-tab">Members</div>'
-					 + '<div class="team-info-block block-tab">Info</div>'	
+			tabsHtml = '<div class="team-messages-block block-tab"></div>'
+					 + '<div class="team-members-block block-tab"></div>'
+					 + '<div class="team-info-block block-tab"></div>'	
 						
 			
 			groupNav.html(groupNavHtml);

@@ -6,10 +6,10 @@ Zero.Events = (function(module){
 			_calendarEndRange = Math.round(parseInt(new Date().getTime() / 1000) + 86400),
 			_accounts,
 			moduleUrls = {
-			userSearch : initConfiguration.apiUrl + 'user'			
-		},
-		
-	_activeCalendarId = null;
+				userSearch : initConfiguration.apiUrl + 'user'			
+			},
+			orderArray = ['fCal', 'sCal', 'tCal'],		
+			_activeCalendarId = null;
 
 	/*
 		New versions of calendars getter
@@ -60,11 +60,6 @@ Zero.Events = (function(module){
 	_getCalendars = function(callback) {	
 		if(!_accounts || _accounts.length == 0) {
 			$.ajax({
-				/*
-				beforeSend: function (request) {
-					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},
-				*/	
 				url: initConfiguration.urlCalendarsList,
 				type: 'GET',
 				dataType: 'json',
@@ -95,12 +90,21 @@ Zero.Events = (function(module){
 			endRangeValue = module.Tools.fortmatStampToTimePicker(_calendarEndRange),
 			startRange = _eventFormRow('startRange', 'Show events from:', 'jq-datepicker', '', startRangeValue),
 			endRange = _eventFormRow('endRange', 'till: ', 'jq-datepicker', '', endRangeValue),
-			btSetRange = $('<button />').text('Apply data range');
+			btSetRange = $('<button />').text('Apply data range'),
+			vCall = initConfiguration.settingsData.visibleCalendarIds;
 		
 		
 		btSetRange.bind('click', function(e){		
 			$('.calendar-event', $(this).closest('.events-calendars-holder')).remove();
-			_drawCalendars();
+			//_drawCalendars();
+			
+			var calId = $('.calendars .active', _holder).data('calId');
+			
+			if(calId) {
+				_updateCalendarEvents(calId, _holder);
+			} else {
+				_updateCalendarEvents(vCall.toString(), _holder);
+			}			
 			e.preventDefault();
 		})
 		
@@ -141,27 +145,98 @@ Zero.Events = (function(module){
 		
 	_drawCalendars = function() {	
 		var callArr = _accounts,		
-			isValid = true //_validateRange();
+			isValid = true,
+			calListHolder = $('<div />').addClass('calendars'),
+			eventsHolder = $('<div />').addClass('events-holder').text('Loading ...'),
+			vCall = initConfiguration.settingsData.visibleCalendarIds;
 		
 		if(isValid === true) {
 			//_holder.html('');
 			for(var i=0; i < callArr.length; i++) {
-				var calendars = callArr[i].calendars;
-				for(var j=0; j < calendars.length; j++) {			
-					if(calendars[j].accessRole == 'owner') {
-						var calendar = _getCalendarHtml(calendars[j]);				
-						calendar.appendTo(_holder);
-						_getEvents(calendars[j].id,calendar);				
-					}
-				}
+				var calendars = callArr[i].calendars;			
 				
-			}				
+				for(var j=0; j < calendars.length; j++) {	
+					for(var k=0; k < vCall.length;k++) {
+						if(vCall[k] == calendars[j].id) {
+							var item = _getCalItem(calendars[j], calListHolder, k);
+							item.appendTo(calListHolder);							
+						}
+					};
+				}				
+			}			
+			calListHolder.appendTo(_holder);
+			eventsHolder.appendTo(_holder);
+			
+			_updateCalendarEvents(vCall.toString(), _holder);
+			
+				
 		} else {
 			_showErrors(isValid, $('#calendarRange'));
 		}
 
 	}
+
+	_getCalItem = function(obj, holder, order) {
+		var item = $('<div />').addClass('item').addClass(orderArray[order]).data('calId', obj.id),
+			title = $('<h3 />').text(obj.summary).attr('title', obj.summary),
+			description = $('<div />').addClass('description').text(obj.description);	
+			
+		title.appendTo(item);	
+		description.appendTo(item);	
+			
+		item.bind('click', function(){
+			_getCalendarEvents(this, obj.id, holder);
+		})	
+			
+		return item;	
+	}
+	
+	_getCalendarEvents = function(item, calId, holder) {
+		$('.item', holder).removeClass('active');
+		$(item).addClass('active');
 		
+		_updateCalendarEvents(calId, holder);
+		
+	}
+	
+	_updateCalendarEvents = function(id, holder) {
+		var wrapper = holder.closest('.events-calendars-holder');
+		var now = ($.datepicker.formatDate( '@', $('input[name = "startRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
+			end = ($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
+			eventHolder = $('.events-holder', wrapper);
+		
+		eventHolder.html('Loading ...');	
+		
+		$.ajax({
+			url: initConfiguration.urlEventsCalendar,
+			type: 'GET',
+			dataType: 'json',
+			contentType: "application/json",
+			data: {
+				"start" : now,
+				"end" : end,
+				"direction": 1, 
+				"amount": 10, 
+				"calendarIds": id 
+				},			
+			success: function (resp) {									
+				if(resp.events && resp.events.length > 0 ) {					
+					var arr = resp.events;
+					eventHolder.html('');	
+					_getEventsHtml(arr.sort(startTimeSort), eventHolder);
+				} 
+				
+				if(resp.events && resp.events.length == 0 ) {
+					eventHolder.html('No events');	
+				}
+			},
+			error : function(error) {
+				
+			}
+		})				
+	}
+	
+	
 	_getCalendarHtml = function(callObj) {
 		var calName = callObj.summary, 
 			callDeas = callObj.description,
@@ -183,11 +258,6 @@ Zero.Events = (function(module){
 			end = _calendarEndRange//($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000;
 
 			$.ajax({
-				/*
-				beforeSend: function (request) {
-					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},
-				*/	
 				url: initConfiguration.urlEventsCalendar,
 				type: 'GET',
 				dataType: 'json',
@@ -216,27 +286,59 @@ Zero.Events = (function(module){
 			header = $('<h3 />').text(event.subject),
 			editLink = $('<a />').attr('href', '#').addClass('icon-link edit-link').text('Edit').data('event-id', event.id),
 			removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('Delete').data('event-id', event.id),
-			time = $('<div>' + Zero.Tools.getFormatedDate(event.startTime) + ' - ' + Zero.Tools.getFormatedDate(event.endTime) + '</div>'),
-			now = Math.round(new Date().getTime() / 1000)
+			time = $('<span class="event-time">' + Zero.Tools.getFormatedDateEvent(event.startTime) + ' - ' + Zero.Tools.getFormatedDateEvent(event.endTime) + '</span>'),
+			day = $('<span class="event-day">' + module.Tools.getFormatedDay(event.startTime) + '</span>'),
+			timeWrapper = $('<div />').addClass('event-day-time'),
+			vCall = initConfiguration.settingsData.visibleCalendarIds;
+			
+			
+			for(var i=0; i < vCall.length; i++) {
+				if(event.calendarId == vCall[i]) {
+					html.addClass(orderArray[i]);
+				}
+			}			
+			
+			day.appendTo(timeWrapper);
+			time.appendTo(timeWrapper);
+
+			var hiddenpart = $('<div />').addClass('full-info'),
+				leftColumn = $('<div />').addClass('left-part'),
+				rightColumn = $('<div />').addClass('right-part'),
+				location = event.location ? $('<div />').addClass('event-location').text(event.location) : null,
+				attendees = event.attendees && event.attendees.length > 0 ? _getAttendeesBlock(event.attendees, true) : null,
+				description = event.location ? $('<div />').addClass('event-description').text(event.description) : null;
 				
-			header.appendTo(html);		
-			time.appendTo(html);
-			editLink.appendTo(html);		
-			removeLink.appendTo(html);	
 			
-			removeLink.bind('click', _removeEvent);
-			editLink.bind('click', function(e){
-				_activeCalendarId = event.calendarId;
-				_showEventPopup(event);
-				e.preventDefault();
-			});
-			
-			
-			if(event.endTime < now && !event.recurrence) {
-				html.addClass('past-event');
+			if(description) {
+				description.appendTo(hiddenpart)
 			}
 			
-			return html;
+			if(location) {
+				location.appendTo(leftColumn);
+			}	
+			
+			if(attendees) {
+				attendees.appendTo(rightColumn);
+			}			
+			
+			leftColumn.appendTo(hiddenpart);
+			rightColumn.appendTo(hiddenpart);
+			
+			
+			
+			timeWrapper.appendTo(html);
+			header.appendTo(html);
+			hiddenpart.appendTo(html);
+			
+			if(location || attendees || description) {
+				header.bind('click', function(){
+					hiddenpart.toggle();
+				}).addClass('pointer')			
+			}
+			
+			
+		return html;
+		
 	}
 	
 	_getEventsHtml = function(eventsArray, holder) {
@@ -351,7 +453,7 @@ Zero.Events = (function(module){
 	}
 	
 	
-	_getAttendeesBlock = function(attendees) {
+	_getAttendeesBlock = function(attendees, withoutSearch) {
 		var block = $('<div />').addClass('attendees'),
 			blockTitle = $('<div />').addClass('title').text('Attendees'),
 			attendeesList = $('<ul />').addClass('attendees-list').data('attendees', attendees),
@@ -399,10 +501,12 @@ Zero.Events = (function(module){
             }
         });		
 
-		
 		blockTitle.appendTo(block);	
 		attendeesList.appendTo(block);	
-		searchInput.appendTo(block);	
+		
+		if(!withoutSearch) {
+			searchInput.appendTo(block);			
+		}
 		
 		return block;
 		
@@ -761,11 +865,6 @@ Zero.Events = (function(module){
 		}
 		
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/
 			url: eventId ? initConfiguration.urlEventsCalendar + '/' + eventId : initConfiguration.urlEventsCalendar,
 			type: eventId ? 'PUT' : 'POST',
 			dataType: 'json',
@@ -773,10 +872,6 @@ Zero.Events = (function(module){
 			contentType: "application/json",
 			success: function (resp) {									
 				if(resp && resp.errorCode == '1') {
-					/*
-					popup.hide();
-					_drawCalendars();						
-					*/
 					_activePopup.hide();
 				}
 			}
@@ -792,11 +887,6 @@ Zero.Events = (function(module){
 
     _getSettings = function() {
         $.ajax({
-			/*
-            beforeSend: function (request) {
-                request.setRequestHeader("Access-Token", tokkens.accessToken);
-            },
-			*/
             url: initConfiguration.urlSettings,
             type: 'GET',
             dataType: 'json',
@@ -825,11 +915,6 @@ Zero.Events = (function(module){
 	_getNextUpEvent = function(calIds, func){
         var now = Math.round(new Date().getTime() / 1000);
         $.ajax({
-			/*
-            beforeSend: function (request) {
-                request.setRequestHeader("Access-Token", tokkens.accessToken);
-            },
-			*/
             url: initConfiguration.urlEventsCalendar,
             type: 'GET',
             dataType: 'json',

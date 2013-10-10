@@ -69,6 +69,9 @@
 		.popup-container .header-popup-inner .popup-toolbar-menu	{
 			float: right;			
 			}
+			.popup-container .header-popup-inner .popup-toolbar-menu a {
+				outline: none;
+				}
 			
 			.header-popup-inner .popup-toolbar-menu .add-icon {
 				float: left;
@@ -255,19 +258,6 @@
 				display: inline-block;
 				margin: 0 10px 0 0;
 				}
-		
-		
-.group-list h2 {
-	font: normal 22px/24px "Ma Condensed";
-	}
-.group-list .group-item {
-	margin: 0 0 10px 0;
-	cursor:pointer;
-	}	
-	.group-list .group-item.active-item {
-		background: ghostwhite;
-		}
-
 
 .team-nav li a {
 	color: #cacaca;
@@ -282,3 +272,102 @@
 .add-group-button {
 	clear: both;
 	}
+	
+	
+/*Event List popup*/
+#calendarRange {
+	
+	}	
+	#calendarRange .row {
+		display: inline-block;
+		width: 280px;
+		}
+		#calendarRange .row input {
+			width: 150px;
+			margin: 0 0 0 10px;
+			}
+			
+.calendars {
+	width: 250px;
+	display: inline-block;
+	margin: 0 10px 0 0;
+	max-height: 430px;
+	overflow: hidden;
+	overflow-y: auto;
+	}			
+	.calendars .item {
+		padding: 5px;
+		margin: 0 0 20px 0;
+		}
+		.calendars .item h3 {
+			text-overflow: ellipsis;
+			overflow: hidden;			
+			}
+		.calendars .item.active {
+			background: ghostwhite;
+			}	
+		
+.events-calendars-holder .fCal {
+	border-left: 4px solid #0b71b5!important;
+	}
+.events-calendars-holder .sCal {
+	border-left: 4px solid #30cc00!important;
+	}	
+.events-calendars-holder .tCal {
+	border-left: 4px solid #cc3e00!important;
+	}	
+		
+.events-holder {
+	display: inline-block;
+	vertical-align: top;
+	}			
+	.events-holder .event {
+		border-left: 4px solid #0b71b5;
+		margin-bottom: 10px;
+		padding: 5px 20px;
+		}
+		
+		.events-holder .event h3 {
+			font: 24px/24px 'Ma Condensed'
+			}
+		.events-holder .event h3.pointer {
+			cursor: pointer;
+			}	
+		.events-holder .event .full-info {
+			display: none;
+			}
+			.events-holder .event .full-info .left-part,
+			.events-holder .event .full-info .right-part {
+				display: inline-block;
+				vertical-align: top;
+				}
+			.events-holder .event .full-info .left-part {
+				width: 300px;				
+				/*border-right: 1px solid #cfcfcf;*/
+				margin-right: 10px;
+				}	
+			.events-holder .event .full-info .right-part{
+				margin-left: 10px;				
+				}
+				
+				.events-holder .event .full-info .right-part 	.attendees-list {
+					max-width: 300px;
+
+					}
+	
+	
+.event-day-time {
+	font-size: 18px;
+	}
+	
+.event-day-time .event-day {
+	font-size: 14px;
+	padding: 0 10px 0 0;
+	}	
+	.event-day-time h3 {
+		font-size: 24px;
+		}
+		
+.attendees-list {
+	list-style: none;
+	}		
