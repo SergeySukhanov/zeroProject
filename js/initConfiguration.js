@@ -14,7 +14,7 @@ var initConfiguration = {
 	 },
 //LOCAL	 
 /*
-	chatUrl : 'http://zerosrv02.domain.corp:9999',
+	 //auth	  
 	apiUrl: 'http://zerosrv02.domain.corp/api_srv/V1/', 
 	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/w',
 	urlLogin:'http://zerosrv02.domain.corp/api_usr/V1/login',
@@ -34,10 +34,10 @@ var initConfiguration = {
 	urlSliders:'http://zerosrv02.domain.corp/api_srv/V1/willpower/sliders',
     urlWillpower:'http://zerosrv02.domain.corp/api_srv/V1/willpower/data',
     urlWeather:'http://zerosrv02.domain.corp/api_srv/V1/weather',
-*/	
+*/
 
-	chatUrl : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com:9999',
-	apiUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/', 
+//DEV
+   apiUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/',
     urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
 	urlLogin:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
 	
@@ -53,7 +53,7 @@ var initConfiguration = {
 	urlSliders:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
 	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
 	urlWeather:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
-
+	
 //DEMO	
 	/*
 	urlRegister:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',

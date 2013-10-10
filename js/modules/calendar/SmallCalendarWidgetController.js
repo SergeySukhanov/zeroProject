@@ -36,14 +36,14 @@ Zero.SmallCalendarWidgetController = (function(module){
         },
 
         _createWeather = function(wrap){
-            Zero.WeatherController.initialize(wrap);
+            Zero.WeatherController.initialize(wrap, _setLocation);
         },
 
         _paintClock = function(wrap)
         {
             var timeBlock = $('<div/>').addClass('time');
             _setTime(timeBlock);
-            setTimeout(function(){_setTime(timeBlock)},15000);
+            setInterval(function(){_setTime(timeBlock)},15000);
             wrap.append(timeBlock);
             if (navigator.geolocation)
             {
@@ -56,9 +56,20 @@ Zero.SmallCalendarWidgetController = (function(module){
         },
 
         _setLocation = function(location){
-            var locBlock = $('<div/>').addClass('place');
-            locBlock.text(location);
-            _locationBlock.append(locBlock);
+            if(_locationBlock.find('.place').length > 0){
+                _locationBlock.find('.place').text(location);
+            } else {
+                var locBlock = $('<div/>').addClass('place');
+                _locationBlock.append(locBlock);
+                if(location && location != ""){
+                    locBlock.text(location);
+                } else{
+                    if (navigator.geolocation)
+                    {
+                        navigator.geolocation.getCurrentPosition(_getLocationName);
+                    }
+                }
+            }
         },
 
         _setTime = function(wrap){
@@ -75,6 +86,8 @@ Zero.SmallCalendarWidgetController = (function(module){
             var datepicker = $('<div/>').addClass('smalldatepicker');
             wrapper.append(datepicker);
             datepicker.datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true,
 				onSelect: function(){
 					var selectDay = $(this).datepicker("getDate")
 					_showWeekPopup(selectDay);

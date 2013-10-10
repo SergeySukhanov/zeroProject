@@ -368,17 +368,13 @@ Zero.Tools = (function(module){
             errorEl.fadeIn(100);
         },
 
-        m.addInputValidator = function(field, func) {
+        m.addInputValidator = function(field) {
             var errorBlock = $('<div/>').addClass('error');
             var errorLabel = $('<span/>').addClass('error-label');
             var errorMessage = $('<span/>').addClass('error-message');
             errorBlock.append(errorMessage);
             errorBlock.append(errorLabel);
             field.after(errorBlock);
-
-            field.bind('blur', function(event){
-               func(event);
-            });
         };
 	
 	view.init = function(){

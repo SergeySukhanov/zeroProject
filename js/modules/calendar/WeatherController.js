@@ -3,7 +3,8 @@ Zero.WeatherController = (function(module){
 
         config = {
             units:"imperial",
-            wrapper: ""
+            wrapper: "",
+            setLocationFunc: ""
         },
 
         tokens = module.getTokens(),
@@ -58,7 +59,14 @@ Zero.WeatherController = (function(module){
 
         _postRender = function(data){
             _paintWeatherBox(data);
+            //_setLocation(data);
             _handlers();
+        },
+
+        _setLocation = function(data) {
+            if(config.setLocationFunc){
+                config.setLocationFunc(data.result.cityName);
+            }
         },
 
         _paintWeatherBox = function(data){
@@ -105,8 +113,9 @@ Zero.WeatherController = (function(module){
             _getLocationData(wrapper);
         };
 
-    view.initialize = function(wrapper){
+    view.initialize = function(wrapper, func){
         config.wrapper = wrapper;
+        config.setLocationFunc = func;
         _render(wrapper);
     };
 

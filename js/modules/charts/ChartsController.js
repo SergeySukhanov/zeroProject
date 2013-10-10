@@ -36,8 +36,11 @@ Zero.ChartsController = (function(module){
                           "plots":dataType
                     }),
 					success:function(data){
-						// console.log(data);
+						// console.log(data);           
 						onJsGraphDataLoad(holder, data, nowFlag);
+						if(nowFlag){
+						   Zero.EventChartsController.initialize(initConfiguration.settingsData.visibleCalendarIds, start, finish);	
+						}
 						_postRender();
 					},
 					error:function(error){
