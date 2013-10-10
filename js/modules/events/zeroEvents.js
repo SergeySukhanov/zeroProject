@@ -150,6 +150,7 @@ Zero.Events = (function(module){
 			eventsHolder = $('<div />').addClass('events-holder').text('Loading ...'),
 			vCall = initConfiguration.settingsData.visibleCalendarIds;
 		
+		
 		if(isValid === true) {
 			//_holder.html('');
 			for(var i=0; i < callArr.length; i++) {
@@ -186,8 +187,7 @@ Zero.Events = (function(module){
 			
 		item.bind('click', function(){
 			_getCalendarEvents(this, obj.id, holder);
-		})	
-			
+		})				
 		return item;	
 	}
 	
@@ -254,8 +254,8 @@ Zero.Events = (function(module){
 	}
 		
 	_getEvents = function(id, holder){
-		var now = _calendarStartRange,//($.datepicker.formatDate( '@', $('input[name = "startRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
-			end = _calendarEndRange//($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000;
+		var now = _calendarStartRange,
+			end = _calendarEndRange;
 
 			$.ajax({
 				url: initConfiguration.urlEventsCalendar,
@@ -418,11 +418,6 @@ Zero.Events = (function(module){
 
 
 		$.ajax({
-			/*
-			beforeSend: function (request) {
-				request.setRequestHeader("Access-Token", tokkens.accessToken);
-			},
-			*/	
 			url: initConfiguration.urlEventsCalendar + '/' + removeId,
 			type: 'DELETE',
 			dataType: 'json',
@@ -431,7 +426,6 @@ Zero.Events = (function(module){
 				if(resp.errorCode && resp.errorCode == 1) {
 					var event = _getRemovableEvent();
 					event.remove();
-					//module.Tools.destroyPopup(popup);
 					popup.hide();
 				}
 			},
@@ -757,7 +751,6 @@ Zero.Events = (function(module){
 			//popup.hide();
 			var popup = $(this).closest('.popup-container');
 			var closeLink = $('.close-popup', popup);
-			console.warn(closeLink);
 			closeLink.click();
 		})
 		
@@ -925,7 +918,7 @@ Zero.Events = (function(module){
                 "onlyTitles": 0
             },
             success: function (data) {
-                console.log(data);
+                
                 func(data);
             }
         })
