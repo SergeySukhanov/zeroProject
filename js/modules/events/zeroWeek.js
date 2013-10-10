@@ -164,29 +164,31 @@ Zero.Week = (function(module){
 			//var a = paper.rect(i * columnWidth, 10, columnWidth+1, pH-35, 0).attr({'fill' : "#fff", 'stroke-opacity' : '0.2'});
 				var events = calendarWithEvents[i].events;
 				
-				if(events) {
-					for(var j=0; j < events.length; j++) {					
-						var startTime = _getEventTime(events[j].startTime),
-							ev = events[j],
-							calId = ev.calendarId,							
-							xOffset = null;							
-							endTime = _getEventTime(events[j].endTime),
-							diff = (events[j].endTime - events[j].startTime)/60;
-						
-						
-						
-						if(calId == calendars[0]) {xOffset = i==0 ? xOffset = 30 : xOffset = 10; fillColor = fillArray[0]};
-						if(calId == calendars[1]) {xOffset = i==0 ? xOffset = 65 : xOffset = 45; fillColor = fillArray[1]};
-						if(calId == calendars[2]) {xOffset = i==0 ? xOffset = 100 : xOffset = 80; fillColor = fillArray[2]};						
-						
-						evRec = paper.rect(i*columnWidth + xOffset, startTime.hour*40 + startTime.minutes*0.6 + 10, 20, diff/1.5, 2).attr({
-								'fill' : fillColor,
-								'cursor' : 'pointer'
-							});							
-							
-						_setEventRectClick(evRec, events[j]);
-					}				
-				}
+				
+				var firstCal = new Array(),
+					secondCal = new Array(),
+					thirdCal = new Array();
+				
+				jQuery.map(events, function(n, i){
+					if(n.calendarId == calendars[0]) {
+						firstCal.push(n)
+					}
+					if(n.calendarId == calendars[1]) {
+						secondCal.push(n)
+					}					
+					if(n.calendarId == calendars[2]) {
+						thirdCal.push(n)
+					}
+					
+				});
+				
+				
+				_drawCalendarLine(firstCal,i, '1', paper);
+				_drawCalendarLine(secondCal,i, '2',paper);
+				_drawCalendarLine(thirdCal,i, '3',paper);
+				
+				
+
 
 		}
 		
@@ -207,6 +209,45 @@ Zero.Week = (function(module){
 				});		
 		}
 		
+	}
+	
+	_drawCalendarLine = function(events, i, order, paper) {
+		var paperHolder = $('#paper');
+		var fillArray = ['#f7982f', '#d7dadb', '#a3a9ad'];
+		var columnWidth = paperHolder.width()/7;
+		
+		events = events.sort(startTimeSort);
+		var pere = 0
+		
+		if(events) {
+			for(var j=0; j < events.length; j++) {					
+				var startTime = _getEventTime(events[j].startTime),
+					ev = events[j],
+					calId = ev.calendarId,							
+					xOffset = null;							
+					endTime = _getEventTime(events[j].endTime),
+					diff = (events[j].endTime - events[j].startTime)/60
+					
+					if(j !=0) {
+						if( events[j].startTime >= events[j-1].startTime && events[j].startTime <= events[j-1].endTime) {							
+							pere = pere + 5;
+						} else {
+							pere = 0;
+						}
+					}
+				
+				if(order == 1) {xOffset = i==0 ? xOffset = 30 : xOffset = 10; fillColor = fillArray[0]};
+				if(order == 2) {xOffset = i==0 ? xOffset = 65 : xOffset = 45; fillColor = fillArray[1]};
+				if(order == 3) {xOffset = i==0 ? xOffset = 100 : xOffset = 80; fillColor = fillArray[2]};						
+				
+				evRec = paper.rect(i*columnWidth + parseInt(xOffset + pere), startTime.hour*40 + startTime.minutes*0.6 + 10, 20, diff/1.5, 2).attr({
+						'fill' : fillColor,
+						'cursor' : 'pointer'
+					});											
+				
+				_setEventRectClick(evRec, events[j]);
+			}				
+		}	
 	}
 	
 	_setEventRectClick = function(obj, data) {
@@ -332,6 +373,11 @@ Zero.Week = (function(module){
 		_getWeekHeaders();
 		_getWeekEvents();				
 	}
+
+	function startTimeSort(a, b) {
+		return a.startTime - b.startTime;
+	}
+
 	
 	return m;
 }(Zero));
