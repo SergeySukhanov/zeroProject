@@ -62,8 +62,8 @@ Zero.EventChartsController = (function(module){
 	    	for(var i=0; i<calendar.length; i++){
 	    		var startEvent = calendar[i].startTime;
 	    		var endEvent = calendar[i].endTime;
-	    		var startX = parseInt((startEvent-_start)/diff);
-	    		var endX = parseInt((endEvent-_start)/diff);
+	    		var startX = (startEvent-_start)/diff;
+	    		var endX = (endEvent-_start)/diff;
 	    	   console.log(startX);
 	    	   console.log(endX);	
 	    	   
@@ -82,8 +82,8 @@ Zero.EventChartsController = (function(module){
 	    		if(calendar[i] != undefined){
 	    			var startEvent = calendar[i].startTime;
 	    		var endEvent = calendar[i].endTime;
-	    		var startX = parseInt((startEvent-_start)/diff);
-	    		var endX = parseInt((endEvent-_start)/diff);
+	    		var startX = (startEvent-_start)/diff;
+	    		var endX = (endEvent-_start)/diff;
 	    	   console.log(startX);
 	    	   console.log(endX);	
 	    	   
@@ -101,7 +101,7 @@ Zero.EventChartsController = (function(module){
 	    _paintEventCharts = function(events){
 	    	var paperDOM = $('#diagramEventHolder');
 	    	paperDOM.empty();
-	    	var paperWidth = paperDOM.width();
+	    	var paperWidth = paperDOM.width()+480;
 	    	var paperHeight = paperDOM.height();
 	    	var calendarsEvents = events;
 	    	var startEventsTime = new Date(_start*1000);
@@ -110,7 +110,7 @@ Zero.EventChartsController = (function(module){
 	    	var paperDay = parseInt(paperWidth/7);
 	    	var paperHour = parseInt(paperDay/24);
 	    	var differents = _finish-_start;
-	    	var pixel = parseInt(differents/paperWidth);
+	    	var pixel = differents/paperWidth;
 	    	
 	    	var fillArray = ['#f7982f', '#d7dadb', '#a3a9ad'];
 	    	
