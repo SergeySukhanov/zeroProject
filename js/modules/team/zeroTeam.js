@@ -5,7 +5,8 @@ Zero.Team = (function(module){
 			userSearch : initConfiguration.apiUrl + 'user'			
 		},
 		tokkens = module.getTokens(),
-		_activePopup = null;
+		_activePopup = null,
+		_activeGroup = null;
 		
 	_getUserLine = function(obj, holder) {
 		var item = $('<div />'),
@@ -202,7 +203,13 @@ Zero.Team = (function(module){
 			$('ul li a.active', holder).removeClass('active');
 			$(this).addClass('active');
 			$('.block-tab', holder).hide();			
-			$('.' + name + '-block', holder).show();			
+			$('.' + name + '-block', holder).show();		
+
+			if(name == 'team-messages') {
+				_chatInit(_activeGroup);
+			}
+			
+			
 			e.preventDefault();			
 		})	
 	}
@@ -214,7 +221,19 @@ Zero.Team = (function(module){
 			membersblock = $('.team-members-block', holder),
 			infoblock = $('.team-info-block', holder),
 			messageblock = $('.team-messages-block', holder),
-			memberList = $('<div />').addClass('memebers-list');
+			memberList = $('<div />').addClass('memebers-list'),
+			messageChat = $('<div />').attr('id', 'chat_' + obj.id);
+			messageInput = $('<input/>').attr({
+					'type' : 'text',
+					'class' : 'chat_message'
+				})
+				
+			messageSend = $('<button />').addClass('send_to_chat').text('Send'),
+			messageHolder = $('<div />').attr('id', 'chatHolder_' + obj.id).addClass('chatLog');
+			_activeGroup = obj;
+			
+
+			
 			
 			membersblock.html('')
 			
@@ -226,8 +245,14 @@ Zero.Team = (function(module){
 			if(messages && messages.length !=0) {
 				
 			} else {
-				messageblock.html('<p>No messages in group');
+				//messageblock.html('<p>No messages in group</p>');
 			}			
+			
+			messageChat.appendTo(messageHolder);
+			messageInput.appendTo(messageHolder);
+			messageSend.appendTo(messageHolder);
+			
+			messageHolder.appendTo(messageblock);
 			
 			memberList.appendTo(membersblock);
 			infoblock.html('<p>Deleting a group will remove all associated messages and upcoming associated events. Contacts will not be deleted.');	
@@ -570,6 +595,111 @@ Zero.Team = (function(module){
 			
 	
 	
+	}
+	
+	/*Chat section*/
+	_chatInit = function(group) {
+		var activeLog = $('#chat_' + group.id);
+		var log = {
+			print: function(s) {
+				activeLog.append('<div>'+s+'</div>').get(0).scrollTop += 100;
+			}		
+		}	
+		var sendBt = $('.send_to_chat', activeLog.parent());
+		
+		$('.chatLog').hide();
+		activeLog.parent().show();
+		
+		
+
+		
+		var chat = {
+			
+			onSuccess: function(data) {
+				if(data && data.textMessageNotification) {
+					var message = data.textMessageNotification;
+					log.print(message.userName + ': ' + message.text);	
+				}						
+			},			
+			
+			onCompleteRead: function(xhr) {							
+				if (xhr.status == 200) {
+					chat.Read();
+				} else {
+					setTimeout(chat.Read, 5000);
+				}
+			},			
+			
+			Connect: function() {
+				chat.Read(true);					
+			},			
+			
+			Send: function() {
+				var data = $.trim($('.chat_message', activeLog.parent()).val());
+				var obj = {'textMessageRequest' : {'teamId' : group.id , 'text' : data}}
+				
+				
+				
+				if (!data) {
+					return;
+				}
+				$.ajax({
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 					
+						data: JSON.stringify(obj),							
+						success: function() {
+							log.print('I wrote: ' + data);
+						},
+						complete: function() {
+							
+						}
+					});
+					
+				$('.chat_message', activeLog.parent()).val('');
+			},			
+			
+			Read : function(firstTime) {
+				var sendData = {
+					'longPooling' : ''
+				}
+				chat.read = $.ajax({	
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 
+					timeout : 600000,				
+					data: JSON.stringify(sendData),
+					success: chat.onSuccess,
+					complete: chat.onCompleteRead
+				});
+				
+				if(firstTime) {
+					var sendData = {
+						'identificationMessageRequest' : {'token' : tokkens.accessToken}
+					}
+					$.ajax({	
+						url : initConfiguration.chatUrl,
+						type: 'post', 
+						dataType: 'json', 
+						data: JSON.stringify(sendData),
+						success: function(){
+						
+						},
+						complete: function(){
+						
+						}
+					});											
+				}				
+			}
+		}
+		
+		sendBt.bind('click', function() {
+			chat.Send();
+		})				
+		
+		chat.Connect();
+		
+		
 	}
 	
 	return m

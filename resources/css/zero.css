@@ -429,3 +429,12 @@ border-bottom: 1px solid #cccccc;
 display: inline-block;
 }
 
+#diagramEventHolder {
+position: absolute;
+display: inline-block;
+top: 76%;
+left: 0;
+background-color: #345678;
+width: 73.5%;
+height: 56px;
+}

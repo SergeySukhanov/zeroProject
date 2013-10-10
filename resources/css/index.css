@@ -61,6 +61,7 @@ color:#269ABD;
 }
 
 .gradient-layout{
+	position:relative;
 	background: #fbddc3;
 background: -moz-linear-gradient(-45deg,  #fbddc3 0%, #bbd3fa 100%);
 background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#fbddc3), color-stop(100%,#bbd3fa));

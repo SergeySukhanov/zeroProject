@@ -85,12 +85,51 @@ Zero.SmallCalendarWidgetController = (function(module){
         _addDatePicker = function(wrapper){
             var datepicker = $('<div/>').addClass('smalldatepicker');
             wrapper.append(datepicker);
-            datepicker.datepicker();
-        };
+            datepicker.datepicker({
+				onSelect: function(){
+					var selectDay = $(this).datepicker("getDate")
+					_showWeekPopup(selectDay);
+				}
+			});
+        },
+		
+		_showWeekPopup = function(date) {
+			if($('#weekView').length !=0) {
+				$('#weekView').remove();
+			}
+		
+			var switcher = $('<div />').attr('id', 'weekSwitcher');
+			var wrapper = $('<div />').attr('id', 'weekWrapper');
+			var papper = $('<div />').attr('id', 'paper');
+			var eventInfo = $('<div />').attr('id', 'eventInfo');
+			var popupContent = $('<div />').attr('id', 'weekView');
+			var closePopup = $('<button />').addClass('close-popup').text('Cancel');
+			var btHolder = $('<div />').addClass('popup-action');
+			
+			
+			closePopup.appendTo(btHolder);			
+			btHolder.appendTo(popupContent);			
+			switcher.appendTo(popupContent);
+			wrapper.appendTo(popupContent);
+			papper.appendTo(popupContent);
+			eventInfo.appendTo(popupContent);
+
+			popupContent.appendTo($('body')[0]);	
+			
+			closePopup.bind('click',function(){
+				$('#weekView').remove();
+			})	
+			
+			module.Week.init(date);
+			
+		}
 
     view.initialize = function(holder){
         _render(holder);
     };
 
+	
+	
+	
     return view;
 }(Zero));
