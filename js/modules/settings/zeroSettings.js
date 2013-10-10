@@ -3,7 +3,10 @@ Zero.Settings = (function(module){
 	var calendarValues = [];
     var tokkens = module.getTokens();
 	var settings = {};
-    var isValid = true;
+    var height = "";
+    var heightNum = "";
+    var weight = "";
+    var weightNum = "";
 	
 	_createTabs = function() {
 	
@@ -35,16 +38,139 @@ Zero.Settings = (function(module){
 		});
 	}
 
-    _validateNumeric = function(event){
-        var elem = $(event.currentTarget);
+    _validateNumeric = function(val){
         var regexpNum = new RegExp(/^-?(\d*\.)?\d*$/);
-        var val = elem.val().replace(',', '.');
         if(val == "" || regexpNum.test(val))
         {
-            Zero.Tools.showValidationSuccess(elem);
+            return true;
         }else{
-            Zero.Tools.showValidationError(elem, "value must be a number ");
+            return false;
         }
+    }
+
+    _maskedHeight = function(event){
+        var elem = $(event.currentTarget);
+        var position = elem[0].selectionStart;
+        _validateHeight(elem);
+        if(position > 0 && position < 4){
+            position = 4;
+        } else if(position > 5){
+            position = 0;
+        }
+        elem[0].setSelectionRange(position, position);
+    }
+
+    _validateHeight = function(elem) {
+        var f = "'";
+        var d = '"';
+        var num = elem.val().replace(/\s/g,'').replace(f, '.').replace(d, '.').split('.');
+        var num1, num2;
+
+        if(num[0] && _validateNumeric(num[0])){
+            if(num[0] < 1){
+                num1 = 1;
+            } else if(num[0] > 8){
+                num1 = 8;
+            } else {
+                num1 = num[0];
+            }
+
+            if(num.length > 1 && _validateNumeric(num[1])){
+                if(num[1] < 0){
+                    num2 = 0;
+                } else if(num[1] > 11){
+                    num2 = 11;
+                } else {
+                    num2 = num[1];
+                }
+            }
+            height = _createHeightString(num1, num2);
+        }
+        elem.val(height);
+        return _convertHeightToNum(num1, num2);
+    }
+
+    _createHeightString = function(foot, inches){
+        var f = " '";
+        var d = ' "';
+        var res = "";
+        if(foot){
+           res =  foot + f + " ";
+        }
+        if(inches){
+            res = res + inches + d;
+        }
+        return res;
+    }
+
+    _convertHeightToString = function(num){
+        var foot = Math.floor(num / 12);
+        var inches = num % 12;
+        return _createHeightString(foot, inches);
+    }
+
+    _convertHeightToNum = function(foot, inches){
+        var res = foot*12;
+        if(inches){
+            res = Number(res) + Number(inches);
+        }
+        return res;
+    }
+
+    _maskedWeight = function(event){
+        var elem = $(event.currentTarget);
+        var position = elem[0].selectionStart;
+        _validateWeight(elem);
+        if(position > 2){
+            position = 0;
+        }
+        elem[0].setSelectionRange(position, position);
+    }
+
+    _validateWeight = function(elem) {
+        var val = elem.val();
+        var num = _convertWeightToNum(val);
+
+        if(_validateNumeric(num)){
+            var firstPart = Math.floor(num);
+            var secondPart = (num - firstPart) < 0.5 ? 0 : 0.5;
+            if(firstPart < 30){
+                firstPart = 30;
+            } else if(firstPart > 600){
+                firstPart = 600;
+            }
+            var num = Number(firstPart) + Number(secondPart);
+            weight = _convertWeightToString(num);
+        }
+
+        elem.val(weight);
+        return _convertWeightToNum(weight);
+    }
+
+    _convertWeightToString = function(num){
+        return num + " lbs.";
+    }
+
+    _convertWeightToNum = function(val){
+        return val.replace(/\s/g,'').replace("lbs.", "").replace(',', '.');
+    }
+
+    _insMode = function(event) {
+        var elem = $(event.currentTarget);
+        var newchar = String.fromCharCode(event.which);
+        var position = elem[0].selectionStart;
+        var val = elem.val();
+        var val1 = val.substring(0, position);
+        if(position < val.length){
+            var val2 = val.substring(position+1, val.length);
+        } else {
+           var val2 = "";
+        }
+        console.log(val1);
+        console.log(val2);
+        console.log(newchar);
+        elem.val(val1 + val2);
+        elem[0].setSelectionRange(position, position);
     }
 	
 	_createPersonalTab = function() {
@@ -59,14 +185,12 @@ Zero.Settings = (function(module){
 
 			fUserName = _createFormRowHtml('username', 'Username', 'string'),
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
-			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _validateNumeric),
-			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _validateNumeric),
+			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _maskedHeight),
+			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _maskedWeight),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker'),
             fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues);
 
-			
 		// fName.appendTo(holder);
-
 		fUserName.appendTo(holder);
 		fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
@@ -84,8 +208,7 @@ Zero.Settings = (function(module){
 			
 		fAcc.appendTo(holder);	
 		fLocation.appendTo(holder);	
-		fContacts.appendTo(holder);	
-			
+		fContacts.appendTo(holder);
 	};
 	
 	_createUnitTab = function() {
@@ -275,8 +398,19 @@ Zero.Settings = (function(module){
 		if(label) label.appendTo(html);
 		if(checkboxText) checkboxText.appendTo(html);
         el.appendTo(html);
+
         if (validationFunc){
-            Zero.Tools.addInputValidator(el, validationFunc);
+            Zero.Tools.addInputValidator(el);
+
+            el.bind('keydown', function(event){
+                _insMode(event);
+            });
+            el.bind('keyup', function(event){
+                validationFunc(event);
+            });
+            el.bind('blur', function(event){
+                validationFunc(event);
+            });
         }
 
 		return html;
@@ -338,11 +472,13 @@ Zero.Settings = (function(module){
         }
 
         if(settings.height){
-            $('#height').val(settings.height);
+            height = _convertHeightToString(settings.height);
+            $('#height').val(height);
         }
 
         if(settings.weight){
-            $('#weight').val(settings.weight);
+            weight = _convertWeightToString(settings.weight);
+            $('#weight').val(weight);
         }
 
         if (settings.firstDayOfWeek)
@@ -409,8 +545,8 @@ Zero.Settings = (function(module){
          settings.username = $('#username').val();
          //settings.email = $('#mail').val();
          settings.gender = $('#gender').val();
-         settings.height = $('#height').val();
-         settings.weight = $('#weight').val();
+         settings.height = $('#height').val() ? _validateHeight($('#height')) : $('#height').val();
+         settings.weight = $('#weight').val() ? _validateWeight($('#weight')) : $('#weight').val();
          try{
              var date = new Date($('#birthday').val()).getTime()/1000;
              settings.birthDate = date;
