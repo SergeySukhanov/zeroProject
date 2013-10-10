@@ -101,7 +101,7 @@ Zero.EventChartsController = (function(module){
 	    _paintEventCharts = function(events){
 	    	var paperDOM = $('#diagramEventHolder');
 	    	paperDOM.empty();
-	    	var paperWidth = paperDOM.width()+480;
+	    	var paperWidth = paperDOM.width();
 	    	var paperHeight = paperDOM.height();
 	    	var calendarsEvents = events;
 	    	var startEventsTime = new Date(_start*1000);
