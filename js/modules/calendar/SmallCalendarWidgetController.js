@@ -86,6 +86,8 @@ Zero.SmallCalendarWidgetController = (function(module){
             var datepicker = $('<div/>').addClass('smalldatepicker');
             wrapper.append(datepicker);
             datepicker.datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true,
 				onSelect: function(){
 					var selectDay = $(this).datepicker("getDate")
 					_showWeekPopup(selectDay);

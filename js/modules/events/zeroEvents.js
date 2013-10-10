@@ -683,6 +683,7 @@ Zero.Events = (function(module){
 		var popup = Zero.ModalController.getPopup('addGroupPopup');
 		
 		var popupContent = $('<div />').addClass('main-content');
+        $(popup).find('.popup-toolbar').remove();
 		var toolbar = $('<div />').addClass('popup-toolbar');
 		var add = $('<a />').attr({
 			'href' : '#',
@@ -714,10 +715,7 @@ Zero.Events = (function(module){
 		eventBlock.appendTo(popupContent);
 		groupBlock.appendTo(popupContent);
 			
-		groupBlock.hide();	
-		
-		
-		
+		groupBlock.hide();
 		
 		popup.setHeader(eventObj ? $('#subject', eventBlock).val() : 'New Event');
 		popup.setToolbar(toolbar);
