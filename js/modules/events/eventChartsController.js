@@ -17,7 +17,8 @@ Zero.EventChartsController = (function(module){
 	    },
 	    
 	    _postRender = function(data){
-	    	
+	    	if(_calendars.toString() != null) return;
+			
 	    	try{
 	    		$.ajax({
 			       url: initConfiguration.urlEventsCalendar,

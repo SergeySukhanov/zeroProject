@@ -611,7 +611,7 @@ Zero.Team = (function(module){
 			
 			Send: function() {
 				var data = $.trim($('.chat_message', activeLog.parent()).val());
-				var obj = {'textMessageRequest' : {'teamId' : group.id , 'text' : data}}
+				var obj = {'messageRequest' : {'teamId' : group.id , 'text' : data}}
 				
 				
 				
@@ -624,7 +624,7 @@ Zero.Team = (function(module){
 					dataType: 'json', 					
 						data: JSON.stringify(obj),							
 						success: function() {
-							log.print('I wrote: ' + data);
+							log.print('Me: ' + data);
 						},
 						complete: function() {
 							
@@ -650,7 +650,7 @@ Zero.Team = (function(module){
 				
 				if(firstTime) {
 					var sendData = {
-						'identificationMessageRequest' : {'token' : tokkens.accessToken}
+						'firstConnectionRequest' : {'token' : tokkens.accessToken}
 					}
 					$.ajax({	
 						url : initConfiguration.chatUrl,
