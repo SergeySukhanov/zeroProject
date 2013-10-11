@@ -4,9 +4,7 @@ Zero.Settings = (function(module){
     var tokkens = module.getTokens();
 	var settings = {};
     var height = "";
-    var heightNum = "";
     var weight = "";
-    var weightNum = "";
 	
 	_createTabs = function() {
 	
@@ -166,11 +164,26 @@ Zero.Settings = (function(module){
         } else {
            var val2 = "";
         }
-        console.log(val1);
-        console.log(val2);
-        console.log(newchar);
         elem.val(val1 + val2);
         elem[0].setSelectionRange(position, position);
+    }
+
+    _validateBirthday = function(elem) {
+        try{
+            var date = new Date(elem.val());
+            var dateNum = date.getTime()/1000;
+            var dateStr = _convertDateToString(date);
+        }catch(ex){
+            var dateStr = "";
+            var dateNum = "";
+        }
+        elem.val(dateStr);
+        return dateNum;
+    }
+
+    _convertDateToString = function(date){
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        return months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
     }
 	
 	_createPersonalTab = function() {
@@ -187,7 +200,7 @@ Zero.Settings = (function(module){
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
 			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _validateHeight, _maskedHeight, _insMode),
 			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _validateWeight, _maskedWeight, _insMode),
-			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker'),
+			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker', null, true, _validateBirthday),
             fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues);
 
 		// fName.appendTo(holder);
@@ -367,7 +380,20 @@ Zero.Settings = (function(module){
 					'name' : name,
 					'id' : name,
 					'class' : 'jq-datepicker'					
-				}).val(val).datetimepicker();
+				}).val(val);
+            el.datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "MM dd, yy",
+                beforeShow: function (input, inst) {
+                    window.setTimeout(function () {
+                        //var month = $('select.ui-datepicker-month').addClass('dropdown');
+                        //var year = $('select.ui-datepicker-year').addClass('dropdown');
+                        //Zero.Tools.selectUpdate(month);
+                        //Zero.Tools.selectUpdate(year);
+                    }, 1);
+                }
+            });
 		}
 		
 		
@@ -495,8 +521,7 @@ Zero.Settings = (function(module){
         if (settings.birthDate)
         {
             var date = new Date(settings.birthDate*1000);
-            var month = date.getMonth() + 1;
-            $('#birthday').val(month + "/" + date.getDate() + "/" + date.getFullYear());
+            $('#birthday').val(_convertDateToString(date));
         }
 
         if (settings.gender){
@@ -553,12 +578,8 @@ Zero.Settings = (function(module){
          settings.gender = $('#gender').val();
          settings.height = $('#height').val() ? _validateHeight($('#height')) : $('#height').val();
          settings.weight = $('#weight').val() ? _validateWeight($('#weight')) : $('#weight').val();
-         try{
-             var date = new Date($('#birthday').val()).getTime()/1000;
-             settings.birthDate = date;
-         }catch(ex){
-             console.log(ex);
-         }
+         var date = _validateBirthday($('#birthday'));
+         settings.birthDate = date;
          settings.firstDayOfWeek = $('#weekStarts').val();
          settings.visibleCalendarIds = [$('#primaryCalendar').val(), $('#secondaryCalendar').val(), $('#thirdCalendar').val()];
          var timezone1 = $('#primary').val();
