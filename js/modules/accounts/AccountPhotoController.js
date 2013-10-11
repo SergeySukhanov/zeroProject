@@ -7,6 +7,8 @@ Zero.AccountPhotoController = (function(module){
 
         tokens = module.getTokens(),
 
+        paper = "",
+
         _renderPhotoController = function() {
             _getMomentumData();
         }
@@ -39,15 +41,13 @@ Zero.AccountPhotoController = (function(module){
         },
 
         _paintAvatar = function(data){
-            var root = initConfiguration.getRootLocation();
-
             if(data && data.length > 0){
                 var willpower = data[data.length-1].percent;
             }
             else{
-                var willpower = 0;
+                var willpower = 50;
             }
-            var paper = Raphael('userPhotoHolder', 170, 170);
+            paper = Raphael('userPhotoHolder', 170, 170);
 
             paper.customAttributes.arc = function(xc, yc, power, r){
                 var angle = 90 * Math.PI / 180;
@@ -84,8 +84,49 @@ Zero.AccountPhotoController = (function(module){
             path.attr('stroke-width','5');
             path.animate({arc: [xc, yc, willpower, radius]}, 3e3);
 
-            paper.image(root+initConfiguration.imagesFolder+config.faceImg,10,10,80,80);
+            _getAvatarUrl();
         },
+
+        _getAvatarUrl = function() {
+            $.ajax({
+                beforeSend: function (request) {
+                    request.setRequestHeader("Access-Token", tokens.accessToken);
+                },
+                url: initConfiguration.urlSettings,
+                type: 'GET',
+                dataType: 'json',
+                contentType: "application/json",
+                success: function (data) {
+                    _loadAvatar(data);
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            })
+        },
+
+        _loadAvatar = function(data){
+            var root = initConfiguration.getRootLocation();
+            var url = data.result.avatarUrl;
+            var circle = paper.circle(50, 50, 38);
+            var uuid = Raphael.createUUID();
+            var pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern");
+            if(url){
+                var image = paper.image(url,0,0,1,1);
+                image.rotate(90);
+            } else {
+                var image = paper.image(root+initConfiguration.imagesFolder+config.faceImg,0,0,1,1);
+            }
+            pattern.setAttribute("id", uuid);
+            pattern.setAttribute("x", 0);
+            pattern.setAttribute("y", 0);
+            pattern.setAttribute("height", 1);
+            pattern.setAttribute("width", 1);
+            pattern.setAttribute("patternContentUnits", "objectBoundingBox");
+            $(image.node).appendTo(pattern);
+            $(pattern).appendTo(paper.defs);
+            $(circle.node).attr({fill: "url(#" + pattern.id + ")", stroke: "#FFF", "stroke-width": 0});
+        }
 
         _handlers = function(data){
             // console.log(data);

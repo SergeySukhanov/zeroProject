@@ -332,6 +332,7 @@ Zero.Settings = (function(module){
 			contentType: "application/json",
 			success: function (resp) {			
 				if(resp && resp.accounts && resp.accounts.length > 0) {
+                    calendarValues.push({'':""});
 					for(var i=0; i < resp.accounts.length; i++) {
 						var cal = resp.accounts[i].calendars;
 						for(var j=0; j < cal.length; j++) {
@@ -528,7 +529,7 @@ Zero.Settings = (function(module){
             $('#gender').val(settings.gender).change();
         }
 
-        if (settings.visibleCalendarIds && settings.visibleCalendarIds.length == 3)
+        if (settings.visibleCalendarIds)
         {
             $('#primaryCalendar').val(settings.visibleCalendarIds[0]).change();
             $('#secondaryCalendar').val(settings.visibleCalendarIds[1]).change();
