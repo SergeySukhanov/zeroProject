@@ -591,8 +591,8 @@ Zero.Team = (function(module){
 		var chat = {
 			
 			onSuccess: function(data) {
-				if(data && data.textMessageNotification) {
-					var message = data.textMessageNotification;
+				if(data && data.messageResponse) {
+					var message = data.messageResponse;
 					log.print(message.userName + ': ' + message.text);	
 				}						
 			},			
