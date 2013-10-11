@@ -205,7 +205,7 @@ Zero.Settings = (function(module){
 
 		// fName.appendTo(holder);
 		fUserName.appendTo(holder);
-		fEmail.appendTo(holder);
+		//fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
 		fWeight.appendTo(holder);
 		fBirthday.appendTo(holder);

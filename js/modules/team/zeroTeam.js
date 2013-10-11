@@ -133,12 +133,12 @@ Zero.Team = (function(module){
 			addGroupButton;
 		
 		if(obj) {
-			addGroupButton = $('<button />').addClass('edit-group-button').text('Edit Group');		
+			addGroupButton = $('<button />').addClass('edit-group-button').text('Edit Team');		
 			addGroupButton.bind('click', function(e){
 				_editGroup(obj, html, e)
 			})				
 		} else {
-			addGroupButton = $('<button />').addClass('add-group-button').text('Add Group');		
+			addGroupButton = $('<button />').addClass('add-group-button').text('Add Team');		
 			addGroupButton.bind('click', function(e){
 				_addGroup(html, e)
 			})		
@@ -259,12 +259,12 @@ Zero.Team = (function(module){
 			messageHolder.appendTo(messageblock);
 			
 			memberList.appendTo(membersblock);
-			infoblock.html('<p>Deleting a group will remove all associated messages and upcoming associated events. Contacts will not be deleted.');	
+			infoblock.html('<p>Deleting a team will remove all associated messages and upcoming associated events. Contacts will not be deleted.');	
 
 			
 			if(obj.owner == initConfiguration.settingsData.userId) {
-				var deleteBt = $('<button />').addClass('remove-button').text('Delete group');
-				var editBt = $('<button />').addClass('edit-button').text('Edit group')
+				var deleteBt = $('<button />').addClass('remove-button').text('Delete team');
+				var editBt = $('<button />').addClass('edit-button').text('Edit team')
 				
 				editBt.appendTo(infoblock);				
 				deleteBt.appendTo(infoblock);
@@ -523,7 +523,7 @@ Zero.Team = (function(module){
 			listItem = $('<a />').attr({
 					'href' : '#',
 					'class' : 'list-icon'
-				}).text('List Group'),
+				}).text('Teams list'),
 			popupContent = $('<div />').addClass('popup-tabs-holder');
 
 			addTab.appendTo(popupContent);
@@ -536,11 +536,11 @@ Zero.Team = (function(module){
 			if(mode == 'add') {
 				listTab.hide();
 				addItem.addClass('active');
-				popup.setHeader('New group');
+				popup.setHeader('New team');
 			}
 			if(mode == 'edit') {
 				listTab.hide();
-				popup.setHeader('Edit group');
+				popup.setHeader('Edit team');
 				addItem.addClass('active');
 			}			
 			
@@ -549,7 +549,7 @@ Zero.Team = (function(module){
 				$(this).addClass('active');
 				listTab.show();
 				addTab.hide();
-				popup.setHeader('Groups List');
+				popup.setHeader('Team List');
 				e.preventDefault();
 			})
 			addItem.bind('click', function(e){
@@ -557,7 +557,7 @@ Zero.Team = (function(module){
 				$(this).addClass('active');			
 				listTab.hide();
 				addTab.show();
-				popup.setHeader('New Group');
+				popup.setHeader('New team');
 				e.preventDefault();
 			})			
 			
@@ -714,6 +714,94 @@ Zero.Team = (function(module){
 		
 		chat.Connect();
 		
+		
+	}
+	
+	m.lastMessages = function(holder){
+		
+		
+		
+		var client = {
+			Connect : function() {
+				var sendData = {
+					'firstConnectionRequest' : {'token' : tokkens.accessToken}
+				}
+				$.ajax({	
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 
+					data: JSON.stringify(sendData),
+					success: function(resp){
+						client.getTeams(resp);
+					},
+					complete: function(){
+					
+					}
+				});											
+			},
+
+			getTeams : function(resp) {
+				if(resp && resp.teamListResponse && resp.teamListResponse.teamList) {
+					if(resp.teamListResponse.teamList.length !=0) {
+						var teamId = resp.teamListResponse.teamList[0].id;
+						client.History(teamId);						
+					}
+				}
+			},
+			
+			History : function(teamId) {
+				var now = new Date();
+				var offset = now.getTimezoneOffset()*60*(-1);
+				var sendData = {
+						'historyRequest' : {'teamId' : teamId , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 5}						
+				}
+				$.ajax({	
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 
+					data: JSON.stringify(sendData),
+					success: function(resp) {
+						if(resp && resp.historyResponse) {
+							var arr = resp.historyResponse.messageList;
+							client.Print(arr);
+							setTimeout(function(){
+								client.History(teamId);
+							}, 10000);
+						}						
+					}
+				});					
+			},
+			
+			Print : function(arr) {
+				holder.html('');
+				var title = $('<h3 />').text('Messages');
+				
+				title.appendTo(holder);
+				
+				for(var i =0; i < arr.length; i++) {
+					var message = arr[i];
+					var messageHtml = $('<div />').addClass('item'),
+						user = $('<span />').addClass('author block-item').text(message.userName + ' :');
+						mes = $('<div />').addClass('message').text(message.text);
+						date = $('<span />').addClass('date block-item').text(module.Tools.getFormatedDate(message.timestamp/1000, false, 'weelView'))
+				
+					user.appendTo(messageHtml);
+					mes.appendTo(messageHtml);
+					date.appendTo(messageHtml);
+					
+					messageHtml.appendTo(holder);
+				
+				}
+				
+				
+				
+			}
+			
+			
+			
+		}
+		
+		client.Connect();
 		
 	}
 	
