@@ -60,6 +60,7 @@ Zero.EventChartsController = (function(module){
 	    	var paxelDiff = diff;
 	    	
 	    	for(var i=0; i<calendar.length; i++){
+	    		var calendarItem = calendar[i];
 	    		var startEvent = calendar[i].startTime;
 	    		var endEvent = calendar[i].endTime;
 	    		var startX = (startEvent-_start)/diff;
@@ -70,7 +71,9 @@ Zero.EventChartsController = (function(module){
 	    	   	  "fill":'#f7982f',
 	    	   	  "opacity":0.7,
 	    	   	  "stroke":"transparent"
-	    	   });
+	    	   }).click(function(){
+	    	   	console.log(calendarItem);
+	    	   }).data('id', i);
 	    	}
 	    },
 	    _drawSecondaryCalendar = function(paper, diff, calendar, set){
@@ -78,6 +81,7 @@ Zero.EventChartsController = (function(module){
 	    	
 	    	for(var i=0; i<calendar.length; i++){
 	    		if(calendar[i] != undefined){
+	    			var calendarItem = calendar[i];
 	    			var startEvent = calendar[i].startTime;
 	    		var endEvent = calendar[i].endTime;
 	    		    var startX = ((startEvent-_start)/diff);
@@ -89,8 +93,8 @@ Zero.EventChartsController = (function(module){
 	    	   	  "opacity":0.9,
 	    	   	  "stroke":"transparent"
 	    	   }).click(function(){
-	    	   	console.log(calendar);
-	    	   }).data('id', '123');
+	    	   	console.log(calendarItem);
+	    	   }).data('id', calendarItem.id);
 	    		}
 	    		
 	    	}
@@ -153,6 +157,7 @@ Zero.EventChartsController = (function(module){
 	view.initialize = function(calendarsId, start, finish){
 		_setParamsEvents(calendarsId, start, finish);
 		_postRender();		
+		console.log('init');
 	};
 	
 	return view;
