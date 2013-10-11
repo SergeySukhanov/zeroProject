@@ -205,6 +205,7 @@ Zero.Events = (function(module){
 			end = ($.datepicker.formatDate( '@', $('input[name = "endRange"]', $('#calendarRange')).datepicker( "getDate" )))/1000,
 			eventHolder = $('.events-holder', wrapper);
 		
+		
 		eventHolder.html('Loading ...');	
 		
 		$.ajax({
@@ -256,7 +257,7 @@ Zero.Events = (function(module){
 	_getEvents = function(id, holder){
 		var now = _calendarStartRange,
 			end = _calendarEndRange;
-
+			
 			$.ajax({
 				url: initConfiguration.urlEventsCalendar,
 				type: 'GET',
@@ -905,6 +906,7 @@ Zero.Events = (function(module){
 
 	_getNextUpEvent = function(calIds, func){
         var now = Math.round(new Date().getTime() / 1000);
+		
         $.ajax({
             url: initConfiguration.urlEventsCalendar,
             type: 'GET',

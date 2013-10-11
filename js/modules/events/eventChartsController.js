@@ -79,7 +79,7 @@ Zero.EventChartsController = (function(module){
 	    	for(var i=0; i<calendar.length; i++){
 	    		if(calendar[i] != undefined){
 	    			var startEvent = calendar[i].startTime;
-	    		    var endEvent = calendar[i].endTime;
+	    		var endEvent = calendar[i].endTime;
 	    		    var startX = ((startEvent-_start)/diff);
 	    		    var endX = ((endEvent-_start)/diff);
 	    	   
