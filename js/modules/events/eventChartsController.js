@@ -15,10 +15,10 @@ Zero.EventChartsController = (function(module){
 	    _render = function(){	    	
 	       _postRender();
 	    },
-	    
+
 	    _postRender = function(data){
-	    	 if(_calendars.toString() == null) return;
-	    	
+	    	if(_calendars.toString() == null) return;
+
 	    	try{
 	    		$.ajax({
 			       url: initConfiguration.urlEventsCalendar,
@@ -152,7 +152,7 @@ Zero.EventChartsController = (function(module){
 	    
 	view.initialize = function(calendarsId, start, finish){
 		_setParamsEvents(calendarsId, start, finish);
-		_postRender();
+		_postRender();		
 	};
 	
 	return view;
