@@ -896,7 +896,7 @@ Zero.Events = (function(module){
 		var calIds = settings.visibleCalendarIds;
 		var length = calIds.length > 1 ? 2 : calIds.length;
         var wrapper = $('#nextUpEventsHolder');
-        wrapper.addClass('nextupevents').addClass('cf');
+        wrapper.addClass('nextupevents');
         wrapper.empty();
 		for(i = 0; i < length; i++){
            var func = i == 0 ? _paintFirstRow : _paintNextRow;
@@ -947,17 +947,17 @@ Zero.Events = (function(module){
                 if(i == 0) {
                     var html = $('<div class="nextUpEvent leftNextUpEvent"><div class="eventHeader cf"><h3>NEXT UP</h3>'
                         + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
-                        + '<div class="leftEventBorder"><h1>' + subject + '<h1/>'
-                        + '<h4>You Are Attending<h4/>'
-                        + '<h2>' + location + '<h2/>'
-                        + '<span>' + description + '<span/>'
+                        + '<div class="leftEventBorder"><h1>' + subject + '</h1>'
+                        + '<h4>You Are Attending</h4>'
+                        + '<h2>' + location + '</h2>'
+                        + '<span>' + description + '</span>'
                         + '</div></div>');
                 } else {
-                    var html = $('<div class="nextUpEvent rightNextUpEvent">' + '<div class="eventHeader cf"><h1>' + subject + '<h1/>'
+                    var html = $('<div class="nextUpEvent rightNextUpEvent">' + '<div class="eventHeader cf"><h1>' + subject + '</h1>'
                         + '<div class="eventtime">' + time + '<span class="ampm">' + ampm + '</span></div></div>'
-                        + '<h4>You Are Attending<h4/>'
-                        + '<h2>' + location + '<h2/>'
-                        + '<span>' + description + '<span/>'
+                        + '<h4>You Are Attending</h4>'
+                        + '<h2>' + location + '</h2>'
+                        + '<span>' + description + '</span>'
                         + '</div>');
                 }
 

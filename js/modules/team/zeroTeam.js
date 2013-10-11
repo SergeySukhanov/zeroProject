@@ -717,6 +717,94 @@ Zero.Team = (function(module){
 		
 	}
 	
+	m.lastMessages = function(holder){
+		
+		
+		
+		var client = {
+			Connect : function() {
+				var sendData = {
+					'firstConnectionRequest' : {'token' : tokkens.accessToken}
+				}
+				$.ajax({	
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 
+					data: JSON.stringify(sendData),
+					success: function(resp){
+						client.getTeams(resp);
+					},
+					complete: function(){
+					
+					}
+				});											
+			},
+
+			getTeams : function(resp) {
+				if(resp && resp.teamListResponse && resp.teamListResponse.teamList) {
+					if(resp.teamListResponse.teamList.length !=0) {
+						var teamId = resp.teamListResponse.teamList[0].id;
+						client.History(teamId);						
+					}
+				}
+			},
+			
+			History : function(teamId) {
+				var now = new Date();
+				var offset = 0;//now.getTimezoneOffset()*60*(-1);
+				var sendData = {
+						'historyRequest' : {'teamId' : teamId , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 5}						
+				}
+				$.ajax({	
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 
+					data: JSON.stringify(sendData),
+					success: function(resp) {
+						if(resp && resp.historyResponse) {
+							var arr = resp.historyResponse.messageList;
+							client.Print(arr);
+							setTimeout(function(){
+								client.History(teamId);
+							}, 10000);
+						}						
+					}
+				});					
+			},
+			
+			Print : function(arr) {
+				holder.html('');
+				var title = $('<h3 />').text('Messages');
+				
+				title.appendTo(holder);
+				
+				for(var i =0; i < arr.length; i++) {
+					var message = arr[i];
+					var messageHtml = $('<div />').addClass('item'),
+						user = $('<span />').addClass('author block-item').text(message.userName + ' :');
+						mes = $('<div />').addClass('message').text(message.text);
+						date = $('<span />').addClass('date block-item').text(module.Tools.getFormatedDate(message.timestamp/1000, false, 'weelView'))
+				
+					user.appendTo(messageHtml);
+					mes.appendTo(messageHtml);
+					date.appendTo(messageHtml);
+					
+					messageHtml.appendTo(holder);
+				
+				}
+				
+				
+				
+			}
+			
+			
+			
+		}
+		
+		client.Connect();
+		
+	}
+	
 	return m
 	
 }(Zero));

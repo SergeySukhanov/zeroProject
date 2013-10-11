@@ -26,7 +26,8 @@ Zero.PageMainController = (function(module){
 	    		
                 Zero.SmallCalendarWidgetController.initialize($('#smallCalendarHolder'));
 				//Zero.Calendar.init($('#calendarHolder'));
-				Zero.Events.nextUpEvents('#nextUpEventsHolder')
+				Zero.Events.nextUpEvents('#nextUpEventsHolder');
+				Zero.Team.lastMessages($('#lastTeamMessage'));
 			})
 	    },
 	    
