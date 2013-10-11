@@ -16,17 +16,17 @@ Zero.HeaderController = (function(module){
 	    	    	id:'addGroup-item',
 	    	    	namePage:'group',
 	    	    	url:''
-	    	    },
-	    	    message:{
-	    	    	id:'addMessage-item',
-	    	    	namePage:'message',
-	    	    	url:''
-	    	    },	    	    
-	    	    actionItem:{
-	    	    	id:'addItem-item',
-	    	    	namePage:'action item',
-	    	    	url:''
-	    	    }	
+	    	    // },
+	    	    // message:{
+	    	    	// id:'addMessage-item',
+	    	    	// namePage:'message',
+	    	    	// url:''
+	    	    // },	    	    
+	    	    // actionItem:{
+	    	    	// id:'addItem-item',
+	    	    	// namePage:'action item',
+	    	    	// url:''
+	    	    }	
 	    	}],
 	    	configMenu:[{
 	    		account:{
