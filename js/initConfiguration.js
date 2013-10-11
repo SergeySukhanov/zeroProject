@@ -13,31 +13,33 @@ var initConfiguration = {
 	 	return initConfiguration.urlCharts;
 	 },
 //LOCAL	 
-/*
 	 //auth	  
-	apiUrl: 'http://zerosrv02.domain.corp/api_srv/V1/', 
-	urlRegister:'http://zerosrv02.domain.corp/api_usr/V1/register/w',
-	urlLogin:'http://zerosrv02.domain.corp/api_usr/V1/login',
+	chatUrl: 'http://zerosrv02.firstlinesoftware.ru:9999', 
+	apiUrl: 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/', 
+	urlRegister:'http://zerosrv02.firstlinesoftware.ru/api_usr/V1/register/w',
+	urlLogin:'http://zerosrv02.firstlinesoftware.ru/api_usr/V1/login',
 	
 	//set data charts
-	urlCharts:'http://zerosrv02.domain.corp/api_srv/V1/getChartsData',
-	urlCalendarsList:'http://zerosrv02.domain.corp/api_srv/V1/calendars',
-	urlEventsCalendar:'http://zerosrv02.domain.corp/api_srv/V1/calendarEvents',
+	urlCharts:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getChartsData',
+	urlCalendarsList:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendars',
+	urlEventsCalendar:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendarEvents',
 	
 	//Account	
-	urlGoogleAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://zerosrv02.domain.corp/api_srv/V1/getNikeConnect',
+	urlGoogleAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
 	
 	//settings
-	urlSettings:'http://zerosrv02.domain.corp/api_srv/V1/settings',
-	urlSliders:'http://zerosrv02.domain.corp/api_srv/V1/willpower/sliders',
-    urlWillpower:'http://zerosrv02.domain.corp/api_srv/V1/willpower/data',
-    urlWeather:'http://zerosrv02.domain.corp/api_srv/V1/weather',
-*/
+	urlSettings:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/settings',
+	urlSliders:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
+    urlWillpower:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/data',
+    urlWeather:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/weather',
+
 
 //DEV
-   apiUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/',
+/*
+	chatUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com:9999',
+    apiUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/',
     urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
 	urlLogin:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
 	
@@ -53,6 +55,7 @@ var initConfiguration = {
 	urlSliders:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
 	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
 	urlWeather:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
+*/	
 	
 //DEMO	
 	/*
