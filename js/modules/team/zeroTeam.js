@@ -751,7 +751,7 @@ Zero.Team = (function(module){
 			
 			History : function(teamId) {
 				var now = new Date();
-				var offset = 0;//now.getTimezoneOffset()*60*(-1);
+				var offset = now.getTimezoneOffset()*60*(-1);
 				var sendData = {
 						'historyRequest' : {'teamId' : teamId , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 5}						
 				}
