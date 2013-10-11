@@ -17,7 +17,7 @@ Zero.EventChartsController = (function(module){
 	    },
 	    
 	    _postRender = function(data){
-	    	 if(_calendars.toString() != null) return;
+	    	 if(_calendars.toString() == null) return;
 	    	
 	    	try{
 	    		$.ajax({
@@ -33,7 +33,6 @@ Zero.EventChartsController = (function(module){
 				      "calendarIds": _calendars.toString()
 				     },			
 			         success: function (resp) {	
-			         	console.log(resp);
 				        _paintEventCharts(resp.events);
 			          },
 			         error : function(error) {
@@ -64,9 +63,7 @@ Zero.EventChartsController = (function(module){
 	    		var startEvent = calendar[i].startTime;
 	    		var endEvent = calendar[i].endTime;
 	    		var startX = (startEvent-_start)/diff;
-	    		var endX = (endEvent-_start)/diff;
-	    	   console.log(startX);
-	    	   console.log(endX);	
+	    		var endX = (endEvent-_start)/diff;	
 	    	   
 	    	   var rect = paper.rect(startX, 0, endX-startX, 18);
 	    	   rect.attr({
@@ -85,15 +82,15 @@ Zero.EventChartsController = (function(module){
 	    		    var endEvent = calendar[i].endTime;
 	    		    var startX = ((startEvent-_start)/diff);
 	    		    var endX = ((endEvent-_start)/diff);
-	    	            console.log(startX);
-	    	            console.log(endX);	
 	    	   
 	    	   var rect = paper.rect(startX, 21, endX-startX, 18);
 	    	   rect.attr({
 	    	   	  "fill":'#a3a9ad',
 	    	   	  "opacity":0.9,
 	    	   	  "stroke":"transparent"
-	    	   });
+	    	   }).click(function(){
+	    	   	console.log(calendar);
+	    	   }).data('id', '123');
 	    		}
 	    		
 	    	}

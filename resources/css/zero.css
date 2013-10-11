@@ -436,4 +436,5 @@ top: 76%;
 left: 7%;
 width: 66.5%;
 height: 56px;
+z-index: 1000;
 }
