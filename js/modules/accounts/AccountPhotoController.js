@@ -7,7 +7,7 @@ Zero.AccountPhotoController = (function(module){
 
         tokens = module.getTokens(),
 
-        _render = function() {
+        _renderPhotoController = function() {
             _getMomentumData();
         }
 
@@ -22,7 +22,7 @@ Zero.AccountPhotoController = (function(module){
                     dataType:'json',
                     contentType:'application/json',
                     success:function(data){
-                        _postRender( data.result)
+                        _postRenderPhotoController( data.result)
                     },
                     error:function(error){
                         console.log(error);
@@ -33,7 +33,7 @@ Zero.AccountPhotoController = (function(module){
             }
         },
 
-        _postRender = function(data){
+        _postRenderPhotoController = function(data){
             _paintAvatar(data);
             _handlers();
         },
@@ -92,7 +92,7 @@ Zero.AccountPhotoController = (function(module){
         };
 
     view.initialize = function(){
-        _render();
+        _renderPhotoController();
     };
 
     return view;
