@@ -185,8 +185,8 @@ Zero.Settings = (function(module){
 
 			fUserName = _createFormRowHtml('username', 'Username', 'string'),
 			fEmail = _createFormRowHtml('mail', 'E-mail', 'string'),
-			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _maskedHeight),
-			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _maskedWeight),
+			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _validateHeight, _maskedHeight, _insMode),
+			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _validateWeight, _maskedWeight, _insMode),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker'),
             fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues);
 
@@ -337,7 +337,7 @@ Zero.Settings = (function(module){
 		})		
 	}
 	
-	_createFormRowHtml = function(name, text, type, val, useLabel, validationFunc) {
+	_createFormRowHtml = function(name, text, type, val, useLabel, validationFunc, maskFunc, insertModeFunc) {
 		var html = $('<div />').addClass('row'),
 			label,
 			el,
@@ -399,24 +399,30 @@ Zero.Settings = (function(module){
 		if(checkboxText) checkboxText.appendTo(html);
         el.appendTo(html);
 
+        if (insertModeFunc){
+            el.bind('keydown', function(event){
+                insertModeFunc(event);
+            });
+        }
+
+        if (maskFunc){
+            el.bind('keyup', function(event){
+                maskFunc(event);
+            });
+        }
+
         if (validationFunc){
             Zero.Tools.addInputValidator(el);
 
-            el.bind('keydown', function(event){
-                _insMode(event);
-            });
-            el.bind('keyup', function(event){
-                validationFunc(event);
-            });
             el.bind('blur', function(event){
-                validationFunc(event);
+                var elem = $(event.currentTarget);
+                validationFunc(elem);
             });
         }
 
 		return html;
 	}
-	
-	
+
 	/*Tabs */
 	_handlerTabs = function() {
 		var tabMenu, tabPages, $holder = $('.settings-content');	
