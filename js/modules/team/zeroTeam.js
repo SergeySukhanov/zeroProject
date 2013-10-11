@@ -222,14 +222,17 @@ Zero.Team = (function(module){
 			infoblock = $('.team-info-block', holder),
 			messageblock = $('.team-messages-block', holder),
 			memberList = $('<div />').addClass('memebers-list'),
-			messageChat = $('<div />').attr('id', 'chat_' + obj.id).addClass('chat-window');
+			messageChat = $('<div />').attr('id', 'chat_' + obj.id).addClass('chat-window'),
+			messageForm = $('<form />').attr({
+				action : '#'
+			}),
 			messageInput = $('<input/>').attr({
 					'type' : 'text',
 					'class' : 'chat_message'
 				})
 				
-			messageSend = $('<button />').addClass('send_to_chat').text('Send'),
-			messageHolder = $('<div />').attr('id', 'chatHolder_' + obj.id).addClass('chatLog');
+			messageSend = $('<input />').attr('type', 'submit').addClass('send_to_chat').val('Send'),
+			messageHolder = $('<div />').attr('id', 'chatHolder_' + obj.id).addClass('chatLog'),
 			_activeGroup = obj;
 			
 
@@ -249,8 +252,9 @@ Zero.Team = (function(module){
 			}			
 			
 			messageChat.appendTo(messageHolder);
-			messageInput.appendTo(messageHolder);
-			messageSend.appendTo(messageHolder);
+			messageInput.appendTo(messageForm);
+			messageSend.appendTo(messageForm);
+			messageForm.appendTo(messageHolder);
 			
 			messageHolder.appendTo(messageblock);
 			
@@ -581,10 +585,17 @@ Zero.Team = (function(module){
 			}		
 		}	
 		var sendBt = $('.send_to_chat', activeLog.parent());
+		var messageForm = sendBt.closest('form');
 		
 		$('.chatLog').hide();
 		activeLog.parent().show();
 		
+		messageForm.submit(function(e){
+				chat.Send();
+				e.preventDefault();
+				return false;
+		})	
+
 		
 
 		
@@ -634,6 +645,32 @@ Zero.Team = (function(module){
 				$('.chat_message', activeLog.parent()).val('');
 			},			
 			
+			History : function() {				
+				var now = new Date();
+				var offset = now.getTimezoneOffset()*60*(-1);
+				var sendData = {
+						'historyRequest' : {'teamId' : group.id , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 10}						
+				}
+				$.ajax({	
+					url : initConfiguration.chatUrl,
+					type: 'post', 
+					dataType: 'json', 
+					data: JSON.stringify(sendData),
+					success: function(resp) {
+						if(resp && resp.historyResponse) {
+							var arr = resp.historyResponse.messageList;
+							for(var i=0; i < arr.length; i++) {							
+								log.print(arr[i].userName + ': ' + arr[i].text);								
+							}
+						}
+						
+					},
+					error: function(){
+						chat.Read();
+					}
+				});						
+			},
+			
 			Read : function(firstTime) {
 				var sendData = {
 					'longPooling' : ''
@@ -661,7 +698,7 @@ Zero.Team = (function(module){
 						dataType: 'json', 
 						data: JSON.stringify(sendData),
 						success: function(){
-						
+							chat.History();
 						},
 						complete: function(){
 						

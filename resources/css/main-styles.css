@@ -155,6 +155,15 @@ color: #666666;
 		font: normal 14px/18px "Zero";
 		padding: 2px 5px;
 		}	
+		
+		
+.send_to_chat {
+	cursor : pointer;
+	color: #FF9933;
+	font: normal 18px/18px "Ma Condensed";	
+	background: transparent;
+	margin: 0 0 0 10px;
+	}		
 	
 	
 #weekView {
