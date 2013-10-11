@@ -14,7 +14,7 @@ Zero.HeaderController = (function(module){
 	    	    },
 	    	    group:{
 	    	    	id:'addGroup-item',
-	    	    	namePage:'group',
+	    	    	namePage:'team',
 	    	    	url:''
 	    	    // },
 	    	    // message:{
