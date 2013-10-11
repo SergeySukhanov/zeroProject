@@ -17,7 +17,7 @@ Zero.EventChartsController = (function(module){
 	    },
 	    
 	    _postRender = function(data){
-	    	if(_calendars.toString() != null) return;
+	    	if(calendars.toString() != null) return;
 			
 	    	try{
 	    		$.ajax({
@@ -83,8 +83,8 @@ Zero.EventChartsController = (function(module){
 	    		if(calendar[i] != undefined){
 	    			var startEvent = calendar[i].startTime;
 	    		var endEvent = calendar[i].endTime;
-	    		var startX = (startEvent-_start)/diff;
-	    		var endX = (endEvent-_start)/diff;
+	    		    var startX = ((startEvent-_start)/diff);
+	    		    var endX = ((endEvent-_start)/diff);
 	    	   console.log(startX);
 	    	   console.log(endX);	
 	    	   
