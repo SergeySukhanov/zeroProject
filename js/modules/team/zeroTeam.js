@@ -645,7 +645,10 @@ Zero.Team = (function(module){
 					timeout : 600000,				
 					data: JSON.stringify(sendData),
 					success: chat.onSuccess,
-					complete: chat.onCompleteRead
+					complete: chat.onCompleteRead,
+					error: function(){
+						chat.Read();
+					}
 				});
 				
 				if(firstTime) {
