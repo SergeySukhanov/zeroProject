@@ -81,11 +81,11 @@ Zero.EventChartsController = (function(module){
 	    	for(var i=0; i<calendar.length; i++){
 	    		if(calendar[i] != undefined){
 	    			var startEvent = calendar[i].startTime;
-	    		var endEvent = calendar[i].endTime;
-	    		var startX = (startEvent-_start)/diff;
-	    		var endX = (endEvent-_start)/diff;
-	    	   console.log(startX);
-	    	   console.log(endX);	
+	    		    var endEvent = calendar[i].endTime;
+	    		    var startX = ((startEvent-_start)/diff);
+	    		    var endX = ((endEvent-_start)/diff);
+	    	            console.log(startX);
+	    	            console.log(endX);	
 	    	   
 	    	   var rect = paper.rect(startX, 21, endX-startX, 18);
 	    	   rect.attr({
