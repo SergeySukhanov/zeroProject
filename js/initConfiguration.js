@@ -14,26 +14,26 @@ var initConfiguration = {
 	 },
 //LOCAL	 
 	 //auth	  
-	chatUrl: 'http://zerosrv02.firstlinesoftware.ru:9999', 
-	apiUrl: 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/', 
-	urlRegister:'http://zerosrv02.firstlinesoftware.ru/api_usr/V1/register/w',
-	urlLogin:'http://zerosrv02.firstlinesoftware.ru/api_usr/V1/login',
+	chatUrl: 'http://zerosrv03.firstlinesoftware.ru:9999', 
+	apiUrl: 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/', 
+	urlRegister:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/register/w',
+	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
 	
 	//set data charts
-	urlCharts:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getChartsData',
-	urlCalendarsList:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendars',
-	urlEventsCalendar:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendarEvents',
+	urlCharts:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getChartsData',
+	urlCalendarsList:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/calendars',
+	urlEventsCalendar:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/calendarEvents',
 	
 	//Account	
-	urlGoogleAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
+	urlGoogleAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
 	
 	//settings
-	urlSettings:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/settings',
-	urlSliders:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
-    urlWillpower:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/data',
-    urlWeather:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/weather',
+	urlSettings:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/settings',
+	urlSliders:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
+    urlWillpower:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/willpower/data',
+    urlWeather:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/weather',
 
 
 //DEV
