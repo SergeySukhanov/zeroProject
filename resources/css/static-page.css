@@ -1,4 +1,4 @@
-.header.static-page-header {
+.static-page-header {
 padding-left: 50px;
 box-shadow: none;
 position: relative;
@@ -6,7 +6,7 @@ width: 95%;
 
 }
 
-.header.static-page-header h1 {
+.static-page-header h1 {
 font-family: Zero;
 font-size: 35px;
 color: #666666;
@@ -15,7 +15,7 @@ display: block;
 margin-bottom: 10px;
 }
 
-.header.static-page-header small {
+.static-page-header small {
 font-family: Zero;
 color: #666666;
 margin-bottom: 10px;
