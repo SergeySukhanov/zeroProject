@@ -89,9 +89,6 @@ Zero.AccountPhotoController = (function(module){
 
         _getAvatarUrl = function() {
             $.ajax({
-                beforeSend: function (request) {
-                    request.setRequestHeader("Access-Token", tokens.accessToken);
-                },
                 url: initConfiguration.urlSettings,
                 type: 'GET',
                 dataType: 'json',

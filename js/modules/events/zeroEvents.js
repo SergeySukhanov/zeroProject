@@ -448,7 +448,7 @@ Zero.Events = (function(module){
 	}
 	
 	
-	_getAttendeesBlock = function(attendees, withoutSearch) {
+	_getAttendeesBlock = function(attendees, withoutSearch) {				
 		var block = $('<div />').addClass('attendees'),
 			blockTitle = $('<div />').addClass('title').text('Attendees'),
 			attendeesList = $('<ul />').addClass('attendees-list').data('attendees', attendees),
@@ -460,7 +460,11 @@ Zero.Events = (function(module){
 				});		
 		if(attendees && attendees.length !=0) {
 			for(var i=0; i<attendees.length; i++) {
-				var item = $('<li />').text(attendees[i].displayName + ' (' + attendees[i].email + ')');
+				var item = $('<li />'),
+					personName = $('<span />').addClass('person-info').text(attendees[i].displayName /*+ ' (' + attendees[i].email + ')'*/);
+					avatar = module.Tools.getUserAvatar(attendees[i]);
+				avatar.appendTo(item);	
+				personName.appendTo(item);	
 				item.appendTo(attendeesList);
 			}
 		}
@@ -479,17 +483,25 @@ Zero.Events = (function(module){
             transformResult: function(response) {
                 return {
                     suggestions: $.map(response.result, function(dataItem) {
+						var root = initConfiguration.getRootLocation();
+						var img = $('<img />').attr({
+							'src' : root + initConfiguration.imagesFolder + 'def_avatar.png'
+						});
                         return { value: dataItem.name +' ('+ dataItem.email + ')', data: dataItem };
                     })
                 };
             },
             onSelect: function (suggestion) {
-				var item = $('<li />').text(suggestion.data.name + ' (' + suggestion.data.email + ')'),
+				var item = $('<li />'),
+					personName = $('<span />').addClass('person-info').text(suggestion.data.name),
+					avatar = module.Tools.getUserAvatar(suggestion.data);
 					arr = attendeesList.data('attendees'),
 					obj = {
 						'displayName' : suggestion.data.name,
 						'email' : suggestion.data.email
-					}					
+					}
+				avatar.appendTo(item);	
+				personName.appendTo(item);						
 				item.appendTo(attendeesList);
 				arr.push(obj);
                 searchInput.val('');
@@ -506,6 +518,8 @@ Zero.Events = (function(module){
 		return block;
 		
 	}
+	
+
 
 	_addEventButton = function(calId) {
 		var bt = $('<button />').addClass('add-event').text('New Event').data('cal-id', calId);
