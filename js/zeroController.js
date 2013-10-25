@@ -12,23 +12,11 @@ var Zero = (function(m){
     	mainPage:{
     		url:'main.html',
     		moduleName:'PageMainController'
-    	},
-		accountPage:{
-    		url:'account.html',
-    		moduleName:'PageAccountController'
-    	},
-		eventPage:{
-    		url:'events.html',
-    		moduleName:'PageEventsController'
-    	},		
+    	},	
 		settingsPage:{
     		url:'settings.html',
     		moduleName:'PageSettingsController'
-    	},
-    	groupsPage:{
-    		url:'groups.html',
-    		moduleName:'PageGroupsController'
-    	}				
+    	}			
     };
     
 	_checkAuth = function() {

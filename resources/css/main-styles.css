@@ -10,6 +10,7 @@
 @import "jslider.round.plastic.css" screen;
 @import "jquery.formstyler.css" screen;
 @import "static-page.css" screen;
+@import "newIndex.css" screen;
 *{margin:0; padding:0; border:0;}
 
 html, body{

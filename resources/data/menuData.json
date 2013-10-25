@@ -56,12 +56,81 @@
      "placeholder":"confirm password",
      "typeField":"confirm-password"
    },
+    {
+     "id":"birthday",
+     "value":null,
+     "type":"birthday",
+     "placeholder":"birthday",
+     "typeField":"birthday",
+     "listItem":[
+        {
+         "id":"month",
+         "value":null,
+         "type":"text",
+         "placeholder":"month",
+         "typeField":"month"
+       },
+        {
+         "id":"day",
+         "value":null,
+         "type":"text",
+         "placeholder":"day",
+         "typeField":"day"
+       },
+        {
+         "id":"year",
+         "value":null,
+         "type":"text",
+         "placeholder":"year",
+         "typeField":"year"
+       }
+     ]
+   },
+   {
+     "id":"gender",
+     "value":"gender",
+     "type":"gender",
+     "placeholder":null,
+     "typeField":"gender",
+     "listItem":[
+        {
+         "id":"male",
+         "value":"male",
+         "type":"radio",
+         "placeholder":"male",
+         "typeField":"male"
+       },
+        {
+         "id":"female",
+         "value":"female",
+         "type":"radio",
+         "placeholder":"female",
+         "typeField":"female"
+       }
+     ]
+   },
    {
      "id":"register-zip",
      "value":null,
      "type":"text",
      "placeholder":"zip code",
      "typeField":"zip-code"
+   },
+   {
+     "id":"sign",
+     "value":"",
+     "type":"gender",
+     "placeholder":null,
+     "typeField":"sign",
+     "listItem":[
+        {
+         "id":"signIn",
+         "value":"sign me up to receive latest news and updates",
+         "type":"radio",
+         "placeholder":"signIn",
+         "typeField":"signIn"
+       }
+     ]
    },
    {
      "id":"register-button",
@@ -86,7 +155,7 @@
    {
      "id":"auth-button",
      "label":null,
-     "value":"Log in",
+     "value":"Sign in",
      "type":"button",
      "placeholder":null,
      "errorMessage":null
@@ -94,5 +163,6 @@
 ]
 }
 ]
+
 
 
