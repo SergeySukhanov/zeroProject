@@ -12,27 +12,12 @@ Zero.LoadPageController = (function(module){
 				page.initialize(list.mainPage.moduleName);
 				break;
 			}
-			case initConfiguration.getRootLocation()+list.accountPage.url : {
-				page = Zero.PageController;
-				page.initialize(list.accountPage.moduleName);
-				break;
-			}
-			case initConfiguration.getRootLocation()+list.eventPage.url : {
-				page = Zero.PageController;
-				page.initialize(list.eventPage.moduleName);
-				break;
-			}			
+		
 			case initConfiguration.getRootLocation()+list.settingsPage.url : {
 				page = Zero.PageController;
 				page.initialize(list.settingsPage.moduleName);
 				break;
-			}	
-			case initConfiguration.getRootLocation()+list.groupsPage.url : {
-				page = Zero.PageController;
-				page.initialize(list.groupsPage.moduleName);
-				break;
-			}					
-			
+			}									
 		}
 	}
 	

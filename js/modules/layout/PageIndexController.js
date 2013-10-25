@@ -65,6 +65,10 @@ Zero.PageIndexController = (function(module){
             
 	    },
 	    
+	    _randomMember = function(){
+	    	var wrapperMember = $('<div/>').addClass('wrapper-member');
+	    }
+	    
 	    view.parseData = function(reg, log){
 	    	var data = config.dataPopup;
 	    	new AuthController({data:data[0].registerForm, wrap:reg, textLink:"Register now"});

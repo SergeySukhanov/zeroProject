@@ -2,8 +2,8 @@
 position: absolute;
 width: 25px;
 height: 25px;
-top: 32%;
-right: 1%;
+top: 19%;
+right: 7%;
 display: none;
 }
 
@@ -37,7 +37,7 @@ cursor: pointer;
 }
 
 .wrap-rule + .error {
-top: 13%;
+top: 6%;
 }
 
 .error-small{
