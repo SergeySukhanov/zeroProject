@@ -499,7 +499,7 @@ Zero.Tools = (function(module){
 			
 			
 		    var ps = paper.path(arc([26, 26], 24, -90, finish));
-		    ps.attr({stroke:'#8ebf88',"stroke-width":4});			
+		    ps.attr({stroke:'#75caea',"stroke-width":4});			
 			
 			
             pattern.setAttribute("id", uuid);

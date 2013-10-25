@@ -438,3 +438,8 @@ width: 66.5%;
 height: 56px;
 z-index: 1000;
 }
+
+
+.hidden {
+	display: none;
+	}

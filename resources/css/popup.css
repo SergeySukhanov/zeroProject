@@ -269,6 +269,19 @@
 		
 		
 .memebers-list ul {list-style: none;}		
+.memebers-list ul li {
+	display: inline-block;
+	width: 100px;
+	margin: 0 20px 0 0;
+	}
+	.memebers-list ul li .avatar-holder {
+		margin: 0 auto;		
+		}
+	.memebers-list ul li span.person-name {
+		display: block;
+		text-align: center;
+		}	
+
 .add-group-button {
 	clear: both;
 	}
@@ -328,8 +341,22 @@
 		padding: 5px 20px;
 		}
 		
+		.events-holder .header-event {
+			width: 100%;
+			overflow: hidden;
+			}
+		
+		.events-holder .header-event a {
+			display: block;
+			float: right;
+			color : #FF9933;
+			text-decoration: none;
+			margin: 0 0 0 10px;
+		}
+		
 		.events-holder .event h3 {
-			font: 24px/24px 'Ma Condensed'
+			font: 24px/24px 'Ma Condensed';
+			display: inline-block;
 			}
 		.events-holder .event h3.pointer {
 			cursor: pointer;
@@ -352,7 +379,8 @@
 				margin-right: 10px;
 				}	
 			.events-holder .event .full-info .right-part{
-				margin-left: 10px;				
+				margin-left: 10px;		
+				width: 290px;
 				}
 				
 				.events-holder .event .full-info .right-part 	.attendees-list {
@@ -391,3 +419,48 @@
 .attendees-list {
 	list-style: none;
 	}		
+	
+	
+.checkbox-row {
+	margin: 20px 0;
+	}
+	
+.checkbox-row label{
+	display: inline-block;
+	height: 28px;
+	line-height: 28px;
+	margin: 0 10px 0 0;
+	vertical-align: top;
+	}	
+
+
+table.cost-persons-list th.name {
+	width: 300px;
+	}
+table.cost-persons-list th.paid {
+	width: 60px;
+	}	
+	
+table.cost-persons-list .person-paid {
+	text-align: center;
+	}	
+	
+input.paidInput {
+	width: 30px;
+	border: 1px solid #E5E5E5;
+	line-height: 28px;
+	height: 28px;
+	}	
+	
+.event-tab .attendees li {
+	display: inline-block;
+	width: 110px;
+	margin-right: 10px;
+	}	
+	.event-tab .attendees li .avatar-holder {
+		margin: 0 auto;
+		}
+	.event-tab .attendees li .person-info {
+		text-align: center;
+		display: block;
+		}	
