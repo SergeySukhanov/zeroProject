@@ -30,9 +30,9 @@ function LoginCtrl(options){
 			type:"GET",
 			dataType:'json',
 			contentType:"application/json",
-			data: JSON.stringify({
-               "email":$('#auth-email').val()
-            }),
+			data:{
+				email:$('#auth-email').val(),
+			},
 			success:function(data){
             if(data.result.exists){
             	$('#auth-email').css('color', '#0072BC');
@@ -205,30 +205,6 @@ function LoginCtrl(options){
 			},
 			error:function(e){
 			  console.log(e); 	
-			}
-		  });
-		}catch(e){
-			console.log(e);
-		}
-	},
-	 _registerAjax = function(wrap, dataForm){
-	 	var fullName = dataForm['register-first-name']+' '+dataForm['register-last-name'];
-		try{
-		  $.ajax({
-			url:initConfiguration.urlRegister,
-			type:"POST",
-			dataType:'json',
-			contentType:"application/json",
-			data: JSON.stringify({
-			   "name":fullName,
-               "email":dataForm['register-email'],
-               "password": dataForm['register-password']
-            }),
-			success:function(data){
-               _loginAjax(true, dataForm);
-			},
-			error:function(e){
-				 _showError('#register-email');								
 			}
 		  });
 		}catch(e){
