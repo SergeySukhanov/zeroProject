@@ -443,3 +443,30 @@ z-index: 1000;
 .hidden {
 	display: none;
 	}
+	
+.copyright-wrapper img {
+	display: inline-block;
+	margin: 12px 100px 0 0;
+	}	
+	.copyright-wrapper ul {
+		vertical-align: top;
+		list-style: none;
+		display: inline-block;
+		position: relative;
+		top: -32px;
+		}
+		.copyright-wrapper ul li {
+			display: inline-block;
+			height: 80px;
+			margin: 0 20px 0 0;
+			}
+		.copyright-wrapper ul li.downloads {
+			background: url(../images/bg_downloads.png) 0 0 no-repeat;
+			padding-left: 50px;
+			}	
+		.copyright-wrapper ul li a {
+			display: inline-block;
+			margin-top: 48px;			
+			color: #0072BC;
+			font-family: "Ma Condensed";			
+			}	

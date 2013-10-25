@@ -373,7 +373,7 @@ Zero.Events = (function(module){
 			dataType: 'json',
 			contentType: "application/json",
 			success: function (resp) {									
-				console.warn(html);
+				html.remove();
 			}
 		})		
 	}

@@ -388,9 +388,10 @@
 					}
 					.events-holder .event .full-info .right-part 	.attendees-list li {
 						display: inline-block;
-						width: 100px;
-						margin: 0 15px;
+						width: 110px;
+						margin: 0 15px 10px;
 						text-align: center;
+						vertical-align: top;
 						}
 						.events-holder .event .full-info .right-part 	.attendees-list li .avatar-holder {
 							display: block;
@@ -456,6 +457,7 @@ input.paidInput {
 	display: inline-block;
 	width: 110px;
 	margin-right: 10px;
+	vertical-align: top;
 	}	
 	.event-tab .attendees li .avatar-holder {
 		margin: 0 auto;
