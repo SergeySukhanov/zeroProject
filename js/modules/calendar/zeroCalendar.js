@@ -20,9 +20,6 @@ Zero.Calendar = (function(module){
 		
 		try{			
 			$.ajax({
-				beforeSend: function (request) {
-					request.setRequestHeader("Access-Token", tokkens.accessToken);
-				},				
 				url: initConfiguration.urlEventsCalendar,
 				type: 'GET',
 				dataType: 'json',

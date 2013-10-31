@@ -298,33 +298,11 @@ Zero.Team = (function(module){
 		var html = $('<ul />');
 		for(var i=0; i < arr.length; i++) {
 			var item = $('<li />'),
-				name = $('<span />').addClass('person-name'),
-				mail = $('<span />').addClass('person-mail');
-				
-			if(arr[i].name) {
-				name.text(arr[i].name + ' (');
-				name.appendTo(item)
-				mail.text(arr[i].email + ')')			
-			} else {
-				mail.text(arr[i].email)			
-			}				
+				name = $('<span />').addClass('person-name').text(arr[i].name),
+				avatar = module.Tools.getUserAvatar(arr[i]);
 			
-			mail.appendTo(item)
-			
-			/*
-			if(owner == initConfiguration.settingsData.userId && initConfiguration.settingsData.userId != arr[i].userId) {
-				var a = $('<a />').attr({
-						'href' : '#',
-						'class' : 'remove-member-icon'
-					}).text('remove');
-				a.appendTo(item);	
-				
-				a.bind('click', function(e) {
-				
-				})
-			}
-			*/
-			
+			avatar.appendTo(item);			
+			name.appendTo(item);			
 			item.appendTo(html)			
 		}
 		

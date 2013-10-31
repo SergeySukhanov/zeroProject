@@ -9,7 +9,8 @@ Zero.Events = (function(module){
 				userSearch : initConfiguration.apiUrl + 'user'			
 			},
 			orderArray = ['fCal', 'sCal', 'tCal'],		
-			_activeCalendarId = null;
+			_activeCalendarId = null,
+			_eventModel;
 
 	/*
 		New versions of calendars getter
@@ -284,6 +285,7 @@ Zero.Events = (function(module){
 
 	_getEventHtml = function(event) {
 		var	html = $('<div />').addClass('event'),
+			headerBlock = $('<div />').addClass('header-event'),
 			header = $('<h3 />').text(event.subject),
 			editLink = $('<a />').attr('href', '#').addClass('icon-link edit-link').text('Edit').data('event-id', event.id),
 			removeLink = $('<a />').attr('href', '#').addClass('icon-link remove-link').text('Delete').data('event-id', event.id),
@@ -306,6 +308,7 @@ Zero.Events = (function(module){
 				leftColumn = $('<div />').addClass('left-part'),
 				rightColumn = $('<div />').addClass('right-part'),
 				location = event.location ? $('<div />').addClass('event-location').text(event.location) : null,
+				splitCostValue = event.splitCost ? $('<div />').addClass('event-splitCost').text('Split cost total : ' + event.splitCost) : null,
 				attendees = event.attendees && event.attendees.length > 0 ? _getAttendeesBlock(event.attendees, true) : null,
 				description = event.location ? $('<div />').addClass('event-description').text(event.description) : null;
 				
@@ -316,6 +319,9 @@ Zero.Events = (function(module){
 			
 			if(location) {
 				location.appendTo(leftColumn);
+			}	
+			if(splitCostValue) {
+				splitCostValue.appendTo(leftColumn);
 			}	
 			
 			if(attendees) {
@@ -328,7 +334,25 @@ Zero.Events = (function(module){
 			
 			
 			timeWrapper.appendTo(html);
-			header.appendTo(html);
+			
+			header.appendTo(headerBlock);
+			removeLink.appendTo(headerBlock);
+			editLink.appendTo(headerBlock);
+			
+			
+			
+			editLink.bind('click', function(e){
+				_showEventPopup(event);
+				e.preventDefault();
+			})
+			
+			removeLink.bind('click', function(e){
+				_removeEventNew(event.id, html);
+				e.preventDefault();
+			})
+			
+			
+			headerBlock.appendTo(html);
 			hiddenpart.appendTo(html);
 			
 			if(location || attendees || description) {
@@ -341,6 +365,19 @@ Zero.Events = (function(module){
 		return html;
 		
 	}
+	
+	_removeEventNew = function(eventId, html) {
+		$.ajax({
+			url: initConfiguration.urlEventsCalendar + '/' + eventId,
+			type: 'DELETE',
+			dataType: 'json',
+			contentType: "application/json",
+			success: function (resp) {									
+				html.remove();
+			}
+		})		
+	}
+	
 	
 	_getEventsHtml = function(eventsArray, holder) {
 		for(var i=0; i < eventsArray.length; i++) {
@@ -448,7 +485,7 @@ Zero.Events = (function(module){
 	}
 	
 	
-	_getAttendeesBlock = function(attendees, withoutSearch) {
+	_getAttendeesBlock = function(attendees, withoutSearch) {				
 		var block = $('<div />').addClass('attendees'),
 			blockTitle = $('<div />').addClass('title').text('Attendees'),
 			attendeesList = $('<ul />').addClass('attendees-list').data('attendees', attendees),
@@ -460,7 +497,16 @@ Zero.Events = (function(module){
 				});		
 		if(attendees && attendees.length !=0) {
 			for(var i=0; i<attendees.length; i++) {
-				var item = $('<li />').text(attendees[i].displayName + ' (' + attendees[i].email + ')');
+				var item = $('<li />'),
+					personName = $('<span />').addClass('person-info').text(attendees[i].displayName /*+ ' (' + attendees[i].email + ')'*/);
+					avatar = module.Tools.getUserAvatar(attendees[i]),
+					splitCost = attendees[i].splitCostPayed ? $('<span />').addClass('split-payed').text('Payed cost: ' + attendees[i].splitCostPayed) : null;
+				avatar.appendTo(item);	
+				personName.appendTo(item);	
+				
+				if(splitCost) {
+					splitCost.appendTo(item);
+				}
 				item.appendTo(attendeesList);
 			}
 		}
@@ -479,17 +525,25 @@ Zero.Events = (function(module){
             transformResult: function(response) {
                 return {
                     suggestions: $.map(response.result, function(dataItem) {
+						var root = initConfiguration.getRootLocation();
+						var img = $('<img />').attr({
+							'src' : root + initConfiguration.imagesFolder + 'def_avatar.png'
+						});
                         return { value: dataItem.name +' ('+ dataItem.email + ')', data: dataItem };
                     })
                 };
             },
             onSelect: function (suggestion) {
-				var item = $('<li />').text(suggestion.data.name + ' (' + suggestion.data.email + ')'),
+				var item = $('<li />'),
+					personName = $('<span />').addClass('person-info').text(suggestion.data.name),
+					avatar = module.Tools.getUserAvatar(suggestion.data);
 					arr = attendeesList.data('attendees'),
 					obj = {
 						'displayName' : suggestion.data.name,
 						'email' : suggestion.data.email
-					}					
+					}
+				avatar.appendTo(item);	
+				personName.appendTo(item);						
 				item.appendTo(attendeesList);
 				arr.push(obj);
                 searchInput.val('');
@@ -506,6 +560,8 @@ Zero.Events = (function(module){
 		return block;
 		
 	}
+	
+
 
 	_addEventButton = function(calId) {
 		var bt = $('<button />').addClass('add-event').text('New Event').data('cal-id', calId);
@@ -664,13 +720,19 @@ Zero.Events = (function(module){
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow',
 			'attendees' : new Array(),
-			'teamId' : null
+			'teamId' : null,
+			'splitCost' : null
 		}
+		
+		_eventModel = eventModel;
+		
+		
 		
 		if(eventObj) {
 			eventModel = Zero.Tools.extendClone(eventObj,eventModel);			
 			eventModel.startTime = module.Tools.fortmatStampToTimePicker(eventModel.startTime);
 			eventModel.endTime = module.Tools.fortmatStampToTimePicker(eventModel.endTime);
+			_activeCalendarId = eventModel.calendarId;
 		}	
 		
 		var popupContent = $('<div />').addClass('addEvent'),
@@ -679,71 +741,87 @@ Zero.Events = (function(module){
 			subject = _eventFormRow('subject', 'Title', '', '', eventModel.subject),				
 			location = _eventFormRow('location', 'Location', '', '', eventModel.location),		
 			description = _eventFormRow('description', 'Description', 'textarea', '', eventModel.description),
-			btOk = $('<button />').text('Add Event'),
+			btOk = $('<button />').text(eventObj ? 'Edit Event' : 'Add Event'),
+			btSplit = $('<button />').text('Split Cost').hide(),
 			btCancel = $('<button />').text('Cancel'),
 			popup,
 			popuHolder = $('#popupHolder'),
 			startInput = $('input', startTime),
 			endInput = $('input', endTime),			
-			attendeesBlock = _getAttendeesBlock(eventModel.attendees);
+			attendeesBlock = _getAttendeesBlock(eventModel.attendees),
+			splitCostTab = $('<div />').addClass('splitCost-tab hidden').html('Split cost tab');
+			eventDiv = $('<div />').addClass('event-tab');
+			
+			
+			
+			
+		
+		var isGroup = $('<input />').attr({
+			'type' : 'checkbox',
+			'id' : 'isGroup',
+			'name' : 'isGroup',
+			'class' : 'checkbox'	
+			}),
+			label = $('<label />').attr({
+				'for' : 'isGroup'
+			}).text('Group Event'),
+			isGroupHolder = $('<div />').addClass('isGroupHolder checkbox-row'),
+			groupSelectorWrapper = $('<div />').addClass('groupSelectorWrapper'),
+			groupSelectorHolder = _eventFormRow('teamId', 'Choose Team', 'select', '', _getGroupSelector)
+			
+			label.appendTo(isGroupHolder);				
+			isGroup.appendTo(isGroupHolder);
+			
+			
+		isGroupHolder.appendTo(eventDiv);	
+		groupSelectorHolder.appendTo(groupSelectorWrapper);
+		groupSelectorWrapper.hide();
+		groupSelectorWrapper.appendTo(eventDiv);
 		
 		if(!eventObj) {
-			var isGroup = $('<input />').attr({
-				'type' : 'checkbox',
-				'id' : 'isGroup',
-				'name' : 'isGroup',
-				'class' : 'checkbox'	
-				}),
-				label = $('<label />').attr({
-					'for' : 'isGroup'
-				}).text('Group Event'),
-				isGroupHolder = $('<div />').addClass('isGroupHolder'),
-				groupSelectorWrapper = $('<div />').addClass('groupSelectorWrapper'),
-				groupSelectorHolder = _eventFormRow('teamId', 'Choose Team', 'select', '', _getGroupSelector)
-				
-				isGroup.appendTo(isGroupHolder);
-				label.appendTo(isGroupHolder);				
-				
-			isGroupHolder.appendTo(popupContent);	
-			groupSelectorHolder.appendTo(groupSelectorWrapper);
-			groupSelectorWrapper.hide();
-			groupSelectorWrapper.appendTo(popupContent);
-			
 			isGroup.bind('change', function(){
 				if(isGroup[0].checked) {
 					groupSelectorWrapper.show();
 					attendeesBlock.hide();
+					btSplit.show();
+					$('select', groupSelectorHolder).trigger('change');					
 				} else {
 					groupSelectorWrapper.hide();
 					attendeesBlock.show();
+					btSplit.hide();
+					_eventModel.teamId = null;
 				}
-			})
-			
-			
-			
+			})		
+		} else {
+			isGroupHolder.hide();
 		}
+		
+		if(eventObj && eventObj.teamId && eventObj.splitCost) {
+			btSplit.show();
+		}
+
 		
 		
 		if(!eventObj && !_activeCalendarId) {
 			var calendarSelector = _eventFormRow('calendarId', 'Choose Calendar', 'select', '', _getCalendarsSelector);
-			calendarSelector.appendTo(popupContent);
+			calendarSelector.appendTo(eventDiv);
 		}
 		
-		startTime.appendTo(popupContent);
-		endTime.appendTo(popupContent);
-		subject.appendTo(popupContent);
-		location.appendTo(popupContent);
-		description.appendTo(popupContent);
+		startTime.appendTo(eventDiv);
+		endTime.appendTo(eventDiv);
+		subject.appendTo(eventDiv);
+		location.appendTo(eventDiv);
+		description.appendTo(eventDiv);
 		
-		attendeesBlock.appendTo(popupContent);	
+		attendeesBlock.appendTo(eventDiv);	
 
 		if(!eventObj && !_activeCalendarId) {
 			btOk.bind('click', function(e){
-				_addCalendarEvent($('#calendarId option:selected').val(), popupContent, eventModel.id)
+				_addCalendarEvent($('#calendarId option:selected').val(), eventDiv, eventModel.id)
 			})				
 		} else {
 			btOk.bind('click', function(e){
-				_addCalendarEvent(_activeCalendarId, popupContent, eventModel.id)
+				_addCalendarEvent(_activeCalendarId, eventDiv, eventModel.id)
 			})		
 		}
 		
@@ -755,13 +833,21 @@ Zero.Events = (function(module){
 			closeLink.click();
 		})
 		
-		btOk.appendTo(popupContent);
-		btCancel.appendTo(popupContent);		
+		btOk.appendTo(eventDiv);
+		btSplit.appendTo(eventDiv);
+		btCancel.appendTo(eventDiv);		
 		
 		startInput.bind('change', function(e){
 			var newTime = $(this).datepicker( "getDate" )/1000 + 3600;
 			newTime = module.Tools.fortmatStampToTimePicker(newTime);
 			endInput.val(newTime);
+		})		
+		eventDiv.appendTo(popupContent);
+		splitCostTab.appendTo(popupContent);
+		
+		/*Spli Cost events*/
+		btSplit.bind('click', function(){			
+			_splitCostClick(eventDiv, splitCostTab, eventObj)
 		})		
 		
 		return popupContent;
@@ -771,14 +857,205 @@ Zero.Events = (function(module){
 		var holder = $('<div />').addClass('events-calendars-holder');
 		_holder = holder;		
 		return holder;
+	}
+	
+	/*Split Cost*/
+	
+	_splitCostClick = function(eventTab, splitTab, eventObj) {	
+		var html = _getSplitTabTemplate(eventTab, splitTab, eventObj);	
+		
+		splitTab.html('');
+		html.appendTo(splitTab);
+		
+		eventTab.addClass('hidden');
+		splitTab.removeClass('hidden');
+	}
+	
+	_getSplitTabTemplate = function(eventTab,splitTab, eventObj) {
+		var html = $('<div />').addClass('split-cost-block');
+		
+		var fistScreen = $('<div />').addClass('split-cost-first-tab');
+		var paymentTab = $('<div />').addClass('split-cost-payment-tab hidden');
+		
+		
+		var total = _eventFormRow('total', 'Total cost', 'text', '', eventObj && eventObj.splitCost ? eventObj.splitCost : '');		
+		var person = _eventFormRow('per_person', 'Per person', 'text');		
+		var sendMessageBlock = $('<div />').addClass('row checkbox-row');
+		var notPaidSendBlock = $('<div />').addClass('row checkbox-row');
+		var isSendMessage = $('<input />').attr({
+				'type' : 'checkbox',
+				'id' : 'isSendMessage',
+				'name' : 'isSendMessage',
+				'class' : 'checkbox'	
+				}),
+				isSendMessageLabel = $('<label />').attr({
+					'for' : 'isSendMessage'
+				}).text('Send message to full team')		
+		
+		
+			isSendMessageLabel.appendTo(sendMessageBlock);
+			isSendMessage.appendTo(sendMessageBlock);
+				
+		var notPaidSend = $('<input />').attr({
+				'type' : 'checkbox',
+				'id' : 'notPaidSend',
+				'name' : 'notPaidSend',
+				'class' : 'checkbox'	
+				}),
+				notPaidSendLabel = $('<label />').attr({
+					'for' : 'notPaidSend'
+				}).text('Only send message to players who have not paid')		
+		
+					
+			notPaidSendLabel.appendTo(notPaidSendBlock);
+			notPaidSend.appendTo(notPaidSendBlock);
+			
+		var minimal = _eventFormRow('minimum', 'Minimum total payment before committing to booking', 'text');			
+		var totalToDate = _eventFormRow('totalToDate', 'Total paid to date', 'text');			
+		
+		var splitMenu = $('<div />').addClass('split-menu-holder'),
+		    btOk = $('<button />').text('Done'),
+			btPayments = $('<button />').text('Payments'),
+			btCancel = $('<button />').text('Cancel');
+			
+		btOk.appendTo(splitMenu);	
+		btPayments.appendTo(splitMenu);	
+		btCancel.appendTo(splitMenu);	
+		
+		
+		
+		total.appendTo(fistScreen);		
+		person.appendTo(fistScreen);		
+		sendMessageBlock.appendTo(fistScreen);	
+		notPaidSendBlock.appendTo(fistScreen);
+		minimal.appendTo(fistScreen);
+		totalToDate.appendTo(fistScreen);
+		
+		
+		
+		
+		fistScreen.appendTo(html);
+		paymentTab.appendTo(html);		
+		splitMenu.appendTo(html);
+		
+		Zero.Tools.CheckboxUpdate({elems:$('.checkbox', html)});		
+
+		btPayments.bind('click', function(){
+			_drawPaymentTab(eventTab, splitTab, fistScreen, paymentTab, eventObj)
+		})		
+		
+		btOk.bind('click',function(){
+			var attendees = $('.cost-persons-list', paymentTab).data('attendees');
+			_eventModel.attendees = attendees;
+			eventTab.removeClass('hidden');
+			splitTab.addClass('hidden');			
+		})
+		
+		$('input', total ).bind('change', function(){
+			var val = $(this).val();
+			if(val) {
+				_eventModel.splitCost = val;
+			}
+		})
+		
+		
+		return html;
+	}
+	
+	_drawPaymentTab = function(eventTab, splitTab, fistScreen, paymentTab, eventObj) {
+		var teamId = $('#teamId option:selected').val(),
+			personsTable = $('<table />').addClass('cost-persons-list'),
+			tableHeader = $('<tr><th class="name">Player</th><th class="paid">Paid</th><th></th></tr>');
+			
+			tableHeader.appendTo(personsTable);
+			personsTable.data('attendees', new Array());
+			
+
+			
+		if(!eventObj) {
+			$.ajax({
+				url : initConfiguration.apiUrl + 'team/' + teamId,
+				type: 'GET',
+				dataType: 'json',
+				contentType: "application/json",				
+				success : function(resp){
+					if(resp && resp.result && resp.result.members && resp.result.members.length !=0) {
+						var arr = resp.result.members;
+						for(var i=0; i < arr.length; i++) {
+							var person = _getPersonRow(arr[i]);
+							person.appendTo(personsTable);									
+							personsTable.data('attendees').push(person.data('item'));
+						}						
+						personsTable.appendTo(paymentTab);		
+						fistScreen.addClass('hidden');
+						paymentTab.removeClass('hidden');						
+					}
+				}
+			})			
+		} else {
+			if(eventObj.attendees.length !=0) {
+				var arr = eventObj.attendees;
+				for(var i=0; i < arr.length; i++) {
+					var person = _getPersonRow(arr[i]);
+					person.appendTo(personsTable);									
+					personsTable.data('attendees').push(person.data('item'));
+				}						
+				personsTable.appendTo(paymentTab);		
+				fistScreen.addClass('hidden');
+				paymentTab.removeClass('hidden');				
+			}
+		}
 		
 	}
+
+	_getPersonRow = function(obj) {
+		var tr = $('<tr />').addClass('person-row'),
+			title = $('<td />').addClass('person-name').text(obj.name || obj.displayName),
+			paid = $('<td />').addClass('person-paid').text(obj.splitCostPayed ? obj.splitCostPayed : 0),
+			priceTd = $('<td />'),
+			priceInput = $('<input />').attr({
+				'type' : 'text',
+				'name' : 'paidCount',
+				'class' : 'paidInput'
+			});
+						
+			priceInput.appendTo(priceTd);
+			
+			title.appendTo(tr);
+			paid.appendTo(tr);
+			priceTd.appendTo(tr);
+			
+			var attendies = {
+				'displayName' : obj.name,
+				'userId' : obj.userId,
+				'email' : obj.email,
+				'avatarUrl' : obj.avatarUrl, 
+				'splitCostPayed' : null,
+				'energy' : obj.energy
+			}
+			
+			if(obj.splitCostPayed) {
+				attendies.splitCostPayed = obj.splitCostPayed;
+			}
+			
+			tr.data('item', attendies);
+			
+			
+			priceInput.bind('change', function(){
+				attendies.splitCostPayed = $(this).val();
+			})
+			
+			return tr;
+	}
+	
+	/*End Split Cost*/
+	
 	
 	_showEventPopup = function(eventObj, mode) {
 	
 		var eventBlock = _getEventBlock(eventObj);
 		var groupBlock = _getGroupBlock();
-		var popup = Zero.ModalController.getPopup('addGroupPopup');
+		var popup = Zero.ModalController.getPopup('addGroupPopup');		
 		
 		var popupContent = $('<div />').addClass('main-content');
         $(popup).find('.popup-toolbar').remove();
@@ -815,7 +1092,7 @@ Zero.Events = (function(module){
 			
 		groupBlock.hide();
 		
-		popup.setHeader(eventObj ? $('#subject', eventBlock).val() : 'New Event');
+		popup.setHeader(eventObj ? $('input[name="subject"]', eventBlock).val() : 'New Event');
 		popup.setToolbar(toolbar);
 		popup.setContent(popupContent);
 		popup.setWidth('80%');
@@ -842,19 +1119,37 @@ Zero.Events = (function(module){
 			'description' : $('textarea[name = "description"]', popup).val(),			
 			'startTimeZone' : 'Europe/Moscow',
 			'endTimeZone' : 'Europe/Moscow',
-			'attendees' : $('.attendees-list', popup).data('attendees')			
+			'attendees' : $('.attendees-list', popup).data('attendees')		
 		}	
+		
+		
 		var valid = _checkObj(obj);
 				
 		if($('#isGroup')[0].checked) {
 			obj.teamId = $('#teamId option:selected').val(); 
 			obj.attendees = new Array();
 		}		
-				
+
+		/*Split Cost*/
+		
+		if(_eventModel.teamId) {
+			obj.teamId = _eventModel.teamId; 
+			obj.attendees = new Array();			
+		}
+		
+		if(_eventModel.attendees) {
+			obj.attendees = _eventModel.attendees;		
+		}
+		if(_eventModel.splitCost) {
+			obj.splitCost = _eventModel.splitCost;
+		}
+		
 		if(valid != true) {
 			_showErrors(valid, popup);
 			return;
-		}
+		}		
+		
+		
 		
 		$.ajax({
 			url: eventId ? initConfiguration.urlEventsCalendar + '/' + eventId : initConfiguration.urlEventsCalendar,

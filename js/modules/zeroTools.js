@@ -456,6 +456,113 @@ Zero.Tools = (function(module){
 	}
 	
 	
+	m.getUserAvatar = function(user) {
+		var root = initConfiguration.getRootLocation(),
+			avatar = $('<img />').attr({
+						'src' : root + initConfiguration.imagesFolder + 'def_avatar.png'
+					}),
+			avatarHolder = $('<div />').addClass('avatar-holder').width(52).height(52),			
+			urlNode = user.avatarUrl || user.avatarURL,
+            url;
+			if(urlNode) {
+				url = urlNode + '_thumb.png';
+			} else {
+				url = root + initConfiguration.imagesFolder + 'def_avatar.png';
+			}			
+			var willpower = user.energy || 50,			
+				paper = Raphael(avatarHolder[0], 52, 52),
+				circle = paper.circle(26, 26, 25),
+				uuid = Raphael.createUUID(),
+				pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern"),
+				image = paper.image(url,0,0,1,1);
+				
+            //image.rotate(90);
+			
+			function arc(center, radius, startAngle, endAngle) {
+				angle = startAngle;
+				coords = toCoords(center, radius, angle);
+				path = "M " + coords[0] + " " + coords[1];
+				while(angle<=endAngle) {
+					coords = toCoords(center, radius, angle);
+					path += " L " + coords[0] + " " + coords[1];
+					angle += 1;
+				}
+				return path;
+			}
+			
+			function toCoords(center, radius, angle) {
+				var radians = (angle/180) * Math.PI;
+				var x = center[0] + Math.cos(radians) * radius;
+				var y = center[1] + Math.sin(radians) * radius;
+				return [x, y];
+			}			
+			
+			var finish = (willpower*3.6)-90;
+			
+			
+		    var ps = paper.path(arc([26, 26], 24, -90, finish));
+		    ps.attr({stroke:'#75caea',"stroke-width":4});			
+			
+			
+            pattern.setAttribute("id", uuid);
+            pattern.setAttribute("x", 0);
+            pattern.setAttribute("y", 0);
+            pattern.setAttribute("height", 1);
+            pattern.setAttribute("width", 1);
+            pattern.setAttribute("patternContentUnits", "objectBoundingBox");
+            $(image.node).appendTo(pattern);
+            $(pattern).appendTo(paper.defs);
+            $(circle.node).attr({fill: "url(#" + pattern.id + ")", stroke: "#FFF", "stroke-width": 0});			
+			
+			
+			
+			
+					
+			/*fill energy*/
+			/*
+            paper.customAttributes.arc = function(xc, yc, power, r){
+                var angle = 90 * Math.PI / 180;
+                var x0 = xc + r * Math.cos(angle);
+                var y0 = yc - r * Math.sin(angle);
+                var alpha = (360/100)*power;
+                angle = (90 - alpha) * Math.PI / 180;
+                var x1 = xc + r * Math.cos(angle);
+                var y1 = yc - r * Math.sin(angle);
+                var a = +(alpha > 180);
+                if (power == 100) {
+                    var path = [["M", x0, y0], ["A", r, r, 0, 1, 1, x0-0.01, y0]];
+                } else {
+                    var path = [["M", x0, y0], ["A", r, r, 0, a, 1, x1, y1]];
+                }
+                return {path:path};
+            }
+
+            var radius = 23;
+            var xc = 25;
+            var yc = 25;
+            var path = paper.path().attr({arc: [xc, yc, 0, radius]});
+            var color = '#8ebf88';
+            if (willpower > 100)
+            {
+                willpower=100;
+            }
+            if(willpower < 0)
+            {
+                willpower = -willpower;
+                color = '#D69494';
+            }
+            path.attr('stroke',color);
+            path.attr('stroke-width','3');
+            path.animate({arc: [xc, yc, willpower, radius]}, 3e3);
+			*/
+			/*End fill energy*/			
+					
+					
+		return avatarHolder;				
+	}	
+	
+	
+	
 	//Global 
 	
 	if(tokkens && tokkens.accessToken && tokkens.accessToken != '') {
