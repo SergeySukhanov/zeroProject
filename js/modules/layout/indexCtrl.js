@@ -46,6 +46,13 @@ Zero.PageIndexController = (function(module){
 	    _randomMember = function(){
 	       var wrapperRandom = $('.random-member');
 	       var imageFace = $('<div/>').addClass('wrapper-face-member');
+              var user = Zero.Tools.getUserAvatar({
+                                     'avatarUrl':false
+                                    },
+                                    100,
+                                    100
+              );
+            imageFace.append(user);
 	       var wrapperContent = $('<div/>').addClass('wrapper-content-member');
 	       //create fields
 	       var headerMemberName = $('<h3/>').addClass('member-name').text("Sergey Sukhanov");

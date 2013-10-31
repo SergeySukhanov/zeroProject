@@ -456,12 +456,12 @@ Zero.Tools = (function(module){
 	}
 	
 	
-	m.getUserAvatar = function(user) {
+	m.getUserAvatar = function(user, width, height) {
 		var root = initConfiguration.getRootLocation(),
 			avatar = $('<img />').attr({
 						'src' : root + initConfiguration.imagesFolder + 'def_avatar.png'
 					}),
-			avatarHolder = $('<div />').addClass('avatar-holder').width(52).height(52),			
+			avatarHolder = $('<div />').addClass('avatar-holder').width(width).height(height),
 			urlNode = user.avatarUrl || user.avatarURL,
             url;
 			if(urlNode) {
@@ -470,8 +470,8 @@ Zero.Tools = (function(module){
 				url = root + initConfiguration.imagesFolder + 'def_avatar.png';
 			}			
 			var willpower = user.energy || 50,			
-				paper = Raphael(avatarHolder[0], 52, 52),
-				circle = paper.circle(26, 26, 25),
+				paper = Raphael(avatarHolder[0], width, height),
+				circle = paper.circle(41, 41, 40),
 				uuid = Raphael.createUUID(),
 				pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern"),
 				image = paper.image(url,0,0,1,1);
@@ -500,7 +500,7 @@ Zero.Tools = (function(module){
 			var finish = (willpower*3.6)-90;
 			
 			
-		    var ps = paper.path(arc([26, 26], 24, -90, finish));
+		    var ps = paper.path(arc([41, 41], 40, -90, finish));
 		    ps.attr({stroke:'#75caea',"stroke-width":4});			
 			
 			

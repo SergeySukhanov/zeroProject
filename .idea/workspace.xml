@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/zeroProject.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/layout/indexCtrl.js" afterPath="$PROJECT_DIR$/js/modules/layout/indexCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/newIndex.css" afterPath="$PROJECT_DIR$/resources/css/newIndex.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/zeroTools.js" afterPath="$PROJECT_DIR$/js/modules/zeroTools.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,12 +14,13 @@
     <file path="$PROJECT_DIR$/../constructor/.idea/workspace.xml" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383119542984" ignored="false" />
     <file path="/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383124670045" ignored="false" />
     <file path="/formLogin.json" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383125235916" ignored="false" />
-    <file path="/indexCtrl.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383125281883" ignored="false" />
+    <file path="/indexCtrl.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383202478946" ignored="false" />
     <file path="/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383135950079" ignored="false" />
     <file path="/initConfiguration.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383130488288" ignored="false" />
     <file path="$PROJECT_DIR$/../constructor/js/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134653910" ignored="false" />
     <file path="/register.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383136477749" ignored="false" />
     <file path="/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134906334" ignored="false" />
+    <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383202601090" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +40,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="initConfiguration.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
+      <file leaf-file-name="zeroTools.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="56" selection-start="396" selection-end="396" vertical-scroll-proportion="0.24153006">
+            <state line="499" column="55" selection-start="14056" selection-end="14056" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/modal/register.js">
+      <file leaf-file-name="newIndex.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/newIndex.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="456" column="70" selection-start="15573" selection-end="15573" vertical-scroll-proportion="0.0">
+            <state line="17" column="17" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="initConfiguration.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.018579235">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="4" selection-start="1501" selection-end="1547" vertical-scroll-proportion="-17.653847">
               <folding />
             </state>
           </provider>
@@ -61,7 +79,7 @@
       <file leaf-file-name="indexCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/layout/indexCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="43" selection-start="949" selection-end="949" vertical-scroll-proportion="0.0">
+            <state line="52" column="37" selection-start="1585" selection-end="1585" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,7 +100,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="46" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-20.923077">
+            <state line="11" column="54" selection-start="417" selection-end="417" vertical-scroll-proportion="-7.1923075">
               <folding />
             </state>
           </provider>
@@ -101,15 +119,6 @@
         <entry file="file://$PROJECT_DIR$/resources/data/formLogin.json">
           <provider selected="true" editor-type-id="text-editor">
             <state line="171" column="65" selection-start="5856" selection-end="5856" vertical-scroll-proportion="-12.615385">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formConstructor.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/plug/formConstructor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="80" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -142,14 +151,16 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/plug/formConstructor.js" />
         <option value="$PROJECT_DIR$/resources/css/error.css" />
         <option value="$PROJECT_DIR$/resources/css/header.css" />
         <option value="$PROJECT_DIR$/resources/data/formLogin.json" />
         <option value="$PROJECT_DIR$/js/modules/modal/login.js" />
         <option value="$PROJECT_DIR$/js/modules/modal/register.js" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/modules/layout/indexCtrl.js" />
+        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
+        <option value="$PROJECT_DIR$/resources/css/newIndex.css" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
       </list>
     </option>
@@ -377,8 +388,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1272" y="-8" width="1936" height="1096" extended-state="7" />
-    <editor active="false" />
+    <frame x="1272" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -501,13 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="46" selection-start="1252" selection-end="1252" vertical-scroll-proportion="-20.923077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/header.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="206" column="1" selection-start="3298" selection-end="3298" vertical-scroll-proportion="0.0">
@@ -539,16 +543,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="4" selection-start="1501" selection-end="1547" vertical-scroll-proportion="-17.653847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="54" selection-start="417" selection-end="417" vertical-scroll-proportion="-7.1923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/layout/indexCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="43" selection-start="949" selection-end="949" vertical-scroll-proportion="0.0">
+        <state line="52" column="37" selection-start="1585" selection-end="1585" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="499" column="55" selection-start="14056" selection-end="14056" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/newIndex.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="17" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="56" selection-start="396" selection-end="396" vertical-scroll-proportion="0.24153006">
+        <state line="2" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.018579235">
           <folding />
         </state>
       </provider>

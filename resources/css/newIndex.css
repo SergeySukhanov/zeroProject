@@ -12,13 +12,10 @@ font-family: Zero;
 .wrapper-face-member {
   width:100px;
   height:100px;
-  border-radius:50px;
-  background-color:#fc5645;
 }
 
 .wrapper-content-member {
 text-align: left;
-margin-left: 20px;
 }
 
 .member-name {
