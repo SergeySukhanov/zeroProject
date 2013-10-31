@@ -38,7 +38,9 @@ function LoginCtrl(options){
             if(data.result.exists){
                  console.log(data.result.exists);
                 $('#button-login').val('Sign In');
+                $('#email-log').css('color', '#75caea');
             }else{
+                $('#email-log').css('color', '#FDCB00');
                 $('.random-member').slideUp(300);
                 $('#button-login').val('Sign Up');
                 $('.form-login').fadeOut(100, function(){

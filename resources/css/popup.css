@@ -273,6 +273,7 @@
 	display: inline-block;
 	width: 100px;
 	margin: 0 20px 0 0;
+    vertical-align: top;
 	}
 	.memebers-list ul li .avatar-holder {
 		margin: 0 auto;		

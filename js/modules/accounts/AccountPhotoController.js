@@ -70,7 +70,7 @@ Zero.AccountPhotoController = (function(module){
             var xc = 50;
             var yc = 50;
             var path = paper.path().attr({arc: [xc, yc, 0, radius]});
-            var color = '#8ebf88';
+            var color = '#75caea';
             if (willpower > 100)
             {
                 willpower=100;

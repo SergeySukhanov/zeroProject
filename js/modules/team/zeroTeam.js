@@ -299,7 +299,7 @@ Zero.Team = (function(module){
 		for(var i=0; i < arr.length; i++) {
 			var item = $('<li />'),
 				name = $('<span />').addClass('person-name').text(arr[i].name),
-				avatar = module.Tools.getUserAvatar(arr[i]);
+				avatar = module.Tools.getUserAvatar(arr[i], 100, 100);
 			
 			avatar.appendTo(item);			
 			name.appendTo(item);			
