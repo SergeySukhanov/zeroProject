@@ -54,3 +54,11 @@ top: 6%;
 width: 196px;
 display: inline-block;
 }
+
+#error-email-log {
+    left: 59%;
+}
+
+#error-pass-log {
+    left: 59%;
+}

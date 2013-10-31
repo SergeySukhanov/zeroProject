@@ -16,7 +16,7 @@ var initConfiguration = {
 	 //auth	  
 	chatUrl: 'http://zerosrv03.firstlinesoftware.ru:9999', 
 	apiUrl: 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/', 
-	urlRegister:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/register/m',
+	urlSession:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/session',
 	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
 	urlLoginCheck:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/check_email_exists',
 	

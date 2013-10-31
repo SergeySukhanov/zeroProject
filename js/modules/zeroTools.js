@@ -385,6 +385,8 @@ Zero.Tools = (function(module){
 	
 	view.init();
    };
+   
+   
 	
 	m.ajaxErrorHandler();
 	

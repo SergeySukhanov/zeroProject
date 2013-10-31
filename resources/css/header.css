@@ -194,3 +194,81 @@ cursor:pointer
 display: inline-block;
 }
 
+
+
+.wrapper-left, .wrapper-right{
+    display:inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.wrapper-right {
+    margin-left: 11px;
+}
+
+
+
+.row {
+    margin-bottom: 10px;
+}
+
+.row.simple-button {
+    text-align: center;
+}
+
+.multi-row .row{
+    display:inline-block;
+}
+
+.row input:focus{
+    outline: 1px dotted rgb(0, 153, 255)
+}
+
+.row input[type="text"],
+.row input[type="password"]{
+    border:1px dotted #cccccc;
+    padding-left:7px;
+    height:30px;
+    width: 250px;
+
+}
+
+.multi-row.full-name-text input {
+    width: 112px !important;
+    margin-right: 9px;
+    left: 5px;
+    position: relative;
+}
+
+.multi-row.birthday-text input {
+    width: 60px !important;
+    margin-right: 6px;
+}
+
+.multi-row.gender-radio .row {
+    margin-right: 23px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+.row.simple-radio{
+    margin-top: 17px;
+}
+
+.multi-row.gender-radio label,
+.row.simple-radio label{
+    margin-right: 10px;
+    margin-left: 6px;
+    position: relative;
+    top: -2px;
+    color: #999999;
+    font-size: 13px;
+}
+
+.row.simple-button input {
+    background-color: rgb(2, 225, 255);
+    color: #ffffff;
+    padding: 7px 26px;
+    font-size: 20px;
+    border: 1px dotted rgb(0, 153, 255);
+    cursor:pointer;
+}

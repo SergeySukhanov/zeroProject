@@ -14,11 +14,11 @@ Zero.PageIndexController = (function(module){
 	    _render = function(){
 	      try{
 	    		$.ajax({
-	       	       url:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.localDataFolder+'menuData.json',
+	       	       url:initConfiguration.rootContext+initConfiguration.rootFolder+initConfiguration.localDataFolder+'formLogin.json',
 	       	       dataType:'json',
 	       	       success:function(data){
-	       	       	config.dataPopupRegister = data[0].registerForm;
-	       	       	config.dataPopupLogin = data[0].loginForm;
+	       	       	config.dataPopupRegister = data[0].formRegister;
+	       	       	config.dataPopupLogin = data[1].formLogin;
 	       	     	_postRender();
 	       	       }
 	           });
@@ -69,20 +69,20 @@ Zero.PageIndexController = (function(module){
 	    },
 	    
 	    _authSection = function(){
-	      var wrapperLogin = $('.login-section');
-	      $('.login').empty();
+	      $('.login-form').empty();
 	      new LoginCtrl({
-	      	wrap:$('.login'),
+	      	wrap:$('.login-form'),
 	      	data:config.dataPopupLogin,
 	      	regData:config.dataPopupRegister
 	      });
 	       	
 	    },
+
 	    _brand = function(){
 	    	var wrapperBrand = $('.brand');
 	    	var image = $('<img/>').addClass('brand-img').attr('src', config.srcZeroBrand);
 	    	wrapperBrand.append(image);
-	    }
+        },
 	    
 	    _socialLoginSection = function(){
 	    	var data = config.dataPopupSocLogin;

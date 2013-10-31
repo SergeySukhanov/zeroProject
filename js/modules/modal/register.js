@@ -6,11 +6,12 @@ function RegisterCtrl(options){
 		wrap:options.wrap,
 		data:options.data,
 		logData:options.logData,
-		
+        emailData:options.email,
 		
 		messageP:"Create on account to manage all your fitness bands, training shedules and life in general. <br/>You'll enjoy personal services and the ability to:",
 		listItems:['Quickly set up and manage team events', 'See your fitness band data along side daily scedule', 'Set team goals, play and communicate together']
 	},
+	constructor = new ConstructorForm();
 	parseData = {},
 	
 	_render = function(){
@@ -33,85 +34,119 @@ function RegisterCtrl(options){
 		
 		config.wrap.append(linkWrapper);
 		config.wrap.append(wrapperMessage);
-		
-		registerInner.append(registerInnerLeft);
-		registerInner.append(registerInnerRight);
 		config.wrap.append(registerInner);
-		_createForm(registerInner, registerInnerLeft, registerInnerRight);
-		$('.register').fadeIn();
+		_createForm();
+		$('.form-login').fadeIn();
+        _fullFieldEmail();
 	},
-	
-	
-	_createForm = function(wrapper, wrapperLeft, wrapperRight){
-		var data = config.data;
-		for(var i=0; i<data.length; i++){
-			var row = $('<div/>').addClass('row-auth');
-			if(i<=5){
-				wrapperLeft.append(row);
-			}else{
-				if(data[i].type == "button"){
-					wrapper.append(row);
-				}else{
-				   wrapperRight.append(row);	
-				}
-			}
-          	   
-			switch(data[i].type){
-				case "text": _createTextField(row, data[i]);
-				break;
-				case "password": _createTextField(row, data[i]);
-				break;
-				case "birthday": _createBirthdayField(row, data[i]);
-				break;
-				case "gender": _createRadioField(row, data[i]);
-				break;
-				case "button":_createButtonField(row, data[i]);
-				break;
-			}
-			
-		}
-		
-		var backToLogin = $('<span/>').addClass('back-to-login').text('Back to login');
-		wrapper.append(backToLogin);
-		backToLogin.bind('click', function(){
-			$('.login').fadeOut(100, function(){
-						$('.login').empty();
-                   new LoginCtrl({
-                   	  wrap:$('.login'),
-	      	         data:config.logData,
-	      	         regData:config.data
-	      	     });
-            });
-		});
-	},
-	_createBirthdayField = function(wrap, dataItem){
-		var list = dataItem.listItem;
-		for(var i=0; i<list.length; i++){
-			var input = $('<input/>').attr({
-	   	  	                         id:list[i].id,
-	   	  	                         type:list[i].type,
-	   	  	                         placeholder:list[i].placeholder
-	   	                           });
-		wrap.append(input);
-		var errorBlock = $('<div/>').addClass('error');
-	   	  var errorMessage = $('<span/>').addClass('error-message');
-	   	  var errorLabel = $('<span/>').addClass('error-label');
-	   	      errorBlock.append(errorMessage);
-	   	      errorBlock.append(errorLabel);
-	   	      wrap.append(errorBlock);
-	   	      
-	   	  
-	   	  input.bind('blur', function(event){
-	   	  	if(wrap.parent().parent().hasClass('login')){
-	   	  		_validationLogin(event);
-	   	  	}else{
-	   	  	   _validation(event);	
-	   	  	}
-	   	  	
-	   	  });
-		}
-		wrap.addClass('birthday-wrap');
-	}
+
+
+        _createForm = function(){
+            var constructor = new ConstructorForm();
+            var wrapperForm = $('.form-login');
+            var leftWrapper = $('<div/>').addClass('wrapper-left');
+            var rightWrapper = $('<div/>').addClass('wrapper-right');
+
+            wrapperForm.append(leftWrapper);
+            wrapperForm.append(rightWrapper);
+            var dataForm = config.data;
+            var field;
+            var countRow = 5;
+
+            for(var i=0; i<dataForm.length; i++){
+                if(dataForm[i].type == "text" || dataForm[i].type == "password"){
+                    switch(dataForm[i].fieldType){
+                        case "simple-text": field = constructor.simpleTextField({
+                            data:dataForm[i],
+                            blur: _blurText,
+                            focus: _focusText,
+                            key: _keyPressText
+                        });
+                            break;
+
+                        case "birthday-text": field = constructor.multiFieldText({
+                            data:dataForm[i],
+                            blur: _blurText,
+                            focus: _focusText,
+                            key: _keyPressText
+                        });
+                            break;
+
+                        case "full-name-text": field = constructor.multiFieldText({
+                            data:dataForm[i],
+                            blur: _blurText,
+                            focus: _focusText,
+                            key: _keyPressText
+                        });
+                            break;
+                    }
+                }else if(dataForm[i].type == "radio"){
+                    switch(dataForm[i].fieldType){
+                        case "simple-radio": field = constructor.simpleRadioField({
+                            data:dataForm[i],
+                            change: _changeRadio
+                        });
+                            break;
+
+                        case "gender-radio": field = constructor.multiFieldRadio({
+                            data:dataForm[i],
+                            change: _changeRadio
+                        });
+                            break;
+                    }
+                }else if(dataForm[i].type == "button"){
+                    switch(dataForm[i].fieldType){
+                        case "simple-button": field = constructor.simpleButtonField({
+                            data:dataForm[i],
+                            click: _clickButton
+                        });
+                            break;
+
+                        case "multi-button": field = constructor.multiFieldButton({
+                            data:dataForm[i],
+                            click: _clickButton
+                        });
+                            break;
+                    }
+                }
+                if(i < countRow){
+                    leftWrapper.append(field);
+                }else{
+                    if(dataForm[i].type != "button"){
+                        rightWrapper.append(field);
+                    }else{
+                        wrapperForm.append(field);
+                    }
+                }
+            }
+        },
+
+        _fullFieldEmail = function(){
+           $('#email-reg').val(config.emailData);
+        },
+        _checkFields = function(){
+
+        },
+
+        _changeRadio = function(event){
+            console.log(event);
+        },
+
+        _blurText = function(event){
+            console.log(event);
+        },
+
+        _focusText = function(event){
+            console.log(event);
+        },
+
+        _clickButton = function(event){
+            _parseDataBeforeAjax($(event.target).parent());
+        },
+
+        _keyPressText = function(event){
+            _validation(event);
+        },
 	
 	_createTextField = function(wrap, dataItem, align){
 	   	  var input = $('<input/>').attr({
@@ -176,11 +211,11 @@ function RegisterCtrl(options){
 	   	  });
 	   	  
 	   	  input.bind('keyup', function(event){
-	   	  	if($(event.currentTarget).attr('id') == "register-email" || $(event.currentTarget).attr('id') == "register-password"){
+	   	  	if($(event.currentTarget).attr('id') == "email-reg" || $(event.currentTarget).attr('id') == "password-reg"){
 	   	  		$(event.currentTarget).parent().next().children('input').slideDown();
 	   	  	}
 	   	  	
-	   	  	if($(event.currentTarget).attr('id') == "register-password"){
+	   	  	if($(event.currentTarget).attr('id') == "password-reg"){
 	   	  		_validateRulePassword(event);
 	   	  	}
 
@@ -190,63 +225,12 @@ function RegisterCtrl(options){
 	   	  
 	   },
 	   
-	   _createButtonField = function(wrap, dataItem){
-	   	  var input = $('<input/>').attr({
-	   	  	                        id:dataItem.id,
-	   	  	                        type:dataItem.type, 
-	   	  	                        value:dataItem.value
-	   	                           });
-	   	      wrap.append(input);
-	   	      
-	   	  input.bind('click', function(event){
-	   	  	  if(!input.hasClass('disable-button')){
-	   	  	  	_parseDataBeforeAjax(wrap);
-	   	  	  }
-	   	  });
-	   	  wrap.addClass('button-field');
-	   },
-	
-	_createRadioField = function(wrap, dataItem){
-		var mainLabel = $('<span/>').addClass('label-gender').text(dataItem.value);
-		var wrapperRadio = $('<div/>').addClass('radio-wrapper-gender').attr({
-			                                                              id:dataItem.id,
-			                                                              type:dataItem.type
-		                                                                });
-		var listItem = dataItem.listItem;
-		for(var i=0; i<listItem.length; i++){
-			var rowInner = $('<div/>').addClass('row-inner').addClass(dataItem.id);
-			var input = $('<input/>').attr({
-				                        id:listItem[i].id,
-	   	  	                            type:listItem[i].type,
-	   	  	                            name:dataItem.value
-			                          });
-			var label = $('<label/>').attr('for', listItem[i].id).text(listItem[i].value);
-			rowInner.append(input);
-			rowInner.append(label);
-			
-		wrapperRadio.append(rowInner);
-		}
-		
-		wrap.append(mainLabel);
-		wrap.append(wrapperRadio);
-		wrap.addClass('radio-field-wrap');
-	},
-	
-	_validationLogin = function(event){
-	   	   var elem = $(event.currentTarget);
-	   	   if(elem.val() == ""){	   	   	
-	   	   	 _showErrorMessage(elem);
-	   	   }else{
-	   	   	 _showSuccessMessage(elem);
-	   	   }
-	   }
-	   
 	   _validation = function(event){
 	   	   var elem = $(event.currentTarget);
 	   	   if(elem.val() == ""){	   	   	
 	   	   	 _showErrorMessage(elem);
 	   	   }else{
-	   	   	 if(elem.attr('id') == "register-email"){
+	   	   	 if(elem.attr('id') == "email-reg"){
 	   	   	 	if(_validateEmail(elem)){
 	   	   	 		_showSuccessMessage(elem);
 	   	   	 		
@@ -254,31 +238,31 @@ function RegisterCtrl(options){
 	   	   	 		_showErrorMessage(elem);
 	   	   	 		
 	   	   	 	}
-	   	   	 }else if(elem.attr('id') == "register-confirm-email"){
+	   	   	 }else if(elem.attr('id') == "email-reg-confirm"){
 	   	   	 	if(_validateConfirm(elem)){
 	   	   	 		_showSuccessMessage(elem);
 	   	   	 	}else{
 	   	   	 		_showErrorMessage(elem);
 	   	   	 	}
 	   	   	 	
-	   	   	 }else if(elem.attr('id') == "register-password"){
+	   	   	 }else if(elem.attr('id') == "password-reg"){
 	   	   	 	if(_validatePass(elem)){
 	   	   	 		_showSuccessMessage(elem);
 	   	   	 	}else{
 	   	   	 		_showErrorMessage(elem);
 	   	   	 	}
 	   	   	 	
-	   	   	 }else if(elem.attr('id') == "register-confirm-password"){
+	   	   	 }else if(elem.attr('id') == "password-reg-confirm"){
 	   	   	 	if(_validateConfirm(elem)){
 	   	   	 		_showSuccessMessage(elem);
 	   	   	 	}else{
 	   	   	 		_showErrorMessage(elem);
 	   	   	 	}
 	   	   	 		   	   	 	
-	   	   	 }else if(elem.attr('id') == "register-first-name" || elem.attr('id') == "register-last-name"){
+	   	   	 }else if(elem.attr('id') == "first-name" || elem.attr('id') == "last-name"){
 	   	   	 	_showSuccessMessage(elem);
 	   	   	 	
-	   	   	 }else if(elem.attr('id') == "register-zip"){
+	   	   	 }else if(elem.attr('id') == "zip"){
 	   	   	 		if(_validateZipCode(elem)){
 	   	   	 		_showSuccessMessage(elem);
 	   	   	 	    }else{
@@ -416,7 +400,7 @@ function RegisterCtrl(options){
 	   	    for(var i=0; i<fields.length; i++){
 	   	    	parseData[$(fields[i]).attr('id')] = $(fields[i]).val();
 	   	    }
-	   	       _registerAjax(wrapper, parseData);
+           _loginAjax(true, parseData);
 
 	   	    
 	   	  
@@ -448,29 +432,29 @@ function RegisterCtrl(options){
 	   
 	    _loginAjax = function(flag, dataForm){
 	    	if(flag){
-	    		var email = dataForm['register-email'],
-	                pass = dataForm['register-password'];
+	    		var email = dataForm['email-reg'],
+	                pass = dataForm['password-reg'];
 	    	}else{
 	    		var email = dataForm['auth-email'],
 	                pass = dataForm['auth-password'];
 	    	}
 		try{
 		  $.ajax({
-			url:initConfiguration.urlLogin,
+			url:initConfiguration.urlSession,
 			type:"POST",
 			dataType:'json',
 			contentType:"application/json",
 			data: JSON.stringify({
-			   "name":email,
+			   "email":email,
                "password":pass
             }),
 			success:function(data){
-				if(data.errorCode == 10){
+				if(data.code == 10){
                    console.log(data);
-				}else if(data.errorCode == 1){
-				    localStorage.setItem('accessToken', data.accessToken);
-				    localStorage.setItem('refreshToken', data.refreshToken);
-				    localStorage.setItem('accessTokenTTL', data.accessTokenTTL);
+				}else if(data.code == 1){
+				    localStorage.setItem('accessToken', data.result.accessToken);
+				    localStorage.setItem('refreshToken', data.result.refreshToken);
+				    localStorage.setItem('accessTokenTTL', data.result.accessTokenTTL);
 				   location.href  = initConfiguration.rootContext+initConfiguration.rootFolder+'main.html';
 				 }	
 							
