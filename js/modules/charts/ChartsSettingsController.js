@@ -91,7 +91,7 @@ Zero.ChartsSettings = (function(module){
 //            wrapSettings.append(doSettings);
             
             wrapper.append(wrapDiagram);
-            wrapper.append(wrapSettings);
+//            wrapper.append(wrapSettings);
             
             var wrapSliders;
             var dataSliders = config.dataSliders || {};
