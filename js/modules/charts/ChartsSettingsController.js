@@ -86,7 +86,7 @@ Zero.ChartsSettings = (function(module){
             wrapDiagram.append(diagramH3);
             wrapDiagram.append(diagramBody);
             
-            wrapSettings.append(actSettings);
+//            wrapSettings.append(actSettings);
 //            wrapSettings.append(liveSettings);
 //            wrapSettings.append(doSettings);
             

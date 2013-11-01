@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" afterPath="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/TitleController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/TitleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/layout/indexCtrl.js" afterPath="$PROJECT_DIR$/js/modules/layout/indexCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/plug/formConstructor.js" afterPath="$PROJECT_DIR$/js/plug/formConstructor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/data/formLogin.json" afterPath="$PROJECT_DIR$/resources/data/formLogin.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/newIndex.css" afterPath="$PROJECT_DIR$/resources/css/newIndex.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/modal/register.js" afterPath="$PROJECT_DIR$/js/modules/modal/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/zeroTools.js" afterPath="$PROJECT_DIR$/js/modules/zeroTools.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,18 +18,19 @@
     <file path="/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383203439648" ignored="false" />
     <file path="/initConfiguration.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383130488288" ignored="false" />
     <file path="$PROJECT_DIR$/../constructor/js/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134653910" ignored="false" />
-    <file path="/register.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383136477749" ignored="false" />
-    <file path="/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134906334" ignored="false" />
+    <file path="/register.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383309176164" ignored="false" />
+    <file path="/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383306018584" ignored="false" />
     <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383303352555" ignored="false" />
     <file path="/popup.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383208552823" ignored="false" />
     <file path="/TitleController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383218784025" ignored="false" />
     <file path="/ChartsSettingsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383229739768" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383301604617" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/main-styles.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383292605381" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/main-styles.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383305011055" ignored="false" />
     <file path="/main-styles.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383292603829" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383292564156" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383306324061" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/resources/css/content.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383292561342" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/resources/css/footer.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383292572283" ignored="false" />
+    <file path="/formConstructor.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383309073902" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,25 @@
       <file leaf-file-name="initConfiguration.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="96" selection-end="96" vertical-scroll-proportion="0.03715847">
+            <state line="2" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.03715847">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formConstructor.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/plug/formConstructor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="157" column="62" selection-start="4698" selection-end="4698" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="formLogin.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/data/formLogin.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="156" column="44" selection-start="5411" selection-end="5411" vertical-scroll-proportion="-15.230769">
               <folding />
             </state>
           </provider>
@@ -80,7 +98,7 @@
       <file leaf-file-name="ChartsSettingsController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="71" selection-start="2386" selection-end="2386" vertical-scroll-proportion="0.0">
+            <state line="99" column="94" selection-start="2945" selection-end="2945" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -89,7 +107,16 @@
       <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/modal/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="358" column="72" selection-start="12066" selection-end="12066" vertical-scroll-proportion="0.0">
+            <state line="114" column="48" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newIndex.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/newIndex.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="1" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,33 +140,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="popup.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/popup.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="269" column="12" selection-start="5344" selection-end="5344" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="19" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.9615384">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/header.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="73" selection-start="3333" selection-end="3333" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -158,21 +158,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/plug/formConstructor.js" />
         <option value="$PROJECT_DIR$/resources/css/error.css" />
         <option value="$PROJECT_DIR$/resources/css/header.css" />
-        <option value="$PROJECT_DIR$/resources/data/formLogin.json" />
-        <option value="$PROJECT_DIR$/resources/css/newIndex.css" />
         <option value="$PROJECT_DIR$/js/modules/modal/login.js" />
         <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/resources/css/popup.css" />
         <option value="$PROJECT_DIR$/js/modules/accounts/AccountPhotoController.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/TitleController.js" />
-        <option value="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
-        <option value="$PROJECT_DIR$/js/modules/modal/register.js" />
         <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/js/modules/layout/indexCtrl.js" />
+        <option value="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
+        <option value="$PROJECT_DIR$/js/plug/formConstructor.js" />
+        <option value="$PROJECT_DIR$/resources/data/formLogin.json" />
+        <option value="$PROJECT_DIR$/js/modules/modal/register.js" />
+        <option value="$PROJECT_DIR$/resources/css/newIndex.css" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
       </list>
     </option>
@@ -225,6 +225,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -476,20 +526,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="4" selection-start="1501" selection-end="1547" vertical-scroll-proportion="-17.653847">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/newIndex.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="17" selection-start="263" selection-end="263" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="301" column="68" selection-start="8541" selection-end="8541" vertical-scroll-proportion="0.0">
@@ -504,13 +540,6 @@
             <element signature="e#5069#5706#0" expanded="false" />
             <element signature="e#5751#6059#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/data/formLogin.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="65" selection-start="5856" selection-end="5856" vertical-scroll-proportion="3.2699664">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -556,20 +585,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="71" selection-start="2386" selection-end="2386" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/modal/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="358" column="72" selection-start="12066" selection-end="12066" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="471" column="87" selection-start="13240" selection-end="13240" vertical-scroll-proportion="0.0">
@@ -584,9 +599,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="94" selection-start="2945" selection-end="2945" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/plug/formConstructor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="62" selection-start="4698" selection-end="4698" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/formLogin.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="44" selection-start="5411" selection-end="5411" vertical-scroll-proportion="-15.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/modal/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="48" selection-start="4638" selection-end="4638" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/newIndex.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="1" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="96" selection-end="96" vertical-scroll-proportion="0.03715847">
+        <state line="2" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.03715847">
           <folding />
         </state>
       </provider>

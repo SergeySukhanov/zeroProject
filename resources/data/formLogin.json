@@ -148,23 +148,13 @@
                 "error":"error-save-me-reg"
             },
             {
-                "id":"zip",
-                "label":null,
-                "value":null,
-                "type":"text",
-                "listItem":null,
-                "fieldType":"simple-text",
-                "placeholder":"zipcode",
-                "error":"error-zip-reg"
-            },
-            {
                 "id":"sing-me",
                 "label":"sign me up to receive news and updates",
                 "value":null,
-                "type":"radio",
+                "type":"checkbox",
                 "name":"singMe",
                 "listItem":null,
-                "fieldType":"simple-radio",
+                "fieldType":"simple-checkbox",
                 "placeholder":null,
                 "error":"error-sing-me-reg"
             },

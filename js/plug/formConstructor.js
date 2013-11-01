@@ -116,7 +116,7 @@ function ConstructorForm(){
         });
 
         return wrapperField;
-    }
+    };
 
     view.multiFieldRadio = function(options){
         var settings = {
@@ -139,6 +139,45 @@ function ConstructorForm(){
         return wrapperField;
 
     };
+
+    view.simpleCheckboxField = function(options){
+        var settings = {
+            data:options.data,
+            changeHandler:options.change
+        };
+
+        var wrapperField = $('<div/>').addClass('row').addClass(settings.data.fieldType).attr('fieldType', settings.data.fieldType);
+
+        if(settings.data.label != null){
+            var label = $('<label/>').attr({
+                'for':settings.data.id
+            })
+                .text(settings.data.label);
+        }
+
+        var input = $('<input/>').attr({
+            'id':settings.data.id,
+            'type':settings.data.type,
+            'name':settings.data.name,
+            'value':settings.data.value
+        });
+
+        var error = $('<div/>').addClass('error').attr('id', settings.data.error);
+        var errorLabel = $('<span/>').addClass('error-label');
+        var errorMessage = $('<span/>').addClass('error-message');
+        error.append(errorLabel);
+        error.append(errorMessage);
+
+        wrapperField.append(input);
+        wrapperField.append(label);
+        wrapperField.append(error);
+
+        input.on('change', function(event){
+            settings.changeHandler(event);
+        });
+
+        return wrapperField;
+    }
 
     view.simpleButtonField = function(options){
         var settings = {

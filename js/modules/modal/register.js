@@ -108,6 +108,20 @@ function RegisterCtrl(options){
                         });
                             break;
                     }
+                }else if(dataForm[i].type == "checkbox"){
+                    switch(dataForm[i].fieldType){
+                        case "simple-checkbox": field = constructor.simpleRadioField({
+                            data:dataForm[i],
+                            change: _changeRadio
+                        });
+                            break;
+
+                        case "multi-checkbox": field = constructor.multiFieldButton({
+                            data:dataForm[i],
+                            click: _clickButton
+                        });
+                            break;
+                    }
                 }
                 if(i < countRow){
                     leftWrapper.append(field);

@@ -47,6 +47,17 @@ margin-bottom: 80px;
 width: 250px;
 }
 
+.row.simple-checkbox input {
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+}
+
+.row.simple-checkbox > * {
+    position: relative;
+    left: -17px;
+}
+
 .link-wrapper {
 width: 300px;
 margin: 0 auto;
