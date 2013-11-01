@@ -47,7 +47,7 @@ Zero.PageIndexController = (function(module){
 	       var wrapperRandom = $('.random-member');
 	       var imageFace = $('<div/>').addClass('wrapper-face-member');
               var user = Zero.Tools.getUserAvatar({
-                                     'avatarUrl':false
+                                     'avatarUrl':initConfiguration.getRootLocation()+initConfiguration.imagesFolder+'face12.jpg'
                                     },
                                     100,
                                     100
@@ -55,7 +55,7 @@ Zero.PageIndexController = (function(module){
             imageFace.append(user);
 	       var wrapperContent = $('<div/>').addClass('wrapper-content-member');
 	       //create fields
-	       var headerMemberName = $('<h3/>').addClass('member-name').text("Sergey Sukhanov");
+	       var headerMemberName = $('<h3/>').addClass('member-name').text("Kroeni Molly Schellenberg");
 	       var socLoginName = $('<div/>').addClass('soc-login-member-name');
 	           var skypeType = $('<span/>').addClass('skype-field').text('Triathete / ');
 	           var twitterType = $('<span/>').addClass('twitter-field').text('@ladylourdesV');

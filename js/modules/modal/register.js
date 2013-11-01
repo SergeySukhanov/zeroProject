@@ -320,7 +320,7 @@ function RegisterCtrl(options){
 	   	   var minNumberofChars = 8;
            var maxNumberofChars = 20;
            var regexpCap = new RegExp(/[A-Z]/g);
-           var regexpSym = new RegExp(/[@#$%^&*!]+?[0-9]|[0-9]+?[@#$%^&*!]/g);
+           var regexpSym = new RegExp(/[0-9]/g);
            
            if(newPassword.length < minNumberofChars || newPassword.length > maxNumberofChars){
              return false;
@@ -366,7 +366,8 @@ function RegisterCtrl(options){
        maxNumberofChars = 20,
        
        reqexpCap = new RegExp(/[A-Z]/g),
-       regexpSym = new RegExp(/[@#$%^&*!]+?[0-9]|[0-9]+?[@#$%^&*!]/g);
+       regexpSym = new RegExp(/[0-9]/g);
+//       regexpSym = new RegExp(/[@#$%^&*!]+?[0-9]|[0-9]+?[@#$%^&*!]/g);
 
        if(val.length > minNumberofChars && val.length < maxNumberofChars){
            answer.length = true

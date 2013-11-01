@@ -7,14 +7,18 @@ Zero.ChartsSettings = (function(module){
 		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to set your schedule targets.",
 		   liveTitle:"Live",
 		   doTitle:"Do",
-		   dataSliders:{},
+		   dataSliders:{}
 		   
 	    },
 	    _liveSettings,
 	    _doSettings,
 	    
 	    tokkens = module.getTokens(),
-	
+
+        _postrender = function(){
+
+        },
+
 	    _render = function(){
 	    	try{
 	    		$.ajax({
@@ -83,8 +87,8 @@ Zero.ChartsSettings = (function(module){
             wrapDiagram.append(diagramBody);
             
             wrapSettings.append(actSettings);
-            wrapSettings.append(liveSettings);
-            wrapSettings.append(doSettings);
+//            wrapSettings.append(liveSettings);
+//            wrapSettings.append(doSettings);
             
             wrapper.append(wrapDiagram);
             wrapper.append(wrapSettings);
@@ -103,7 +107,9 @@ Zero.ChartsSettings = (function(module){
             	_createSlider(wrapSliders, dataSliders[i]); 
             }
             
-            _getAjaxWillpower();
+            _getAjaxWillpower();
+
+
                   
 	    },
 	    
@@ -196,7 +202,8 @@ Zero.ChartsSettings = (function(module){
             		diagramItem.addClass('negative');
             	}
             	_createDiagramCol(diagramItem, diagramData[j]);
-            	// console.log('done');
+            	// console.log('done');
+
             }
             _calculate(diagramItem.parents('#willPower'), diagramData);
 	    },
@@ -223,7 +230,8 @@ Zero.ChartsSettings = (function(module){
 	    	}else{
 	    		var percentSpan = $('<span/>').text(data.percent+'%');
 	    	}
-	    	// var percentSpan = $('<span/>').text(data.percent+'%');
+	    	// var percentSpan = $('<span/>').text(data.percent+'%');
+
 	    	item.append(percentSpan);
 	    	
 	       	item.animate({
@@ -303,7 +311,8 @@ Zero.ChartsSettings = (function(module){
                 for(var j=0; j<newData.length; j++){
                 	if(newData[j].filter == $(event.target).attr('name')){
                 		if(newData[j].comfortMin != minValue || newData[j].comfortMax != maxValue){
-                			// console.log(newData[j]);
+                			// console.log(newData[j]);
+
                 			newData[j].comfortMin = minValue;
                 			newData[j].comfortMax = maxValue;
                 		_setAjaxSettings(newData[j]);
@@ -311,7 +320,8 @@ Zero.ChartsSettings = (function(module){
                 		}
                 	}
                  }
-	    	
+	    	
+
 	    };
 	_getAjaxWillpower = function(){
 	    	try{	    		
@@ -324,7 +334,8 @@ Zero.ChartsSettings = (function(module){
 	    			dataType:'json',
 	    			contentType:'application/json',
 	    			success:function(data){
-	    				// console.log(data.result);
+	    				// console.log(data.result);
+
 	    				_createCols($('.diagram-body'), data.result)
 	    			},
 	    			error:function(error){

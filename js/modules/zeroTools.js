@@ -465,7 +465,12 @@ Zero.Tools = (function(module){
 			urlNode = user.avatarUrl || user.avatarURL,
             url;
 			if(urlNode) {
-				url = urlNode + '_thumb.png';
+                if(urlNode == initConfiguration.getRootLocation()+initConfiguration.imagesFolder+'face12.jpg'){
+                    url = urlNode;
+                }else{
+                    url = urlNode + '_thumb.png';
+                }
+
 			} else {
 				url = root + initConfiguration.imagesFolder + 'def_avatar.png';
 			}			

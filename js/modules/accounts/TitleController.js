@@ -17,7 +17,7 @@ Zero.TitleController = (function(module){
 	    
 	    _handlers = function(){
 	    	
-	    };
+        },
 	    
 	    _paintTitle = function(){
             var wrapperTitle = $('.header-block');
