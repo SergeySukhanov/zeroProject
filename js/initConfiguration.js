@@ -14,11 +14,12 @@ var initConfiguration = {
 	 },
 //LOCAL	 
 	 //auth	  
-	chatUrl: 'http://zerosrv03.firstlinesoftware.ru:9999', 
+	chatUrl: 'http://zerosrv03.firstlinesoftware.ru:9999',
+    apiAuthUrl:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/',
 	apiUrl: 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/', 
-	urlSession:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/session',
-	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
-	urlLoginCheck:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/check_email_exists',
+//	urlSession:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/session',
+//	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
+//	urlLoginCheck:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/check_email_exists',
 	
 	//set data charts
 	urlCharts:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getChartsData',

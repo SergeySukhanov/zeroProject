@@ -28,7 +28,7 @@ Zero.PageIndexController = (function(module){
 	    },
 	    
 	    _postRender = function(){
-	      _randomMember();
+            _drawMember();
 	      _brand();
 	      _authSection();
 	      _socialLoginSection();
@@ -43,37 +43,53 @@ Zero.PageIndexController = (function(module){
 
 	    },
 	    
-	    _randomMember = function(){
-	       var wrapperRandom = $('.random-member');
-	       var imageFace = $('<div/>').addClass('wrapper-face-member');
-              var user = Zero.Tools.getUserAvatar({
-                                     'avatarUrl':initConfiguration.getRootLocation()+initConfiguration.imagesFolder+'face12.jpg'
-                                    },
-                                    100,
-                                    100
-              );
+//	    _randomMember = function(){
+//            try{
+//                $.ajax({
+//                    url:initConfiguration.apiUrl+'achieve',
+//                    type:"GET",
+//                    dataType:"json",
+//                    contentType:"application/json",
+//                    success:function(data){
+//                        _drawMember(data);
+//                    }
+//                });
+//            }catch(e) {
+//               console.log(e);
+//            }
+//	    },
+
+        _drawMember = function(){
+            var wrapperRandom = $('.random-member');
+            var imageFace = $('<div/>').addClass('wrapper-face-member');
+            var user = Zero.Tools.getUserAvatar({
+                    'avatarUrl':initConfiguration.getRootLocation()+initConfiguration.imagesFolder+'face12.jpg'
+                },
+                100,
+                100
+            );
             imageFace.append(user);
-	       var wrapperContent = $('<div/>').addClass('wrapper-content-member');
-	       //create fields
-	       var headerMemberName = $('<h3/>').addClass('member-name').text("Kroeni Molly Schellenberg");
-	       var socLoginName = $('<div/>').addClass('soc-login-member-name');
-	           var skypeType = $('<span/>').addClass('skype-field').text('Triathete / ');
-	           var twitterType = $('<span/>').addClass('twitter-field').text('@ladylourdesV');
-	           
-	       var linkMessage = $('<p/>').addClass('link-member-message').html('"Top Energy &trade; earner this week!"');
-	       var message = $('<p/>').addClass('member-message').html('Comparing myself with others in <br/> my field is inspiring and fun!');
-	       
-	       socLoginName.append(skypeType);
-	       socLoginName.append(twitterType);
-	       
-	       wrapperContent.append(headerMemberName);
-	       wrapperContent.append(socLoginName);
-	       wrapperContent.append(linkMessage);
-	       wrapperContent.append(message);
-	       
-	       wrapperRandom.append(imageFace);
-	       wrapperRandom.append(wrapperContent);    
-	    },
+            var wrapperContent = $('<div/>').addClass('wrapper-content-member');
+            //create fields
+            var headerMemberName = $('<h3/>').addClass('member-name').text("Kroeni Molly Schellenberg");
+            var socLoginName = $('<div/>').addClass('soc-login-member-name');
+            var skypeType = $('<span/>').addClass('skype-field').text('Triathete / ');
+            var twitterType = $('<span/>').addClass('twitter-field').text('@ladylourdesV');
+
+            var linkMessage = $('<p/>').addClass('link-member-message').html('"Top Energy &trade; earner this week!"');
+            var message = $('<p/>').addClass('member-message').html('Comparing myself with others in <br/> my field is inspiring and fun!');
+
+            socLoginName.append(skypeType);
+            socLoginName.append(twitterType);
+
+            wrapperContent.append(headerMemberName);
+            wrapperContent.append(socLoginName);
+            wrapperContent.append(linkMessage);
+            wrapperContent.append(message);
+
+            wrapperRandom.append(imageFace);
+            wrapperRandom.append(wrapperContent);
+        },
 	    
 	    _authSection = function(){
 	      $('.login-form').empty();

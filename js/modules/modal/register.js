@@ -448,20 +448,23 @@ function RegisterCtrl(options){
 	    _loginAjax = function(flag, dataForm){
 	    	if(flag){
 	    		var email = dataForm['email-reg'],
-	                pass = dataForm['password-reg'];
+	                pass = dataForm['password-reg'],
+                    fullName = dataForm['first-name']+' '+dataForm['last-name'];
 	    	}else{
 	    		var email = dataForm['auth-email'],
 	                pass = dataForm['auth-password'];
 	    	}
 		try{
 		  $.ajax({
-			url:initConfiguration.urlSession,
+			url:initConfiguration.apiAuthUrl+'session',
 			type:"POST",
 			dataType:'json',
 			contentType:"application/json",
 			data: JSON.stringify({
+               "name":fullName,
 			   "email":email,
-               "password":pass
+               "password":pass,
+                "deviceType":"web"
             }),
 			success:function(data){
 				if(data.code == 10){
@@ -486,14 +489,15 @@ function RegisterCtrl(options){
 	 	var fullName = dataForm['register-first-name']+' '+dataForm['register-last-name'];
 		try{
 		  $.ajax({
-			url:initConfiguration.urlRegister,
+			url:initConfiguration.apiAuthUrl+'session',
 			type:"POST",
 			dataType:'json',
 			contentType:"application/json",
 			data: JSON.stringify({
 			   "name":fullName,
                "email":dataForm['register-email'],
-               "password": dataForm['register-password']
+               "password": dataForm['register-password'],
+                "deviceType":"web"
             }),
 			success:function(data){
                _loginAjax(true, dataForm);

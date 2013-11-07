@@ -27,7 +27,7 @@ function LoginCtrl(options){
         var loginData =  $('#email-log').val();
 		try{
 		  $.ajax({
-			url:initConfiguration.urlLoginCheck,
+			url:initConfiguration.apiAuthUrl+'check_email_exists',
 			type:"GET",
 			dataType:'json',
 			contentType:"application/json",
@@ -201,13 +201,14 @@ function LoginCtrl(options){
 	    	}
 		try{
 		  $.ajax({
-			url:initConfiguration.urlSession,
+			url:initConfiguration.apiAuthUrl+'session',
 			type:"POST",
 			dataType:'json',
 			contentType:"application/json",
 			data: JSON.stringify({
 			   "email":email,
-               "password":pass
+               "password":pass,
+                "deviceType":"web"
             }),
 			success:function(data){
 				if(data.code == 10){
