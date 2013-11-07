@@ -202,9 +202,13 @@ margin-top: -60px;
         width:20px;
         height:20px;
         margin-right: 10px;
+        vertical-align: top;
     }
     .account-item .googleAccount{
         display:inline-block;
+    }
+    .account-item .jawboneAccount {
+        display: inline-block;
     }
     .account-item .googleAccount .g1{
         color:#0147F7

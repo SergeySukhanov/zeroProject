@@ -7,9 +7,11 @@ Zero.ChartsController = (function(module){
 	    
 	
 	    _getCharts = function(nowFlag, dataType, holder){
-	    	// Zero.Tools.date2timestamp(2013, 7,23, 0, 0, 0)               // Math.round(new Date().getTime()/1000)
+	    	// Zero.Tools.date2timestamp(2013, 7,23, 0, 0, 0)
+               // Math.round(new Date().getTime()/1000)
                var now =Math.round(new Date().getTime()/1000);
-               var week = 604800;            if(nowFlag){
+               var week = 604800;
+            if(nowFlag){
 	    	   var start = Math.round(new Date().getTime()/1000)-week;
 	    	   var finish = now;	
             }else{
@@ -36,7 +38,8 @@ Zero.ChartsController = (function(module){
                           "plots":dataType
                     }),
 					success:function(data){
-						// console.log(data);           
+						// console.log(data);
+           
 						onJsGraphDataLoad(holder, data, nowFlag);
 						if(nowFlag){
 						   Zero.EventChartsController.initialize(initConfiguration.settingsData.visibleCalendarIds, start, finish);	
@@ -84,6 +87,8 @@ Zero.ChartsController = (function(module){
 	    		break;
 	    		case 'fitbit': dataType = "fitbitCalories, fitbitSteps, fitbitDistance, fitbitFloors"
 	    		break;
+                case 'jawbone':dataType = "jawboneSteps"
+                break;
 	    	}
 	    	_getCharts(true, dataType, '#diagramHolder');
 		    _getCharts(false, dataType, '#yesterdayCharts');
@@ -94,7 +99,9 @@ Zero.ChartsController = (function(module){
 	view.initialize = function(){
 		var dataType = "nikeSteps, nikeCalories, nikeFuel";
 		_getCharts(true, dataType, '#diagramHolder');
-		_getCharts(false, dataType, '#yesterdayCharts');
+		_getCharts(false, dataType, '#yesterdayCharts');
+
+
 		_handlers();
 	};	
 	return view;

@@ -1,5 +1,5 @@
 Zero.GoogleAccount = (function(module){
-	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_account = [], nike_account, fitbit_account;
+	var m = {}, accountHolder, 	tokkens = module.getTokens(), g_account = [], nike_account, fitbit_account, jawbone_account;
 	var addButtonImg = initConfiguration.getRootLocation()+initConfiguration.imagesFolder+"addedCircle.png";
 
 	_getGoogleAuthUrl = function() {
@@ -32,7 +32,38 @@ Zero.GoogleAccount = (function(module){
 		}catch(e){
 			console.log(e);
 		};			
-	}
+	},
+        _getJawboneAuthUrl = function() {
+            var html = '<div class="jawboneAccount">add another Jawbone account</div>';
+            try{
+                $.ajax({
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Access-Token", tokkens.accessToken);
+                    },
+                    url: initConfiguration.apiUrl+'jawbone_auth_url',
+                    type: 'GET',
+                    data : {
+                        redirect : initConfiguration.getRootLocation() + 'transport.html'
+                    },
+                    dataType: 'json',
+                    contentType: "application/json",
+                    success: function (resp) {
+                        var params = {
+                            html : html,
+                            title : 'Jawbone Account',
+                            type : 'Jawbone'
+
+                        }
+                        _drawGoogleAuthButton(resp.authorizationURL, params)
+                    },
+                    error : function(error) {
+                        console.log(error);
+                    }
+                })
+            }catch(e){
+                console.log(e);
+            };
+        },
 	
 	_getFitBitAuthUrl = function() {
         var html = '<div class="fitbitAccount">add another <span class="f">f</span><span class="i1">i</span><span class="t1">t</span><span class="b">b</span><span class="i2">i</span><span class="t2">t</span> account</div>';
@@ -125,7 +156,7 @@ Zero.GoogleAccount = (function(module){
 	
 	_analyzeAccounts = function() {
 		var accounts = initConfiguration.settingsData.accounts;
-				
+		console.log(accounts);
 		
 		for(var i = 0; i < accounts.length; i++) {
 			if(accounts[i].type  == 'GOOGLE') {
@@ -136,7 +167,10 @@ Zero.GoogleAccount = (function(module){
 			}			
 			if(accounts[i].type  == 'FITBIT') {
 				fitbit_account= true;
-			}						
+            }
+            if(accounts[i].type == 'JAWBONE'){
+                jawbone_account = true;
+            }
 		}
 			
 	};
@@ -147,11 +181,13 @@ Zero.GoogleAccount = (function(module){
 		
 		g_account = [];
 		nike_account = null;
-		fitbit_account = null;		
+		fitbit_account = null;
+        jawbone_account = null;
 		
 		_analyzeAccounts();
 		_getGoogleAuthUrl();
 		_getFitBitAuthUrl();
+        _getJawboneAuthUrl();
 	}
 	
 	_drawGoogleAuthButton = function(link, params) {	
@@ -175,6 +211,10 @@ Zero.GoogleAccount = (function(module){
 		}
 
         if(params.type == 'FitBit' && fitbit_account) {
+            var registered = $('<h3/>').text('Registered Account');
+            registered.appendTo(html);
+        }
+        if(params.type == 'Jawbone' && jawbone_account) {
             var registered = $('<h3/>').text('Registered Account');
             registered.appendTo(html);
         }
