@@ -58,13 +58,76 @@ Zero.Settings = (function(module){
         elem[0].setSelectionRange(position, position);
     },
 
-    _validateFace = function(val){
-       console.log(val);
-       var arrayVal = [];
+    _validateFace = function(files){
+        var imgCount = 0;
+        var imgSize = 0;
+        var imgList = $('.preview');
+//        var val = $(event.currentTarget).val();
+//       console.log(val);
+//       var arrayVal = [];
+//
+//        arrayVal = val.split("\\");
+//        console.log(arrayVal[arrayVal.length-1]);
+         var imageType= /image.*/;
+         var num = 0;
 
-        arrayVal = val.split("\\");
-        console.log(arrayVal[arrayVal.length-1]);
+        for(var i=0; i<files.length; i++){
+            if(!files[i].type.match(imageType)){
+                return true;
+            }
+
+            num++;
+
+            var li = $('<span/>').appendTo(imgList);
+            $('<div/>').text(files[i].name).appendTo(li);
+            var img = $('<img/>').appendTo(li);
+            $('<div/>').addClass('progress').attr('rel', '0').text('0%').appendTo(li);
+            li.get(0).file = files[i];
+
+            var reader = new FileReader();
+            reader.onload = (function(aImg) {
+                return function(e) {
+                    aImg.attr('src', e.target.result);
+                    aImg.attr('width', 50);
+
+
+                };
+            })(img);
+
+            reader.readAsDataURL(files[i]);
+
+            imgList.find('span').each(function() {
+
+                var uploadItem = this;
+                var pBar = $(uploadItem).find('.progress');
+
+                new uploaderObject({
+                    file:       uploadItem.file,
+                    url:        initConfiguration.apiUrl+'user/avatar',
+                    fieldName:  'file',
+
+                    onprogress: function(percents) {
+                        _updateProgress(pBar, percents);
+                    },
+
+                    oncomplete: function(done, data) {
+                        if(done) {
+                            _updateProgress(pBar, 100);
+                            console.log('file `'+uploadItem.file.name+'` загружен, полученные данные:<br/>*****<br/>'+data+'<br/>*****');
+                        } else {
+                            console.log('Error `'+uploadItem.file.name+'`:<br/>'+this.lastError.text);
+                        }
+                    }
+                });
+            });
+        }
     },
+
+     _updateProgress =  function(bar, value) {
+         var width = bar.width();
+         var bgrValue = -width + (value * (width / 100));
+         bar.attr('rel', value).css('background-position', bgrValue+'px center').text(value+'%');
+     },
 
     _validateHeight = function(elem) {
         var f = "'";
@@ -438,6 +501,9 @@ Zero.Settings = (function(module){
                 'id' : name,
                 'class' : 'file-face'
             });
+
+            var preview = $('<div/>').addClass('preview');
+            preview.appendTo(html);
         }
 
 		if(label) label.appendTo(html);
@@ -466,8 +532,7 @@ Zero.Settings = (function(module){
                });
            }else{
                el.bind('change', function(event){
-                   var val = $(event.currentTarget).val();
-                   validationFunc(val);
+                   validationFunc(this.files);
                })
            }
         }
