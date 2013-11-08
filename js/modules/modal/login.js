@@ -20,7 +20,7 @@ function LoginCtrl(options){
 		config.wrap.append(linkWrapper);		
 		config.wrap.append(registerInner);
 		_createForm(registerInner);
-		$('.login').fadeIn();
+        $('.form-login').fadeIn();
 	},
 	
 	_checkLogin = function(){

@@ -38,6 +38,8 @@ function RegisterCtrl(options){
 		_createForm();
 		$('.form-login').fadeIn();
         _fullFieldEmail();
+
+
 	},
 
 
@@ -133,6 +135,21 @@ function RegisterCtrl(options){
                     }
                 }
             }
+
+            var linkBackToLogin = $('<a/>').addClass('back-to-login').text('Back to login');
+            wrapperForm.append(linkBackToLogin);
+
+            linkBackToLogin.bind('click', function(){
+                $('.random-member').slideDown(300);
+                $('.form-login').fadeOut(100, function(){
+                    $('.form-login').empty();
+                    new LoginCtrl({
+                        wrap:$('.form-login'),
+                        data:config.logData,
+                        logData:config.data
+                    });
+                });
+            });
         },
 
         _fullFieldEmail = function(){
