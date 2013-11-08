@@ -104,7 +104,7 @@ Zero.Settings = (function(module){
                 new uploaderObject({
                     file:       uploadItem.file,
                     url:        initConfiguration.apiUrl+'user/avatar',
-                    fieldName:  'file',
+                    fieldName:  "file",
 
                     onprogress: function(percents) {
                         _updateProgress(pBar, percents);
@@ -273,7 +273,7 @@ Zero.Settings = (function(module){
 			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _validateWeight, _maskedWeight, _insMode),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker', null, true, _validateBirthday),
             fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues),
-            fFile = _createFormRowHtml('avatar', 'Avatar', 'file', null, true,  _validateFace);
+            fFile = _createFormRowHtml('file', 'Avatar', 'file', null, true,  _validateFace);
 
 		// fName.appendTo(holder);
 		fUserName.appendTo(holder);
@@ -495,6 +495,15 @@ Zero.Settings = (function(module){
 		}
 
         if(type == 'file'){
+          var form = $('<form/>').attr({
+                          'method':'POST',
+                          'action':initConfiguration.apiUrl+'user/avatar?token='+localStorage.accessToken,
+                          'enctype':"multipart/form-data"
+                       });
+            var submit = $('<input/>').attr({
+                'type':'submit',
+                'id':'submit-face'
+            });
             el = $('<input />').attr({
                 'type' : 'file',
                 'name' : name,
@@ -504,11 +513,18 @@ Zero.Settings = (function(module){
 
             var preview = $('<div/>').addClass('preview');
             preview.appendTo(html);
+            form.append(el);
+            form.append(submit);
         }
 
 		if(label) label.appendTo(html);
 		if(checkboxText) checkboxText.appendTo(html);
-        el.appendTo(html);
+
+        if(type == 'file'){
+            form.appendTo(html);
+        }else{
+            el.appendTo(html);
+        }
 
         if (insertModeFunc){
             el.bind('keydown', function(event){
@@ -531,8 +547,13 @@ Zero.Settings = (function(module){
                    validationFunc(elem);
                });
            }else{
+               el.bind('blur', function(event){
+                   $('#submit-face').trigger('click');
+               });
                el.bind('change', function(event){
                    validationFunc(this.files);
+//                   $('#submit-face').trigger('click');
+
                })
            }
         }
