@@ -142,8 +142,12 @@ Zero.GoogleAccount = (function(module){
 				type: 'GET',
 				dataType: 'json',
 				contentType: "application/json",
-				success: function (resp) {	
-					console.warn(resp)
+				success: function (resp) {
+                    var wrap = $('#nikeTokken').parent();
+                    $('#nikeTokken').hide();
+                    $('#nikeTokken').next().hide();
+                    var connected = $('<p/>').text('Connected').addClass('connected');
+					wrap.append(connected);
 				},
 				error : function(error) {
 					console.log(error);

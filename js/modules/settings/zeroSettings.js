@@ -56,7 +56,15 @@ Zero.Settings = (function(module){
             position = 0;
         }
         elem[0].setSelectionRange(position, position);
-    }
+    },
+
+    _validateFace = function(val){
+       console.log(val);
+       var arrayVal = [];
+
+        arrayVal = val.split("\\");
+        console.log(arrayVal[arrayVal.length-1]);
+    },
 
     _validateHeight = function(elem) {
         var f = "'";
@@ -201,15 +209,16 @@ Zero.Settings = (function(module){
 			fHeight = _createFormRowHtml('height', 'Height', 'string', null, true, _validateHeight, _maskedHeight, _insMode),
 			fWeight = _createFormRowHtml('weight', 'Weight', 'string', null, true, _validateWeight, _maskedWeight, _insMode),
 			fBirthday = _createFormRowHtml('birthday', 'Birthday', 'jq-datepicker', null, true, _validateBirthday),
-            fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues);
+            fGender = _createFormRowHtml('gender', 'Gender', 'dropdown', genderValues),
+            fFile = _createFormRowHtml('avatar', 'Avatar', 'file', null, true,  _validateFace);
 
 		// fName.appendTo(holder);
 		fUserName.appendTo(holder);
-		//fEmail.appendTo(holder);
 		fHeight.appendTo(holder);
 		fWeight.appendTo(holder);
 		fBirthday.appendTo(holder);
         fGender.appendTo(holder);
+        fFile.appendTo(holder);
 	};
 	
 	_createImportTab = function() {
@@ -422,6 +431,15 @@ Zero.Settings = (function(module){
 
 		}
 
+        if(type == 'file'){
+            el = $('<input />').attr({
+                'type' : 'file',
+                'name' : name,
+                'id' : name,
+                'class' : 'file-face'
+            });
+        }
+
 		if(label) label.appendTo(html);
 		if(checkboxText) checkboxText.appendTo(html);
         el.appendTo(html);
@@ -439,13 +457,22 @@ Zero.Settings = (function(module){
         }
 
         if (validationFunc){
-            Zero.Tools.addInputValidator(el);
+           if(el.attr('type') != 'file'){
+               Zero.Tools.addInputValidator(el);
 
-            el.bind('blur', function(event){
-                var elem = $(event.currentTarget);
-                validationFunc(elem);
-            });
+               el.bind('blur', function(event){
+                   var elem = $(event.currentTarget);
+                   validationFunc(elem);
+               });
+           }else{
+               el.bind('change', function(event){
+                   var val = $(event.currentTarget).val();
+                   validationFunc(val);
+               })
+           }
         }
+
+
 
 		return html;
 	}

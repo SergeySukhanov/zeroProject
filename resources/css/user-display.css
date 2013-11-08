@@ -53,7 +53,7 @@ width: 74%;
 display: inline-block;
 vertical-align: top;
 }
-}
+
 
 .willpower-diagram {
 display: inline-block;
@@ -73,7 +73,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67af4f', end
 
 .negative{
 	background: #ce5f5f;
-background: -moz-linear-gradient(top,  #ce5f5f 1%, #a33737 100%);
+    background: -moz-linear-gradient(top,  #ce5f5f 1%, #a33737 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ce5f5f), color-stop(100%,#a33737));
 background: -webkit-linear-gradient(top,  #ce5f5f 1%,#a33737 100%);
 background: -o-linear-gradient(top,  #ce5f5f 1%,#a33737 100%);
@@ -145,7 +145,7 @@ margin-right: 20px;
 .switcher {
 text-align: right;
 position: absolute;
-right: 200px;
+right: 90px;
 float: right;
 margin-top: -35px;
 }

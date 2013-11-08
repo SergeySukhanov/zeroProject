@@ -236,6 +236,12 @@ margin-top: -60px;
     .account-item .fitbitAccount span{
         color:#292929
     }
+    .connected{
+        color: #818281;
+        margin-top: 10px;
+        font-weight: 600;
+        text-decoration: underline;
+    }
 		
 #nikeTokken {
 	border : 1px solid #ccc;
