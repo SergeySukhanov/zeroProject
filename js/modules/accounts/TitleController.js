@@ -29,8 +29,9 @@ Zero.TitleController = (function(module){
 	    _createAccountName = function(wrap){
 	    	var wrapper = wrap;
 	    	var divPhoto = $('<div/>').attr('id','userPhotoHolder').addClass('account-photo');
-            Zero.AccountPhotoController.initialize();
-
+//            Zero.AccountPhotoController.initialize();
+              var userAvatar = Zero.Tools.getUserAvatar(initConfiguration.settingsData, 120, 120);
+            divPhoto.append(userAvatar);
 	    	var divWelcome = $('<div/>').addClass('welcome-user');
 	    	
 	    	var h1 = $('<h1/>').text('Good');

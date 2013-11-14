@@ -110,7 +110,7 @@ Zero.AccountPhotoController = (function(module){
             var pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern");
             if(url){
                 var image = paper.image(url,0,0,1,1);
-                image.rotate(90);
+//                image.rotate(90);
             } else {
                 var image = paper.image(root+initConfiguration.imagesFolder+config.faceImg,0,0,1,1);
             }

@@ -475,13 +475,12 @@ Zero.Tools = (function(module){
 				url = root + initConfiguration.imagesFolder + 'def_avatar.png';
 			}			
 			var willpower = user.energy || 50,			
-				paper = Raphael(avatarHolder[0], width, height),
+				paper = Raphael(avatarHolder[0], 90, 90),
 				circle = paper.circle(41, 41, 40),
 				uuid = Raphael.createUUID(),
 				pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern"),
 				image = paper.image(url,0,0,1,1);
-				
-            //image.rotate(90);
+//            image.rotate(90);
 			
 			function arc(center, radius, startAngle, endAngle) {
 				angle = startAngle;
@@ -518,7 +517,7 @@ Zero.Tools = (function(module){
             $(image.node).appendTo(pattern);
             $(pattern).appendTo(paper.defs);
             $(circle.node).attr({fill: "url(#" + pattern.id + ")", stroke: "#FFF", "stroke-width": 0});			
-			
+
 			
 			
 			

@@ -89,7 +89,7 @@ var uploaderObject = function(params) {
             // chrome (W3C spec.)
             self.xhr.send(body);
         }
-
+//        self.xhr.sendAsBinary(body);
     };
 
     self.reader.readAsBinaryString(params.file);

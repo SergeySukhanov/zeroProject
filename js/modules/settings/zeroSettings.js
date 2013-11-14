@@ -85,6 +85,7 @@ Zero.Settings = (function(module){
             li.get(0).file = files[i];
 
             var reader = new FileReader();
+            console.log(reader);
             reader.onload = (function(aImg) {
                 return function(e) {
                     aImg.attr('src', e.target.result);
@@ -103,7 +104,7 @@ Zero.Settings = (function(module){
 
                 new uploaderObject({
                     file:       uploadItem.file,
-                    url:        initConfiguration.apiUrl+'user/avatar',
+                    url:        initConfiguration.apiUrlTom+'user/avatar',
                     fieldName:  "file",
 
                     onprogress: function(percents) {
@@ -521,7 +522,7 @@ Zero.Settings = (function(module){
 		if(checkboxText) checkboxText.appendTo(html);
 
         if(type == 'file'){
-            form.appendTo(html);
+            el.appendTo(html);
         }else{
             el.appendTo(html);
         }

@@ -349,7 +349,7 @@ Zero.ChartsSettings = (function(module){
 	    }
 	    
 	view.initialize = function(){
-		_render();
+//		_render();
 	};
 	
 	return view;

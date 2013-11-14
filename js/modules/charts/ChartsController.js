@@ -39,10 +39,14 @@ Zero.ChartsController = (function(module){
                     }),
 					success:function(data){
 						// console.log(data);
-           
+
 						onJsGraphDataLoad(holder, data, nowFlag);
 						if(nowFlag){
-						   Zero.EventChartsController.initialize(initConfiguration.settingsData.visibleCalendarIds, start, finish);	
+						   Zero.EventChartsController.initialize(initConfiguration.settingsData.visibleCalendarIds, start, finish);
+                            $('.daily').empty();
+                                Zero.DailyController.init(data);
+
+
 						}
 						_postRender();
 					},
