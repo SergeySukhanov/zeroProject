@@ -96,31 +96,32 @@ Zero.Settings = (function(module){
             })(img);
 
             reader.readAsDataURL(files[i]);
+            $('#submit-face').trigger('click');
 
-            imgList.find('span').each(function() {
-
-                var uploadItem = this;
-                var pBar = $(uploadItem).find('.progress');
-
-                new uploaderObject({
-                    file:       uploadItem.file,
-                    url:        initConfiguration.apiUrlTom+'user/avatar',
-                    fieldName:  "file",
-
-                    onprogress: function(percents) {
-                        _updateProgress(pBar, percents);
-                    },
-
-                    oncomplete: function(done, data) {
-                        if(done) {
-                            _updateProgress(pBar, 100);
-                            console.log('file `'+uploadItem.file.name+'` загружен, полученные данные:<br/>*****<br/>'+data+'<br/>*****');
-                        } else {
-                            console.log('Error `'+uploadItem.file.name+'`:<br/>'+this.lastError.text);
-                        }
-                    }
-                });
-            });
+//            imgList.find('span').each(function() {
+//
+//                var uploadItem = this;
+//                var pBar = $(uploadItem).find('.progress');
+//
+//                new uploaderObject({
+//                    file:       uploadItem.file,
+//                    url:        initConfiguration.apiUrlTom+'user/avatar',
+//                    fieldName:  "file",
+//
+//                    onprogress: function(percents) {
+//                        _updateProgress(pBar, percents);
+//                    },
+//
+//                    oncomplete: function(done, data) {
+//                        if(done) {
+//                            _updateProgress(pBar, 100);
+//                            console.log('file `'+uploadItem.file.name+'` загружен, полученные данные:<br/>*****<br/>'+data+'<br/>*****');
+//                        } else {
+//                            console.log('Error `'+uploadItem.file.name+'`:<br/>'+this.lastError.text);
+//                        }
+//                    }
+//                });
+//            });
         }
     },
 
@@ -522,7 +523,7 @@ Zero.Settings = (function(module){
 		if(checkboxText) checkboxText.appendTo(html);
 
         if(type == 'file'){
-            el.appendTo(html);
+            form.appendTo(html);
         }else{
             el.appendTo(html);
         }
@@ -549,7 +550,7 @@ Zero.Settings = (function(module){
                });
            }else{
                el.bind('blur', function(event){
-                   $('#submit-face').trigger('click');
+
                });
                el.bind('change', function(event){
                    validationFunc(this.files);

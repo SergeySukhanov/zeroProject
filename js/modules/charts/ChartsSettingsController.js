@@ -14,39 +14,11 @@ Zero.ChartsSettings = (function(module){
 	    _doSettings,
 	    
 	    tokkens = module.getTokens(),
-
-        _postrender = function(){
-
-        },
-
-	    _render = function(){
-	    	try{
-	    		$.ajax({
-	    		beforeSend: function (request) {
-					   request.setRequestHeader("Access-Token", tokkens.accessToken);
-				    },	
-					url:initConfiguration.urlSliders,
-					type:'GET',
-					dataType:'json',
-					contentType:'aplication/json',
-					success:function(data){
-						config.dataSliders = data.result;
-						console.log();
-						_postRender();
-					},
-					error:function(error){
-						console.log(error);
-					}
-	    	    });
-	    	}catch(e){
-	    		console.log(e);
-	    	}
-	    	_postRender();
-	    },
 	    
-	    _postRender = function(){
+	    _postRender = function(result){
 	       _paintChartsSettings();
 	       _handlers();
+            _createCols($('.diagram-body'), result);
 	       
 	    },
 	    
@@ -55,7 +27,7 @@ Zero.ChartsSettings = (function(module){
 	    		event.preventDefault();
 	    		_delete();
 	    	});
-	    };
+        },
 	    
 	    _paintChartsSettings = function(){
             var wrapper = $('#willPower');
@@ -85,92 +57,72 @@ Zero.ChartsSettings = (function(module){
             
             wrapDiagram.append(diagramH3);
             wrapDiagram.append(diagramBody);
-            
-//            wrapSettings.append(actSettings);
-//            wrapSettings.append(liveSettings);
-//            wrapSettings.append(doSettings);
+
             
             wrapper.append(wrapDiagram);
-//            wrapper.append(wrapSettings);
-            
-            var wrapSliders;
-            var dataSliders = config.dataSliders || {};
-            
-            
-            
-            for(var i=0; i<dataSliders.length; i++){
-            	if(dataSliders[i].section == "live"){
-            		wrapSliders = _liveSettings;
-            	}else{
-            		wrapSliders = _doSettings;
-            	}            	
-            	_createSlider(wrapSliders, dataSliders[i]); 
-            }
-            
-            _getAjaxWillpower();
 
 
                   
 	    },
 	    
-	    _createSlider = function(wrap, data){
-	    	var wrapSlider = $('<div/>').addClass('layout-slider');
-	    	var inputSlider = $('<div/>').addClass('slider-filter').attr({
-	    		                             'id':data.filter,
-	    		                             'type':'slider',
-	    		                             'name':data.filter
-	    	                               });	  
-	    	var labelSlider = $('<label/>').text(initConfiguration.labelsSilder[data.filter]);
-	    	  	                               
-	    	wrapSlider.append(inputSlider);
-	    	wrapSlider.append(labelSlider);
-	    	wrap.append(wrapSlider);
-	    	var currentStep;
-	    	switch(data.filter){
-	    		case "calories":currentStep = 100;
-	    		break;
-	    		case "steps":currentStep = 1000;
-	    		break;
-	    		case "distance":currentStep = 100;
-	    		break;
-	    		case "floors":currentStep = 10;
-	    		break;
-	    		case "itemsOnWorkDay":currentStep = 1;
-	    		break;
-	    		case "itemsOnPlayDay":currentStep = 1;
-	    		break;
-	    		case "itemsGap":currentStep = 10;
-	    		break;
-	    		case "itemsSteps":currentStep = 100;
-	    		break;
-	    	}
-	    	
-           $('#'+data.filter).slider({ 
-           	    min: parseInt(data.min), 
-           	    max: parseInt(data.max), 
-           	    step: currentStep, 
-           	    range: true, 
-           	    values:[data.comfortMin, data.comfortMax], 
-           	    create:function( event, ui ){
-           	    	var handlerLeft = $(event.target).children().eq(1);
-           	    	var handlerRight = $(event.target).children().eq(2);
-           	    	
-           	    	var popupHandlerLeft = $('<span/>').addClass('popup-handler').addClass('popup-handler-left').text(data.comfortMin);
-           	    	var popupHandlerRight = $('<span/>').addClass('popup-handler').addClass('popup-handler-right').text(data.comfortMax);
-           	    	
-           	    	handlerLeft.append(popupHandlerLeft);
-           	    	handlerRight.append(popupHandlerRight);
-           	    },
-           	    slide:function(event, ui){
-           	    	$(event.target).find('.popup-handler-left').text(ui.values[0]);
-           	    	$(event.target).find('.popup-handler-right').text(ui.values[1]);
-           	    },
-                stop: function( event, ui ){               	
-                   _formatDataSettings(event, ui);
-                }
-           	    
-           	});
-	    },
+//	    _createSlider = function(wrap, data){
+//	    	var wrapSlider = $('<div/>').addClass('layout-slider');
+//	    	var inputSlider = $('<div/>').addClass('slider-filter').attr({
+//	    		                             'id':data.filter,
+//	    		                             'type':'slider',
+//	    		                             'name':data.filter
+//	    	                               });
+//	    	var labelSlider = $('<label/>').text(initConfiguration.labelsSilder[data.filter]);
+//
+//	    	wrapSlider.append(inputSlider);
+//	    	wrapSlider.append(labelSlider);
+//	    	wrap.append(wrapSlider);
+//	    	var currentStep;
+//	    	switch(data.filter){
+//	    		case "calories":currentStep = 100;
+//	    		break;
+//	    		case "steps":currentStep = 1000;
+//	    		break;
+//	    		case "distance":currentStep = 100;
+//	    		break;
+//	    		case "floors":currentStep = 10;
+//	    		break;
+//	    		case "itemsOnWorkDay":currentStep = 1;
+//	    		break;
+//	    		case "itemsOnPlayDay":currentStep = 1;
+//	    		break;
+//	    		case "itemsGap":currentStep = 10;
+//	    		break;
+//	    		case "itemsSteps":currentStep = 100;
+//	    		break;
+//	    	}
+//
+//           $('#'+data.filter).slider({
+//           	    min: parseInt(data.min),
+//           	    max: parseInt(data.max),
+//           	    step: currentStep,
+//           	    range: true,
+//           	    values:[data.comfortMin, data.comfortMax],
+//           	    create:function( event, ui ){
+//           	    	var handlerLeft = $(event.target).children().eq(1);
+//           	    	var handlerRight = $(event.target).children().eq(2);
+//
+//           	    	var popupHandlerLeft = $('<span/>').addClass('popup-handler').addClass('popup-handler-left').text(data.comfortMin);
+//           	    	var popupHandlerRight = $('<span/>').addClass('popup-handler').addClass('popup-handler-right').text(data.comfortMax);
+//
+//           	    	handlerLeft.append(popupHandlerLeft);
+//           	    	handlerRight.append(popupHandlerRight);
+//           	    },
+//           	    slide:function(event, ui){
+//           	    	$(event.target).find('.popup-handler-left').text(ui.values[0]);
+//           	    	$(event.target).find('.popup-handler-right').text(ui.values[1]);
+//           	    },
+//                stop: function( event, ui ){
+//                   _formatDataSettings(event, ui);
+//                }
+//
+//           	});
+//	    },
 	    
 	    _createCols = function(wrap, config){
 	    	wrap.empty();
@@ -329,14 +281,26 @@ Zero.ChartsSettings = (function(module){
 	    			beforeSend: function (request) {
 					   request.setRequestHeader("Access-Token", tokkens.accessToken);
 				    },
-	    			url:initConfiguration.urlWillpower,
+	    			url:initConfiguration.apiUrl+'energy',
 	    			type:'GET',
 	    			dataType:'json',
 	    			contentType:'application/json',
 	    			success:function(data){
-	    				// console.log(data.result);
+	    				console.log(data.result);
 
-	    				_createCols($('.diagram-body'), data.result)
+                        var resultFinal = data.result;
+                        var count = 15;
+                        var resultArray = [];
+                        var countArray = 0;
+                        for(var i=count; 1<i; i--){
+                            resultArray[countArray] = resultFinal[resultFinal.length-i];
+                            countArray++;
+                        }
+
+                        _postRender(resultArray);
+
+
+//	    				_createCols($('.diagram-body'), resultArray);
 	    			},
 	    			error:function(error){
 	    				console.log(error);
@@ -350,6 +314,7 @@ Zero.ChartsSettings = (function(module){
 	    
 	view.initialize = function(){
 //		_render();
+        _getAjaxWillpower();
 	};
 	
 	return view;

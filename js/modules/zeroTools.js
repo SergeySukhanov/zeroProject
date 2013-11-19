@@ -476,7 +476,7 @@ Zero.Tools = (function(module){
 			}			
 			var willpower = user.energy || 50,			
 				paper = Raphael(avatarHolder[0], 90, 90),
-				circle = paper.circle(41, 41, 40),
+				circle = paper.circle(44, 44, 40),
 				uuid = Raphael.createUUID(),
 				pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern"),
 				image = paper.image(url,0,0,1,1);
@@ -504,7 +504,7 @@ Zero.Tools = (function(module){
 			var finish = (willpower*3.6)-90;
 			
 			
-		    var ps = paper.path(arc([41, 41], 40, -90, finish));
+		    var ps = paper.path(arc([44, 44], 40, -90, finish));
 		    ps.attr({stroke:'#75caea',"stroke-width":4});			
 			
 			

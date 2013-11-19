@@ -2,23 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/modules/charts/dailyCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/AccountPhotoController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/AccountPhotoController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/charts/ChartsController.js" afterPath="$PROJECT_DIR$/js/modules/charts/ChartsController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" afterPath="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/TitleController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/TitleController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/index.css" afterPath="$PROJECT_DIR$/resources/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/plug/uploader.js" afterPath="$PROJECT_DIR$/js/plug/uploader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/user-display.css" afterPath="$PROJECT_DIR$/resources/css/user-display.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.html" afterPath="$PROJECT_DIR$/test.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/settings/zeroSettings.js" afterPath="$PROJECT_DIR$/js/modules/settings/zeroSettings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/zeroTools.js" afterPath="$PROJECT_DIR$/js/modules/zeroTools.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384325666302" ignored="false" />
+    <file path="/Dummy.txt" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384846701639" ignored="false" />
     <file path="$PROJECT_DIR$/../constructor/.idea/workspace.xml" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383119542984" ignored="false" />
     <file path="/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384339868768" ignored="false" />
     <file path="/formLogin.json" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383125235916" ignored="false" />
@@ -31,39 +23,39 @@
     <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384330591697" ignored="false" />
     <file path="/popup.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383208552823" ignored="false" />
     <file path="/TitleController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384329485728" ignored="false" />
-    <file path="/ChartsSettingsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383229739768" ignored="false" />
+    <file path="/ChartsSettingsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384850760086" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384258955466" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/main-styles.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384411999121" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/main-styles.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="/main-styles.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384253908825" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384412344465" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/content.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384259914230" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/footer.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384253843919" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384762786560" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/content.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384760396992" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/footer.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="/formConstructor.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383309073902" ignored="false" />
     <file path="/zeroAccounts.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383825939182" ignored="false" />
     <file path="/zero.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383826052195" ignored="false" />
     <file path="/ChartsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384424181568" ignored="false" />
     <file path="/main.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384414451649" ignored="false" />
-    <file path="/zeroSettings.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384342765043" ignored="false" />
+    <file path="/zeroSettings.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384506204764" ignored="false" />
     <file path="/settings.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383912939007" ignored="false" />
     <file path="/uploader.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384340383524" ignored="false" />
     <file path="/test.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383916279658" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/news.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384258951098" ignored="false" />
     <file path="/news.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384258033950" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/news.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384256396805" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/asideNews.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384257971896" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/news.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/asideNews.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="/news.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384248650700" ignored="false" />
-    <file path="/content.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384259121062" ignored="false" />
+    <file path="/content.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384760396032" ignored="false" />
     <file path="/asideNews.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384159980336" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/datepicker.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384159570848" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/datepicker.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/newsItem.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384258945297" ignored="false" />
     <file path="/newsItem.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384257990295" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/newsItem.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384247492758" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/newsItem.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="/newsItem.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384247219860" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/attentions.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384412214644" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/resources/css/events.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384256202166" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/attentions.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/events.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/dagestan.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384257268522" ignored="false" />
     <file path="/dagestan.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384258931527" ignored="false" />
-    <file path="$PROJECT_DIR$/../dagestan/document.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384258932697" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/document.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
     <file path="$PROJECT_DIR$/../dagestan/prezident.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384259352681" ignored="false" />
     <file path="/prezident.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384259351289" ignored="false" />
     <file path="$PROJECT_DIR$/../tests/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384339872848" ignored="false" />
@@ -73,6 +65,9 @@
     <file path="/dayliCtrl.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384419143243" ignored="false" />
     <file path="/dailyCtrl.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384424233833" ignored="false" />
     <file path="/user-display.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384421735084" ignored="false" />
+    <file path="$PROJECT_DIR$/../dagestan/resources/css/documents.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384527378680" ignored="false" />
+    <file path="$USER_HOME$/Documents/GitHub/dag/resources/css/form.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384780686832" ignored="false" />
+    <file path="$USER_HOME$/Documents/GitHub/dag/resources/css/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384780445547" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +90,34 @@
       <file leaf-file-name="zeroSettings.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/settings/zeroSettings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="279" column="35" selection-start="8570" selection-end="8570" vertical-scroll-proportion="0.0">
+            <state line="99" column="59" selection-start="2649" selection-end="2649" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/modules/accounts/SettingsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChartsSettingsController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="137" column="107" selection-start="4787" selection-end="4787" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zeroTools.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="506" column="43" selection-start="14295" selection-end="14295" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,10 +132,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="86" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="dailyCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/charts/dailyCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="46" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.0">
+            <state line="17" column="53" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,24 +154,6 @@
         <entry file="file://$PROJECT_DIR$/resources/css/user-display.css">
           <provider selected="true" editor-type-id="text-editor">
             <state line="243" column="39" selection-start="4205" selection-end="4205" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="47" selection-start="2865" selection-end="2865" vertical-scroll-proportion="-22.23077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChartsSettingsController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="351" column="8" selection-start="11153" selection-end="11163" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,24 +172,6 @@
         <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="59" column="46" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main-styles.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/main-styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="25" selection-start="1425" selection-end="1425" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -201,20 +196,20 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/settings.html" />
-        <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/resources/css/settings.css" />
         <option value="$PROJECT_DIR$/js/modules/accounts/AccountPhotoController.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/TitleController.js" />
-        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/js/plug/uploader.js" />
-        <option value="$PROJECT_DIR$/js/modules/settings/zeroSettings.js" />
         <option value="$PROJECT_DIR$/js/modules/charts/dayliCtrl.js" />
         <option value="$PROJECT_DIR$/main.html" />
-        <option value="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
         <option value="$PROJECT_DIR$/resources/css/index.css" />
         <option value="$PROJECT_DIR$/resources/css/user-display.css" />
         <option value="$PROJECT_DIR$/js/modules/charts/ChartsController.js" />
         <option value="$PROJECT_DIR$/js/modules/charts/dailyCtrl.js" />
+        <option value="$PROJECT_DIR$/test.html" />
+        <option value="$PROJECT_DIR$/js/modules/settings/zeroSettings.js" />
+        <option value="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
+        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
       </list>
     </option>
@@ -559,7 +554,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1272" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="1272" y="-8" width="1936" height="1096" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -641,58 +636,24 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="500" column="30" selection-start="14201" selection-end="14201" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/plug/uploader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="59" selection-start="2790" selection-end="2790" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/events/zeroWeek.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/events/zeroEvents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/modal/ModalController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="4236" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="4236" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="47" selection-start="2865" selection-end="2865" vertical-scroll-proportion="-22.23077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="351" column="8" selection-start="11153" selection-end="11163" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -732,16 +693,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="86" selection-start="350" selection-end="350" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/charts/dailyCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="46" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.0">
+        <state line="17" column="53" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/settings/zeroSettings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="35" selection-start="8570" selection-end="8570" vertical-scroll-proportion="0.0">
+        <state line="99" column="59" selection-start="2649" selection-end="2649" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/SettingsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="107" selection-start="4787" selection-end="4787" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="506" column="43" selection-start="14295" selection-end="14295" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
