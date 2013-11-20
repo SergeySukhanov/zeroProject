@@ -2,7 +2,7 @@ Zero.ChartsSettings = (function(module){
 	var view = {},
 	
 	    config = {
-	       diagramTitle:'Zero <sup>o</sup> points',
+	       diagramTitle:'Zero <sup>o</sup> points week dynamics',
 		   actTitle:"Act",
 		   actP:"Use the sliders on the left to set your body targets, and the sliders on the right to set your schedule targets.",
 		   liveTitle:"Live",
@@ -148,7 +148,7 @@ Zero.ChartsSettings = (function(module){
             	    diagramItemWrap.append(diagramSubTitle);
             	    wrap.append(diagramItemWrap);
             	    
-            	if(diagramData[j].percent > 0){
+            	if(diagramData[j].energy > 0){
             		diagramItem.addClass('positive');
             	}else{
             		diagramItem.addClass('negative');
@@ -169,89 +169,89 @@ Zero.ChartsSettings = (function(module){
 	    	for(var i=0; i<lengthDiagramItem; i++){
                    
 	    	}
-	    }
+        },
 	    
 	    _createDiagramCol = function(item, data){
 	    	var wrapper = $('.diagram-body');
-	    	if(data.percent > 100){
-	    		data.percent = 100;
-	    		var percentSpan = $('<span/>').text(data.percent+'%');
-	    	}else if(data.percent < -100){
-	    		data.percent = -100;
-	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    	if(data.energy > 100){
+	    		data.energy = 100;
+	    		var percentSpan = $('<span/>').text(data.energy+'%');
+	    	}else if(data.energy < -100){
+	    		data.energy = -100;
+	    		var percentSpan = $('<span/>').text(data.energy+'%');
 	    	}else{
-	    		var percentSpan = $('<span/>').text(data.percent+'%');
+	    		var percentSpan = $('<span/>').text(data.energy+'%');
 	    	}
 	    	// var percentSpan = $('<span/>').text(data.percent+'%');
 
 	    	item.append(percentSpan);
 	    	
 	       	item.animate({
-	       		'height': wrapper.height()/100*Math.abs(parseInt(data.percent))
+	       		'height': wrapper.height()/100*Math.abs(parseInt(data.energy))
 	       	}, 2000);
 	    },
 	    
-	    _setAjaxSettings = function(dataFilter){
-	    	
-	    	try{	    		
-	    		$.ajax({
-	    			beforeSend: function (request) {
-					   request.setRequestHeader("Access-Token", tokkens.accessToken);
-				    },
-	    			url:initConfiguration.urlSliders+'/'+dataFilter.filter,
-	    			type:'PUT',
-	    			dataType:'json',
-	    			contentType:'application/json',
-	    			data:JSON.stringify(dataFilter),
-	    			success:function(data){	    				
-	    				_getAjaxWillpower();
-	    			},
-	    			error:function(error){
-	    				console.log(error);
-	    			}
-	    			
-	    		});
-	    	}catch(e){
-	    		console.log(e);
-	    	}
-	    },
+//	    _setAjaxSettings = function(dataFilter){
+//
+//	    	try{
+//	    		$.ajax({
+//	    			beforeSend: function (request) {
+//					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+//				    },
+//	    			url:initConfiguration.urlSliders+'/'+dataFilter.filter,
+//	    			type:'PUT',
+//	    			dataType:'json',
+//	    			contentType:'application/json',
+//	    			data:JSON.stringify(dataFilter),
+//	    			success:function(data){
+//	    				_getAjaxWillpower();
+//	    			},
+//	    			error:function(error){
+//	    				console.log(error);
+//	    			}
+//
+//	    		});
+//	    	}catch(e){
+//	    		console.log(e);
+//	    	}
+//	    },
 	    
-	    _delete = function(){
-	    	try{
-	    		$.ajax({
-	    			beforeSend: function (request) {
-					   request.setRequestHeader("Access-Token", tokkens.accessToken);
-				    },
-					url:initConfiguration.urlSliders,
-					type:'DELETE',
-					dataType:'json',
-					contentType:'aplication/json',
-					success:function(response){
-						console.log(response);
-						var wrapSliders;
-						_liveSettings.empty();
-						_doSettings.empty();
-						config.dataSliders = response.result;
-                        var dataSliders = config.dataSliders || {};
-            
-                      for(var i=0; i<dataSliders.length; i++){
-            	        if(dataSliders[i].section == "live"){
-            	           	wrapSliders = _liveSettings;
-            	        }else{
-            		        wrapSliders = _doSettings;
-            	        }            	
-            	            _createSlider(wrapSliders, dataSliders[i]); 
-                     }
-						_getAjaxWillpower();
-					},
-					error:function(error){
-						console.log(error);
-					}
-	    	    });
-	    	}catch(e){
-	    		console.log(e);
-	    	}
-	    },
+//	    _delete = function(){
+//	    	try{
+//	    		$.ajax({
+//	    			beforeSend: function (request) {
+//					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+//				    },
+//					url:initConfiguration.urlSliders,
+//					type:'DELETE',
+//					dataType:'json',
+//					contentType:'aplication/json',
+//					success:function(response){
+//						console.log(response);
+//						var wrapSliders;
+//						_liveSettings.empty();
+//						_doSettings.empty();
+//						config.dataSliders = response.result;
+//                        var dataSliders = config.dataSliders || {};
+//
+//                      for(var i=0; i<dataSliders.length; i++){
+//            	        if(dataSliders[i].section == "live"){
+//            	           	wrapSliders = _liveSettings;
+//            	        }else{
+//            		        wrapSliders = _doSettings;
+//            	        }
+//            	            _createSlider(wrapSliders, dataSliders[i]);
+//                     }
+//						_getAjaxWillpower();
+//					},
+//					error:function(error){
+//						console.log(error);
+//					}
+//	    	    });
+//	    	}catch(e){
+//	    		console.log(e);
+//	    	}
+//	    },
 	    
 	    _formatDataSettings = function(event, value){
 	    	var newData = config.dataSliders;
@@ -286,8 +286,7 @@ Zero.ChartsSettings = (function(module){
 	    			dataType:'json',
 	    			contentType:'application/json',
 	    			success:function(data){
-	    				console.log(data.result);
-
+                       var res =  _calculateArray(data.result);
                         var resultFinal = data.result;
                         var count = 15;
                         var resultArray = [];
@@ -296,8 +295,8 @@ Zero.ChartsSettings = (function(module){
                             resultArray[countArray] = resultFinal[resultFinal.length-i];
                             countArray++;
                         }
-
-                        _postRender(resultArray);
+                        console.log(resultArray);
+                        _postRender(res);
 
 
 //	    				_createCols($('.diagram-body'), resultArray);
@@ -310,7 +309,65 @@ Zero.ChartsSettings = (function(module){
 	    	}catch(e){
 	    		console.log(e);
 	    	}
-	    }
+	    },
+
+        _calculateArray = function(result){
+            var res = result;
+            var currentDay = new Date().getDate();
+            var lastWeek = currentDay-6;
+            var weekObj = [];
+            var itemName = 0;
+            var j = 0;
+            for(var i=0; i<result.length; i++){
+              var date = new Date(result[i].date*1000).getDate();
+
+                if(date == lastWeek){
+                    if(typeof(weekObj[itemName]) != 'object'){
+                        weekObj[itemName] = []
+                    }
+                    if(weekObj[itemName][0] == undefined){
+                        weekObj[itemName][0] = result[i];
+                    }else{
+                        weekObj[itemName][j] = result[i];
+                        j++;
+                    }
+                }else if(date > lastWeek){
+                   j = 0;
+                    itemName++;
+                   weekObj[itemName] = [];
+                   weekObj[itemName][j] = result[i];
+                   lastWeek++;
+                }
+            }
+            var arrayEnergy = [];
+            var finalObj = [];
+            for(var j=0; j<weekObj.length; j++){
+            var itemObj = {};
+                var allEnergy = 0;
+
+                if(j != weekObj.length-1){
+                    for(var k=0; k<23; k++){
+                        allEnergy = allEnergy + weekObj[j][k].energy;
+                    }
+
+                   itemObj['energy'] = arrayEnergy[j] = parseInt(allEnergy/23);
+                   itemObj['date'] = weekObj[j][0].date;
+
+                   finalObj.push(itemObj);
+
+                }else{
+                  console.log(weekObj[j]);
+                    itemObj['energy'] = weekObj[j][weekObj[j].length-1].energy;
+                    itemObj['date'] = weekObj[j][weekObj[j].length-1].date;
+
+                    finalObj.push(itemObj);
+                }
+            }
+
+            console.log(finalObj);
+
+            return finalObj;
+        };
 	    
 	view.initialize = function(){
 //		_render();
