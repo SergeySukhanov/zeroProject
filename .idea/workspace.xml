@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/energyController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/paper.css" afterPath="$PROJECT_DIR$/resources/css/paper.css" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -175,10 +175,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="energyController.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="energyController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="209" column="60" selection-start="7467" selection-end="7467" vertical-scroll-proportion="0.0">
+            <state line="72" column="88" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.33114755">
               <folding />
             </state>
           </provider>
@@ -220,10 +220,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="paper.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="paper.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/css/paper.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="25" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.8885246">
+            <state line="102" column="51" selection-start="1814" selection-end="1814" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -258,11 +258,11 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
         <option value="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
-        <option value="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
         <option value="$PROJECT_DIR$/js/modules/charts/dailyCtrl.js" />
         <option value="$PROJECT_DIR$/resources/css/zero.css" />
         <option value="$PROJECT_DIR$/main.html" />
         <option value="$PROJECT_DIR$/resources/css/paper.css" />
+        <option value="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
       </list>
     </option>
   </component>
@@ -768,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="209" column="60" selection-start="7467" selection-end="7467" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/charts/dailyCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="175" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.0">
@@ -798,7 +791,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/paper.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="25" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.8885246">
+        <state line="102" column="51" selection-start="1814" selection-end="1814" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="88" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.33114755">
           <folding />
         </state>
       </provider>

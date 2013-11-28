@@ -49,16 +49,7 @@ Zero.EnergyController = (function(module){
             var mindProgress = data.energy.mindProgress;
             var socialProgress = data.energy.socialProgress;
 
-            if(bodyProgress < 20){
-                 bodyProgress = 30;
-            }
-            if(mindProgress < 20){
-                mindProgress = 30;
-            }
 
-            if(socialProgress < 20){
-                socialProgress = 30;
-            }
 
 
 
@@ -78,13 +69,13 @@ Zero.EnergyController = (function(module){
             var text33 = 'You only have 2 more scheduled';
             var text34 = 'events. Atten and reach 100%';
 
-            var paperLeft = paper.circle(center[0]-50, center[1]-50, bodyProgress);
+            var paperLeft = paper.circle(center[0]-50, center[1]-50, bodyProgress+20);
                paperLeft.attr({'fill':'#FF6600', 'stroke-width':0, 'opacity':0.6});
 
-            var paperRight = paper.circle(center[0], center[1]+50, mindProgress);
+            var paperRight = paper.circle(center[0], center[1]+50, mindProgress+20);
             paperRight.attr({'fill':'#FF9900', 'stroke-width':0, 'opacity':0.6});
 
-            var paperRightBottom = paper.circle(center[0]+50, center[1]-50, socialProgress);
+            var paperRightBottom = paper.circle(center[0]+50, center[1]-50, socialProgress+20);
             paperRightBottom.attr({'fill':'#FFCC00', 'stroke-width':0, 'opacity':0.6});
 
     //center
