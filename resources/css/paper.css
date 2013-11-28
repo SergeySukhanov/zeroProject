@@ -109,4 +109,13 @@
 		border-top: 1px solid #cbcccc;
 		padding: 5px 0;
 		margin-bottom: 10px;
-		}	
+		}
+
+
+.head-energy {
+    font-family: "Ma Condensed";
+    font-weight: 200;
+    color: #555555;
+    margin-left: 187px;
+    font-size: 32px;
+}

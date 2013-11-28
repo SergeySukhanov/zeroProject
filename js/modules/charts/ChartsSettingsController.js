@@ -288,15 +288,15 @@ Zero.ChartsSettings = (function(module){
 	    			success:function(data){
                        var res =  _calculateArray(data.result);
                         var resultFinal = data.result;
-                        var count = 15;
-                        var resultArray = [];
-                        var countArray = 0;
-                        for(var i=count; 1<i; i--){
-                            resultArray[countArray] = resultFinal[resultFinal.length-i];
-                            countArray++;
-                        }
-                        console.log(resultArray);
-                        _postRender(res);
+//                        var count = 15;
+//                        var resultArray = [];
+//                        var countArray = 0;
+//                        for(var i=count; 1<i; i--){
+//                            resultArray[countArray] = resultFinal[resultFinal.length-i];
+//                            countArray++;
+//                        }
+//                        console.log(resultArray);
+//                        _postRender(res);
 
 
 //	    				_createCols($('.diagram-body'), resultArray);

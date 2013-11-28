@@ -306,6 +306,8 @@ margin-top: -60px;
     padding-left: 0;
     padding-right: 30px;
     width: 36%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .nextUpEvent h3{

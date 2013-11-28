@@ -21,7 +21,7 @@ Zero.DailyController = (function(module){
             var visibleItems = $('<div/>').addClass('visible-items');
 
             var innerVisibleItem = $('<div/>').addClass('visible-item');
-            var h6Visible = $('<h6/>').text(_params[_params.length-1].date);
+            var h6Visible = $('<h6/>').text(new Date(_params[_params.length-1].date*1000).getDate() +'.' + (parseInt(new Date(_params[_params.length-1].date*1000).getMonth())+1) + '.' + new Date(_params[_params.length-1].date*1000).getFullYear());
             var pVisibleSteps = $('<p/>').addClass('visible-step').text('Steps: '+_params[_params.length-1].steps);
             var pVisibleDistance = $('<p/>').addClass('visible-distance').text('Distance: '+_params[_params.length-1].distance);
 
@@ -38,7 +38,7 @@ Zero.DailyController = (function(module){
             for(var i=_params.length-1; i>=0; i--){
                 if(i != _params.length-1){
                     var item = $('<div/>').addClass('other-item');
-                    var h6 = $('<h6/>').text(_params[i].date);
+                    var h6 = $('<h6/>').text(new Date(_params[i].date*1000).getDate() +'.' + (parseInt(new Date(_params[i].date*1000).getMonth())+1) + '.' + new Date(_params[i].date*1000).getFullYear());
                     var pSteps = $('<p/>').addClass('steps').text('Steps: '+_params[i].steps);
                     var pDistance = $('<p/>').addClass('distance').text('Distance: '+_params[i].distance);
 
@@ -67,8 +67,8 @@ Zero.DailyController = (function(module){
         };
 
     view.init = function(data){
-        if(1==0){
-            _params = data;
+        if(data.daily.length != 0){
+            _params = data.daily;
         }else{
            _params = [
                {
