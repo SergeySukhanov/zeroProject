@@ -270,6 +270,18 @@ padding-top: 3px;
     border-top: 8px solid #555555;
 }
 
+#members-friends {
+    display: inline-block;
+    margin-left: 13px;
+}
+
+#members-friends > * {
+    display: inline-block;
+    margin-right: 57px;
+}
+
+
+
 
 
 

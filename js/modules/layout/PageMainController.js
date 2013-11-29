@@ -28,6 +28,7 @@ Zero.PageMainController = (function(module){
 				//Zero.Calendar.init($('#calendarHolder'));
 				Zero.Events.nextUpEvents('#nextUpEventsHolder');
 				Zero.Team.lastMessages($('#lastTeamMessage'));
+                Zero.EnergySameController.initialize();
                 Zero.EnergyController.initialize();
 			})
 	    },
