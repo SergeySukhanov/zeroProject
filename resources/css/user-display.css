@@ -278,6 +278,7 @@ padding-top: 3px;
 #members-friends > * {
     display: inline-block;
     margin-right: 57px;
+    cursor: pointer;
 }
 
 
