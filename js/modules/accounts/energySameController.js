@@ -13,6 +13,8 @@ Zero.EnergySameController = (function(module){
 
         },
 
+        _id = 0,
+
         tokens = module.getTokens(),
 
         _render = function() {
@@ -37,6 +39,8 @@ Zero.EnergySameController = (function(module){
         _postRender = function(data){
             console.log(data);
             var wrapper = $('#members-friends');
+            var popup = $('.member-details');
+            var activeId = 0;
           for(var i=0; i<data.length; i++){
               var wrapUser = $('<div/>').addClass('wrap-user-item').attr('user-id', data[i].userId);
              var user = Zero.Tools.getUserAvatar(data[i], 50, 50);
@@ -45,8 +49,17 @@ Zero.EnergySameController = (function(module){
 
               wrapper.append(wrapUser);
              wrapUser.bind('click', function(event){
-                 console.log($(event.currentTarget).attr('user-id'))
-                 _getUserInfo($(event.currentTarget).attr('user-id'));
+                 _id = parseInt($(event.currentTarget).attr('user-id'))
+                    if(parseInt($(event.currentTarget).attr('user-id')) == activeId){
+                        if(popup.css('display') == 'none'){
+                            _getUserInfo($(event.currentTarget).attr('user-id'));
+                        }else{
+                            popup.slideUp(500);
+                        }
+                    }else{
+                        activeId = $(event.currentTarget).attr('user-id');
+                        _getUserInfo($(event.currentTarget).attr('user-id'));
+                    }
               })
 
           }
@@ -98,6 +111,8 @@ Zero.EnergySameController = (function(module){
 
             wrapper.append(_paintPrograms(res.programs));
             wrapper.append(_paintComplete(res.justCompleted));
+            _paintTeams(wrapper);
+            wrapper.slideDown(500);
         },
 
         _paintColDetails = function(label, name){
@@ -179,6 +194,81 @@ Zero.EnergySameController = (function(module){
 
                 row.append(wrapImg);
                 row.append(wrapProgram);
+
+                wrapperBody.append(row);
+
+            }
+
+            wrapper.append(wrapperHead);
+            wrapper.append(wrapperBody);
+
+            return wrapper;
+        },
+
+        _paintTeams = function(wrap){
+            try{
+                $.ajax({
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Access-Token", tokens.accessToken);
+                    },
+                    url:initConfiguration.apiUrl + 'user/team',
+                    type:'GET',
+                    dataType:'json',
+                    contentType:'application/json',
+                    data:{
+                        'ids':_id
+                    },
+                    success:function(res){
+                        console.log(res);
+                        wrap.append(_postPaintTeam(res.result[0].teams));
+                    }
+                })
+            }catch (e){
+                console.log(e);
+            }
+        },
+
+        _postPaintTeam = function(res){
+            var wrapper = $('<div/>').addClass('wrap-teams-friends');
+            var wrapperHead = $('<div/>').addClass('head-teams-friends');
+            var head = $('<h4>').text('Teams');
+            wrapperHead.append(head);
+            var wrapperBody = $('<div/>').addClass('body-teams-friends');
+
+            for(var i=0; i<res.length; i++){
+
+                var row = $('<div/>');
+
+                var wrapProgram = $('<div/>').addClass('wrap-teams-friends-row');
+
+                var h6 = $('<h6/>').text(res[i].name);
+                var sup = $('<sup/>');
+                  if(res[i].active){
+                     sup.text('active').addClass('active-team');
+                  }else{
+                     sup.text('inactive').addClass('inactive-team');
+                  }
+
+                h6.append(sup);
+
+                var date = $('<span/>').addClass('date-create-team').text(Zero.Tools.getFormatedDate(res[i].created, 0, 'weekView'));
+
+                var wrapDivBodyTeam = $('<div/>').addClass('wrap-div-team');
+
+                var count = $('<p/>').html('<span>Members count:</span>' + res[i].membersCount);
+                var energy = $('<p/>').html('<span>Energy:</span>' + res[i].energy);
+                var owner = $('<p/>').html('<span>Owner:</span>' + res[i].owner);
+
+                wrapDivBodyTeam.append(energy);
+                wrapDivBodyTeam.append(count);
+                wrapDivBodyTeam.append(owner);
+
+
+                wrapProgram.append(h6);
+                wrapProgram.append(date);
+
+                row.append(wrapProgram);
+                row.append(wrapDivBodyTeam);
 
                 wrapperBody.append(row);
 

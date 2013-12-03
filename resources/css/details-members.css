@@ -1,5 +1,8 @@
 .member-details {
     margin-left: 20px;
+    max-height: 700px;
+    overflow: hidden;
+    overflow-y: auto;
 
 }
 
@@ -40,8 +43,13 @@
     width:80%;
 }
 
+.wrap-teams-friends{
+    width:100%
+}
+
 .head-current-programs,
-.head-complete-programs{
+.head-complete-programs,
+.head-teams-friends{
     color: #555555;
     font-size: 19px;
     font-weight: 200;
@@ -63,7 +71,8 @@
 }
 
 .wrap-program-info h6,
-.wrap-program-info-complete h6{
+.wrap-program-info-complete h6,
+.wrap-teams-friends-row h6{
     color: #555555;
     font-size: 15px;
     display: inline-block;
@@ -85,8 +94,8 @@
 
 .wrap-img-programs,
 .wrap-img-programs-complete{
-    width: 50px;
-    height: 50px;
+    width: 37px;
+    height: 45px;
     margin-right: 10px;
 }
 
@@ -99,7 +108,8 @@
 }
 
 .body-current-programs > div,
-.body-complete-programs > div {
+.body-complete-programs > div,
+.body-teams-friends > div{
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px dotted #888888;
@@ -111,6 +121,9 @@
     .member-details {
         margin-left: 20px;
         position: absolute;
+        max-height: 700px;
+        overflow: hidden;
+        overflow-y: auto;
     }
 
     .wrap-current-programs,
@@ -120,6 +133,34 @@
     }
 }
 
+
+.inactive-team{
+    color: #f34f5f;
+    margin-left: 7px;
+}
+.active-team {
+    color: #4AB106;
+    margin-left: 7px;
+}
+
+.date-create-team {
+    font-size: 11px;
+    vertical-align: top;
+    color: #999999;
+    float: right;
+    right: 10px;
+    position: relative;
+}
+
+.wrap-div-team p {
+    margin: 4px 5px;
+    font-size: 13px;
+}
+
+.wrap-div-team span {
+    color: #444;
+    margin-right: 5px;
+}
 
 
 

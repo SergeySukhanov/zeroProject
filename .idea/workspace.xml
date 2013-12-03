@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/details-members.css" afterPath="$PROJECT_DIR$/resources/css/details-members.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/energyController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/energySameController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/energySameController.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,8 +121,8 @@
     <file path="$PROJECT_DIR$/../raphael/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385468064438" ignored="false" />
     <file path="$PROJECT_DIR$/../raphael/js/demosvg.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385470392781" ignored="false" />
     <file path="/demosvg.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385469884405" ignored="false" />
-    <file path="/energySameController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385975519829" ignored="false" />
-    <file path="/details-members.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385979000317" ignored="false" />
+    <file path="/energySameController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386063676524" ignored="false" />
+    <file path="/details-members.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386062636055" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,19 +142,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AccountPhotoController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/accounts/AccountPhotoController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="82" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="energyController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="16" selection-start="361" selection-end="825" vertical-scroll-proportion="0.0">
+            <state line="24" column="58" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,7 +154,16 @@
       <file leaf-file-name="energySameController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/energySameController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="42" selection-start="3262" selection-end="3262" vertical-scroll-proportion="0.0">
+            <state line="251" column="69" selection-start="8483" selection-end="8483" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user-display.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/user-display.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="280" column="19" selection-start="4816" selection-end="4816" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -197,7 +199,16 @@
       <file leaf-file-name="details-members.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/css/details-members.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="10" selection-start="1782" selection-end="1782" vertical-scroll-proportion="0.0">
+            <state line="84" column="44" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zeroTools.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="28" selection-start="799" selection-end="807" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -207,15 +218,6 @@
         <entry file="file://$PROJECT_DIR$/js/modules/charts/dailyCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="40" column="175" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="24" selection-start="4938" selection-end="4952" vertical-scroll-proportion="-8.038462">
               <folding />
             </state>
           </provider>
@@ -254,15 +256,15 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/modules/charts/ChartsSettingsController.js" />
         <option value="$PROJECT_DIR$/js/modules/charts/dailyCtrl.js" />
-        <option value="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
         <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
         <option value="$PROJECT_DIR$/resources/css/paper.css" />
         <option value="$PROJECT_DIR$/resources/css/user-display.css" />
         <option value="$PROJECT_DIR$/main.html" />
-        <option value="$PROJECT_DIR$/js/modules/accounts/energySameController.js" />
         <option value="$PROJECT_DIR$/resources/css/main-styles.css" />
         <option value="$PROJECT_DIR$/resources/css/zero.css" />
+        <option value="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
         <option value="$PROJECT_DIR$/resources/css/details-members.css" />
+        <option value="$PROJECT_DIR$/js/modules/accounts/energySameController.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
       </list>
     </option>
@@ -713,23 +715,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="458" column="19" selection-start="12639" selection-end="12639" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/paper.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="130" column="25" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/user-display.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="19" selection-start="4816" selection-end="4816" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -762,16 +750,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
+    <entry file="file://$PROJECT_DIR$/resources/css/main-styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="361" selection-end="825" vertical-scroll-proportion="0.0">
+        <state line="121" column="9" selection-start="1990" selection-end="1990" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/main-styles.css">
+    <entry file="file://$PROJECT_DIR$/resources/css/user-display.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="9" selection-start="1990" selection-end="1990" vertical-scroll-proportion="0.0">
+        <state line="280" column="19" selection-start="4816" selection-end="4816" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="58" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -783,16 +778,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energySameController.js">
+    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="42" selection-start="3262" selection-end="3262" vertical-scroll-proportion="0.0">
+        <state line="30" column="28" selection-start="799" selection-end="807" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/details-members.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="10" selection-start="1782" selection-end="1782" vertical-scroll-proportion="0.0">
+        <state line="84" column="44" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energySameController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="69" selection-start="8483" selection-end="8483" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

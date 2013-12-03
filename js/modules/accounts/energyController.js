@@ -22,7 +22,7 @@ Zero.EnergyController = (function(module){
                     beforeSend: function (request) {
 					   request.setRequestHeader("Access-Token", tokkens.accessToken);
 				    },
-                    url:initConfiguration.apiUrl + 'energy2/detail',
+                    url:initConfiguration.apiUrl + 'energy/detail',
                     type:'GET',
                     dataType:'json',
                     contentType:'application/json',
