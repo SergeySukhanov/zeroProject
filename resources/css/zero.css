@@ -104,12 +104,13 @@ vertical-align: top;
 	}
 
 .weather-clock-block {
-    margin: 17px 0 20px 0;
     text-align: center;
-    display: inline-block;
-vertical-align: top;
-position:relative;
-margin-top: -60px;
+    display: block;
+    vertical-align: top;
+    position: relative;
+    width: 275px;
+    margin: 0 auto;
+    margin-top: 50px;
     }
     .weather-clock-block .town{
         vertical-align: top;
@@ -256,135 +257,6 @@ margin-top: -60px;
 	margin: 10px 0 20px 0;
 	}
 
-.leftNextUpEvent{
-    float:left;
-}
-
-.rightNextUpEvent{
-    float:right;
-}
-
-.nextupevents .firstRow .leftNextUpEvent {
-    width: 350px;
-    height: 240px;
-}
-
-.nextupevents .firstRow .rightNextUpEvent {
-    width: 260px;
-    height: 240px;
-}
-
-.nextupevents .nextRow .leftNextUpEvent {
-    width: 260px;
-    height: 200px;
-}
-
-.nextupevents .nextRow .rightNextUpEvent {
-    width: 350px;
-    height: 200px;
-}
-
-.nextUpEvent {
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
-
-.nextUpEvent .eventHeader{
-    padding:10px;
-}
-
-.nextUpEvent .leftEventBorder{
-    border-left: 2px solid #2D8BC7;
-    margin-left: 10px;
-    height: 160px;
-}
-
-.nextUpEvent .eventHeader h1{
-    float: left;
-    color: #444444;
-    font: normal 32px/34px "Ma Condensed";
-    padding-left: 0;
-    padding-right: 30px;
-    width: 36%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.nextUpEvent h3{
-    color: #00AD63;
-    text-transform: uppercase;
-    font: normal 28px/30px "Ma Condensed";
-    float:left;
-}
-
-.nextUpEvent .eventtime{
-    color: #444444;
-    display:inline-block;
-    float:right;
-    vertical-align: top;
-    font: normal 46px/48px "Ma Condensed";
-}
-
-.nextUpEvent .eventtime .ampm{
-    color: #444444;
-    float:right;
-    text-transform: uppercase;
-    font: normal 20px/22px "Ma Condensed";
-    padding-top: 5px;
-    margin-left: -10px;
-}
-
-.nextUpEvent h1{
-    color: #444444;
-    font: normal 28px/30px "Ma Condensed";
-    padding-left:10px;
-    padding-right:10px;
-}
-
-.nextUpEvent h2{
-    color: #444444;
-    font: normal 22px/24px "Ma Condensed";
-    padding-left:10px;
-    padding-right:10px;
-    text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
-}
-
-.nextUpEvent h4{
-    color:#B5B5B5;
-    font: normal 20px/22px "Ma Condensed";
-    padding-left:10px;
-    padding-right:10px;
-    padding-bottom:10px;
-}
-
-.nextUpEvent span{
-    color:#B5B5B5;
-    font: normal 16px/18px "Ma Condensed";
-    padding-left:10px;
-    padding-right:10px;
-    padding-bottom:10px;
-
-}
-
-.leftEventBorder span {
-text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
-display: inline-block;
-position: relative;
-width: 79%;
-}
-
-.nextUpEvent > span {
-text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
-width: 90%;
-display: inline-block;
-}
-
 .cf:after {
     content: "";
     display: table;
@@ -446,7 +318,7 @@ position: absolute;
 display: inline-block;
 top: 76%;
 left: 7%;
-width: 66.5%;
+width: 95%;
 height: 56px;
 z-index: 1000;
 }

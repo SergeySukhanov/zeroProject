@@ -5,40 +5,27 @@ Zero.PageMainController = (function(module){
 	    },
 	
 	    _render = function(){
-	    	_postRender();
+            _paintMain();
 	    },
-	    
-	    _postRender = function(){
-	       _paintMain();
-	       _handlers();
-	    },
-	    
-	    _handlers = function(){
-	    	
-	    };
 	    
 	    _paintMain = function(){
 	    	$(function() {
 	    		Zero.TitleController.initialize();
 	    		Zero.ChartsController.initialize();
+                Zero.SmallCalendarWidgetController.initialize();
+
 	    		Zero.ChartsSettings.initialize();
 	    		Zero.YesterdayController.initialize();
-	    		
-                Zero.SmallCalendarWidgetController.initialize($('#smallCalendarHolder'));
-				//Zero.Calendar.init($('#calendarHolder'));
-				Zero.Events.nextUpEvents('#nextUpEventsHolder');
+				Zero.Events.nextUpEvents();
 				Zero.Team.lastMessages($('#lastTeamMessage'));
+
                 Zero.EnergySameController.initialize();
                 Zero.EnergyController.initialize();
+                Zero.EnergyUserController.initialize();
 			})
-	    },
-	    
-	    _setParams = function(param){
-	    	
-	    }
+	    };
 	    
 	view.initialize = function(param){
-		
 		_render();
 	};
 	

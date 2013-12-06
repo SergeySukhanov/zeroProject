@@ -190,12 +190,6 @@ cursor:pointer
 	background-image: url(../images/quit-icon-active.PNG);
 }
 
-#nextUpEventsHolder {
-display: inline-block;
-}
-
-
-
 .wrapper-left, .wrapper-right{
     display:inline-block;
     position: relative;

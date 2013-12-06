@@ -1,0 +1,16 @@
+.gradient-layout > * {
+    display: inline-block;
+}
+
+.left-diagram-side {
+    width: 70%;
+    vertical-align: top;
+}
+
+.right-diagram-side {
+    width: 29%;
+}
+.bottom-diagram-side {
+    position: relative;
+}
+

@@ -6,7 +6,6 @@ Zero.TitleController = (function(module){
 	    },
 	
 	    _render = function(){
-	    	
 		   _postRender();
 	    },
 	    
@@ -20,18 +19,15 @@ Zero.TitleController = (function(module){
         },
 	    
 	    _paintTitle = function(){
-            var wrapperTitle = $('.header-block');
-            var accountHolder = $('<div/>').attr('id', 'userHolder');
-            wrapperTitle.append(accountHolder);
-            _createAccountName(accountHolder);
+            var wrapperTitle = $('#userProfileHolder');
+            _createAccountName(wrapperTitle);
 	    },
 	    
 	    _createAccountName = function(wrap){
 	    	var wrapper = wrap;
 	    	var divPhoto = $('<div/>').attr('id','userPhotoHolder').addClass('account-photo');
-//            Zero.AccountPhotoController.initialize();
-              var userAvatar = Zero.Tools.getUserAvatar(initConfiguration.settingsData, 120, 120);
-            divPhoto.append(userAvatar);
+            var userAvatar = Zero.Tools.getUserAvatar(initConfiguration.settingsData, 120, 120);
+                divPhoto.append(userAvatar);
 	    	var divWelcome = $('<div/>').addClass('welcome-user');
 	    	
 	    	var h1 = $('<h1/>').text('Good');

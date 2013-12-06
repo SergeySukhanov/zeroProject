@@ -27,7 +27,7 @@ Zero.YesterdayController = (function(module){
 	    
 	    _paintYesterday = function(){
 	    	var root = initConfiguration.getRootLocation();
-	       var wrap = $('.chart-yesterday');
+	       var wrap = $('#chartYesterday');
 	       var h1yes = $('<h1/>').addClass('header-yes').text(config.title);
 	       var subH2 = $('<h2/>').text(config.subTitle);
 	       var chart = $('<div/>').attr('id', 'yesterdayCharts');

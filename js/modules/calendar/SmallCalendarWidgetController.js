@@ -3,8 +3,8 @@ Zero.SmallCalendarWidgetController = (function(module){
 
         _locationBlock=null,
 
-        _render = function(holder){
-            _paintCalendar(holder);
+        _render = function(){
+            _paintCalendar();
             _handlers();
         },
 
@@ -16,7 +16,8 @@ Zero.SmallCalendarWidgetController = (function(module){
         	})        	
         },
 
-        _paintCalendar = function(wrapper){
+        _paintCalendar = function(){
+            var wrapper = $('#smallCalendarHolder');
             var divWeatherClock = $('<div/>').addClass('weather-clock-block').addClass("cf");
             var divWeather = $('<div/>').addClass('weather');
             divWeatherClock.append(divWeather);
@@ -120,14 +121,14 @@ Zero.SmallCalendarWidgetController = (function(module){
 			
 			closePopup.bind('click',function(){
 				$('#weekView').remove();
-			})	
+			});
 			
 			module.Week.init(date);
 			
-		}
+		};
 
-    view.initialize = function(holder){
-        _render(holder);
+    view.initialize = function(){
+        _render();
     };
 
 	

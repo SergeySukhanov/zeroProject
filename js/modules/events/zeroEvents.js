@@ -1168,7 +1168,7 @@ Zero.Events = (function(module){
 	
 	
 	/* Next up section */
-	m.nextUpEvents = function(holder) {
+	m.nextUpEvents = function() {
 		_getSettings();
 	}
 

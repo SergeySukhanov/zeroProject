@@ -1,3 +1,36 @@
+#similarFriends {
+    display: inline-block;
+    vertical-align: top;
+    font: normal 16px/20px 'Zero';
+}
+#similarFriends h3 {
+    margin: 20px 0;
+    font-family: "Ma Condensed";
+    font-weight: 200;
+    color: #555555;
+    margin-left: 20px;
+    font-size: 32px;
+}
+#similarFriends .item {
+    width: 200px;
+    margin: 10px;
+}
+#similarFriends .item .block-item {
+    display:block;
+    color : #9fa0a0;
+}
+#similarFriends .message {
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+    color : #9fa0a0;
+}
+#similarFriends .date {
+    text-align: right;
+    font: normal 12px/12px 'Zero';
+}
+
 .member-details {
     margin-left: 20px;
     max-height: 700px;
@@ -160,6 +193,26 @@
 .wrap-div-team span {
     color: #444;
     margin-right: 5px;
+}
+
+.corner-head-down {
+    display: inline-block;
+    float: right;
+    border-top: 8px solid #333333;
+    border-left: 7px solid #ffffff;
+    border-right: 7px solid #ffffff;
+    top: -10px;
+    position: relative;
+}
+
+.corner-head-up {
+    display: inline-block;
+    float: right;
+    border-bottom: 8px solid #333333;
+    border-left: 7px solid #ffffff;
+    border-right: 7px solid #ffffff;
+    top: -10px;
+    position: relative;
 }
 
 

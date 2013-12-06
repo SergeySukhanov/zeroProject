@@ -12,6 +12,9 @@
 @import "static-page.css" screen;
 @import "newIndex.css" screen;
 @import "details-members.css" screen;
+@import "new-gradient-diagram.css" screen;
+@import "next-events-main-page.css" screen;
+@import "energy.css" screen;
 *{margin:0; padding:0; border:0;}
 
 html, body{
@@ -205,44 +208,10 @@ color: #666666;
 		}	
 		
 
-#nextUpEventsHolder  .firstRow{
-	width: 650px;
-	}		
 
 #nextUpEvent .eventHeader h1{
 	display: block;
 	text-overflow: ellipsis;
 	overflow: hidden;			
 	}
-	
-#lastTeamMessage {
-	display: inline-block;
-	vertical-align: top;
-	font: normal 16px/20px 'Zero';
-	}	
-	#lastTeamMessage h3 {
-		color : #9fa0a0;
-		text-transform: uppercase;
-		font: normal 22px/24px "Ma Condensed";
-		margin: 20px 0;
-		}
-	#lastTeamMessage .item {
-		width: 200px;
-		margin: 10px;
-		}	
-		#lastTeamMessage .item .block-item {
-			display:block;
-			color : #9fa0a0;
-			}
-		#lastTeamMessage .message {
-			border: 1px solid #cecece;
-			border-radius: 5px;
-			padding: 5px;
-			margin: 5px 0 5px 0;
-			color : #9fa0a0;
-			}	
-		#lastTeamMessage .date {
-			text-align: right;
-			font: normal 12px/12px 'Zero';
-			}	
 			

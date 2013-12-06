@@ -6,10 +6,11 @@
 	<title>Zero Main</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
+
 	<link rel="stylesheet" href="resources/css/main-styles.css" type="text/css" media="screen, projection" />
 	<link rel="stylesheet" href="resources/css/popup.css" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" href="resources/css//ui/jquery-ui-1.10.3.custom.css" type="text/css" />
-		<link rel="stylesheet" href="resources/css/paper.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="resources/css//ui/jquery-ui-1.10.3.custom.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="resources/css/paper.css" type="text/css" media="screen, projection" />
 		
 	<script src="js/libs/jquery-1.10.2.min.js"></script>
 	<script src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
@@ -37,6 +38,7 @@
 	<script src="js/modules/accounts/zeroAccounts.js"></script>	
 	<script src="js/modules/accounts/TitleController.js"></script>	
 	<script src="js/modules/accounts/SettingsController.js"></script>
+	<script src="js/modules/accounts/energyUserController.js"></script>
     <script src="js/modules/calendar/WeatherController.js"></script>
     <script src="js/modules/accounts/AccountPhotoController.js"></script>
     <script src="js/modules/accounts/energySameController.js"></script>
@@ -68,83 +70,57 @@
 	</header>
 	<div class="content">
 	<div class="gradient-layout">
-		<div class="header-block">
+       <div class="left-diagram-side">
+           <div id="userProfileHolder"></div>
 
-		</div>
-		<div id="diagramHolder">
-		
-		</div>
-		<div id="diagramEventHolder">
-			
-		</div>
-		<div id="smallCalendarHolder" class="weather-clock-block">
-           <div class="opacity-layout">
-           	
+           <div class="diagram-wrapper">
+               <div id="diagramHolder"></div>
+               <div id="diagramEventHolder"></div>
            </div>
-        </div>
-        <div class="daily">
-
-        </div>
-        <div class="switcher">
-            <div class="col">
-                <label for="fitbit">Fitbit</label>
-                <input id="fitbit" class="switch" name="charts" type="radio" value="fitbit"/>
-            </div>
-            <div class="col">
-                <label for="nike">Nike</label>
-                <input id="nike" class="switch" name="charts" type="radio" value="nike"/>
-            </div>
-            <div class="col">
-                <label for="zero">Zero</label>
-                <input id="zero" class="switch" name="charts" type="radio" value="zero"/>
-            </div>
-            <div class="col">
-                <label for="jawbone">Jawbone</label>
-                <input id="jawbone" class="switch" name="charts" type="radio" value="jawbone"/>
+       </div>
+       <div class="right-diagram-side">
+           <div id="smallCalendarHolder" class="weather-clock-block">
+               <div class="opacity-layout"></div>
+           </div>
+       </div>
+        <div class="bottom-diagram-side">
+            <div id="dailyHolder" class="daily"></div>
+            <div class="switcher">
+                <div class="col">
+                    <label for="fitbit">Fitbit</label>
+                    <input id="fitbit" class="switch" name="charts" type="radio" value="fitbit"/>
+                </div>
+                <div class="col">
+                    <label for="nike">Nike</label>
+                    <input id="nike" class="switch" name="charts" type="radio" value="nike"/>
+                </div>
+                <div class="col">
+                    <label for="zero">Zero</label>
+                    <input id="zero" class="switch" name="charts" type="radio" value="zero"/>
+                </div>
+                <div class="col">
+                    <label for="jawbone">Jawbone</label>
+                    <input id="jawbone" class="switch" name="charts" type="radio" value="jawbone"/>
+                </div>
             </div>
         </div>
 	 </div>
 	 <div class="main-content">
-        <div id="nextUpEventsHolder">
-        	
-        </div>
-		<div id="lastTeamMessage">
+        <div id="nextUpEventsHolder"></div>
+        <div id="user-settings-details"></div>
+		<div id="similarFriends">
 			<h3>Similar friends</h3>
-            <div id="members-friends">
-
-            </div>
-            <div class="member-details">
-
-            </div>
-            <!--<div class="item">-->
-                <!--<span class="author block-item"></span>-->
-                <!--<div class="message">asdasd asdas asd asdas asd 23qwf </div>-->
-                <!--<span class="date block-item">13/10/2012</span>-->
-
-            <!--</div>-->
+            <div id="members-friends"></div>
+            <div class="member-details"></div>
 		</div>
-
-		<div id="willPower">
-			<div class="willpower-diagram">
-				
-			</div>
-			<div class="sliders-settings">
-			   
-			</div>
-		</div>
-         <h1 class="head-energy">Energy</h1>
-         <div id="energy">
-         </div>
-		<!--<div class="reset-settings"><a id="reset-set" href="">Reset Settings</a></div>-->
+        <div class="energy-wrapper-user">
+            <h1 class="head-energy">Energy</h1>
+            <div id="energy"></div>
+        </div>
       </div>
       <aside class="rightColumn">
-		<div class="chart-yesterday">
-			
-		</div>
-		<div id="calendarHolder">
-		
-		</div>
-	</aside>	
+		<div id="chartYesterday" class="chart-yesterday"></div>
+	  </aside>
 	</div>
 </section>	
 <footer class="footer">

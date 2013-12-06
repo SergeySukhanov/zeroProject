@@ -1,0 +1,92 @@
+.energy-wrapper-user {
+    display: inline-block;
+}
+
+#user-settings-details {
+    display: inline-block;
+    width: 33%;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.user-wrap-current-programs,
+.user-wrap-complete-programs,
+.user-wrap-teams-friends{
+    width: 100%;
+}
+
+.user-head-current-programs,
+.user-head-complete-programs,
+.user-head-teams-friends{
+    margin: 15px 0px 10px 10px;
+    font-size: 27px;
+    font: normal 20px/22px 'Zero';
+    font-weight: 200;
+    color: #666666;
+    border-bottom: 1px solid #666666;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.user-body-current-programs{
+  display: block;
+}
+
+.user-body-complete-programs,
+.user-body-teams-friends{
+    display:none;
+    font-family: 'Zero';
+    height: 287px;
+    overflow-y:auto;
+}
+
+.user-body-current-programs > div,
+.user-body-complete-programs > div{
+    border-bottom: 1px dotted #444444;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.user-wrap-img-programs img,
+.user-wrap-img-programs-complete img{
+    width: 10%;
+}
+.user-wrap-program-info h6,
+.user-wrap-program-info-complete h6,
+.user-wrap-teams-friends-row h6{
+    font-size: 15px;
+    color: #666666;
+}
+
+.user-wrap-program-info span {
+    font-size: 12px;
+}
+
+.user-wrap-program-info p,
+.user-wrap-div-team p{
+    font-size: 15px;
+    max-height: 60px;
+    overflow: hidden;
+}
+
+.user-wrap-div-team {
+    margin-left: 10px;
+}
+
+.user-wrap-teams-friends-row {
+    margin-left: 10px;
+}
+
+.user-wrap-teams-friends-row h6{
+    display: inline-block;
+}
+
+.user-wrap-teams-friends-row .date-create-team {
+    font-size: 10px;
+    vertical-align: top;
+    color: #999999;
+    float: right;
+    right: 10px;
+    position: relative;
+    top: -17px;
+}
