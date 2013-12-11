@@ -2,7 +2,7 @@ Zero.Team = (function(module){
 	var m = {},
 		moduleUrls = {
 			team : initConfiguration.apiUrl + 'team',
-			userSearch : initConfiguration.apiUrl + 'user'			
+			userSearch : initConfiguration.apiUrl + 'users'
 		},
 		tokkens = module.getTokens(),
 		_activePopup = null,
