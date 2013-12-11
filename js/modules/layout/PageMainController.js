@@ -22,6 +22,7 @@ Zero.PageMainController = (function(module){
                 Zero.EnergySameController.initialize();
                 Zero.EnergyController.initialize();
                 Zero.EnergyUserController.initialize();
+                Zero.EnergyIntervalController.initialize();
 			})
 	    };
 	    

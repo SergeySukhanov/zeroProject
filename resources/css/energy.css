@@ -90,3 +90,18 @@
     position: relative;
     top: -17px;
 }
+
+
+
+.wrapper-switcher {
+    margin-left: 20px;
+}
+
+.wrapper-switcher > span {
+    margin: 5px;
+    display: inline-block;
+    color: #888888;
+    text-decoration: underline;
+    font-family: Zero;
+    cursor:pointer;
+}

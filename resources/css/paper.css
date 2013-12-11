@@ -112,13 +112,22 @@
 		}
 
 
-.head-energy {
+.head-energy{
     font-family: "Ma Condensed";
     font-weight: 200;
     color: #555555;
     margin-left: 20px;
     font-size: 32px;
     margin-bottom: -39px;
+}
+
+.head-interval-energy{
+    font-family: "Ma Condensed";
+    font-weight: 200;
+    color: #555555;
+    margin-left: 20px;
+    font-size: 32px;
+
 }
 
 #lastTeamMessage h3 {

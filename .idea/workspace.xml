@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/layout/PageMainController.js" afterPath="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/energy.css" afterPath="$PROJECT_DIR$/resources/css/energy.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/paper.css" afterPath="$PROJECT_DIR$/resources/css/paper.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/team/zeroTeam.js" afterPath="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +18,7 @@
     <file path="/formLogin.json" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383125235916" ignored="false" />
     <file path="/indexCtrl.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383808928415" ignored="false" />
     <file path="/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383813647126" ignored="false" />
-    <file path="/initConfiguration.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384337462632" ignored="false" />
+    <file path="/initConfiguration.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386769104860" ignored="false" />
     <file path="$PROJECT_DIR$/../constructor/js/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134653910" ignored="false" />
     <file path="/register.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383904517044" ignored="false" />
     <file path="/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384412142115" ignored="false" />
@@ -31,7 +34,7 @@
     <file path="/zeroAccounts.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383825939182" ignored="false" />
     <file path="/zero.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383826052195" ignored="false" />
     <file path="/ChartsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384424181568" ignored="false" />
-    <file path="/main.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386747189823" ignored="false" />
+    <file path="/main.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386769959707" ignored="false" />
     <file path="/zeroSettings.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384506204764" ignored="false" />
     <file path="/settings.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383912939007" ignored="false" />
     <file path="/uploader.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384340383524" ignored="false" />
@@ -118,7 +121,7 @@
     <file path="$USER_HOME$/Documents/GitHub/dag/ray_map.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385461263996" ignored="false" />
     <file path="/departments.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385461414049" ignored="false" />
     <file path="$USER_HOME$/Documents/GitHub/dag/resources/css/departments.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385461414354" ignored="false" />
-    <file path="/PageMainController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386315466248" ignored="false" />
+    <file path="/PageMainController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386759218968" ignored="false" />
     <file path="$PROJECT_DIR$/../raphael/index.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385468064438" ignored="false" />
     <file path="$PROJECT_DIR$/../raphael/js/demosvg.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385470392781" ignored="false" />
     <file path="/demosvg.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1385469884405" ignored="false" />
@@ -134,9 +137,11 @@
     <file path="/energyUserController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386327766384" ignored="false" />
     <file path="/SmallCalendarWidgetController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386344887128" ignored="false" />
     <file path="/next-events-main-page.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386318751270" ignored="false" />
-    <file path="/energy.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386328381874" ignored="false" />
+    <file path="/energy.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386764067240" ignored="false" />
     <file path="/zeroEvents.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386347794049" ignored="false" />
     <file path="/eventChartsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386655274201" ignored="false" />
+    <file path="/energyIntervalController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386770106709" ignored="false" />
+    <file path="/paper.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386769994419" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,37 +161,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="energySameController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/accounts/energySameController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="66" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="energyController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zeroEvents.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/events/zeroEvents.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1187" column="70" selection-start="31831" selection-end="31831" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zeroTools.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="99" selection-start="4526" selection-end="4526" vertical-scroll-proportion="0.0">
+            <state line="83" column="34" selection-start="2706" selection-end="2878" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -195,7 +173,7 @@
       <file leaf-file-name="eventChartsController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/events/eventChartsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="73" selection-start="4318" selection-end="4318" vertical-scroll-proportion="0.0">
+            <state line="93" column="18" selection-start="2651" selection-end="2667" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -204,7 +182,7 @@
       <file leaf-file-name="PageMainController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/layout/PageMainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="66" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
+            <state line="24" column="59" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -231,7 +209,27 @@
       <file leaf-file-name="energyIntervalController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
+            <state line="138" column="61" selection-start="4922" selection-end="4922" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#161#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="details-members.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/details-members.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="energy.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/energy.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="74" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -240,7 +238,16 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="0" selection-start="5654" selection-end="5654" vertical-scroll-proportion="-25.692308">
+            <state line="122" column="23" selection-start="5716" selection-end="5736" vertical-scroll-proportion="-21.73077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="paper.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/css/paper.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="129" column="2" selection-start="2265" selection-end="2265" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -264,8 +271,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/modules/calendar/SmallCalendarWidgetController.js" />
-        <option value="$PROJECT_DIR$/js/modules/accounts/AccountPhotoController.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
         <option value="$PROJECT_DIR$/js/modules/calendar/WeatherController.js" />
         <option value="$PROJECT_DIR$/js/modules/charts/ChartsController.js" />
@@ -275,10 +280,12 @@
         <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/js/modules/events/eventChartsController.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/energySameController.js" />
-        <option value="$PROJECT_DIR$/main.html" />
-        <option value="$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js" />
-        <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
         <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
+        <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
+        <option value="$PROJECT_DIR$/resources/css/energy.css" />
+        <option value="$PROJECT_DIR$/main.html" />
+        <option value="$PROJECT_DIR$/resources/css/paper.css" />
+        <option value="$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
       </list>
     </option>
@@ -741,34 +748,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/modules/calendar/WeatherController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="3498" selection-end="3498" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/calendar/zeroCalendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="57" selection-start="2788" selection-end="2788" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/charts/ChartsPainter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyUserController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="80" selection-start="1659" selection-end="1659" vertical-scroll-proportion="0.0">
@@ -797,44 +776,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/events/eventChartsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="73" selection-start="4318" selection-end="4318" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="0" selection-start="5654" selection-end="5654" vertical-scroll-proportion="-25.692308">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energySameController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="66" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/layout/PageMainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="66" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -843,6 +787,71 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="58" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energySameController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="66" selection-start="1385" selection-end="1385" vertical-scroll-proportion="-0.8369803">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/details-members.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/energy.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="74" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/events/eventChartsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="18" selection-start="2651" selection-end="2667" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="34" selection-start="2706" selection-end="2878" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/paper.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="2" selection-start="2265" selection-end="2265" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/layout/PageMainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="59" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="23" selection-start="5716" selection-end="5736" vertical-scroll-proportion="-21.73077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="61" selection-start="4922" selection-end="4922" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#161#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
