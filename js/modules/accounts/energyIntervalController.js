@@ -85,9 +85,9 @@ Zero.EnergyIntervalController = (function(module){
                if(type == "week"){
                  var typeText = weekList[i];
                }else if(type == "month"){
-                 var typeText = monthList[i];
-               }else{
                  var typeText = (i+1)+" "+monthList[new Date().getMonth()];
+               }else{
+                 var typeText = monthList[i];
                }
 
                 var textT = config.paper.text((startX+35), 210, typeText);
