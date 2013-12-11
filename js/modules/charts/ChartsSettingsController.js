@@ -364,7 +364,7 @@ Zero.ChartsSettings = (function(module){
                 }
             }
 
-            console.log(finalObj);
+
 
             return finalObj;
         };

@@ -166,9 +166,13 @@ Zero.Tools = (function(module){
 	
 	m.ajaxErrorHandler = function() {
 		$(document).ajaxError(function (e, jqxhr, settings, exception) {
-			var title = jqxhr.status + ' - ' + jqxhr.statusText,
-			body = $('<div />').addClass('popup-content').html('<div>' + jqxhr.responseJSON.msg + '</div>'),
-			btClose = $('<button />').text('Close').appendTo(body),
+			var title = jqxhr.status + ' - ' + jqxhr.statusText;
+            if(jqxhr.responseJSON == undefined){
+                var body = $('<div />').addClass('popup-content').html('<div>' + jqxhr.responseText.msg + '</div>');
+            }else{
+                var body = $('<div />').addClass('popup-content').html('<div>' + jqxhr.responseJSON.msg + '</div>');
+            }
+			var btClose = $('<button />').text('Close').appendTo(body),
 			
 			popup = Zero.ModalController.getPopup('ajaxError');
 			

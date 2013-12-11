@@ -61,10 +61,7 @@ Zero.EnergyUserController = (function(module){
                         'ids':initConfiguration.settingsData.userId
                     },
                     success:function(res){
-                        console.log(res);
                         _dataUserTeam = res.result[0];
-                        console.log(_dataUser);
-                        console.log(_dataUserTeam);
                         var wrapper = $('#user-settings-details');
 
                         wrapper.append(_paintPrograms(_dataUser.programs));
@@ -228,7 +225,6 @@ Zero.EnergyUserController = (function(module){
             $('.user-head-teams').bind('click', function(event){
                 $('.user-body-programs').slideUp();
                 $(event.currentTarget).next().slideToggle();
-                console.log('lala');
             });
         };
 

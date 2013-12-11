@@ -37,7 +37,7 @@ Zero.EnergySameController = (function(module){
         },
 
         _postRender = function(data){
-            console.log(data);
+
             var wrapper = $('#members-friends');
             var popup = $('.member-details');
             var activeId = 0;
@@ -89,7 +89,6 @@ Zero.EnergySameController = (function(module){
         },
 
         _renderUserInfo = function(res){
-            console.log(res);
            var wrapper = $('.member-details');
                wrapper.empty();
            var wrapperPhoto = $('<div/>').addClass('wrapper-photo');
@@ -219,7 +218,6 @@ Zero.EnergySameController = (function(module){
                         'ids':_id
                     },
                     success:function(res){
-                        console.log(res);
                         wrap.append(_postPaintTeam(res.result[0].teams));
                     }
                 })

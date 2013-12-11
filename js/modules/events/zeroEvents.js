@@ -1189,7 +1189,9 @@ Zero.Events = (function(module){
 	
 	_buildNextUpEvent = function(settings) {
 		var calIds = settings.visibleCalendarIds;
-		var length = calIds.length > 1 ? 2 : calIds.length;
+        if(calIds != undefined){
+            var length = calIds.length > 1 ? 2 : calIds.length;
+        }
         var wrapper = $('#nextUpEventsHolder');
         wrapper.addClass('nextupevents');
         wrapper.empty();

@@ -703,7 +703,7 @@ Zero.Team = (function(module){
 			Connect : function() {
 				var sendData = {
 					'firstConnectionRequest' : {'token' : tokkens.accessToken}
-				}
+                    };
 				$.ajax({	
 					url : initConfiguration.chatUrl,
 					type: 'post', 

@@ -40,8 +40,6 @@ Zero.EnergyController = (function(module){
         },
 
         _paperPaint = function(data, wrap){
-            console.log(data);
-            console.log(wrap);
             var width = 450;
             var height = 400;
             var center = [width/2, height/2];

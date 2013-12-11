@@ -10,9 +10,8 @@ Zero.SmallCalendarWidgetController = (function(module){
 
         _handlers = function(){
         	$('.addEventButton').bind('click', function(event){
-        		console.log('click');
         		Zero.Events.showEventPopup();
-				e.preventDefault();
+				event.preventDefault();
         	})        	
         },
 
