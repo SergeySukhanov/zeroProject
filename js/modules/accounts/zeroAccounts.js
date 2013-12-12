@@ -102,46 +102,50 @@ Zero.GoogleAccount = (function(module){
 	_getNikeConnectHtml = function() {
 		var html = $('<div />').addClass('account-item'),
 			header = $('<h2/>').text('Nike Connect'),
-            registered = $('<h3/>').text('Registered Account'),
-            step1 = $('<p/>').addClass('nike-info').html('Login with you email and password:<a href="https://developer.nike.com/"> https://developer.nike.com/</a><br />Get your nike access token on <a href=" https://developer.nike.com/console"> https://developer.nike.com/console</a>'),
-			text = $('<p />').text('Please point your Nike Access token in field below'),
-			nikeTokken = $('<input />').attr({
-				'id' : 'nikeTokken'
-			}),
+//            step1 = $('<p/>').addClass('nike-info').html('Login with you email and password:<a href="https://developer.nike.com/"> https://developer.nike.com/</a><br />Get your nike access token on <a href=" https://developer.nike.com/console"> https://developer.nike.com/console</a>'),
+//			text = $('<p />').text('Please point your Nike Access token in field below'),
+//			nikeTokken = $('<input />').attr({
+//				'id' : 'nikeTokken'
+//			}),
 			bt = $('<button />').text('Connect');
-			
+
+            header.appendTo(html);
+
 			if(nike_account) {
-				text = $('<p>You have Nike Account linked.<br />If You want reconnect please point you new Nike Access token in field below</p>');
+                var registered = $('<h3/>').text('Registered Account');
+				var text = $('<p>You have Nike Account linked.<br />If You want reconnect please point you new Nike Access token in field below</p>');
+
+                registered.appendTo(html);
+                text.appendTo(html);
 			}
-			
-			header.appendTo(html);
-            registered.appendTo(html);
-			step1.appendTo(html);
-			text.appendTo(html);
-			nikeTokken.appendTo(html);
+
 			bt.appendTo(html);
 			
-			bt.bind('click', _getNikeConnect);
+			bt.bind('click', _openNewWindow);
 			
 			html.appendTo(accountHolder);
-	}
+	},
+
+        _openNewWindow = function(){
+            window.open(initConfiguration.getRootLocation()+'loginNike.html',"_blank","width=500, height=300");
+        },
 	
 	_getNikeConnect = function() {
 		//getNikeConnect
-		
-		var tk = $('#nikeTokken').val();
-
-		if(!tk) return;
 
 		try{
 			$.ajax({
 				beforeSend: function (request) {
 					request.setRequestHeader("Access-Token", tokkens.accessToken);
 				},							
-				url: initConfiguration.urlNikeAuthorizationURL + '/?accessToken=' + tk,
+				url: initConfiguration.apiUrl+'/account/nike',
 				type: 'GET',
 				dataType: 'json',
 				contentType: "application/json",
+                data:{
+                    'login':$('#nikeConnectLogin').val(),
+                    'password':$('#nikeConnectPass').val()
+                },
 				success: function (resp) {
                     var wrap = $('#nikeTokken').parent();
                     $('#nikeTokken').hide();

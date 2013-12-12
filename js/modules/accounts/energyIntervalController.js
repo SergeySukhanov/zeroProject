@@ -116,6 +116,7 @@ Zero.EnergyIntervalController = (function(module){
 
                 startXCircle = startXCircle + widthItem;
             }
+
         },
 
         _switcherEnergy = function(){
@@ -132,15 +133,24 @@ Zero.EnergyIntervalController = (function(module){
 
             week.bind('click', function(event){
                console.log(config.week);
-                $('.head-interval-energy').text('Energy week');
+                $('.head-interval-energy').fadeOut(function(){
+                    $('.head-interval-energy').text('Energy week')
+                });
+                $('.head-interval-energy').fadeIn();
                 _paintEnergyPaper("week");
             });
             month.bind('click', function(event){
-                $('.head-interval-energy').text('Energy month');
+                $('.head-interval-energy').fadeOut(function(){
+                    $('.head-interval-energy').text('Energy month')
+                });
+                $('.head-interval-energy').fadeIn();
                 _paintEnergyPaper("month");
             });
             year.bind('click', function(event){
-                $('.head-interval-energy').text('Energy year');
+                $('.head-interval-energy').fadeOut(function(){
+                    $('.head-interval-energy').text('Energy year')
+                });
+                $('.head-interval-energy').fadeIn();
                 _paintEnergyPaper("year");
             });
         };

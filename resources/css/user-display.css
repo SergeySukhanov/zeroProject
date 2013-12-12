@@ -294,8 +294,43 @@ padding-top: 3px;
     cursor: pointer;
 }
 
+.login-nike {
+    width: 61%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.login-nike input[type="button"]{
+    background-color: rgb(255, 162, 41);
+    color: #ffffff;
+    padding: 7px 26px;
+    font-size: 20px;
+    border: 1px dotted rgb(255, 120, 68);
+    cursor: pointer;
+    position: relative;
+
+}
+
+.nike-brand {
+    width: 82%;
+}
+
+.nike-brand img {
+    width: 100%;
+}
 
 
+.login-nike span {
+    text-decoration: underline;
+    color: #EE7200;
+    font-family: Zero;
+    cursor:pointer;
+}
+
+.login-nike p {
+    font-family: Zero;
+    font-size: 18px;
+}
 
 
 
