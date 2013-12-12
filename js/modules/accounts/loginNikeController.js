@@ -9,9 +9,15 @@
 
  function getNikeConnect(){
     try{
+       if(location.search != ""){
+              var token  = location.search.split('?')[1];
+       }else{
+           var token = localStorage.accessToken
+       }
+
         $.ajax({
             beforeSend: function (request) {
-                request.setRequestHeader("Access-Token", localStorage.accessToken);
+                request.setRequestHeader("Access-Token", token);
             },
             url: initConfiguration.apiUrl+'account/nike',
             type: 'GET',
