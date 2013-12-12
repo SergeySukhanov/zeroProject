@@ -17,7 +17,7 @@ Zero.PageMainController = (function(module){
 	    		Zero.ChartsSettings.initialize();
 	    		Zero.YesterdayController.initialize();
 				Zero.Events.nextUpEvents();
-//				Zero.Team.lastMessages($('#lastMessage'));
+				Zero.Team.lastMessages($('#lastMessage'));
 
                 Zero.EnergySameController.initialize();
                 Zero.EnergyController.initialize();

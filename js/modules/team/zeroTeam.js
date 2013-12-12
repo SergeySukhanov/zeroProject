@@ -731,7 +731,7 @@ Zero.Team = (function(module){
 				var now = new Date();
 				var offset = now.getTimezoneOffset()*60*(-1);
 				var sendData = {
-						'historyRequest' : {'teamId' : teamId , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 5}						
+						'historyRequest' : {'teamId' : teamId , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 5}
 				}
 				$.ajax({	
 					url : initConfiguration.chatUrl,
