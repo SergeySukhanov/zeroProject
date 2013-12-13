@@ -45,7 +45,7 @@
                         location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
                     }
                 }else{
-                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
+                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
                 }
 
                 $('.login-nike').find('form').html('<p>Bla bla</p>');
