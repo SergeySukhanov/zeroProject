@@ -22,6 +22,7 @@
             url: initConfiguration.apiUrl+'account/nike',
             type: 'GET',
             dataType: 'json',
+            async:false,
             contentType: "application/json",
             data:{
                 'login':$('#nikeConnectLogin').val(),

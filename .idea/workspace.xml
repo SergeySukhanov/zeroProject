@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/modal/ModalController.js" afterPath="$PROJECT_DIR$/js/modules/modal/ModalController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/popup.css" afterPath="$PROJECT_DIR$/resources/css/popup.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/zeroTools.js" afterPath="$PROJECT_DIR$/js/modules/zeroTools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginNike_m.html" afterPath="$PROJECT_DIR$/loginNike_m.html" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -140,8 +139,8 @@
     <file path="/energyIntervalController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386832600824" ignored="false" />
     <file path="/paper.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386769994419" ignored="false" />
     <file path="/loginNike.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386842274917" ignored="false" />
-    <file path="/loginNikeController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386850613188" ignored="false" />
-    <file path="/loginNike_m.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386862713730" ignored="false" />
+    <file path="/loginNikeController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386927787120" ignored="false" />
+    <file path="/loginNike_m.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386925291549" ignored="false" />
     <file path="/ModalController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386924122010" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +182,7 @@
       <file leaf-file-name="loginNike_m.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginNike_m.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="8" selection-start="518" selection-end="556" vertical-scroll-proportion="-11.769231">
+            <state line="34" column="73" selection-start="1090" selection-end="1090" vertical-scroll-proportion="-22.23077">
               <folding />
             </state>
           </provider>
@@ -225,10 +224,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModalController.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ModalController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/modal/ModalController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="30" selection-start="3734" selection-end="3734" vertical-scroll-proportion="0.74479735">
+            <state line="19" column="38" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -243,10 +242,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginNikeController.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="loginNikeController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="63" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
+            <state line="21" column="111" selection-start="564" selection-end="564" vertical-scroll-proportion="0.27382258">
               <folding>
                 <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
               </folding>
@@ -280,14 +279,14 @@
         <option value="$PROJECT_DIR$/js/modules/accounts/zeroAccounts.js" />
         <option value="$PROJECT_DIR$/loginNike.html" />
         <option value="$PROJECT_DIR$/resources/css/user-display.css" />
-        <option value="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" />
         <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
         <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
-        <option value="$PROJECT_DIR$/loginNike_m.html" />
         <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/resources/css/popup.css" />
         <option value="$PROJECT_DIR$/js/modules/modal/ModalController.js" />
+        <option value="$PROJECT_DIR$/loginNike_m.html" />
+        <option value="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" />
       </list>
     </option>
   </component>
@@ -711,15 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="63" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/loginNike.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="1170" vertical-scroll-proportion="-0.0">
@@ -730,13 +720,6 @@
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/zeroAccounts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="56" selection-start="4968" selection-end="4968" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginNike_m.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="518" selection-end="556" vertical-scroll-proportion="-11.769231">
           <folding />
         </state>
       </provider>
@@ -778,8 +761,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/modal/ModalController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="30" selection-start="3734" selection-end="3734" vertical-scroll-proportion="0.74479735">
+        <state line="19" column="38" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginNike_m.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="73" selection-start="1090" selection-end="1090" vertical-scroll-proportion="-22.23077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="111" selection-start="564" selection-end="564" vertical-scroll-proportion="0.27382258">
+          <folding>
+            <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
