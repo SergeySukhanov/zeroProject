@@ -10,7 +10,7 @@
  function getNikeConnect(){
     try{
        if(location.search != ""){
-              var token  = location.search.split('?')[1];
+              var token  = location.search.split('?token=')[1];
        }else{
            var token = localStorage.accessToken
        }
@@ -37,12 +37,7 @@
 
                 console.log(resp);
                 location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
-                var html = '<p>You connected with NIKE!!!</p><span id="closeWindowNike">Close window</span>';
-                $('.login-nike').find('form').html(html);
 
-                $('#closeWindowNike').bind('click', function(){
-                    window.close()
-                });
             },
             error : function(error) {
                 console.log(error);
@@ -54,5 +49,13 @@
 }
 
 $(document).ready(function(){
+    if(location.search != ""){
+        var html = '<p>You connected with NIKE!!!</p><span id="closeWindowNike">Close window</span>';
+        $('.login-nike').find('form').html(html);
+
+        $('#closeWindowNike').bind('click', function(){
+            window.close()
+        });
+    }
      $('#nikeConnectButton').bind('click', getNikeConnect)
 });
