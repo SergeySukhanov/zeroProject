@@ -38,11 +38,18 @@
                 console.log(resp);
                 localStorage.setItem("errorCode", resp.errorCode);
                 initConfiguration.errorCode = resp.errorCode;
-                if(resp.errorCode == 1){
-                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
-                }else if(resp.errorCode == 10){
-                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                if(token == localStorage.accessToken){
+                    if(resp.errorCode == 1){
+                        location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
+                    }else if(resp.errorCode == 10){
+                        location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
+                    }
+                }else{
+                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
                 }
+
+                $('.login-nike').find('form').html('<p>Bla bla</p>');
+
 
 
             },
@@ -75,6 +82,8 @@ $(document).ready(function(){
                 });
             }
         }
+
+
     }
      $('#nikeConnectButton').bind('click', getNikeConnect)
 });
