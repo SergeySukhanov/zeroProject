@@ -39,9 +39,9 @@
                 localStorage.setItem("errorCode", resp.errorCode);
                 initConfiguration.errorCode = resp.errorCode;
                 if(resp.errorCode == 1){
-                    location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                    location.href = location.href+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
                 }else if(resp.errorCode == 10){
-                    location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                    location.href = location.href+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
                 }
 
 
