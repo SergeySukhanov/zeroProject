@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginNike.html" afterPath="$PROJECT_DIR$/loginNike.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" />
     </list>
     <ignored path="zeroProject.iws" />
@@ -163,7 +164,7 @@
       <file leaf-file-name="loginNike.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginNike.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="42" selection-start="1257" selection-end="1257" vertical-scroll-proportion="-21.576923">
+            <state line="31" column="16" selection-start="1129" selection-end="1279" vertical-scroll-proportion="-20.26923">
               <folding />
             </state>
           </provider>
@@ -244,7 +245,7 @@
       <file leaf-file-name="loginNikeController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="0" selection-start="3046" selection-end="3046" vertical-scroll-proportion="0.7579408">
+            <state line="84" column="39" selection-start="2978" selection-end="2978" vertical-scroll-proportion="0.6834611">
               <folding>
                 <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
               </folding>
@@ -767,14 +768,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loginNike.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="42" selection-start="1257" selection-end="1257" vertical-scroll-proportion="-21.576923">
+        <state line="31" column="16" selection-start="1129" selection-end="1279" vertical-scroll-proportion="-20.26923">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="3046" selection-end="3046" vertical-scroll-proportion="0.7579408">
+        <state line="84" column="39" selection-start="2978" selection-end="2978" vertical-scroll-proportion="0.6834611">
           <folding>
             <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
           </folding>

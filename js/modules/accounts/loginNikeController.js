@@ -87,10 +87,10 @@ $(document).ready(function(){
     }
      $('#nikeConnectButton').bind('click', getNikeConnect);
 
-    $('#google').bind('click', function(event){
-           location.href = 'https://www.google.ru/';
-    });
-
-    var link = document.getElementById('bing');
-    link.onclick = function(){location.href = 'http://www.bing.com/'};
+//    $('#google').bind('click', function(event){
+//           location.href = 'https://www.google.ru/';
+//    });
+//
+//    var link = document.getElementById('bing');
+//    link.onclick = function(){location.href = 'http://www.bing.com/'};
 });
