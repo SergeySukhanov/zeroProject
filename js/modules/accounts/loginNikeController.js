@@ -8,12 +8,12 @@
 
 
  function getNikeConnect(){
+    if(location.search != ""){
+        var token  = location.search.split('?token=')[1];
+    }else{
+        var token = localStorage.accessToken
+    }
     try{
-       if(location.search != ""){
-              var token  = location.search.split('?token=')[1];
-       }else{
-           var token = localStorage.accessToken
-       }
 
         $.ajax({
             beforeSend: function (request) {
@@ -39,9 +39,9 @@
                 localStorage.setItem("errorCode", resp.errorCode);
                 initConfiguration.errorCode = resp.errorCode;
                 if(resp.errorCode == 1){
-                    location.href = location.href+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
                 }else if(resp.errorCode == 10){
-                    location.href = location.href+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                    location.href = initConfiguration.apiUrl+'account/nike?token='+token+'&login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
                 }
 
 
