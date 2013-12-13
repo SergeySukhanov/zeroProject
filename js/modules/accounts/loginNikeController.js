@@ -36,7 +36,14 @@
 //                wrap.append(connected);
 
                 console.log(resp);
-                location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                localStorage.setItem("errorCode", resp.errorCode);
+                initConfiguration.errorCode = resp.errorCode;
+                if(resp.errorCode == 1){
+                    location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                }else if(resp.errorCode == 10){
+                    location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
+                }
+
 
             },
             error : function(error) {
@@ -49,13 +56,25 @@
 }
 
 $(document).ready(function(){
-    if(location.search != ""){
-        var html = '<p>You connected with NIKE!!!</p><span id="closeWindowNike">Close window</span>';
-        $('.login-nike').find('form').html(html);
+    if(localStorage.accessToken != undefined){
+        if(location.search != ""){
 
-        $('#closeWindowNike').bind('click', function(){
-            window.close()
-        });
+            if(localStorage.errorCode == 1){
+                var html = '<p>You connected with NIKE!!!</p><span id="closeWindowNike">Close window</span>';
+                $('.login-nike').find('form').html(html);
+
+                $('#closeWindowNike').bind('click', function(){
+                    window.close()
+                });
+            }else{
+                var html = '<p>You not connected with NIKE!!! Please, try again.</p><span id="closeWindowNike">Close window</span>';
+                $('.login-nike').find('form').html(html);
+
+                $('#closeWindowNike').bind('click', function(){
+                    window.close()
+                });
+            }
+        }
     }
      $('#nikeConnectButton').bind('click', getNikeConnect)
 });

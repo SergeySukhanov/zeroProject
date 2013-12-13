@@ -138,7 +138,7 @@
     <file path="/energyIntervalController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386832600824" ignored="false" />
     <file path="/paper.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386769994419" ignored="false" />
     <file path="/loginNike.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386842274917" ignored="false" />
-    <file path="/loginNikeController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386931877013" ignored="false" />
+    <file path="/loginNikeController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386933328437" ignored="false" />
     <file path="/loginNike_m.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386925291549" ignored="false" />
     <file path="/ModalController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386924122010" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -244,7 +244,7 @@
       <file leaf-file-name="loginNikeController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="72" selection-start="768" selection-end="768" vertical-scroll-proportion="0.39101863">
+            <state line="53" column="35" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.4041621">
               <folding>
                 <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
               </folding>
@@ -774,7 +774,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="72" selection-start="768" selection-end="768" vertical-scroll-proportion="0.39101863">
+        <state line="53" column="35" selection-start="1840" selection-end="1840" vertical-scroll-proportion="0.4041621">
           <folding>
             <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
           </folding>
