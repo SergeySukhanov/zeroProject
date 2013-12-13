@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/layout/PageMainController.js" afterPath="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" afterPath="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -169,15 +169,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zeroAccounts.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/modules/accounts/zeroAccounts.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="56" selection-start="4968" selection-end="4968" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="loginNike_m.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginNike_m.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -241,13 +232,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginNikeController.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="loginNikeController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="138" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.32968238">
+            <state line="47" column="138" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageMainController.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/modules/layout/PageMainController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="16" selection-start="487" selection-end="529" vertical-scroll-proportion="0.35377875">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -277,7 +277,6 @@
         <option value="$PROJECT_DIR$/js/modules/accounts/energyIntervalController.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/zeroAccounts.js" />
         <option value="$PROJECT_DIR$/resources/css/user-display.css" />
-        <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
         <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
         <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
@@ -286,6 +285,7 @@
         <option value="$PROJECT_DIR$/loginNike_m.html" />
         <option value="$PROJECT_DIR$/loginNike.html" />
         <option value="$PROJECT_DIR$/js/modules/accounts/loginNikeController.js" />
+        <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
       </list>
     </option>
   </component>
@@ -591,7 +591,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14549288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14549288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -695,13 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/layout/PageMainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="65" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="30" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
@@ -774,10 +767,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="138" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.32968238">
+        <state line="47" column="138" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/layout/PageMainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="487" selection-end="529" vertical-scroll-proportion="0.35377875">
+          <folding />
         </state>
       </provider>
     </entry>
