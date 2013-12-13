@@ -34,7 +34,9 @@
 //                $('#nikeTokken').next().hide();
 //                var connected = $('<p/>').text('Connected').addClass('connected');
 //                wrap.append(connected);
+
                 console.log(resp);
+                location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
                 var html = '<p>You connected with NIKE!!!</p><span id="closeWindowNike">Close window</span>';
                 $('.login-nike').find('form').html(html);
 
