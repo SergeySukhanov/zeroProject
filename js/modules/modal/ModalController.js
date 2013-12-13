@@ -11,14 +11,19 @@ Zero.ModalController = (function(module){
 	    _create = function(id){
 	    	var heightOuter= $('#wrapper').outerHeight() + $('.footer').outerHeight();
 	    	var layout = $('<div/>').addClass('layout-popup').addClass('popup').css({
-	    		                                                                   'height':heightOuter,
+	    		                                                                   'height':window.outerHeight,
 	    		                                                                   'z-index':200, 
 	    		                                                                   'width':'100%',
 	    		                                                                   'position':'absolute',
 	    		                                                                   'top':0, 
 	    		                                                                   'background-color':'#333333', 
-	    		                                                                   'opacity':0.5
+	    		                                                                   'opacity':0.5,
+                                                                                   'overflow-y':'hidden'
 	    	                                                                    });
+            $('body').css({
+                'height':window.outerHeight,
+                'overflow-y':'hidden'
+            })
 	    	// var crossClose = $('<span/>').addClass('cross-close').addClass('popup');
 	    	var outerPopupContainer = $('<div/>').addClass('popup-container').addClass('popup').attr('id', id);
 	    	var header = $('<div/>').addClass('header-popup-inner');
@@ -107,6 +112,10 @@ Zero.ModalController = (function(module){
 	    
 	    _destroy = function(){
 	    	$('.popup').remove();
+            $('body').css({
+                'height':'100%',
+                'overflow-y':'auto'
+            })
 	    },
 	    
 	    _show = function(){

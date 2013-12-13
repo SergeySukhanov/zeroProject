@@ -355,7 +355,7 @@ Zero.Tools = (function(module){
 
              $.ajax({
                  beforeSend : function() {
-                   alert('111');
+
                  },
                  url : 'http://maps.googleapis.com/maps/api/geocode/json',
                  type : 'GET',
