@@ -85,5 +85,15 @@ $(document).ready(function(){
 
 
     }
-     $('#nikeConnectButton').bind('click', getNikeConnect)
+//     $('#nikeConnectButton').bind('click', getNikeConnect);
+     $('#nikeConnectButton').bind('click', function(event){
+            location.href="http://www.yandex.ru/";
+     });
+//     $('#google').attr('href', 'https://www.google.ru/');
+    $('#google').bind('click', function(event){
+           location.href = 'https://www.google.ru/';
+    });
+
+    var link = document.getElementById('bing');
+    link.onclick = function(){location.href = 'http://www.bing.com/'};
 });
