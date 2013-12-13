@@ -85,11 +85,8 @@ $(document).ready(function(){
 
 
     }
-//     $('#nikeConnectButton').bind('click', getNikeConnect);
-     $('#nikeConnectButton').bind('click', function(event){
-            location.href="http://www.yandex.ru/";
-     });
-//     $('#google').attr('href', 'https://www.google.ru/');
+     $('#nikeConnectButton').bind('click', getNikeConnect);
+
     $('#google').bind('click', function(event){
            location.href = 'https://www.google.ru/';
     });
