@@ -36,7 +36,7 @@
 //                wrap.append(connected);
 
                 console.log(resp);
-                location.href = location.href+'login='+$('#nikeConnectLogin').val()+'&pass='+$('#nikeConnectPass').val()
+                location.href = location.href+'?login='+$('#nikeConnectLogin').val()+'&password='+$('#nikeConnectPass').val()
                 var html = '<p>You connected with NIKE!!!</p><span id="closeWindowNike">Close window</span>';
                 $('.login-nike').find('form').html(html);
 
