@@ -244,7 +244,7 @@
       <file leaf-file-name="loginNikeController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="32" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.5717415">
+            <state line="38" column="47" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.5345017">
               <folding>
                 <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
               </folding>
@@ -774,7 +774,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/loginNikeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="32" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.5717415">
+        <state line="38" column="47" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.5345017">
           <folding>
             <element signature="n#!!doc;n#getNikeConnect#0" expanded="false" />
           </folding>
