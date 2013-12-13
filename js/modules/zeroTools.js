@@ -297,11 +297,13 @@ Zero.Tools = (function(module){
 	    },
 
          m.getLocationName = function(lng, lat, func){
+             /*
+             var latlng = lat + ',' + lng;
+
              try{
                  $.getJSON('http://maps.googleapis.com/maps/api/geocode/json', {
-                     latlng: lat + "," + lng,
-                     sensor: 'false',
-                     language: 'en'
+                     latlng: latlng,
+                     sensor: 'false'
                  }).done( function(result, status) {
                     if (status == "success") {
                         console.log(result)
@@ -341,6 +343,29 @@ Zero.Tools = (function(module){
                  m.getLocationByIP(func);
                  return;
              }
+             */
+
+             var obj = {
+                 latlng : lng + ',' + lat,
+                 sensor : false
+             }
+
+             var query = 'latlng=' + lat + ',' + lng + '&sensor=false';
+
+
+             $.ajax({
+                 beforeSend : function() {
+                   alert('111');
+                 },
+                 url : 'http://maps.googleapis.com/maps/api/geocode/json',
+                 type : 'GET',
+                 data : obj,
+                 dataType : 'json',
+                 success : function(data) {
+                     console.log(data);
+                 }
+             })
+
         },
 
         m.getLocationByIP = function(func) {

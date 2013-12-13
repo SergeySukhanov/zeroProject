@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginNike_m.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/zeroTools.js" afterPath="$PROJECT_DIR$/js/modules/zeroTools.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +17,7 @@
     <file path="$PROJECT_DIR$/../constructor/js/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134653910" ignored="false" />
     <file path="/register.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383904517044" ignored="false" />
     <file path="/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384412142115" ignored="false" />
-    <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386348002696" ignored="false" />
+    <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386922279796" ignored="false" />
     <file path="/popup.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383208552823" ignored="false" />
     <file path="/TitleController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386234979780" ignored="false" />
     <file path="/ChartsSettingsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384950897803" ignored="false" />
@@ -187,10 +186,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginNike_m.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="loginNike_m.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginNike_m.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="8" selection-start="518" selection-end="556" vertical-scroll-proportion="0.3449831">
+            <state line="18" column="8" selection-start="518" selection-end="556" vertical-scroll-proportion="-11.769231">
               <folding />
             </state>
           </provider>
@@ -199,7 +198,25 @@
       <file leaf-file-name="zeroTeam.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="620" column="57" selection-start="15926" selection-end="15926" vertical-scroll-proportion="0.0">
+            <state line="730" column="39" selection-start="18405" selection-end="18405" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zeroTools.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="359" column="73" selection-start="10441" selection-end="10441" vertical-scroll-proportion="0.85104054">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SmallCalendarWidgetController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/modules/calendar/SmallCalendarWidgetController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -234,24 +251,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user-display.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/user-display.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="296" column="43" selection-start="5210" selection-end="5210" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="6012" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -271,7 +270,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/js/modules/events/zeroEvents.js" />
-        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/js/modules/events/eventChartsController.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/energySameController.js" />
         <option value="$PROJECT_DIR$/resources/css/energy.css" />
@@ -286,6 +284,7 @@
         <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
         <option value="$PROJECT_DIR$/loginNike_m.html" />
+        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
       </list>
     </option>
   </component>
@@ -456,6 +455,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="calendar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zeroProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="accounts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -591,20 +612,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/css/energy.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="74" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/events/eventChartsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="18" selection-start="2651" selection-end="2667" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="34" selection-start="2706" selection-end="2878" vertical-scroll-proportion="0.0">
@@ -663,13 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="620" column="57" selection-start="15926" selection-end="15926" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="30" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
@@ -702,7 +702,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loginNike_m.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="518" selection-end="556" vertical-scroll-proportion="0.3449831">
+        <state line="18" column="8" selection-start="518" selection-end="556" vertical-scroll-proportion="-11.769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="730" column="39" selection-start="18405" selection-end="18405" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/calendar/SmallCalendarWidgetController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="359" column="73" selection-start="10441" selection-end="10441" vertical-scroll-proportion="0.85104054">
           <folding />
         </state>
       </provider>
