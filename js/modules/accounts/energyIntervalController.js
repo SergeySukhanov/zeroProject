@@ -69,10 +69,7 @@ Zero.EnergyIntervalController = (function(module){
 
         _intervalPaper = function(type){
             config.paper = Raphael(config.wrap, config.widthPaper, config.heightPaper);
-//            var xLine = config.paper.path("M30 10V200");
-//            xLine.attr({'stroke-width':1, 'opacity':1, 'stroke':'#999999'});
-//            var yLine = config.paper.path("M10 200H800");
-//            yLine.attr({'stroke-width':1, 'opacity':1, 'stroke':'#ffffff'});
+
            //сетка
             var startX = 10;
             var startY = 10;

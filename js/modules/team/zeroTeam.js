@@ -557,9 +557,10 @@ Zero.Team = (function(module){
 	/*Chat section*/
 	_chatInit = function(group) {
 		var activeLog = $('#chat_' + group.id);
+            activeLog.empty();
 		var log = {
 			print: function(s) {
-				activeLog.append('<div>'+s+'</div>').get(0).scrollTop += 100;
+				activeLog.prepend('<div>'+s+'</div>').get(0).scrollTop += 100;
 			}		
 		}	
 		var sendBt = $('.send_to_chat', activeLog.parent());

@@ -10,17 +10,13 @@
 Zero.EnergyController = (function(module){
     var view = {},
 
-        config = {
-
-        },
-
-        tokkens = module.getTokens(),
+        token = module.getTokens(),
 
         _render = function(){
             try{
                 $.ajax({
                     beforeSend: function (request) {
-					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+					   request.setRequestHeader("Access-Token", token.accessToken);
 				    },
                     url:initConfiguration.apiUrl + 'energy/detail',
                     type:'GET',
