@@ -559,8 +559,15 @@ Zero.Team = (function(module){
 		var activeLog = $('#chat_' + group.id);
             activeLog.empty();
 		var log = {
-			print: function(s) {
-				activeLog.prepend('<div>'+s+'</div>').get(0).scrollTop += 100;
+			print: function(s, flag) {
+                if(flag){
+                    activeLog.append(s).get(0).scrollTop += 100;
+                }else{
+                    activeLog.prepend(s).get(0).scrollTop += 100;
+                }
+
+
+
 			}		
 		}	
 		var sendBt = $('.send_to_chat', activeLog.parent());
@@ -614,7 +621,8 @@ Zero.Team = (function(module){
 					dataType: 'json', 					
 						data: JSON.stringify(obj),							
 						success: function() {
-							log.print('Me: ' + data);
+                            chat._setIconItemChat(initConfiguration.settingsData.userId, 'Me', data);
+//							log.print('Me: ' + data, true);
 						},
 						complete: function() {
 							
@@ -638,8 +646,10 @@ Zero.Team = (function(module){
 					success: function(resp) {
 						if(resp && resp.historyResponse) {
 							var arr = resp.historyResponse.messageList;
-							for(var i=0; i < arr.length; i++) {							
-								log.print(arr[i].userName + ': ' + arr[i].text);								
+							for(var i=0; i < arr.length; i++) {
+                                chat._setIconItemChat(arr[i].userId, arr[i].userName, arr[i].text);
+//                                console.log(userPhoto);
+//								log.print(arr[i].userName + ': ' + arr[i].text, false);
 							}
 						}
 						
@@ -649,6 +659,42 @@ Zero.Team = (function(module){
 					}
 				});						
 			},
+
+            _setIconItemChat : function(id, userName, text){
+                try{
+                    $.ajax({
+                        beforeSend: function (request) {
+                            request.setRequestHeader("Access-Token", tokkens.accessToken);
+                        },
+                        url:initConfiguration.apiUrl + 'user/' + id,
+                        type:'GET',
+                        dataType:'json',
+                        contentType:'application/json',
+                        success:function(res){
+                            var userPhoto = Zero.Tools.getUserAvatar(res.result, 100, 100);
+                            console.log(userPhoto);
+                            var div = $('<div/>').addClass('item');
+                            var divRight = $('<div/>').addClass('body-message');
+                                var spanName = $('<span/>').addClass('name-item-message').text(userName + ': ');
+                                var spanMessage = $('<span/>').addClass('mess-item-message').text(text);
+
+                            divRight.append(spanName);
+                            divRight.append(spanMessage);
+
+                            div.append(userPhoto);
+                            div.append(divRight);
+                            if(userName == 'Me'){
+                                log.print(div, true);
+                            }else{
+                                log.print(div, false);
+                            }
+
+                        }
+                    })
+                }catch(e){
+                    console.log(e);
+                }
+            },
 			
 			Read : function(firstTime) {
 				var sendData = {
