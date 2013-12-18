@@ -671,7 +671,7 @@ Zero.Team = (function(module){
                         dataType:'json',
                         contentType:'application/json',
                         success:function(res){
-                            var userPhoto = Zero.Tools.getUserAvatar(res.result, 100, 100);
+                            var userPhoto = Zero.Tools.getSmallUserAvatar(res.result, 60, 60);
                             console.log(userPhoto);
                             var div = $('<div/>').addClass('item');
                             var divRight = $('<div/>').addClass('body-message');

@@ -4,8 +4,8 @@
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/main-styles.css" afterPath="$PROJECT_DIR$/resources/css/main-styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/team.css" afterPath="$PROJECT_DIR$/resources/css/team.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/team/zeroTeam.js" afterPath="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/zeroTools.js" afterPath="$PROJECT_DIR$/js/modules/zeroTools.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +19,7 @@
     <file path="$PROJECT_DIR$/../constructor/js/login.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383134653910" ignored="false" />
     <file path="/register.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383904517044" ignored="false" />
     <file path="/header.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384412142115" ignored="false" />
-    <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386922279796" ignored="false" />
+    <file path="/zeroTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387375251727" ignored="false" />
     <file path="/popup.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1383208552823" ignored="false" />
     <file path="/TitleController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1386234979780" ignored="false" />
     <file path="/ChartsSettingsController.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1384950897803" ignored="false" />
@@ -150,7 +150,7 @@
     <file path="$USER_HOME$/Documents/GitHub/dag/resources/css/gallery.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387184299539" ignored="false" />
     <file path="$USER_HOME$/Documents/GitHub/dag/resources/css/special-version.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387265382718" ignored="false" />
     <file path="/special-version.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387265374704" ignored="false" />
-    <file path="/zeroTeam.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387369560119" ignored="false" />
+    <file path="/zeroTeam.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387375327303" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,10 +170,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="zeroTeam.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="zeroTeam.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="622" column="42" selection-start="15999" selection-end="15999" vertical-scroll-proportion="0.19934283">
+            <state line="673" column="91" selection-start="17796" selection-end="17796" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -206,10 +206,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main-styles.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main-styles.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/css/main-styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="237" column="17" selection-start="3839" selection-end="3839" vertical-scroll-proportion="0.0">
+            <state line="243" column="22" selection-start="3926" selection-end="3926" vertical-scroll-proportion="0.86966044">
               <folding />
             </state>
           </provider>
@@ -218,7 +218,7 @@
       <file leaf-file-name="zeroTools.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="487" column="6" selection-start="13444" selection-end="13444" vertical-scroll-proportion="0.0">
+            <state line="645" column="54" selection-start="19276" selection-end="19276" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -281,7 +281,6 @@
         <option value="$PROJECT_DIR$/resources/css/paper.css" />
         <option value="$PROJECT_DIR$/js/modules/accounts/zeroAccounts.js" />
         <option value="$PROJECT_DIR$/resources/css/user-display.css" />
-        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
         <option value="$PROJECT_DIR$/resources/css/popup.css" />
         <option value="$PROJECT_DIR$/js/modules/modal/ModalController.js" />
         <option value="$PROJECT_DIR$/loginNike_m.html" />
@@ -292,8 +291,9 @@
         <option value="$PROJECT_DIR$/js/modules/accounts/energyController.js" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
         <option value="$PROJECT_DIR$/resources/css/team.css" />
-        <option value="$PROJECT_DIR$/resources/css/main-styles.css" />
         <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
+        <option value="$PROJECT_DIR$/js/modules/zeroTools.js" />
+        <option value="$PROJECT_DIR$/resources/css/main-styles.css" />
       </list>
     </option>
   </component>
@@ -745,13 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="487" column="6" selection-start="13444" selection-end="13444" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/user-display.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -773,16 +766,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/css/main-styles.css">
+    <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="17" selection-start="3839" selection-end="3839" vertical-scroll-proportion="0.0">
+        <state line="673" column="91" selection-start="17796" selection-end="17796" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
+    <entry file="file://$PROJECT_DIR$/js/modules/zeroTools.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="622" column="42" selection-start="15999" selection-end="15999" vertical-scroll-proportion="0.19934283">
+        <state line="645" column="54" selection-start="19276" selection-end="19276" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/main-styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="243" column="22" selection-start="3926" selection-end="3926" vertical-scroll-proportion="0.86966044">
           <folding />
         </state>
       </provider>

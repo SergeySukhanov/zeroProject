@@ -223,6 +223,7 @@ color: #666666;
 
 .chat-window .item {
     border-bottom: 1px dotted #888888;
+    margin: 10px;
 }
 
 .name-item-message {
@@ -239,5 +240,6 @@ color: #666666;
 }
 
 .chat-window .body-message {
-    top: 18px;
+    top: 3px;
+    margin-left: 10px;
 }
