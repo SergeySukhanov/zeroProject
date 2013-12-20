@@ -621,7 +621,8 @@ Zero.Team = (function(module){
 					dataType: 'json', 					
 						data: JSON.stringify(obj),							
 						success: function() {
-                            chat._setIconItemChat(initConfiguration.settingsData.userId, 'Me', data);
+                            var time = Zero.Tools.setFullTime(Date.parse(new Date()));
+                            chat._setIconItemChat(initConfiguration.settingsData.userId, 'Me', data, time);
 //							log.print('Me: ' + data, true);
 						},
 						complete: function() {
@@ -647,7 +648,19 @@ Zero.Team = (function(module){
 						if(resp && resp.historyResponse) {
 							var arr = resp.historyResponse.messageList;
 							for(var i=0; i < arr.length; i++) {
-                                chat._setIconItemChat(arr[i].userId, arr[i].userName, arr[i].text);
+                                var time;
+                                time = Zero.Tools.setFullTime(arr[i].timestamp);
+                                if(new Date().getFullYear() > new Date(arr[i].timestamp).getFullYear()){
+                                    time = Zero.Tools.setFullDate(arr[i].timestamp);
+                                }else if(new Date().getMonth()+1 > new Date(arr[i].timestamp).getMonth()+1){
+                                    time = Zero.Tools.setFullDate(arr[i].timestamp);
+                                }else if(new Date().getDate() > new Date(arr[i].timestamp).getDate()){
+                                    time = Zero.Tools.setFullDate(arr[i].timestamp);
+                                }else{
+                                    time = Zero.Tools.setFullTime(arr[i].timestamp);
+                                }
+                                console.log(time);
+                                chat._setIconItemChat(arr[i].userId, arr[i].userName, arr[i].text, time);
 //                                console.log(userPhoto);
 //								log.print(arr[i].userName + ': ' + arr[i].text, false);
 							}
@@ -660,7 +673,7 @@ Zero.Team = (function(module){
 				});						
 			},
 
-            _setIconItemChat : function(id, userName, text){
+            _setIconItemChat : function(id, userName, text, time){
                 try{
                     $.ajax({
                         beforeSend: function (request) {
@@ -677,9 +690,11 @@ Zero.Team = (function(module){
                             var divRight = $('<div/>').addClass('body-message');
                                 var spanName = $('<span/>').addClass('name-item-message').text(userName + ': ');
                                 var spanMessage = $('<span/>').addClass('mess-item-message').text(text);
+                                var timeItem = $('<span/>').addClass('time-item-message').text(time);
 
                             divRight.append(spanName);
                             divRight.append(spanMessage);
+                            divRight.append(timeItem);
 
                             div.append(userPhoto);
                             div.append(divRight);

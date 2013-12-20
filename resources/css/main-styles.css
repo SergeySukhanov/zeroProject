@@ -243,3 +243,12 @@ color: #666666;
     top: 3px;
     margin-left: 10px;
 }
+
+
+.time-item-message {
+    font-size: 12px;
+    color: #999999;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

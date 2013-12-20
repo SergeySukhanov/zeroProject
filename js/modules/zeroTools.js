@@ -49,6 +49,32 @@ Zero.Tools = (function(module){
 		var formatDate = month + ' ' + day + ', ' + year;
 		return formatDate;
 	}
+        m.setFullDate = function(time){
+            var date = new Date(time);
+            var day = date.getDate()+'th';
+            var month = initConfiguration.monthList[date.getMonth()];
+            var year = date.getFullYear();
+
+            var formatDate = month + ' ' + day + ', ' + year;
+            return formatDate;
+        }
+    m.setFullTime = function(time){
+        var date = new Date(time);
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        if(hours < 10) {
+            hours = '0' + hours;
+        }
+        if(minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if(seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        var formatTime = hours + ':' + minutes + ':' + seconds;
+        return formatTime;
+    }
 	 
 	m.getFullTime = function(){
 		var date = new Date();
