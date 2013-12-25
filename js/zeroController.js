@@ -46,7 +46,7 @@ var Zero = (function(m){
 			}
 		
 		return answer;
-	}
+	};
 	
 	//Calendars Account
 	m.buildCalendarAccounts = function() {
@@ -59,7 +59,7 @@ var Zero = (function(m){
 				}
 			}
 		}		
-	}
+	};
 	
 	m.getCalendarAccounts = function() {
 		var answer = false;
@@ -69,7 +69,7 @@ var Zero = (function(m){
 		}
 		
 		return answer;
-	}
+	};
 	
 	
 	
@@ -96,6 +96,6 @@ var Zero = (function(m){
 		}
 		_loadPage(url);	
 				
-	}
+	};
 	return m;
 }(Zero || {}))
