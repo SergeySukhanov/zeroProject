@@ -14,78 +14,33 @@ var initConfiguration = {
 	 },
 //LOCAL	 
 	 //auth	  
-	chatUrl: 'http://zerosrv03.firstlinesoftware.ru:9999',
-    apiAuthUrl:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/',
-	apiUrl: 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/',
-    apiUrlTom: 'http://zerosrv03.firstlinesoftware.ru:8080/api_srv/V1/',
-//	urlSession:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/session',
-//	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
-//	urlLoginCheck:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/check_email_exists',
+	chatUrl: 'http://zerosrv02.firstlinesoftware.ru:9999',
+
+    apiAuthUrl:'http://zerosrv02.firstlinesoftware.ru/api_usr/V1/',
+	apiUrl: 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/',
+
+    apiUrlTom: 'http://zerosrv02.firstlinesoftware.ru:8080/api_srv/V1/',
+
+	urlSession:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/session',
+	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
+	urlLoginCheck:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/check_email_exists',
 	
 	//set data charts
-	urlCharts:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getChartsData',
-	urlCalendarsList:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/calendars',
-	urlEventsCalendar:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/calendarEvents',
+	urlCharts:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getChartsData',
+	urlCalendarsList:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendars',
+	urlEventsCalendar:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendarEvents',
 	
 	//Account	
-	urlGoogleAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
+	urlGoogleAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
 	
 	//settings
-	urlSettings:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/settings',
-	urlSliders:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
-    urlWillpower:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/willpower/data',
-    urlWeather:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/weather',
+	urlSettings:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/settings',
+	urlSliders:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
+    urlWillpower:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/data',
+    urlWeather:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/weather',
 
-
-//DEV
-/*
-	chatUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com:9999',
-    apiUrl: 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/',
-    urlRegister:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
-	urlLogin:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
-	
-	urlCharts:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getChartsData',
-	urlCalendarsList:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/calendars',
-	urlEventsCalendar:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/calendarEvents',
-
-	urlGoogleAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/getNikeConnect',
-	
-	urlSettings:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/settings',
-	urlSliders:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
-	urlWillpower:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
-	urlWeather:'http://ec2-54-216-165-90.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
-*/	
-	
-//DEMO	
-	/*
-	urlRegister:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/register/w',
-	urlLogin:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_usr/V1/login',
-	
-	urlCharts:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getChartsData',
-	urlCalendarsList:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/calendars',
-	urlEventsCalendar:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/calendarEvents',
-
-	urlGoogleAuthorizationURL : 'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/getNikeConnect',
-	
-	urlSettings:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/settings',
-	urlSliders:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/sliders',
-	urlWillpower:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/willpower/data',
-	urlWeather:'http://ec2-54-216-166-33.eu-west-1.compute.amazonaws.com/api_srv/V1/weather',
- 
- 
- 
-  
-*/
-	
-	
-	
-	
 	monthList:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     weekShortList:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
