@@ -14,32 +14,31 @@ var initConfiguration = {
 	 },
 //LOCAL	 
 	 //auth	  
-	chatUrl: 'http://zerosrv02.firstlinesoftware.ru:9999',
+	chatUrl: 'http://zerosrv03.firstlinesoftware.ru:9999',
 
-    apiAuthUrl:'http://zerosrv02.firstlinesoftware.ru/api_usr/V1/',
-	apiUrl: 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/',
-
-    apiUrlTom: 'http://zerosrv02.firstlinesoftware.ru:8080/api_srv/V1/',
+    apiAuthUrl:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/',
+	apiUrl: 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/',
+    apiUrlTom: 'http://zerosrv03.firstlinesoftware.ru:8080/api_srv/V1/',
 
 	urlSession:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/session',
 	urlLogin:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/login',
 	urlLoginCheck:'http://zerosrv03.firstlinesoftware.ru/api_usr/V1/check_email_exists',
-	
-	//set data charts
-	urlCharts:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getChartsData',
-	urlCalendarsList:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendars',
-	urlEventsCalendar:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/calendarEvents',
-	
-	//Account	
-	urlGoogleAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
-	urlFitBitAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
-	urlNikeAuthorizationURL : 'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
-	
+
+//	set data charts
+	urlCharts:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getChartsData',
+	urlCalendarsList:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/calendars',
+	urlEventsCalendar:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/calendarEvents',
+
+//	Account
+	urlGoogleAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getGoogleAuthorizationURL',
+	urlFitBitAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getFitbitAuthorizationURL',
+	urlNikeAuthorizationURL : 'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/getNikeConnect',
+
 	//settings
-	urlSettings:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/settings',
-	urlSliders:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
-    urlWillpower:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/willpower/data',
-    urlWeather:'http://zerosrv02.firstlinesoftware.ru/api_srv/V1/weather',
+	urlSettings:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/settings',
+	urlSliders:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/willpower/sliders',
+    urlWillpower:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/willpower/data',
+    urlWeather:'http://zerosrv03.firstlinesoftware.ru/api_srv/V1/weather',
 
 	monthList:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 	monthShortList:['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
