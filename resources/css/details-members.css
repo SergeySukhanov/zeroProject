@@ -216,6 +216,15 @@
 }
 
 
+#version {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: Zero;
+}
+
 
 
 

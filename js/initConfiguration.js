@@ -4,6 +4,7 @@ var initConfiguration = {
 	 imagesFolder:'resources/images/',
 	 localDataFolder:'resources/data/',
 	 templatesFolder:'resources/templates',
+     version:'03',
 	 
 	 getRootLocation:function(){
 	 	return initConfiguration.rootContext + initConfiguration.rootFolder;
