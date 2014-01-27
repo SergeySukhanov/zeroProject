@@ -369,7 +369,7 @@ function AuthController(options){
 	    _loginAjax = function(wrap, dataForm){
 		try{
 		  $.ajax({
-			url:initConfiguration.urlLogin,
+			url:initConfiguration.apiAuthUrl+'login',
 			type:"POST",
 			dataType:'json',
 			contentType:"application/json",
@@ -482,7 +482,7 @@ function AuthController(options){
 	    wrap.append(errorImg);
 		wrap.append(errorTitle);
 		wrap.append(errorMessage);
-		wrap.append(linkError)
+		wrap.append(linkError);
 		  
 		$('.error-link').bind('click', function(event){
           	 event.preventDefault();

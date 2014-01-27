@@ -569,7 +569,7 @@ Zero.Team = (function(module){
 
 
 			}		
-		}	
+		};
 		var sendBt = $('.send_to_chat', activeLog.parent());
 		var messageForm = sendBt.closest('form');
 		
@@ -580,7 +580,7 @@ Zero.Team = (function(module){
 				chat.Send();
 				e.preventDefault();
 				return false;
-		})	
+		});
 
 		
 
@@ -596,14 +596,15 @@ Zero.Team = (function(module){
 			
 			onCompleteRead: function(xhr) {							
 				if (xhr.status == 200) {
-					chat.Read();
+					chat.Read(true);
 				} else {
 					setTimeout(chat.Read, 5000);
 				}
 			},			
 			
 			Connect: function() {
-				chat.Read(true);					
+				chat.Read(true);
+                console.log('conplete');
 			},			
 			
 			Send: function() {
@@ -625,9 +626,12 @@ Zero.Team = (function(module){
                             chat._setIconItemChat(initConfiguration.settingsData.userId, 'Me', data, time);
 //							log.print('Me: ' + data, true);
 						},
-						complete: function() {
-							
-						}
+						complete: function(comp) {
+                            console.log(comp);
+						},
+                        error:function(error){
+                            console.log(error);
+                        }
 					});
 					
 				$('.chat_message', activeLog.parent()).val('');
@@ -638,7 +642,7 @@ Zero.Team = (function(module){
 				var offset = now.getTimezoneOffset()*60*(-1);
 				var sendData = {
 						'historyRequest' : {'teamId' : group.id , 'timestamp' : Math.round(now / 1000)*1000 + offset, 'numberOfMessages' : 10}						
-				}
+				};
 				$.ajax({	
 					url : initConfiguration.chatUrl,
 					type: 'post', 
@@ -646,8 +650,21 @@ Zero.Team = (function(module){
 					data: JSON.stringify(sendData),
 					success: function(resp) {
 						if(resp && resp.historyResponse) {
-							var arr = resp.historyResponse.messageList;
-							for(var i=0; i < arr.length; i++) {
+                            function myComparator(a,b) {
+                                return parseInt(a.timestamp) - parseInt(b.timestamp);
+                            }
+                            function myComparatorItem(a,b) {
+                                return parseInt(a.idItem) - parseInt(b.idItem);
+                            }
+							var arr = resp.historyResponse.messageList.sort(myComparator);
+
+
+                            var chatItems = [];
+							for(var i=0; i < arr.length+1; i++) {
+
+                            if(i == arr.length){
+                               console.log(chatItems);
+                            }else{
                                 var time;
                                 time = Zero.Tools.setFullTime(arr[i].timestamp);
                                 if(new Date().getFullYear() > new Date(arr[i].timestamp).getFullYear()){
@@ -659,13 +676,13 @@ Zero.Team = (function(module){
                                 }else{
                                     time = Zero.Tools.setFullTime(arr[i].timestamp);
                                 }
-                                console.log(time);
-                                chat._setIconItemChat(arr[i].userId, arr[i].userName, arr[i].text, time);
-//                                console.log(userPhoto);
-//								log.print(arr[i].userName + ': ' + arr[i].text, false);
+                                chat._setIconItemChat(arr[i].userId, arr[i].userName, arr[i].text, time, i, chatItems, arr.length);
+                            }
+
 							}
+                            console.log(chatItems);
 						}
-						
+
 					},
 					error: function(){
 						chat.Read();
@@ -673,7 +690,8 @@ Zero.Team = (function(module){
 				});						
 			},
 
-            _setIconItemChat : function(id, userName, text, time){
+            _setIconItemChat : function(id, userName, text, time, idItem, arrayChat, length){
+
                 try{
                     $.ajax({
                         beforeSend: function (request) {
@@ -686,7 +704,7 @@ Zero.Team = (function(module){
                         success:function(res){
                             var userPhoto = Zero.Tools.getSmallUserAvatar(res.result, 60, 60);
                             console.log(userPhoto);
-                            var div = $('<div/>').addClass('item');
+                            var div = $('<div/>').addClass('item').attr('idItem', idItem);
                             var divRight = $('<div/>').addClass('body-message');
                                 var spanName = $('<span/>').addClass('name-item-message').text(userName + ': ');
                                 var spanMessage = $('<span/>').addClass('mess-item-message').text(text);
@@ -698,6 +716,7 @@ Zero.Team = (function(module){
 
                             div.append(userPhoto);
                             div.append(divRight);
+//                            arrayChat.push(div);
                             if(userName == 'Me'){
                                 log.print(div, true);
                             }else{
@@ -706,6 +725,8 @@ Zero.Team = (function(module){
 
                         }
                     })
+
+
                 }catch(e){
                     console.log(e);
                 }
@@ -714,7 +735,7 @@ Zero.Team = (function(module){
 			Read : function(firstTime) {
 				var sendData = {
 					'longPooling' : ''
-				}
+				};
 				chat.read = $.ajax({	
 					url : initConfiguration.chatUrl,
 					type: 'post', 
@@ -729,9 +750,9 @@ Zero.Team = (function(module){
 				});
 				
 				if(firstTime) {
-					var sendData = {
+					 sendData = {
 						'firstConnectionRequest' : {'token' : tokkens.accessToken}
-					}
+					};
 					$.ajax({	
 						url : initConfiguration.chatUrl,
 						type: 'post', 
@@ -740,22 +761,25 @@ Zero.Team = (function(module){
 						success: function(){
 							chat.History();
 						},
-						complete: function(){
-						
-						}
+                        complete: function(comp) {
+                            console.log(comp);
+                        },
+                        error:function(error){
+                            console.log(error);
+                        }
 					});											
 				}				
 			}
-		}
+		};
 		
 		sendBt.bind('click', function() {
 			chat.Send();
-		})				
+		});
 		
 		chat.Connect();
 		
 		
-	}
+	};
 	
 	m.lastMessages = function(holder){
 		
@@ -839,11 +863,11 @@ Zero.Team = (function(module){
 			
 			
 			
-		}
+		};
 		
 		client.Connect();
 		
-	}
+	};
 	
 	return m
 	

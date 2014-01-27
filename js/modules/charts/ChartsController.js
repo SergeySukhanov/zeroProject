@@ -1,32 +1,33 @@
 Zero.ChartsController = (function(module){
 	var view = {},
-	
-	    config = {
-		
-	    },
-	    
-	
+        tokens = module.getTokens(),
+        _wrapCurrent,
+        _wrapWeek,
+        now = Math.round(new Date().getTime()/1000),
+        week = 604800,
+        start,
+        finish,
+        dataType,
+        zero = "heartRate, steps, deepSleep, lightSleep, floors, hydration, currWeight",
+        nike = "nikeSteps, nikeCalories, nikeFuel",
+        fitbit = "fitbitCalories, fitbitSteps, fitbitDistance, fitbitFloors",
+        jawbone = "jawboneSteps",
+
 	    _getCharts = function(nowFlag, dataType, holder){
-	    	// Zero.Tools.date2timestamp(2013, 7,23, 0, 0, 0)
-               // Math.round(new Date().getTime()/1000)
-               var now =Math.round(new Date().getTime()/1000);
-               var week = 604800;
             if(nowFlag){
-	    	   var start = Math.round(new Date().getTime()/1000)-week;
-	    	   var finish = now;	
+	    	   start = Math.round(new Date().getTime()/1000)-week;
+	    	   finish = now;
             }else{
-            	var start = Math.round(new Date().getTime()/1000)-(week*2);
-	    	    var finish = now-week;	
+            	start = Math.round(new Date().getTime()/1000)-(week*2);
+	    	    finish = now-week;
             }
-	    	
-	    	
-	    	var tokkens = module.getTokens();	
+
 			try{
 				$.ajax({
 					beforeSend: function (request) {
-					   request.setRequestHeader("Access-Token", tokkens.accessToken);
+					   request.setRequestHeader("Access-Token", tokens.accessToken);
 				    },	
-					url:initConfiguration.getChartsData(),
+					url:initConfiguration.apiUrl+'getChartsData',
 					type:'GET',
 					dataType:'json',
 					contentType:'aplication/json',
@@ -38,15 +39,11 @@ Zero.ChartsController = (function(module){
                           "plots":dataType
                     }),
 					success:function(data){
-
-
 						onJsGraphDataLoad(holder, data, nowFlag);
 						if(nowFlag){
 						   Zero.EventChartsController.initialize(initConfiguration.settingsData.visibleCalendarIds, start, finish);
                             $('.daily').empty();
                                 Zero.DailyController.init(data);
-
-
 						}
 						_postRender();
 					},
@@ -60,52 +57,40 @@ Zero.ChartsController = (function(module){
 			}		
 	    },
 	    
-	    _getBasicDate = function(){
-	    	var dateChart = new Date();
-	    	
-	    },
-	    
-	    _postRender = function(data){
-	       _paintCharts();
-	      
-	    },
-	    
 	    _handlers = function(){
 	    	$('.switch').on('click', function(event){
 	    		var type = $(event.currentTarget).attr('id');
 	    		_initNewCharts(type);
 	    	});
-	    };
-	    
-	    _paintCharts= function(){
-             
-	    },
+        },
 	    
 	    _initNewCharts = function(type){
            var dataType;
            
 	    	switch(type){
-	    		case 'zero': dataType = "heartRate, steps, deepSleep, lightSleep, floors, hydration, currWeight"
+	    		case 'zero': dataType = zero;
 	    		break;
-	    		case 'nike': dataType = "nikeSteps, nikeCalories, nikeFuel"
+	    		case 'nike': dataType = nike;
 	    		break;
-	    		case 'fitbit': dataType = "fitbitCalories, fitbitSteps, fitbitDistance, fitbitFloors"
+	    		case 'fitbit': dataType = fitbit;
 	    		break;
-                case 'jawbone':dataType = "jawboneSteps"
+                case 'jawbone':dataType = jawbone;
                 break;
 	    	}
-	    	_getCharts(true, dataType, '#diagramHolder');
-		    _getCharts(false, dataType, '#yesterdayCharts');
+	    	_getCharts(true, dataType, _wrapCurrent);
+		    _getCharts(false, dataType, _wrapWeek);
 	    	
-	    }
+        },
 
-	    
-	view.initialize = function(){
-		var dataType = "nikeSteps, nikeCalories, nikeFuel";
-		_getCharts(true, dataType, '#diagramHolder');
-		_getCharts(false, dataType, '#yesterdayCharts');
-
-
+        _setParam = function(wrapCurrent, wrapWeek){
+            _wrapCurrent = wrapCurrent;
+            _wrapWeek = wrapWeek;
+        };
+	view.initialize = function(wrap1, wrap2){
+        _setParam(wrap1, wrap2);
+		dataType = nike;
+		_getCharts(true, dataType, _wrapCurrent);
+		_getCharts(false, dataType, _wrapWeek);
 		_handlers();
 	};	
 	return view;

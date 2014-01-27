@@ -26,7 +26,8 @@ Zero.HeaderController = (function(module){
 	    	    	// id:'addItem-item',
 	    	    	// namePage:'action item',
 	    	    	// url:''
-	    	    }	
+	    	    }	
+
 	    	}],
 	    	configMenu:[{
 	    		account:{
@@ -61,7 +62,7 @@ Zero.HeaderController = (function(module){
 	    			id:'logout-item',
 	    			namePage:'Log out',
 	    			url:''
-	    		},
+	    		}
 	    	}]
 	    },
 	
@@ -79,9 +80,11 @@ Zero.HeaderController = (function(module){
 	    _handlers = function(){
 	    	_menuActive();
 	    	_intervalTime();
-	    	$('.current-item').on('click', function(event){               window.location.href = initConfiguration.getRootLocation()+'settings.html';	    		
+	    	$('.current-item').on('click', function(event){
+               window.location.href = initConfiguration.getRootLocation()+'settings.html';	    		
 	    	});
-	    	$('.adeed-link').on('click', function(event){               _showMenu(event);
+	    	$('.adeed-link').on('click', function(event){
+               _showMenu(event);
 	    	});
 	    	
 	    	$('.added-wrapper a').bind('click', function(event){
@@ -100,7 +103,9 @@ Zero.HeaderController = (function(module){
 	    	
 	    	
 	    	
-	    	setInterval(_intervalTime, 1000);			
+	    	setInterval(_intervalTime, 1000);
+
+			
 			$('#addGroup-item > a').bind('click', function(e){				
 				/*Zero.Team.addGroupPopup();	*/
 				Zero.Team.showGroupPopup(null,'add')
@@ -112,7 +117,8 @@ Zero.HeaderController = (function(module){
 				Zero.Events.showEventPopup(null,'add');
 				e.preventDefault();
 			})		  
-					  
+					  
+
 	    },
 	    
 	    
@@ -142,28 +148,38 @@ Zero.HeaderController = (function(module){
            
            // var wrapperTimeDate = $('<div/>').addClass('wrapper-time-date');
            // var time = $('<div/>').addClass('test-link').text('link');               
-              // wrapperTimeDate.append(time);           var setMenu = $('<div/>').addClass('set-menu');
-                      var addedWrapper = $('<div/>').addClass('added-wrapper');
+              // wrapperTimeDate.append(time);
+           var setMenu = $('<div/>').addClass('set-menu');
+           
+           var addedWrapper = $('<div/>').addClass('added-wrapper');
            var linkAdded = $('<span/>').addClass('adeed-link');
            var ulAdd = _createMenu(root, config.configAddMenu); 
                addedWrapper.append(linkAdded);
-               addedWrapper.append(ulAdd);  
+               addedWrapper.append(ulAdd);  
+
               
            var menu = $('<div/>').addClass('wrapper-menu');
            var currentItem = $('<span/>').addClass('current-item');
-           // var ul = _createMenu(root, config.configMenu);
+           // var ul = _createMenu(root, config.configMenu);
+
                menu.append(currentItem);
-               // menu.append(ul);
+               // menu.append(ul);
+
                
            header.append(wrapperBrand);
-           setMenu.append(addedWrapper);
+           setMenu.append(addedWrapper);
+
+
+
+
            setMenu.append(menu);
            
            var logOutLinkWrapper = $('<div/>').addClass('log-out-wrapper');
            var logOutLink = $('<span/>').addClass('log-out-link');
                logOutLinkWrapper.append(logOutLink);
             setMenu.append(logOutLinkWrapper);   
-           // Zero.SettingsController.initialize();           header.append(setMenu);
+           // Zero.SettingsController.initialize();
+           header.append(setMenu);
 	    },
 	    
 	    _createMenuAdd = function(){
@@ -204,11 +220,13 @@ Zero.HeaderController = (function(module){
 	    	   	  	// // displayItem.text($(elem).text());
 // 
 	    	   	  // }
-	    	   // });
+	    	   // });
+
 	    },
 	    
 	    _showMenu = function(event){
-	    	// console.log(event);
+	    	// console.log(event);
+
 	    	var currentPopup = $(event.target).next();
 	    	$('.popup-menu').not(currentPopup).slideUp();
 	    	if(currentPopup.css('display') == 'none'){

@@ -9,23 +9,21 @@
 Zero.DailyController = (function(module){
     var view  = {},
 
-        config = {
-
-        },
-
         _params = {},
 
         _createDaily = function(){
-          var wrapper = $('.daily');
+          var wrapper = $('#dailyHolder');
 
             var visibleItems = $('<div/>').addClass('visible-items');
 
             var innerVisibleItem = $('<div/>').addClass('visible-item');
-            var h6Visible = $('<h6/>').text(new Date(_params[_params.length-1].date*1000).getDate() +'.' + (parseInt(new Date(_params[_params.length-1].date*1000).getMonth())+1) + '.' + new Date(_params[_params.length-1].date*1000).getFullYear());
-            var pVisibleSteps = $('<p/>').addClass('visible-step').text('Steps: '+_params[_params.length-1].steps);
-            var pVisibleDistance = $('<p/>').addClass('visible-distance').text('Distance: '+_params[_params.length-1].distance);
-
+            var h6Visible = $('<h6/>').text(Zero.Tools.setFullDate(_params[_params.length-1].date*1000));
+            var pVisibleSteps = $('<p/>').addClass('visible-step')
+                                         .text('Steps: '+_params[_params.length-1].steps);
+            var pVisibleDistance = $('<p/>').addClass('visible-distance')
+                                            .text('Distance: '+_params[_params.length-1].distance.toFixed(2));
             var spanCorner = $('<span/>').addClass('corner-daily');
+
             innerVisibleItem.append(h6Visible);
             innerVisibleItem.append(pVisibleSteps);
             innerVisibleItem.append(pVisibleDistance);
@@ -33,14 +31,20 @@ Zero.DailyController = (function(module){
 
             visibleItems.append(innerVisibleItem);
 
+            //handler
+            visibleItems.bind('click', function(event){
+                $(event.currentTarget).next().slideToggle();
+            });
 
             var otherItems = $('<div/>').addClass('other-items');
             for(var i=_params.length-1; i>=0; i--){
                 if(i != _params.length-1){
-                    var item = $('<div/>').addClass('other-item');
-                    var h6 = $('<h6/>').text(new Date(_params[i].date*1000).getDate() +'.' + (parseInt(new Date(_params[i].date*1000).getMonth())+1) + '.' + new Date(_params[i].date*1000).getFullYear());
-                    var pSteps = $('<p/>').addClass('steps').text('Steps: '+_params[i].steps);
-                    var pDistance = $('<p/>').addClass('distance').text('Distance: '+_params[i].distance);
+                    var item = $('<div/>').addClass('other-item').attr('idItem', i);
+                    var h6 = $('<h6/>').text(Zero.Tools.setFullDate(_params[i].date*1000));
+                    var pSteps = $('<p/>').addClass('steps')
+                                          .text('Steps: '+_params[i].steps);
+                    var pDistance = $('<p/>').addClass('distance')
+                                             .text('Distance: '+_params[i].distance.toFixed(2));
 
                     item.append(h6);
                     item.append(pSteps);
@@ -53,77 +57,11 @@ Zero.DailyController = (function(module){
             wrapper.append(visibleItems);
             wrapper.append(otherItems);
 
-        },
-
-        _actionDaily = function(){
-
-            $('.visible-item').bind('click', function(event){
-                console.log('click');
-               $('.other-items').slideToggle();
-            });
-
-
-
         };
 
     view.init = function(data){
-        if(data.daily.length != 0){
-            _params = data.daily;
-        }else{
-           _params = [
-               {
-                   "date": '7 nov 2013',
-                   "fuel": null,
-                   "steps": '200',
-                   "distance": '1'
-               },
-               {
-                   "date": '8 nov 2013',
-                   "fuel": null,
-                   "steps": '200999',
-                   "distance": '123'
-               },
-               {
-                   "date": '9 nov 2013',
-                   "fuel": null,
-                   "steps": '28900',
-                   "distance": '12'
-               },
-               {
-                   "date": '10 nov 2013',
-                   "fuel": null,
-                   "steps": '12200',
-                   "distance": '10'
-               },
-               {
-                   "date": '11 nov 2013',
-                   "fuel": null,
-                   "steps": '800',
-                   "distance": '1.5'
-               },
-               {
-                   "date": '12 nov 2013',
-                   "fuel": null,
-                   "steps": '600',
-                   "distance": '1'
-               },
-               {
-                   "date": '13 nov 2013',
-                   "fuel": null,
-                   "steps": '2200',
-                   "distance": '4'
-               },
-               {
-                   "date": '14 nov 2013',
-                   "fuel": null,
-                   "steps": '1200',
-                   "distance": '3'
-               }
-
-           ]
-        }
-     _createDaily();
-        _actionDaily();
+        _params = data.daily;
+        _createDaily();
     };
 
     return view;

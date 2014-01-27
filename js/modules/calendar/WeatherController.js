@@ -40,7 +40,7 @@ Zero.WeatherController = (function(module){
                 beforeSend: function (request) {
                     request.setRequestHeader("Access-Token", tokens.accessToken);
                     },
-                    url:initConfiguration.urlWeather,
+                    url:initConfiguration.apiUrl+'weather',
                     type:'GET',
                     dataType:'json',
                     contentType:'application/json',

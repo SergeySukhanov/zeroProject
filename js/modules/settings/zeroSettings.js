@@ -1,10 +1,10 @@
 Zero.Settings = (function(module){
-	var m = {};
-	var calendarValues = [];
-    var tokkens = module.getTokens();
-	var settings = {};
-    var height = "";
-    var weight = "";
+	var m = {},
+	 calendarValues = [],
+     tokkens = module.getTokens(),
+	 settings = {},
+     height = "",
+     weight = "",
 	
 	_createTabs = function() {
 	
@@ -16,10 +16,6 @@ Zero.Settings = (function(module){
 			
 		_createPersonalTab();
 		_createTimeTab();
-		// _createImportTab();
-
-		// _createUnitTab();
-
 		_createCalendarTab();
         _loadSettings();
 			
@@ -34,17 +30,17 @@ Zero.Settings = (function(module){
 		btSave.bind('click', function(event){
 		    _updateSettings(event, "save");
 		});
-	}
+    },
 
     _validateNumeric = function(val){
         var regexpNum = new RegExp(/^-?(\d*\.)?\d*$/);
-        if(val == "" || regexpNum.test(val))
-        {
+
+        if(val == "" || regexpNum.test(val)){
             return true;
         }else{
             return false;
         }
-    }
+    },
 
     _maskedHeight = function(event){
         var elem = $(event.currentTarget);
@@ -59,15 +55,9 @@ Zero.Settings = (function(module){
     },
 
     _validateFace = function(files){
-        var imgCount = 0;
-        var imgSize = 0;
-        var imgList = $('.preview');
-//        var val = $(event.currentTarget).val();
-//       console.log(val);
-//       var arrayVal = [];
-//
-//        arrayVal = val.split("\\");
-//        console.log(arrayVal[arrayVal.length-1]);
+         var imgCount = 0;
+         var imgSize = 0;
+         var imgList = $('.preview');
          var imageType= /image.*/;
          var num = 0;
 
@@ -97,31 +87,6 @@ Zero.Settings = (function(module){
 
             reader.readAsDataURL(files[i]);
             $('#submit-face').trigger('click');
-
-//            imgList.find('span').each(function() {
-//
-//                var uploadItem = this;
-//                var pBar = $(uploadItem).find('.progress');
-//
-//                new uploaderObject({
-//                    file:       uploadItem.file,
-//                    url:        initConfiguration.apiUrlTom+'user/avatar',
-//                    fieldName:  "file",
-//
-//                    onprogress: function(percents) {
-//                        _updateProgress(pBar, percents);
-//                    },
-//
-//                    oncomplete: function(done, data) {
-//                        if(done) {
-//                            _updateProgress(pBar, 100);
-//                            console.log('file `'+uploadItem.file.name+'` загружен, полученные данные:<br/>*****<br/>'+data+'<br/>*****');
-//                        } else {
-//                            console.log('Error `'+uploadItem.file.name+'`:<br/>'+this.lastError.text);
-//                        }
-//                    }
-//                });
-//            });
         }
     },
 
@@ -159,7 +124,7 @@ Zero.Settings = (function(module){
         }
         elem.val(height);
         return _convertHeightToNum(num1, num2);
-    }
+    },
 
     _createHeightString = function(foot, inches){
         var f = " '";
@@ -172,13 +137,13 @@ Zero.Settings = (function(module){
             res = res + inches + d;
         }
         return res;
-    }
+    },
 
     _convertHeightToString = function(num){
         var foot = Math.floor(num / 12);
         var inches = num % 12;
         return _createHeightString(foot, inches);
-    }
+    },
 
     _convertHeightToNum = function(foot, inches){
         var res = foot*12;
@@ -186,7 +151,7 @@ Zero.Settings = (function(module){
             res = Number(res) + Number(inches);
         }
         return res;
-    }
+    },
 
     _maskedWeight = function(event){
         var elem = $(event.currentTarget);
@@ -196,7 +161,7 @@ Zero.Settings = (function(module){
             position = 0;
         }
         elem[0].setSelectionRange(position, position);
-    }
+    },
 
     _validateWeight = function(elem) {
         var val = elem.val();
@@ -216,15 +181,15 @@ Zero.Settings = (function(module){
 
         elem.val(weight);
         return _convertWeightToNum(weight);
-    }
+    },
 
     _convertWeightToString = function(num){
         return num + " lbs.";
-    }
+    },
 
     _convertWeightToNum = function(val){
         return val.replace(/\s/g,'').replace("lbs.", "").replace(',', '.');
-    }
+    },
 
     _insMode = function(event) {
         var elem = $(event.currentTarget);
@@ -239,7 +204,7 @@ Zero.Settings = (function(module){
         }
         elem.val(val1 + val2);
         elem[0].setSelectionRange(position, position);
-    }
+    },
 
     _validateBirthday = function(elem) {
         try{
@@ -252,12 +217,12 @@ Zero.Settings = (function(module){
         }
         elem.val(dateStr);
         return dateNum;
-    }
+    },
 
     _convertDateToString = function(date){
         var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         return months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
-    }
+    },
 	
 	_createPersonalTab = function() {
         var genderValues = [
@@ -284,7 +249,7 @@ Zero.Settings = (function(module){
 		fBirthday.appendTo(holder);
         fGender.appendTo(holder);
         fFile.appendTo(holder);
-	};
+	},
 	
 	_createImportTab = function() {
 		var holder = $('.tabs-pages .import-tab'),
@@ -296,7 +261,7 @@ Zero.Settings = (function(module){
 		fAcc.appendTo(holder);	
 		fLocation.appendTo(holder);	
 		fContacts.appendTo(holder);
-	};
+	},
 	
 	_createUnitTab = function() {
 		var holder = $('.tabs-pages .unit-tab'),
@@ -310,7 +275,7 @@ Zero.Settings = (function(module){
 		fMetrics.appendTo(holder);
 		fInherit.appendTo(holder);
 			
-	};
+	},
 	
 	_createTimeTab = function() {
 		var holder = $('.tabs-pages .time-tab'),
@@ -341,7 +306,7 @@ Zero.Settings = (function(module){
 				{'UTC+10' : '10'},
 				{'UTC+11' : '11'},
 				{'UTC+12' : '12'}
-			]
+			];
 			fPrimary = _createFormRowHtml('primary', 'Primary', 'dropdown', fUTCValues),
 			fSync = _createFormRowHtml('syncToDevice', 'sync to device', 'checkbox'),
 			fSecondary = _createFormRowHtml('secondary', 'Secondary', 'dropdown', fUTCValues);
@@ -353,7 +318,7 @@ Zero.Settings = (function(module){
 		// fTravel.appendTo(holder);
 
 			
-	};
+	},
 	
 	
 	_createCalendarTab = function() {
@@ -391,7 +356,7 @@ Zero.Settings = (function(module){
 			fWeek.appendTo(holder);
 			//fShowDeclined.appendTo(holder);
 			//fCheckIn.appendTo(holder);	
-	};
+	},
 	
 	
 	_getCalendarsSettings = function() {
@@ -400,7 +365,7 @@ Zero.Settings = (function(module){
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
 			},			
-			url: initConfiguration.urlCalendarsList,
+			url: initConfiguration.apiUrl+'calendars',
 			type: 'GET',
 			dataType: 'json',
 			contentType: "application/json",
@@ -423,7 +388,7 @@ Zero.Settings = (function(module){
 				console.log(error);
 			}
 		})		
-	}
+	},
 	
 	_createFormRowHtml = function(name, text, type, val, useLabel, validationFunc, maskFunc, insertModeFunc) {
 		var html = $('<div />').addClass('row'),
@@ -563,7 +528,7 @@ Zero.Settings = (function(module){
 
 
 		return html;
-	}
+	},
 
 	/*Tabs */
 	_handlerTabs = function() {
@@ -591,13 +556,13 @@ Zero.Settings = (function(module){
 	},
 	
 	_handlers = function(){
-	}
+	},
 
 	_showTab = function(tabName, tabPages) {
 		var tabRealName = tabName.substring(1, tabName.length) + '-tab';		
 		$('.active-tab', tabPages).removeClass('active-tab');
 		$('.' + tabRealName, tabPages).addClass('active-tab');
-	}
+	},
 	/*End Tab*/	
 
 	_afterRender = function() {
@@ -675,7 +640,7 @@ Zero.Settings = (function(module){
              beforeSend: function (request) {
                  request.setRequestHeader("Access-Token", tokkens.accessToken);
              },
-             url: initConfiguration.urlSettings,
+             url: initConfiguration.apiUrl+'settings',
              type: 'GET',
              dataType: 'json',
              contentType: "application/json",
@@ -706,14 +671,14 @@ Zero.Settings = (function(module){
          }
          settings.timeZoneOffsets = { "primary":timezone1 };
          _putSettings(settings);
-     }
+     },
 
      _putSettings = function(settings) {
          $.ajax({
              beforeSend: function (request) {
                  request.setRequestHeader("Access-Token", tokkens.accessToken);
              },
-             url: initConfiguration.urlSettings + "/" + settings.userId,
+             url: initConfiguration.apiUrl+'settings' + "/" + settings.userId,
              type: 'PUT',
              dataType: 'json',
              contentType: "application/json",
@@ -739,6 +704,6 @@ Zero.Settings = (function(module){
 	m.init = function() {
 		_getCalendarsSettings();		
 		_afterRender();
-	}
+	};
 	return m;
 }(Zero));

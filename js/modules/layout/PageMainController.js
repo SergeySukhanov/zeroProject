@@ -1,23 +1,19 @@
 Zero.PageMainController = (function(module){
 	var view = {},
-	    
-	    config = {
-	    },
-	
-	    _render = function(){
-            _paintMain();
-	    },
+        titleWrapper ='#userProfileHolder',
+        chartsCurrentWrapper = '#diagramHolder',
+        chartsWeekWrapper = '#yesterdayCharts',
 	    
 	    _paintMain = function(){
 	    	$(function() {
-	    		Zero.TitleController.initialize();
-	    		Zero.ChartsController.initialize();
+	    		Zero.TitleController.initialize(titleWrapper);
+	    		Zero.ChartsController.initialize(chartsCurrentWrapper, chartsWeekWrapper);
                 Zero.SmallCalendarWidgetController.initialize();
 
 	    		Zero.ChartsSettings.initialize();
 	    		Zero.YesterdayController.initialize();
 				Zero.Events.nextUpEvents();
-//				Zero.Team.lastMessages($('#lastMessage'));
+				Zero.Team.lastMessages($('#lastMessage'));
 
                 Zero.EnergySameController.initialize();
                 Zero.EnergyController.initialize();
@@ -27,7 +23,7 @@ Zero.PageMainController = (function(module){
 	    };
 	    
 	view.initialize = function(param){
-		_render();
+        _paintMain();
 	};
 	
 	return view;

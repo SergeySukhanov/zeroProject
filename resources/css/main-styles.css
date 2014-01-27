@@ -15,6 +15,7 @@
 @import "new-gradient-diagram.css" screen;
 @import "next-events-main-page.css" screen;
 @import "energy.css" screen;
+@import "accordion.css" screen;
 *{margin:0; padding:0; border:0;}
 
 html, body{

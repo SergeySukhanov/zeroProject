@@ -69,7 +69,7 @@ Zero.Week = (function(module){
 	
 	_getAllEventsPerWeek = function(start, end) {
 		$.ajax({
-			url: initConfiguration.urlEventsCalendar,
+			url: initConfiguration.apiUrl+'calendarEvents',
 			type: 'GET',
 			dataType: 'json',
 			contentType: "application/json",
@@ -116,7 +116,7 @@ Zero.Week = (function(module){
 	
 	_getDayEvents = function(order, weekday) {
 		$.ajax({
-			url: initConfiguration.urlEventsCalendar,
+			url: initConfiguration.apiUrl+'calendarEvents',
 			type: 'GET',
 			dataType: 'json',
 			contentType: "application/json",

@@ -1,0 +1,147 @@
+.user-head-wrapper{
+    border:1px solid #e9eae1;
+    padding:10px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+.user-head-wrapper.revert{
+    background: #f2f2f2;
+    background: -moz-linear-gradient(top,  #f2f2f2 1%, #e9eae1 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f2f2f2), color-stop(100%,#e9eae1));
+    background: -webkit-linear-gradient(top,  #f2f2f2 1%,#e9eae1 100%);
+    background: -o-linear-gradient(top,  #f2f2f2 1%,#e9eae1 100%);
+    background: -ms-linear-gradient(top,  #f2f2f2 1%,#e9eae1 100%);
+    background: linear-gradient(to bottom,  #f2f2f2 1%,#e9eae1 100%);
+}
+h3.user-head{
+    font-family:Zero, sans-serif;
+    font-size:15px;
+    color:#666666;
+}
+.corner-head-down {
+    display: inline-block;
+    float: right;
+    border-top: 8px solid #333333;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    top: -10px;
+    position: relative;
+}
+.revert .corner-head-down{
+    border-top: 0px;
+    border-bottom: 8px solid #333333;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+}
+
+.user-body{
+    border: 1px solid #e9eae1;
+    display: none;
+    max-height: 300px;
+    padding-top: 14px;
+    overflow-y: auto;
+}
+
+/*programs*/
+
+.wrapper-item > * {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.wrapper-item {
+    padding: 5px;
+}
+
+.img-wrap {
+    width: 10%;
+}
+
+.img-wrap img {
+    width: 100%;
+}
+
+.text-wrap {
+    width: 85%;
+    margin-left: 10px;
+    font-family: 'Ma Condensed';
+    color: #666666;
+}
+
+.text-wrap h4 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.text-wrap span {
+    float: right;
+    position: relative;
+    top: -23px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: Zero;
+    color: #666666;
+}
+
+.text-wrap p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #666666;
+    padding-bottom: 10px;
+}
+
+.text-wrap.team {
+    border-bottom: 1px dotted #666666;
+    padding-bottom: 5px;
+}
+
+.text-wrap.team > * {
+    display: block;
+    clear: both;
+    float: none;
+    top: 0;
+}
+
+
+.text-wrap.team span {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.text-wrap.team .date {
+    position: absolute;
+    right: 0;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.text-wrap.team h4 {
+    font-size: 20px;
+}
+
+.text-wrap.team sup {
+    font-size: 12px;
+    margin-left: 7px;
+}
+.text-wrap.team sup span {
+    float: none;
+    font-size: 11px;
+    top: 0;
+}
+
+.text-wrap.team sup span.true {
+    color:#02CD35;
+}
+.text-wrap.team sup span.false {
+    float: none;
+    font-size: 11px;
+    color:#a33737;
+}
+
+
+
+
+
+
+

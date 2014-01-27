@@ -9,7 +9,7 @@ Zero.GoogleAccount = (function(module){
 				beforeSend: function (request) {
 					request.setRequestHeader("Access-Token", tokkens.accessToken);
 				},							
-				url: initConfiguration.urlGoogleAuthorizationURL,
+				url: initConfiguration.apiUrl+'getGoogleAuthorizationURL',
 				type: 'GET',
 				data : {
 					redirect : initConfiguration.getRootLocation() + 'transport.html' 					
@@ -72,7 +72,7 @@ Zero.GoogleAccount = (function(module){
 				beforeSend: function (request) {
 					request.setRequestHeader("Access-Token", tokkens.accessToken);
 				},							
-				url: initConfiguration.urlFitBitAuthorizationURL,
+				url: initConfiguration.apiUrl+'getFitbitAuthorizationURL',
 				type: 'GET',
 				data : {
 					mode : 'web',
@@ -250,7 +250,7 @@ Zero.GoogleAccount = (function(module){
 			beforeSend: function (request) {
 				request.setRequestHeader("Access-Token", tokkens.accessToken);
 			},							
-			url: initConfiguration.urlSettings,
+			url: initConfiguration.apiUrl+'settings',
 			type: 'GET',
 			dataType: 'json',
 			contentType: "application/json",

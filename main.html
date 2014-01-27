@@ -14,18 +14,18 @@
 		
 	<script src="js/libs/jquery-1.10.2.min.js"></script>
 	<script src="js/libs/jquery-ui-1.10.3.custom.min.js"></script>
-	<script src="js/libs/jquery.animate-shadow-min.js"></script>
-	<script src="js/libs/jshashtable-2.1_src.js"></script>
-	<script src="js/libs/jquery.numberformatter-1.2.3.js"></script>
-	<script src="js/libs/tmpl.js"></script>
-	<script src="js/libs/jquery.dependClass-0.1.js"></script>
-	<script src="js/libs/draggable-0.1.js"></script>
-	<script src="js/libs/jquery-ui-timepicker-addon.js"></script>	
+	<!--<script src="js/libs/jquery.animate-shadow-min.js"></script>-->
+	<!--<script src="js/libs/jshashtable-2.1_src.js"></script>-->
+	<!--<script src="js/libs/jquery.numberformatter-1.2.3.js"></script>-->
+	<!--<script src="js/libs/tmpl.js"></script>-->
+	<!--<script src="js/libs/jquery.dependClass-0.1.js"></script>-->
+	<!--<script src="js/libs/draggable-0.1.js"></script>-->
+	<script src="js/libs/jquery-ui-timepicker-addon.js"></script>
 	<!-- <script src="js/libs/jquery.slider.js"></script> -->
 	<script src="js/libs/highstock.src.js"></script>
-	<script src="js/libs/noty/jquery.noty.js"></script>
-	<script src="js/libs/noty/layouts/topRight.js"></script>
-	<script src="js/libs/noty/themes/default.js"></script> 
+	<!--<script src="js/libs/noty/jquery.noty.js"></script>-->
+	<!--<script src="js/libs/noty/layouts/topRight.js"></script>-->
+	<!--<script src="js/libs/noty/themes/default.js"></script> -->
     <script src="js/libs/raphael-min.js"></script>
 	<script src="js/libs/jquery.formstyler.min.js"></script>
 
@@ -36,7 +36,8 @@
 	
 	<script src="js/loadPageController.js"></script>
 	<script src="js/modules/accounts/zeroAccounts.js"></script>	
-	<script src="js/modules/accounts/TitleController.js"></script>	
+	<script src="js/plug/accordion.js"></script>
+	<script src="js/modules/accounts/TitleController.js"></script>
 	<script src="js/modules/accounts/SettingsController.js"></script>
 	<script src="js/modules/accounts/energyUserController.js"></script>
     <script src="js/modules/calendar/WeatherController.js"></script>
@@ -108,17 +109,16 @@
 	 </div>
 	 <div class="main-content">
         <div id="nextUpEventsHolder"></div>
-        <div id="user-settings-details"></div>
+         <div class="energy-wrapper-user">
+             <h1 class="head-energy">Energy</h1>
+             <div id="energy"></div>
+             <div id="lastMessage"></div>
+         </div>
 		<div id="similarFriends">
 			<h3>Similar friends</h3>
             <div id="members-friends"></div>
             <div class="member-details"></div>
 		</div>
-        <div class="energy-wrapper-user">
-            <h1 class="head-energy">Energy</h1>
-            <div id="energy"></div>
-            <div id="lastMessage"></div>
-        </div>
         <div class="energy-interval">
             <h1 class="head-interval-energy">Energy week</h1>
            <div id="energyInterval">
@@ -127,6 +127,7 @@
         </div>
       </div>
       <aside class="rightColumn">
+          <div id="user-settings-details"></div>
 		<div id="chartYesterday" class="chart-yesterday"></div>
 	  </aside>
 	</div>

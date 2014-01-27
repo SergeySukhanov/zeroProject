@@ -19,7 +19,7 @@ Zero.AccountPhotoController = (function(module){
                     beforeSend: function (request) {
                         request.setRequestHeader("Access-Token", tokens.accessToken);
                     },
-                    url:initConfiguration.urlWillpower,
+                    url:initConfiguration.apiUrl+'willpower/data',
                     type:'GET',
                     dataType:'json',
                     contentType:'application/json',
@@ -89,7 +89,7 @@ Zero.AccountPhotoController = (function(module){
 
         _getAvatarUrl = function() {
             $.ajax({
-                url: initConfiguration.urlSettings,
+                url: initConfiguration.apiUrl+'settings',
                 type: 'GET',
                 dataType: 'json',
                 contentType: "application/json",

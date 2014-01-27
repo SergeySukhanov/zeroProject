@@ -22,7 +22,7 @@ Zero.EventChartsController = (function(module){
 
                try{
                    $.ajax({
-                       url: initConfiguration.urlEventsCalendar,
+                       url: initConfiguration.apiUrl+'calendarEvents',
                        type: 'GET',
                        dataType: 'json',
                        contentType: "application/json",

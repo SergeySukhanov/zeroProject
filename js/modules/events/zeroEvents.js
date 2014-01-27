@@ -61,7 +61,7 @@ Zero.Events = (function(module){
 	_getCalendars = function(callback) {	
 		if(!_accounts || _accounts.length == 0) {
 			$.ajax({
-				url: initConfiguration.urlCalendarsList,
+				url: initConfiguration.apiUrl+'calendars',
 				type: 'GET',
 				dataType: 'json',
 				contentType: "application/json",
@@ -210,7 +210,7 @@ Zero.Events = (function(module){
 		eventHolder.html('Loading ...');	
 		
 		$.ajax({
-			url: initConfiguration.urlEventsCalendar,
+			url: initConfiguration.apiUrl+'calendarEvents',
 			type: 'GET',
 			dataType: 'json',
 			contentType: "application/json",
@@ -260,7 +260,7 @@ Zero.Events = (function(module){
 			end = _calendarEndRange;
 			
 			$.ajax({
-				url: initConfiguration.urlEventsCalendar,
+				url: initConfiguration.apiUrl+'calendarEvents',
 				type: 'GET',
 				dataType: 'json',
 				contentType: "application/json",
@@ -368,7 +368,7 @@ Zero.Events = (function(module){
 	
 	_removeEventNew = function(eventId, html) {
 		$.ajax({
-			url: initConfiguration.urlEventsCalendar + '/' + eventId,
+			url: initConfiguration.apiUrl+'calendarEvents' + '/' + eventId,
 			type: 'DELETE',
 			dataType: 'json',
 			contentType: "application/json",
@@ -456,7 +456,7 @@ Zero.Events = (function(module){
 
 
 		$.ajax({
-			url: initConfiguration.urlEventsCalendar + '/' + removeId,
+			url: initConfiguration.apiUrl+'calendarEvents' + '/' + removeId,
 			type: 'DELETE',
 			dataType: 'json',
 			contentType: "application/json",
@@ -1152,7 +1152,7 @@ Zero.Events = (function(module){
 		
 		
 		$.ajax({
-			url: eventId ? initConfiguration.urlEventsCalendar + '/' + eventId : initConfiguration.urlEventsCalendar,
+			url: eventId ? initConfiguration.apiUrl+'calendarEvents' + '/' + eventId : initConfiguration.urlEventsCalendar,
 			type: eventId ? 'PUT' : 'POST',
 			dataType: 'json',
 			data : JSON.stringify(obj),
@@ -1174,7 +1174,7 @@ Zero.Events = (function(module){
 
     _getSettings = function() {
         $.ajax({
-            url: initConfiguration.urlSettings,
+            url: initConfiguration.apiUrl+'settings',
             type: 'GET',
             dataType: 'json',
             contentType: "application/json",
@@ -1205,7 +1205,7 @@ Zero.Events = (function(module){
         var now = Math.round(new Date().getTime() / 1000);
 		
         $.ajax({
-            url: initConfiguration.urlEventsCalendar,
+            url: initConfiguration.apiUrl+'calendarEvents',
             type: 'GET',
             dataType: 'json',
             contentType: "application/json",

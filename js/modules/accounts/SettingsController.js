@@ -8,7 +8,7 @@ Zero.SettingsController = (function(module){
 	    _render = function(){
 		   try{
 	    		$.ajax({
-	       	       url:initConfiguration.urlSettings,
+	       	       url:initConfiguration.apiUrl+'settings',
 	       	       dataType:'json',
 	       	       success:function(data){
 	       	     	_postRender(data);

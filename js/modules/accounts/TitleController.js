@@ -1,30 +1,10 @@
 Zero.TitleController = (function(module){
 	var view = {},
-	
-	    config = {
-		  faceImg:"face1.png"
-	    },
-	
-	    _render = function(){
-		   _postRender();
-	    },
-	    
-	    _postRender = function(data){
-	       _paintTitle();
-	       _handlers();
-	    },
-	    
-	    _handlers = function(){
-	    	
-        },
-	    
-	    _paintTitle = function(){
-            var wrapperTitle = $('#userProfileHolder');
-            _createAccountName(wrapperTitle);
-	    },
+
+        _wrap,
 	    
 	    _createAccountName = function(wrap){
-	    	var wrapper = wrap;
+	    	var wrapper = $(wrap);
 	    	var divPhoto = $('<div/>').attr('id','userPhotoHolder').addClass('account-photo');
             var userAvatar = Zero.Tools.getUserAvatar(initConfiguration.settingsData, 120, 120);
                 divPhoto.append(userAvatar);
@@ -57,10 +37,15 @@ Zero.TitleController = (function(module){
 	    	
 	    	wrapper.append(divPhoto);
 	    	wrapper.append(divWelcome);
-	    };
+        },
+
+        _setParam = function(wrap){
+            _wrap = wrap;
+        };
 	    
-	view.initialize = function(){
-		_render();
+	view.initialize = function(wrap){
+        _setParam(wrap);
+        _createAccountName(_wrap);
 	};
 	
 	return view;

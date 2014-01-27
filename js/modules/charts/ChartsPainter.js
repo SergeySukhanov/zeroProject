@@ -1,6 +1,7 @@
 function onJsGraphDataLoad(holder, series, flag) {
 		var graphsData = null;
-			graphsData = series.charts;
+			graphsData = series.charts;
+
 			var data = [];
 			
 			for(var i=0; i<graphsData.length; i++){
@@ -12,7 +13,8 @@ function onJsGraphDataLoad(holder, series, flag) {
 					color = '#358c2f'
 				}else{
 					color = '#d4523d'
-				}                 for(var j=0; j<dataLength; j++){
+				}
+                 for(var j=0; j<dataLength; j++){
                  	dataItem.push([graphsData[i].x[j]*1000, graphsData[i].y[j]]);
                  }
                  ObjData = {
@@ -22,13 +24,13 @@ function onJsGraphDataLoad(holder, series, flag) {
                  	dashStyle:'ShortDot', 
                  	lineWidth:2,
                  	color:color
-                 }
+                 };
                  data.push(ObjData);
 			}
 
 			var generalTooltip = {
 						xDateFormat: '%b %e, %l %p'
-			}
+			};
             $(holder).empty();
 			if(flag){
 				try {
@@ -68,18 +70,7 @@ function onJsGraphDataLoad(holder, series, flag) {
 					},
 					navigator:{
 
-						enabled:false,
-						// maskFill:'rgba(255,255,255,1)',
-						// height:0,
-						// series:{
-							// lineWidth:0,
-							// type:'spline',
-							// color:'#fff'},
-						// xAxis:{
-							// labels:{
-								// enabled:false
-						// }
-                // }
+						enabled:false
 
 					},
 					scrollbar: {
@@ -117,7 +108,7 @@ function onJsGraphDataLoad(holder, series, flag) {
 					series : data
 				});
 			} catch (e) {
-				console.log(e)
+				console.log(e);
 				throw e;
 			 }
 			}else{
@@ -158,18 +149,7 @@ function onJsGraphDataLoad(holder, series, flag) {
 					},
 					navigator:{
 
-						enabled:false,
-						// maskFill:'rgba(255,255,255,1)',
-						// height:0,
-						// series:{
-							// lineWidth:0,
-							// type:'spline',
-							// color:'#fff'},
-						// xAxis:{
-							// labels:{
-								// enabled:false
-						// }
-                // }
+						enabled:false
 
 					},
 					scrollbar: {
@@ -189,7 +169,7 @@ function onJsGraphDataLoad(holder, series, flag) {
 						}],
 						labels:{
 							enabled:true
-						},
+						}
 						
 					},
 					yAxis : {
@@ -207,7 +187,7 @@ function onJsGraphDataLoad(holder, series, flag) {
 					series : data
 				});
 			} catch (e) {
-				console.log(e)
+				console.log(e);
 				throw e;
 			 }
 			}

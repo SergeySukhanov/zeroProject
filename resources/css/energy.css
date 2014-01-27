@@ -1,12 +1,17 @@
 .energy-wrapper-user {
     display: inline-block;
+    width: 370px;
+    margin-top: 15px;
+
 }
 
 #user-settings-details {
     display: inline-block;
-    width: 33%;
+    width: 100%;
     overflow: hidden;
     vertical-align: top;
+    margin-bottom: 30px;
+    margin-top: -5px;
 }
 
 .user-wrap-current-programs,
@@ -28,7 +33,7 @@
     cursor: pointer;
 }
 .user-body-current-programs{
-  display: block;
+  display: none;
 }
 
 .user-body-complete-programs,
