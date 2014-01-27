@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e019a8b9-ee4a-4f3e-90ee-f840758c4029" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/layout/PageMainController.js" afterPath="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/details-members.css" afterPath="$PROJECT_DIR$/resources/css/details-members.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initConfiguration.js" afterPath="$PROJECT_DIR$/js/initConfiguration.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/modules/team/zeroTeam.js" afterPath="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
     </list>
     <ignored path="zeroProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -150,7 +149,7 @@
     <file path="$USER_HOME$/Documents/GitHub/dag/galleryAlbum.html" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387184299539" ignored="false" />
     <file path="$USER_HOME$/Documents/GitHub/dag/resources/css/special-version.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387265382718" ignored="false" />
     <file path="/special-version.css" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387265374704" ignored="false" />
-    <file path="/zeroTeam.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1390551794898" ignored="false" />
+    <file path="/zeroTeam.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1390822802085" ignored="false" />
     <file path="$PROJECT_DIR$/../baltic/js/tools/BalticTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387973569214" ignored="false" />
     <file path="$PROJECT_DIR$/../baltic/js/starter.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387884973129" ignored="false" />
     <file path="/BalticTools.js" changelist="e019a8b9-ee4a-4f3e-90ee-f840758c4029" time="1387478712068" ignored="false" />
@@ -260,7 +259,16 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="28" selection-start="6130" selection-end="6130" vertical-scroll-proportion="-29.615385">
+            <state line="114" column="10" selection-start="5515" selection-end="5550" vertical-scroll-proportion="-15.230769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zeroTeam.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="662" column="46" selection-start="17701" selection-end="17701" vertical-scroll-proportion="0.5945355">
               <folding />
             </state>
           </provider>
@@ -311,15 +319,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/css/footer.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="38" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="header.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/css/header.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -338,10 +337,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initConfiguration.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="initConfiguration.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.03715847">
+            <state line="2" column="18" selection-start="97" selection-end="109" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -366,7 +365,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/js/libs/less.min.js" />
-        <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
         <option value="$PROJECT_DIR$/resources/css/main-styles.css" />
         <option value="$PROJECT_DIR$/js/plug/accordion.js" />
         <option value="$PROJECT_DIR$/js/modules/accounts/energyUserController.js" />
@@ -378,9 +376,10 @@
         <option value="$PROJECT_DIR$/resources/css/settings.css" />
         <option value="$PROJECT_DIR$/resources/css/header.css" />
         <option value="$PROJECT_DIR$/js/modules/layout/PageMainController.js" />
-        <option value="$PROJECT_DIR$/main.html" />
         <option value="$PROJECT_DIR$/resources/css/details-members.css" />
         <option value="$PROJECT_DIR$/js/initConfiguration.js" />
+        <option value="$PROJECT_DIR$/main.html" />
+        <option value="$PROJECT_DIR$/js/modules/team/zeroTeam.js" />
       </list>
     </option>
   </component>
@@ -891,13 +890,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/plug/accordion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="49" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modules/accounts/energyUserController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="120" selection-start="2452" selection-end="2452" vertical-scroll-proportion="0.0">
@@ -982,13 +974,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="28" selection-start="6130" selection-end="6130" vertical-scroll-proportion="-29.615385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/details-members.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="225" column="1" selection-start="3877" selection-end="3877" vertical-scroll-proportion="0.0">
@@ -998,7 +983,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/initConfiguration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.03715847">
+        <state line="2" column="18" selection-start="97" selection-end="109" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="10" selection-start="5515" selection-end="5550" vertical-scroll-proportion="-15.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/modules/team/zeroTeam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="662" column="46" selection-start="17701" selection-end="17701" vertical-scroll-proportion="0.5945355">
           <folding />
         </state>
       </provider>

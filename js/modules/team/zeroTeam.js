@@ -657,7 +657,11 @@ Zero.Team = (function(module){
                                 return parseInt(a.idItem) - parseInt(b.idItem);
                             }
 							var arr = resp.historyResponse.messageList.sort(myComparator);
-
+                             if(arr.length == 0){
+                                 var divEmpty = $('<div/>').text('Chat is empty');
+                                 log.print(divEmpty, true);
+                                 return false;
+                             }
 
                             var chatItems = [];
 							for(var i=0; i < arr.length+1; i++) {
